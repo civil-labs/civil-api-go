@@ -40,6 +40,7 @@ const (
 
 // ParcelServiceClient is a client for the civil.parcels.v1.ParcelService service.
 type ParcelServiceClient interface {
+	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
 	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
 }
 
@@ -75,6 +76,7 @@ func (c *parcelServiceClient) UpdateParcelAttribute(ctx context.Context, req *co
 
 // ParcelServiceHandler is an implementation of the civil.parcels.v1.ParcelService service.
 type ParcelServiceHandler interface {
+	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
 	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
 }
 
