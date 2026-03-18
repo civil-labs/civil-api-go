@@ -7,7 +7,7 @@
 package tilesv1
 
 import (
-	_ "example/gen/google/api"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -410,9 +410,9 @@ const file_civil_tiles_v1_tiles_proto_rawDesc = "" +
 	"\x04data\x18\x02 \x01(\fR\x04data2\xf9\x01\n" +
 	"\vTileService\x12t\n" +
 	"\vGetTileJson\x12\".civil.tiles.v1.GetTileJsonRequest\x1a#.civil.tiles.v1.GetTileJsonResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/tiles/{source_name}\x12t\n" +
-	"\aGetTile\x12\x1e.civil.tiles.v1.GetTileRequest\x1a\x1f.civil.tiles.v1.GetTileResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /tiles/{source_name}/{z}/{x}/{y}B\x9e\x01\n" +
+	"\aGetTile\x12\x1e.civil.tiles.v1.GetTileRequest\x1a\x1f.civil.tiles.v1.GetTileResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /tiles/{source_name}/{z}/{x}/{y}B\xb5\x01\n" +
 	"\x12com.civil.tiles.v1B\n" +
-	"TilesProtoP\x01Z\"example/gen/civil/tiles/v1;tilesv1\xa2\x02\x03CTX\xaa\x02\x0eCivil.Tiles.V1\xca\x02\x0eCivil\\Tiles\\V1\xe2\x02\x1aCivil\\Tiles\\V1\\GPBMetadata\xea\x02\x10Civil::Tiles::V1b\x06proto3"
+	"TilesProtoP\x01Z9github.com/civil-labs/civil-api-go/civil/tiles/v1;tilesv1\xa2\x02\x03CTX\xaa\x02\x0eCivil.Tiles.V1\xca\x02\x0eCivil\\Tiles\\V1\xe2\x02\x1aCivil\\Tiles\\V1\\GPBMetadata\xea\x02\x10Civil::Tiles::V1b\x06proto3"
 
 var (
 	file_civil_tiles_v1_tiles_proto_rawDescOnce sync.Once

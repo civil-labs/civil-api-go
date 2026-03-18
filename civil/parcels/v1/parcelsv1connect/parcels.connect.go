@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	v1 "example/gen/civil/parcels/v1"
+	v1 "github.com/civil-labs/civil-api-go/civil/parcels/v1"
 	http "net/http"
 	strings "strings"
 )

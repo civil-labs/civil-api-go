@@ -8,7 +8,7 @@ package parcelsv1
 
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
-	_ "example/gen/gnostic/openapi/v3"
+	_ "github.com/google/gnostic/openapiv3"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -133,7 +133,7 @@ const file_civil_parcels_v1_parcels_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\x0eattributeValue\"\x1f\n" +
 	"\x1dUpdateParcelAttributeResponse2\x8b\x01\n" +
 	"\rParcelService\x12z\n" +
-	"\x15UpdateParcelAttribute\x12..civil.parcels.v1.UpdateParcelAttributeRequest\x1a/.civil.parcels.v1.UpdateParcelAttributeResponse\"\x00B\x9c\x03\xbaG\xea\x01\x12\x9f\x01\n" +
+	"\x15UpdateParcelAttribute\x12..civil.parcels.v1.UpdateParcelAttributeRequest\x1a/.civil.parcels.v1.UpdateParcelAttributeResponse\"\x00B\xb3\x03\xbaG\xea\x01\x12\x9f\x01\n" +
 	"\tCivil API\x12\x8a\x01API description for the Civil platform. Auth token can be retrieved by prefixing \"auth-\" to the beginning of your jurisdiction's endpoint.2\x050.0.1\x1a\x1d\n" +
 	"\x1bhttps://leepa.civillabs.app*':%\n" +
 	"#\n" +
@@ -141,7 +141,7 @@ const file_civil_parcels_v1_parcels_proto_rawDesc = "" +
 	"BearerAuth\x12\x15\n" +
 	"\x13\n" +
 	"\x04http*\x06bearer2\x03JWT\n" +
-	"\x14com.civil.parcels.v1B\fParcelsProtoP\x01Z&example/gen/civil/parcels/v1;parcelsv1\xa2\x02\x03CPX\xaa\x02\x10Civil.Parcels.V1\xca\x02\x10Civil\\Parcels\\V1\xe2\x02\x1cCivil\\Parcels\\V1\\GPBMetadata\xea\x02\x12Civil::Parcels::V1b\x06proto3"
+	"\x14com.civil.parcels.v1B\fParcelsProtoP\x01Z=github.com/civil-labs/civil-api-go/civil/parcels/v1;parcelsv1\xa2\x02\x03CPX\xaa\x02\x10Civil.Parcels.V1\xca\x02\x10Civil\\Parcels\\V1\xe2\x02\x1cCivil\\Parcels\\V1\\GPBMetadata\xea\x02\x12Civil::Parcels::V1b\x06proto3"
 
 var (
 	file_civil_parcels_v1_parcels_proto_rawDescOnce sync.Once
