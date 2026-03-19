@@ -47,7 +47,9 @@ const (
 type ParcelServiceClient interface {
 	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
 	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
+	// Retrieves all details about a parcel in a JSON object
 	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
+	// Retrieves a specified attribute value for a given parcel
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
 }
 
@@ -109,7 +111,9 @@ func (c *parcelServiceClient) GetParcelAttribute(ctx context.Context, req *conne
 type ParcelServiceHandler interface {
 	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
 	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
+	// Retrieves all details about a parcel in a JSON object
 	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
+	// Retrieves a specified attribute value for a given parcel
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
 }
 
