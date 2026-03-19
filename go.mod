@@ -1,4 +1,4 @@
-module civil-api-go
+module github.com/civil-labs/civil-api-go
 
 go 1.26.1
 
