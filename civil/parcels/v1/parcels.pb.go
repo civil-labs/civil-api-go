@@ -431,8 +431,8 @@ const file_civil_parcels_v1_parcels_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\x12<\n" +
 	"\x0fattribute_names\x18\x02 \x03(\tB\x13\xbaH\x10\x92\x01\r\b\x01\x10d\"\ar\x05\x10\x01\x18\x80\x02R\x0eattributeNames\"c\n" +
 	"\x1bGetParcelAttributesResponse\x12D\n" +
-	"\x11parcel_attributes\x18\x01 \x01(\v2\x17.google.protobuf.StructR\x10parcelAttributes2\xcc\x03\n" +
-	"\rParcelService\x12z\n" +
+	"\x11parcel_attributes\x18\x01 \x01(\v2\x17.google.protobuf.StructR\x10parcelAttributes2\xcd\x03\n" +
+	"\x0eParcelsService\x12z\n" +
 	"\x15UpdateParcelAttribute\x12..civil.parcels.v1.UpdateParcelAttributeRequest\x1a/.civil.parcels.v1.UpdateParcelAttributeResponse\"\x00\x12V\n" +
 	"\tGetParcel\x12\".civil.parcels.v1.GetParcelRequest\x1a#.civil.parcels.v1.GetParcelResponse\"\x00\x12q\n" +
 	"\x12GetParcelAttribute\x12+.civil.parcels.v1.GetParcelAttributeRequest\x1a,.civil.parcels.v1.GetParcelAttributeResponse\"\x00\x12t\n" +
@@ -473,14 +473,14 @@ var file_civil_parcels_v1_parcels_proto_goTypes = []any{
 var file_civil_parcels_v1_parcels_proto_depIdxs = []int32{
 	8, // 0: civil.parcels.v1.GetParcelResponse.parcel_attributes:type_name -> google.protobuf.Struct
 	8, // 1: civil.parcels.v1.GetParcelAttributesResponse.parcel_attributes:type_name -> google.protobuf.Struct
-	0, // 2: civil.parcels.v1.ParcelService.UpdateParcelAttribute:input_type -> civil.parcels.v1.UpdateParcelAttributeRequest
-	2, // 3: civil.parcels.v1.ParcelService.GetParcel:input_type -> civil.parcels.v1.GetParcelRequest
-	4, // 4: civil.parcels.v1.ParcelService.GetParcelAttribute:input_type -> civil.parcels.v1.GetParcelAttributeRequest
-	6, // 5: civil.parcels.v1.ParcelService.GetParcelAttributes:input_type -> civil.parcels.v1.GetParcelAttributesRequest
-	1, // 6: civil.parcels.v1.ParcelService.UpdateParcelAttribute:output_type -> civil.parcels.v1.UpdateParcelAttributeResponse
-	3, // 7: civil.parcels.v1.ParcelService.GetParcel:output_type -> civil.parcels.v1.GetParcelResponse
-	5, // 8: civil.parcels.v1.ParcelService.GetParcelAttribute:output_type -> civil.parcels.v1.GetParcelAttributeResponse
-	7, // 9: civil.parcels.v1.ParcelService.GetParcelAttributes:output_type -> civil.parcels.v1.GetParcelAttributesResponse
+	0, // 2: civil.parcels.v1.ParcelsService.UpdateParcelAttribute:input_type -> civil.parcels.v1.UpdateParcelAttributeRequest
+	2, // 3: civil.parcels.v1.ParcelsService.GetParcel:input_type -> civil.parcels.v1.GetParcelRequest
+	4, // 4: civil.parcels.v1.ParcelsService.GetParcelAttribute:input_type -> civil.parcels.v1.GetParcelAttributeRequest
+	6, // 5: civil.parcels.v1.ParcelsService.GetParcelAttributes:input_type -> civil.parcels.v1.GetParcelAttributesRequest
+	1, // 6: civil.parcels.v1.ParcelsService.UpdateParcelAttribute:output_type -> civil.parcels.v1.UpdateParcelAttributeResponse
+	3, // 7: civil.parcels.v1.ParcelsService.GetParcel:output_type -> civil.parcels.v1.GetParcelResponse
+	5, // 8: civil.parcels.v1.ParcelsService.GetParcelAttribute:output_type -> civil.parcels.v1.GetParcelAttributeResponse
+	7, // 9: civil.parcels.v1.ParcelsService.GetParcelAttributes:output_type -> civil.parcels.v1.GetParcelAttributesResponse
 	6, // [6:10] is the sub-list for method output_type
 	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
