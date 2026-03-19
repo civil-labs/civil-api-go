@@ -33,9 +33,9 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ParcelsServiceUpdateParcelAttributeProcedure is the fully-qualified name of the ParcelsService's
-	// UpdateParcelAttribute RPC.
-	ParcelsServiceUpdateParcelAttributeProcedure = "/civil.parcels.v1.ParcelsService/UpdateParcelAttribute"
+	// ParcelsServiceUpdateParcelsAttributeProcedure is the fully-qualified name of the ParcelsService's
+	// UpdateParcelsAttribute RPC.
+	ParcelsServiceUpdateParcelsAttributeProcedure = "/civil.parcels.v1.ParcelsService/UpdateParcelsAttribute"
 	// ParcelsServiceGetParcelProcedure is the fully-qualified name of the ParcelsService's GetParcel
 	// RPC.
 	ParcelsServiceGetParcelProcedure = "/civil.parcels.v1.ParcelsService/GetParcel"
@@ -50,7 +50,7 @@ const (
 // ParcelsServiceClient is a client for the civil.parcels.v1.ParcelsService service.
 type ParcelsServiceClient interface {
 	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
-	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
+	UpdateParcelsAttribute(context.Context, *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error)
 	// Retrieves all a specified parcel's attributes as an object.
 	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
 	// Retrieves a specified attribute value for a given parcel.
@@ -70,10 +70,10 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 	baseURL = strings.TrimRight(baseURL, "/")
 	parcelsServiceMethods := v1.File_civil_parcels_v1_parcels_proto.Services().ByName("ParcelsService").Methods()
 	return &parcelsServiceClient{
-		updateParcelAttribute: connect.NewClient[v1.UpdateParcelAttributeRequest, v1.UpdateParcelAttributeResponse](
+		updateParcelsAttribute: connect.NewClient[v1.UpdateParcelsAttributeRequest, v1.UpdateParcelsAttributeResponse](
 			httpClient,
-			baseURL+ParcelsServiceUpdateParcelAttributeProcedure,
-			connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcelAttribute")),
+			baseURL+ParcelsServiceUpdateParcelsAttributeProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcelsAttribute")),
 			connect.WithClientOptions(opts...),
 		),
 		getParcel: connect.NewClient[v1.GetParcelRequest, v1.GetParcelResponse](
@@ -99,15 +99,15 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 
 // parcelsServiceClient implements ParcelsServiceClient.
 type parcelsServiceClient struct {
-	updateParcelAttribute *connect.Client[v1.UpdateParcelAttributeRequest, v1.UpdateParcelAttributeResponse]
-	getParcel             *connect.Client[v1.GetParcelRequest, v1.GetParcelResponse]
-	getParcelAttribute    *connect.Client[v1.GetParcelAttributeRequest, v1.GetParcelAttributeResponse]
-	getParcelAttributes   *connect.Client[v1.GetParcelAttributesRequest, v1.GetParcelAttributesResponse]
+	updateParcelsAttribute *connect.Client[v1.UpdateParcelsAttributeRequest, v1.UpdateParcelsAttributeResponse]
+	getParcel              *connect.Client[v1.GetParcelRequest, v1.GetParcelResponse]
+	getParcelAttribute     *connect.Client[v1.GetParcelAttributeRequest, v1.GetParcelAttributeResponse]
+	getParcelAttributes    *connect.Client[v1.GetParcelAttributesRequest, v1.GetParcelAttributesResponse]
 }
 
-// UpdateParcelAttribute calls civil.parcels.v1.ParcelsService.UpdateParcelAttribute.
-func (c *parcelsServiceClient) UpdateParcelAttribute(ctx context.Context, req *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error) {
-	return c.updateParcelAttribute.CallUnary(ctx, req)
+// UpdateParcelsAttribute calls civil.parcels.v1.ParcelsService.UpdateParcelsAttribute.
+func (c *parcelsServiceClient) UpdateParcelsAttribute(ctx context.Context, req *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error) {
+	return c.updateParcelsAttribute.CallUnary(ctx, req)
 }
 
 // GetParcel calls civil.parcels.v1.ParcelsService.GetParcel.
@@ -128,7 +128,7 @@ func (c *parcelsServiceClient) GetParcelAttributes(ctx context.Context, req *con
 // ParcelsServiceHandler is an implementation of the civil.parcels.v1.ParcelsService service.
 type ParcelsServiceHandler interface {
 	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
-	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
+	UpdateParcelsAttribute(context.Context, *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error)
 	// Retrieves all a specified parcel's attributes as an object.
 	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
 	// Retrieves a specified attribute value for a given parcel.
@@ -144,10 +144,10 @@ type ParcelsServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	parcelsServiceMethods := v1.File_civil_parcels_v1_parcels_proto.Services().ByName("ParcelsService").Methods()
-	parcelsServiceUpdateParcelAttributeHandler := connect.NewUnaryHandler(
-		ParcelsServiceUpdateParcelAttributeProcedure,
-		svc.UpdateParcelAttribute,
-		connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcelAttribute")),
+	parcelsServiceUpdateParcelsAttributeHandler := connect.NewUnaryHandler(
+		ParcelsServiceUpdateParcelsAttributeProcedure,
+		svc.UpdateParcelsAttribute,
+		connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcelsAttribute")),
 		connect.WithHandlerOptions(opts...),
 	)
 	parcelsServiceGetParcelHandler := connect.NewUnaryHandler(
@@ -170,8 +170,8 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 	)
 	return "/civil.parcels.v1.ParcelsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case ParcelsServiceUpdateParcelAttributeProcedure:
-			parcelsServiceUpdateParcelAttributeHandler.ServeHTTP(w, r)
+		case ParcelsServiceUpdateParcelsAttributeProcedure:
+			parcelsServiceUpdateParcelsAttributeHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetParcelProcedure:
 			parcelsServiceGetParcelHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetParcelAttributeProcedure:
@@ -187,8 +187,8 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 // UnimplementedParcelsServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedParcelsServiceHandler struct{}
 
-func (UnimplementedParcelsServiceHandler) UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.parcels.v1.ParcelsService.UpdateParcelAttribute is not implemented"))
+func (UnimplementedParcelsServiceHandler) UpdateParcelsAttribute(context.Context, *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.parcels.v1.ParcelsService.UpdateParcelsAttribute is not implemented"))
 }
 
 func (UnimplementedParcelsServiceHandler) GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error) {
