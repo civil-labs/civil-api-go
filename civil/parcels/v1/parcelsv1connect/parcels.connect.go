@@ -41,16 +41,21 @@ const (
 	// ParcelServiceGetParcelAttributeProcedure is the fully-qualified name of the ParcelService's
 	// GetParcelAttribute RPC.
 	ParcelServiceGetParcelAttributeProcedure = "/civil.parcels.v1.ParcelService/GetParcelAttribute"
+	// ParcelServiceGetParcelAttributesProcedure is the fully-qualified name of the ParcelService's
+	// GetParcelAttributes RPC.
+	ParcelServiceGetParcelAttributesProcedure = "/civil.parcels.v1.ParcelService/GetParcelAttributes"
 )
 
 // ParcelServiceClient is a client for the civil.parcels.v1.ParcelService service.
 type ParcelServiceClient interface {
 	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
 	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
-	// Retrieves all details about a parcel in a JSON object.
+	// Retrieves all a specified parcel's attributes as an object.
 	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
 	// Retrieves a specified attribute value for a given parcel.
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
+	// Retrieves specificied attributes about a parcel as an object.
+	GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error)
 }
 
 // NewParcelServiceClient constructs a client for the civil.parcels.v1.ParcelService service. By
@@ -82,6 +87,12 @@ func NewParcelServiceClient(httpClient connect.HTTPClient, baseURL string, opts 
 			connect.WithSchema(parcelServiceMethods.ByName("GetParcelAttribute")),
 			connect.WithClientOptions(opts...),
 		),
+		getParcelAttributes: connect.NewClient[v1.GetParcelAttributesRequest, v1.GetParcelAttributesResponse](
+			httpClient,
+			baseURL+ParcelServiceGetParcelAttributesProcedure,
+			connect.WithSchema(parcelServiceMethods.ByName("GetParcelAttributes")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -90,6 +101,7 @@ type parcelServiceClient struct {
 	updateParcelAttribute *connect.Client[v1.UpdateParcelAttributeRequest, v1.UpdateParcelAttributeResponse]
 	getParcel             *connect.Client[v1.GetParcelRequest, v1.GetParcelResponse]
 	getParcelAttribute    *connect.Client[v1.GetParcelAttributeRequest, v1.GetParcelAttributeResponse]
+	getParcelAttributes   *connect.Client[v1.GetParcelAttributesRequest, v1.GetParcelAttributesResponse]
 }
 
 // UpdateParcelAttribute calls civil.parcels.v1.ParcelService.UpdateParcelAttribute.
@@ -107,14 +119,21 @@ func (c *parcelServiceClient) GetParcelAttribute(ctx context.Context, req *conne
 	return c.getParcelAttribute.CallUnary(ctx, req)
 }
 
+// GetParcelAttributes calls civil.parcels.v1.ParcelService.GetParcelAttributes.
+func (c *parcelServiceClient) GetParcelAttributes(ctx context.Context, req *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error) {
+	return c.getParcelAttributes.CallUnary(ctx, req)
+}
+
 // ParcelServiceHandler is an implementation of the civil.parcels.v1.ParcelService service.
 type ParcelServiceHandler interface {
 	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
 	UpdateParcelAttribute(context.Context, *connect.Request[v1.UpdateParcelAttributeRequest]) (*connect.Response[v1.UpdateParcelAttributeResponse], error)
-	// Retrieves all details about a parcel in a JSON object.
+	// Retrieves all a specified parcel's attributes as an object.
 	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
 	// Retrieves a specified attribute value for a given parcel.
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
+	// Retrieves specificied attributes about a parcel as an object.
+	GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error)
 }
 
 // NewParcelServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -142,6 +161,12 @@ func NewParcelServiceHandler(svc ParcelServiceHandler, opts ...connect.HandlerOp
 		connect.WithSchema(parcelServiceMethods.ByName("GetParcelAttribute")),
 		connect.WithHandlerOptions(opts...),
 	)
+	parcelServiceGetParcelAttributesHandler := connect.NewUnaryHandler(
+		ParcelServiceGetParcelAttributesProcedure,
+		svc.GetParcelAttributes,
+		connect.WithSchema(parcelServiceMethods.ByName("GetParcelAttributes")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/civil.parcels.v1.ParcelService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ParcelServiceUpdateParcelAttributeProcedure:
@@ -150,6 +175,8 @@ func NewParcelServiceHandler(svc ParcelServiceHandler, opts ...connect.HandlerOp
 			parcelServiceGetParcelHandler.ServeHTTP(w, r)
 		case ParcelServiceGetParcelAttributeProcedure:
 			parcelServiceGetParcelAttributeHandler.ServeHTTP(w, r)
+		case ParcelServiceGetParcelAttributesProcedure:
+			parcelServiceGetParcelAttributesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -169,4 +196,8 @@ func (UnimplementedParcelServiceHandler) GetParcel(context.Context, *connect.Req
 
 func (UnimplementedParcelServiceHandler) GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.parcels.v1.ParcelService.GetParcelAttribute is not implemented"))
+}
+
+func (UnimplementedParcelServiceHandler) GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.parcels.v1.ParcelService.GetParcelAttributes is not implemented"))
 }
