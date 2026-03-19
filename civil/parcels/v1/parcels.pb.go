@@ -11,6 +11,7 @@ import (
 	_ "github.com/google/gnostic/openapiv3"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	structpb "google.golang.org/protobuf/types/known/structpb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -119,11 +120,195 @@ func (*UpdateParcelAttributeResponse) Descriptor() ([]byte, []int) {
 	return file_civil_parcels_v1_parcels_proto_rawDescGZIP(), []int{1}
 }
 
+type GetParcelRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParcelRequest) Reset() {
+	*x = GetParcelRequest{}
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelRequest) ProtoMessage() {}
+
+func (x *GetParcelRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelRequest.ProtoReflect.Descriptor instead.
+func (*GetParcelRequest) Descriptor() ([]byte, []int) {
+	return file_civil_parcels_v1_parcels_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetParcelRequest) GetParcelId() string {
+	if x != nil {
+		return x.ParcelId
+	}
+	return ""
+}
+
+type GetParcelResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelDetails *structpb.Struct       `protobuf:"bytes,1,opt,name=parcel_details,json=parcelDetails,proto3" json:"parcel_details,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParcelResponse) Reset() {
+	*x = GetParcelResponse{}
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelResponse) ProtoMessage() {}
+
+func (x *GetParcelResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelResponse.ProtoReflect.Descriptor instead.
+func (*GetParcelResponse) Descriptor() ([]byte, []int) {
+	return file_civil_parcels_v1_parcels_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetParcelResponse) GetParcelDetails() *structpb.Struct {
+	if x != nil {
+		return x.ParcelDetails
+	}
+	return nil
+}
+
+type GetParcelAttributeRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	AttributeName string                 `protobuf:"bytes,2,opt,name=attribute_name,json=attributeName,proto3" json:"attribute_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParcelAttributeRequest) Reset() {
+	*x = GetParcelAttributeRequest{}
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelAttributeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelAttributeRequest) ProtoMessage() {}
+
+func (x *GetParcelAttributeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelAttributeRequest.ProtoReflect.Descriptor instead.
+func (*GetParcelAttributeRequest) Descriptor() ([]byte, []int) {
+	return file_civil_parcels_v1_parcels_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetParcelAttributeRequest) GetParcelId() string {
+	if x != nil {
+		return x.ParcelId
+	}
+	return ""
+}
+
+func (x *GetParcelAttributeRequest) GetAttributeName() string {
+	if x != nil {
+		return x.AttributeName
+	}
+	return ""
+}
+
+type GetParcelAttributeResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	AttributeValue string                 `protobuf:"bytes,3,opt,name=attribute_value,json=attributeValue,proto3" json:"attribute_value,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetParcelAttributeResponse) Reset() {
+	*x = GetParcelAttributeResponse{}
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelAttributeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelAttributeResponse) ProtoMessage() {}
+
+func (x *GetParcelAttributeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_parcels_v1_parcels_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelAttributeResponse.ProtoReflect.Descriptor instead.
+func (*GetParcelAttributeResponse) Descriptor() ([]byte, []int) {
+	return file_civil_parcels_v1_parcels_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetParcelAttributeResponse) GetAttributeValue() string {
+	if x != nil {
+		return x.AttributeValue
+	}
+	return ""
+}
+
 var File_civil_parcels_v1_parcels_proto protoreflect.FileDescriptor
 
 const file_civil_parcels_v1_parcels_proto_rawDesc = "" +
 	"\n" +
-	"\x1ecivil/parcels/v1/parcels.proto\x12\x10civil.parcels.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\"\xbb\x01\n" +
+	"\x1ecivil/parcels/v1/parcels.proto\x12\x10civil.parcels.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xbb\x01\n" +
 	"\x1cUpdateParcelAttributeRequest\x123\n" +
 	"\n" +
 	"parcel_ids\x18\x01 \x03(\tB\x14\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\"\ar\x05\x10\x01\x18\x80\x02R\tparcelIds\x121\n" +
@@ -131,9 +316,24 @@ const file_civil_parcels_v1_parcels_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\rattributeName\x123\n" +
 	"\x0fattribute_value\x18\x03 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\x0eattributeValue\"\x1f\n" +
-	"\x1dUpdateParcelAttributeResponse2\x8b\x01\n" +
+	"\x1dUpdateParcelAttributeResponse\";\n" +
+	"\x10GetParcelRequest\x12'\n" +
+	"\tparcel_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\"S\n" +
+	"\x11GetParcelResponse\x12>\n" +
+	"\x0eparcel_details\x18\x01 \x01(\v2\x17.google.protobuf.StructR\rparcelDetails\"w\n" +
+	"\x19GetParcelAttributeRequest\x12'\n" +
+	"\tparcel_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\x121\n" +
+	"\x0eattribute_name\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\rattributeName\"Q\n" +
+	"\x1aGetParcelAttributeResponse\x123\n" +
+	"\x0fattribute_value\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\x0eattributeValue2\xd6\x02\n" +
 	"\rParcelService\x12z\n" +
-	"\x15UpdateParcelAttribute\x12..civil.parcels.v1.UpdateParcelAttributeRequest\x1a/.civil.parcels.v1.UpdateParcelAttributeResponse\"\x00B\xb3\x03\xbaG\xea\x01\x12\x9f\x01\n" +
+	"\x15UpdateParcelAttribute\x12..civil.parcels.v1.UpdateParcelAttributeRequest\x1a/.civil.parcels.v1.UpdateParcelAttributeResponse\"\x00\x12V\n" +
+	"\tGetParcel\x12\".civil.parcels.v1.GetParcelRequest\x1a#.civil.parcels.v1.GetParcelResponse\"\x00\x12q\n" +
+	"\x12GetParcelAttribute\x12+.civil.parcels.v1.GetParcelAttributeRequest\x1a,.civil.parcels.v1.GetParcelAttributeResponse\"\x00B\xb3\x03\xbaG\xea\x01\x12\x9f\x01\n" +
 	"\tCivil API\x12\x8a\x01API description for the Civil platform. Auth token can be retrieved by prefixing \"auth-\" to the beginning of your jurisdiction's endpoint.2\x050.0.1\x1a\x1d\n" +
 	"\x1bhttps://leepa.civillabs.app*':%\n" +
 	"#\n" +
@@ -155,19 +355,29 @@ func file_civil_parcels_v1_parcels_proto_rawDescGZIP() []byte {
 	return file_civil_parcels_v1_parcels_proto_rawDescData
 }
 
-var file_civil_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_civil_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_civil_parcels_v1_parcels_proto_goTypes = []any{
 	(*UpdateParcelAttributeRequest)(nil),  // 0: civil.parcels.v1.UpdateParcelAttributeRequest
 	(*UpdateParcelAttributeResponse)(nil), // 1: civil.parcels.v1.UpdateParcelAttributeResponse
+	(*GetParcelRequest)(nil),              // 2: civil.parcels.v1.GetParcelRequest
+	(*GetParcelResponse)(nil),             // 3: civil.parcels.v1.GetParcelResponse
+	(*GetParcelAttributeRequest)(nil),     // 4: civil.parcels.v1.GetParcelAttributeRequest
+	(*GetParcelAttributeResponse)(nil),    // 5: civil.parcels.v1.GetParcelAttributeResponse
+	(*structpb.Struct)(nil),               // 6: google.protobuf.Struct
 }
 var file_civil_parcels_v1_parcels_proto_depIdxs = []int32{
-	0, // 0: civil.parcels.v1.ParcelService.UpdateParcelAttribute:input_type -> civil.parcels.v1.UpdateParcelAttributeRequest
-	1, // 1: civil.parcels.v1.ParcelService.UpdateParcelAttribute:output_type -> civil.parcels.v1.UpdateParcelAttributeResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: civil.parcels.v1.GetParcelResponse.parcel_details:type_name -> google.protobuf.Struct
+	0, // 1: civil.parcels.v1.ParcelService.UpdateParcelAttribute:input_type -> civil.parcels.v1.UpdateParcelAttributeRequest
+	2, // 2: civil.parcels.v1.ParcelService.GetParcel:input_type -> civil.parcels.v1.GetParcelRequest
+	4, // 3: civil.parcels.v1.ParcelService.GetParcelAttribute:input_type -> civil.parcels.v1.GetParcelAttributeRequest
+	1, // 4: civil.parcels.v1.ParcelService.UpdateParcelAttribute:output_type -> civil.parcels.v1.UpdateParcelAttributeResponse
+	3, // 5: civil.parcels.v1.ParcelService.GetParcel:output_type -> civil.parcels.v1.GetParcelResponse
+	5, // 6: civil.parcels.v1.ParcelService.GetParcelAttribute:output_type -> civil.parcels.v1.GetParcelAttributeResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_civil_parcels_v1_parcels_proto_init() }
@@ -181,7 +391,7 @@ func file_civil_parcels_v1_parcels_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_parcels_v1_parcels_proto_rawDesc), len(file_civil_parcels_v1_parcels_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
