@@ -63,8 +63,9 @@ type ParcelsServiceClient interface {
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
 	// Retrieves specificied attributes about a parcel as an object.
 	GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error)
+	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
 	GetNumericalStats(context.Context, *connect.Request[v1.GetNumericalStatsRequest]) (*connect.Response[v1.GetNumericalStatsResponse], error)
-	// Retrieves a set of summary statistics about the specified attribute for a specified list of parcels. Optionally returns the values as well
+	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
 	GetCategoricalStats(context.Context, *connect.Request[v1.GetCategoricalStatsRequest]) (*connect.Response[v1.GetCategoricalStatsResponse], error)
 }
 
@@ -168,8 +169,9 @@ type ParcelsServiceHandler interface {
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
 	// Retrieves specificied attributes about a parcel as an object.
 	GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error)
+	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
 	GetNumericalStats(context.Context, *connect.Request[v1.GetNumericalStatsRequest]) (*connect.Response[v1.GetNumericalStatsResponse], error)
-	// Retrieves a set of summary statistics about the specified attribute for a specified list of parcels. Optionally returns the values as well
+	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
 	GetCategoricalStats(context.Context, *connect.Request[v1.GetCategoricalStatsRequest]) (*connect.Response[v1.GetCategoricalStatsResponse], error)
 }
 
