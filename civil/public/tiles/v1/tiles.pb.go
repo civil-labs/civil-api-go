@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: civil/tiles/v1/tiles.proto
+// source: civil/public/tiles/v1/tiles.proto
 
 package tilesv1
 
@@ -31,7 +31,7 @@ type GetTileJsonRequest struct {
 
 func (x *GetTileJsonRequest) Reset() {
 	*x = GetTileJsonRequest{}
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[0]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *GetTileJsonRequest) String() string {
 func (*GetTileJsonRequest) ProtoMessage() {}
 
 func (x *GetTileJsonRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[0]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *GetTileJsonRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTileJsonRequest.ProtoReflect.Descriptor instead.
 func (*GetTileJsonRequest) Descriptor() ([]byte, []int) {
-	return file_civil_tiles_v1_tiles_proto_rawDescGZIP(), []int{0}
+	return file_civil_public_tiles_v1_tiles_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *GetTileJsonRequest) GetSourceName() string {
@@ -85,7 +85,7 @@ type GetTileJsonResponse struct {
 
 func (x *GetTileJsonResponse) Reset() {
 	*x = GetTileJsonResponse{}
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[1]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -97,7 +97,7 @@ func (x *GetTileJsonResponse) String() string {
 func (*GetTileJsonResponse) ProtoMessage() {}
 
 func (x *GetTileJsonResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[1]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -110,7 +110,7 @@ func (x *GetTileJsonResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTileJsonResponse.ProtoReflect.Descriptor instead.
 func (*GetTileJsonResponse) Descriptor() ([]byte, []int) {
-	return file_civil_tiles_v1_tiles_proto_rawDescGZIP(), []int{1}
+	return file_civil_public_tiles_v1_tiles_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetTileJsonResponse) GetTilejson() string {
@@ -189,7 +189,7 @@ type VectorLayer struct {
 
 func (x *VectorLayer) Reset() {
 	*x = VectorLayer{}
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[2]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -201,7 +201,7 @@ func (x *VectorLayer) String() string {
 func (*VectorLayer) ProtoMessage() {}
 
 func (x *VectorLayer) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[2]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -214,7 +214,7 @@ func (x *VectorLayer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use VectorLayer.ProtoReflect.Descriptor instead.
 func (*VectorLayer) Descriptor() ([]byte, []int) {
-	return file_civil_tiles_v1_tiles_proto_rawDescGZIP(), []int{2}
+	return file_civil_public_tiles_v1_tiles_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *VectorLayer) GetId() string {
@@ -264,7 +264,7 @@ type GetTileRequest struct {
 
 func (x *GetTileRequest) Reset() {
 	*x = GetTileRequest{}
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[3]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -276,7 +276,7 @@ func (x *GetTileRequest) String() string {
 func (*GetTileRequest) ProtoMessage() {}
 
 func (x *GetTileRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[3]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -289,7 +289,7 @@ func (x *GetTileRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTileRequest.ProtoReflect.Descriptor instead.
 func (*GetTileRequest) Descriptor() ([]byte, []int) {
-	return file_civil_tiles_v1_tiles_proto_rawDescGZIP(), []int{3}
+	return file_civil_public_tiles_v1_tiles_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetTileRequest) GetSourceName() string {
@@ -330,7 +330,7 @@ type GetTileResponse struct {
 
 func (x *GetTileResponse) Reset() {
 	*x = GetTileResponse{}
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[4]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -342,7 +342,7 @@ func (x *GetTileResponse) String() string {
 func (*GetTileResponse) ProtoMessage() {}
 
 func (x *GetTileResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_tiles_v1_tiles_proto_msgTypes[4]
+	mi := &file_civil_public_tiles_v1_tiles_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -355,7 +355,7 @@ func (x *GetTileResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetTileResponse.ProtoReflect.Descriptor instead.
 func (*GetTileResponse) Descriptor() ([]byte, []int) {
-	return file_civil_tiles_v1_tiles_proto_rawDescGZIP(), []int{4}
+	return file_civil_public_tiles_v1_tiles_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetTileResponse) GetContentType() string {
@@ -372,14 +372,14 @@ func (x *GetTileResponse) GetData() []byte {
 	return nil
 }
 
-var File_civil_tiles_v1_tiles_proto protoreflect.FileDescriptor
+var File_civil_public_tiles_v1_tiles_proto protoreflect.FileDescriptor
 
-const file_civil_tiles_v1_tiles_proto_rawDesc = "" +
+const file_civil_public_tiles_v1_tiles_proto_rawDesc = "" +
 	"\n" +
-	"\x1acivil/tiles/v1/tiles.proto\x12\x0ecivil.tiles.v1\x1a\x1cgoogle/api/annotations.proto\"5\n" +
+	"!civil/public/tiles/v1/tiles.proto\x12\x15civil.public.tiles.v1\x1a\x1cgoogle/api/annotations.proto\"5\n" +
 	"\x12GetTileJsonRequest\x12\x1f\n" +
 	"\vsource_name\x18\x01 \x01(\tR\n" +
-	"sourceName\"\xa3\x02\n" +
+	"sourceName\"\xaa\x02\n" +
 	"\x13GetTileJsonResponse\x12\x1a\n" +
 	"\btilejson\x18\x01 \x01(\tR\btilejson\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
@@ -388,14 +388,14 @@ const file_civil_tiles_v1_tiles_proto_rawDesc = "" +
 	"\aminzoom\x18\x05 \x01(\x05R\aminzoom\x12\x18\n" +
 	"\amaxzoom\x18\x06 \x01(\x05R\amaxzoom\x12\x16\n" +
 	"\x06bounds\x18\a \x03(\x01R\x06bounds\x12\x16\n" +
-	"\x06center\x18\b \x03(\x01R\x06center\x12@\n" +
-	"\rvector_layers\x18\t \x03(\v2\x1b.civil.tiles.v1.VectorLayerR\fvectorLayers\"\xef\x01\n" +
+	"\x06center\x18\b \x03(\x01R\x06center\x12G\n" +
+	"\rvector_layers\x18\t \x03(\v2\".civil.public.tiles.v1.VectorLayerR\fvectorLayers\"\xf6\x01\n" +
 	"\vVectorLayer\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x18\n" +
 	"\aminzoom\x18\x03 \x01(\x05R\aminzoom\x12\x18\n" +
-	"\amaxzoom\x18\x04 \x01(\x05R\amaxzoom\x12?\n" +
-	"\x06fields\x18\x05 \x03(\v2'.civil.tiles.v1.VectorLayer.FieldsEntryR\x06fields\x1a9\n" +
+	"\amaxzoom\x18\x04 \x01(\x05R\amaxzoom\x12F\n" +
+	"\x06fields\x18\x05 \x03(\v2..civil.public.tiles.v1.VectorLayer.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"[\n" +
@@ -407,41 +407,41 @@ const file_civil_tiles_v1_tiles_proto_rawDesc = "" +
 	"\x01y\x18\x04 \x01(\x05R\x01y\"H\n" +
 	"\x0fGetTileResponse\x12!\n" +
 	"\fcontent_type\x18\x01 \x01(\tR\vcontentType\x12\x12\n" +
-	"\x04data\x18\x02 \x01(\fR\x04data2\xf9\x01\n" +
-	"\vTileService\x12t\n" +
-	"\vGetTileJson\x12\".civil.tiles.v1.GetTileJsonRequest\x1a#.civil.tiles.v1.GetTileJsonResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/tiles/{source_name}\x12t\n" +
-	"\aGetTile\x12\x1e.civil.tiles.v1.GetTileRequest\x1a\x1f.civil.tiles.v1.GetTileResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /tiles/{source_name}/{z}/{x}/{y}B\xb5\x01\n" +
-	"\x12com.civil.tiles.v1B\n" +
-	"TilesProtoP\x01Z9github.com/civil-labs/civil-api-go/civil/tiles/v1;tilesv1\xa2\x02\x03CTX\xaa\x02\x0eCivil.Tiles.V1\xca\x02\x0eCivil\\Tiles\\V1\xe2\x02\x1aCivil\\Tiles\\V1\\GPBMetadata\xea\x02\x10Civil::Tiles::V1b\x06proto3"
+	"\x04data\x18\x02 \x01(\fR\x04data2\x97\x02\n" +
+	"\vTileService\x12\x82\x01\n" +
+	"\vGetTileJson\x12).civil.public.tiles.v1.GetTileJsonRequest\x1a*.civil.public.tiles.v1.GetTileJsonResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\x12\x14/tiles/{source_name}\x12\x82\x01\n" +
+	"\aGetTile\x12%.civil.public.tiles.v1.GetTileRequest\x1a&.civil.public.tiles.v1.GetTileResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /tiles/{source_name}/{z}/{x}/{y}B\xe2\x01\n" +
+	"\x19com.civil.public.tiles.v1B\n" +
+	"TilesProtoP\x01Z@github.com/civil-labs/civil-api-go/civil/public/tiles/v1;tilesv1\xa2\x02\x03CPT\xaa\x02\x15Civil.Public.Tiles.V1\xca\x02\x16Civil\\Public_\\Tiles\\V1\xe2\x02\"Civil\\Public_\\Tiles\\V1\\GPBMetadata\xea\x02\x18Civil::Public::Tiles::V1b\x06proto3"
 
 var (
-	file_civil_tiles_v1_tiles_proto_rawDescOnce sync.Once
-	file_civil_tiles_v1_tiles_proto_rawDescData []byte
+	file_civil_public_tiles_v1_tiles_proto_rawDescOnce sync.Once
+	file_civil_public_tiles_v1_tiles_proto_rawDescData []byte
 )
 
-func file_civil_tiles_v1_tiles_proto_rawDescGZIP() []byte {
-	file_civil_tiles_v1_tiles_proto_rawDescOnce.Do(func() {
-		file_civil_tiles_v1_tiles_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_civil_tiles_v1_tiles_proto_rawDesc), len(file_civil_tiles_v1_tiles_proto_rawDesc)))
+func file_civil_public_tiles_v1_tiles_proto_rawDescGZIP() []byte {
+	file_civil_public_tiles_v1_tiles_proto_rawDescOnce.Do(func() {
+		file_civil_public_tiles_v1_tiles_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_civil_public_tiles_v1_tiles_proto_rawDesc), len(file_civil_public_tiles_v1_tiles_proto_rawDesc)))
 	})
-	return file_civil_tiles_v1_tiles_proto_rawDescData
+	return file_civil_public_tiles_v1_tiles_proto_rawDescData
 }
 
-var file_civil_tiles_v1_tiles_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
-var file_civil_tiles_v1_tiles_proto_goTypes = []any{
-	(*GetTileJsonRequest)(nil),  // 0: civil.tiles.v1.GetTileJsonRequest
-	(*GetTileJsonResponse)(nil), // 1: civil.tiles.v1.GetTileJsonResponse
-	(*VectorLayer)(nil),         // 2: civil.tiles.v1.VectorLayer
-	(*GetTileRequest)(nil),      // 3: civil.tiles.v1.GetTileRequest
-	(*GetTileResponse)(nil),     // 4: civil.tiles.v1.GetTileResponse
-	nil,                         // 5: civil.tiles.v1.VectorLayer.FieldsEntry
+var file_civil_public_tiles_v1_tiles_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_civil_public_tiles_v1_tiles_proto_goTypes = []any{
+	(*GetTileJsonRequest)(nil),  // 0: civil.public.tiles.v1.GetTileJsonRequest
+	(*GetTileJsonResponse)(nil), // 1: civil.public.tiles.v1.GetTileJsonResponse
+	(*VectorLayer)(nil),         // 2: civil.public.tiles.v1.VectorLayer
+	(*GetTileRequest)(nil),      // 3: civil.public.tiles.v1.GetTileRequest
+	(*GetTileResponse)(nil),     // 4: civil.public.tiles.v1.GetTileResponse
+	nil,                         // 5: civil.public.tiles.v1.VectorLayer.FieldsEntry
 }
-var file_civil_tiles_v1_tiles_proto_depIdxs = []int32{
-	2, // 0: civil.tiles.v1.GetTileJsonResponse.vector_layers:type_name -> civil.tiles.v1.VectorLayer
-	5, // 1: civil.tiles.v1.VectorLayer.fields:type_name -> civil.tiles.v1.VectorLayer.FieldsEntry
-	0, // 2: civil.tiles.v1.TileService.GetTileJson:input_type -> civil.tiles.v1.GetTileJsonRequest
-	3, // 3: civil.tiles.v1.TileService.GetTile:input_type -> civil.tiles.v1.GetTileRequest
-	1, // 4: civil.tiles.v1.TileService.GetTileJson:output_type -> civil.tiles.v1.GetTileJsonResponse
-	4, // 5: civil.tiles.v1.TileService.GetTile:output_type -> civil.tiles.v1.GetTileResponse
+var file_civil_public_tiles_v1_tiles_proto_depIdxs = []int32{
+	2, // 0: civil.public.tiles.v1.GetTileJsonResponse.vector_layers:type_name -> civil.public.tiles.v1.VectorLayer
+	5, // 1: civil.public.tiles.v1.VectorLayer.fields:type_name -> civil.public.tiles.v1.VectorLayer.FieldsEntry
+	0, // 2: civil.public.tiles.v1.TileService.GetTileJson:input_type -> civil.public.tiles.v1.GetTileJsonRequest
+	3, // 3: civil.public.tiles.v1.TileService.GetTile:input_type -> civil.public.tiles.v1.GetTileRequest
+	1, // 4: civil.public.tiles.v1.TileService.GetTileJson:output_type -> civil.public.tiles.v1.GetTileJsonResponse
+	4, // 5: civil.public.tiles.v1.TileService.GetTile:output_type -> civil.public.tiles.v1.GetTileResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -449,26 +449,26 @@ var file_civil_tiles_v1_tiles_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_civil_tiles_v1_tiles_proto_init() }
-func file_civil_tiles_v1_tiles_proto_init() {
-	if File_civil_tiles_v1_tiles_proto != nil {
+func init() { file_civil_public_tiles_v1_tiles_proto_init() }
+func file_civil_public_tiles_v1_tiles_proto_init() {
+	if File_civil_public_tiles_v1_tiles_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_tiles_v1_tiles_proto_rawDesc), len(file_civil_tiles_v1_tiles_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_public_tiles_v1_tiles_proto_rawDesc), len(file_civil_public_tiles_v1_tiles_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_civil_tiles_v1_tiles_proto_goTypes,
-		DependencyIndexes: file_civil_tiles_v1_tiles_proto_depIdxs,
-		MessageInfos:      file_civil_tiles_v1_tiles_proto_msgTypes,
+		GoTypes:           file_civil_public_tiles_v1_tiles_proto_goTypes,
+		DependencyIndexes: file_civil_public_tiles_v1_tiles_proto_depIdxs,
+		MessageInfos:      file_civil_public_tiles_v1_tiles_proto_msgTypes,
 	}.Build()
-	File_civil_tiles_v1_tiles_proto = out.File
-	file_civil_tiles_v1_tiles_proto_goTypes = nil
-	file_civil_tiles_v1_tiles_proto_depIdxs = nil
+	File_civil_public_tiles_v1_tiles_proto = out.File
+	file_civil_public_tiles_v1_tiles_proto_goTypes = nil
+	file_civil_public_tiles_v1_tiles_proto_depIdxs = nil
 }
