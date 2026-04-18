@@ -118,6 +118,102 @@ func (x *GetParcelAttributeResponse) GetAttributeValue() string {
 	return ""
 }
 
+type GetParcelPropertyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	PropertyName  string                 `protobuf:"bytes,2,opt,name=property_name,json=propertyName,proto3" json:"property_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParcelPropertyRequest) Reset() {
+	*x = GetParcelPropertyRequest{}
+	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelPropertyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelPropertyRequest) ProtoMessage() {}
+
+func (x *GetParcelPropertyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelPropertyRequest.ProtoReflect.Descriptor instead.
+func (*GetParcelPropertyRequest) Descriptor() ([]byte, []int) {
+	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetParcelPropertyRequest) GetParcelId() string {
+	if x != nil {
+		return x.ParcelId
+	}
+	return ""
+}
+
+func (x *GetParcelPropertyRequest) GetPropertyName() string {
+	if x != nil {
+		return x.PropertyName
+	}
+	return ""
+}
+
+type GetParcelPropertyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PropertyValue string                 `protobuf:"bytes,3,opt,name=property_value,json=propertyValue,proto3" json:"property_value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParcelPropertyResponse) Reset() {
+	*x = GetParcelPropertyResponse{}
+	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelPropertyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelPropertyResponse) ProtoMessage() {}
+
+func (x *GetParcelPropertyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelPropertyResponse.ProtoReflect.Descriptor instead.
+func (*GetParcelPropertyResponse) Descriptor() ([]byte, []int) {
+	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetParcelPropertyResponse) GetPropertyValue() string {
+	if x != nil {
+		return x.PropertyValue
+	}
+	return ""
+}
+
 var File_civil_mesh_parcels_v1_parcels_proto protoreflect.FileDescriptor
 
 const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
@@ -129,9 +225,17 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x0eattribute_name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18?R\rattributeName\"Q\n" +
 	"\x1aGetParcelAttributeResponse\x123\n" +
 	"\x0fattribute_value\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\x0eattributeValue2\x8d\x01\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\x0eattributeValue\"s\n" +
+	"\x18GetParcelPropertyRequest\x12'\n" +
+	"\tparcel_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\x12.\n" +
+	"\rproperty_name\x18\x02 \x01(\tB\t\xbaH\x06r\x04\x10\x01\x18?R\fpropertyName\"N\n" +
+	"\x19GetParcelPropertyResponse\x121\n" +
+	"\x0eproperty_value\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\rpropertyValue2\x87\x02\n" +
 	"\x0eParcelsService\x12{\n" +
-	"\x12GetParcelAttribute\x120.civil.mesh.parcels.v1.GetParcelAttributeRequest\x1a1.civil.mesh.parcels.v1.GetParcelAttributeResponse\"\x00B\xe4\x01\n" +
+	"\x12GetParcelAttribute\x120.civil.mesh.parcels.v1.GetParcelAttributeRequest\x1a1.civil.mesh.parcels.v1.GetParcelAttributeResponse\"\x00\x12x\n" +
+	"\x11GetParcelProperty\x12/.civil.mesh.parcels.v1.GetParcelPropertyRequest\x1a0.civil.mesh.parcels.v1.GetParcelPropertyResponse\"\x00B\xe4\x01\n" +
 	"\x19com.civil.mesh.parcels.v1B\fParcelsProtoP\x01ZBgithub.com/civil-labs/civil-api-go/civil/mesh/parcels/v1;parcelsv1\xa2\x02\x03CMP\xaa\x02\x15Civil.Mesh.Parcels.V1\xca\x02\x15Civil\\Mesh\\Parcels\\V1\xe2\x02!Civil\\Mesh\\Parcels\\V1\\GPBMetadata\xea\x02\x18Civil::Mesh::Parcels::V1b\x06proto3"
 
 var (
@@ -146,16 +250,20 @@ func file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP() []byte {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescData
 }
 
-var file_civil_mesh_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_civil_mesh_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_civil_mesh_parcels_v1_parcels_proto_goTypes = []any{
 	(*GetParcelAttributeRequest)(nil),  // 0: civil.mesh.parcels.v1.GetParcelAttributeRequest
 	(*GetParcelAttributeResponse)(nil), // 1: civil.mesh.parcels.v1.GetParcelAttributeResponse
+	(*GetParcelPropertyRequest)(nil),   // 2: civil.mesh.parcels.v1.GetParcelPropertyRequest
+	(*GetParcelPropertyResponse)(nil),  // 3: civil.mesh.parcels.v1.GetParcelPropertyResponse
 }
 var file_civil_mesh_parcels_v1_parcels_proto_depIdxs = []int32{
 	0, // 0: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:input_type -> civil.mesh.parcels.v1.GetParcelAttributeRequest
-	1, // 1: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:output_type -> civil.mesh.parcels.v1.GetParcelAttributeResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: civil.mesh.parcels.v1.ParcelsService.GetParcelProperty:input_type -> civil.mesh.parcels.v1.GetParcelPropertyRequest
+	1, // 2: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:output_type -> civil.mesh.parcels.v1.GetParcelAttributeResponse
+	3, // 3: civil.mesh.parcels.v1.ParcelsService.GetParcelProperty:output_type -> civil.mesh.parcels.v1.GetParcelPropertyResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -172,7 +280,7 @@ func file_civil_mesh_parcels_v1_parcels_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_mesh_parcels_v1_parcels_proto_rawDesc), len(file_civil_mesh_parcels_v1_parcels_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

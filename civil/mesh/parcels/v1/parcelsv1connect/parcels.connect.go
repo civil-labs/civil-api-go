@@ -36,12 +36,17 @@ const (
 	// ParcelsServiceGetParcelAttributeProcedure is the fully-qualified name of the ParcelsService's
 	// GetParcelAttribute RPC.
 	ParcelsServiceGetParcelAttributeProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcelAttribute"
+	// ParcelsServiceGetParcelPropertyProcedure is the fully-qualified name of the ParcelsService's
+	// GetParcelProperty RPC.
+	ParcelsServiceGetParcelPropertyProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcelProperty"
 )
 
 // ParcelsServiceClient is a client for the civil.mesh.parcels.v1.ParcelsService service.
 type ParcelsServiceClient interface {
-	// Retrieves a specified attribute value for a given parcel.
+	// Retrieves the value for a specified attribute for a given parcel
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
+	// Retrieves the value for a specified property for a given parcel
+	GetParcelProperty(context.Context, *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error)
 }
 
 // NewParcelsServiceClient constructs a client for the civil.mesh.parcels.v1.ParcelsService service.
@@ -61,12 +66,19 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelAttribute")),
 			connect.WithClientOptions(opts...),
 		),
+		getParcelProperty: connect.NewClient[v1.GetParcelPropertyRequest, v1.GetParcelPropertyResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetParcelPropertyProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelProperty")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // parcelsServiceClient implements ParcelsServiceClient.
 type parcelsServiceClient struct {
 	getParcelAttribute *connect.Client[v1.GetParcelAttributeRequest, v1.GetParcelAttributeResponse]
+	getParcelProperty  *connect.Client[v1.GetParcelPropertyRequest, v1.GetParcelPropertyResponse]
 }
 
 // GetParcelAttribute calls civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute.
@@ -74,10 +86,17 @@ func (c *parcelsServiceClient) GetParcelAttribute(ctx context.Context, req *conn
 	return c.getParcelAttribute.CallUnary(ctx, req)
 }
 
+// GetParcelProperty calls civil.mesh.parcels.v1.ParcelsService.GetParcelProperty.
+func (c *parcelsServiceClient) GetParcelProperty(ctx context.Context, req *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error) {
+	return c.getParcelProperty.CallUnary(ctx, req)
+}
+
 // ParcelsServiceHandler is an implementation of the civil.mesh.parcels.v1.ParcelsService service.
 type ParcelsServiceHandler interface {
-	// Retrieves a specified attribute value for a given parcel.
+	// Retrieves the value for a specified attribute for a given parcel
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
+	// Retrieves the value for a specified property for a given parcel
+	GetParcelProperty(context.Context, *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error)
 }
 
 // NewParcelsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -93,10 +112,18 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelAttribute")),
 		connect.WithHandlerOptions(opts...),
 	)
+	parcelsServiceGetParcelPropertyHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetParcelPropertyProcedure,
+		svc.GetParcelProperty,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelProperty")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/civil.mesh.parcels.v1.ParcelsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ParcelsServiceGetParcelAttributeProcedure:
 			parcelsServiceGetParcelAttributeHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetParcelPropertyProcedure:
+			parcelsServiceGetParcelPropertyHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -108,4 +135,8 @@ type UnimplementedParcelsServiceHandler struct{}
 
 func (UnimplementedParcelsServiceHandler) GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetParcelProperty(context.Context, *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcelProperty is not implemented"))
 }
