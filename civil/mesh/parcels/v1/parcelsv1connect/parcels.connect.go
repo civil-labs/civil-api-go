@@ -39,6 +39,21 @@ const (
 	// ParcelsServiceGetParcelPropertyProcedure is the fully-qualified name of the ParcelsService's
 	// GetParcelProperty RPC.
 	ParcelsServiceGetParcelPropertyProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcelProperty"
+	// ParcelsServiceGetParcelProcedure is the fully-qualified name of the ParcelsService's GetParcel
+	// RPC.
+	ParcelsServiceGetParcelProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcel"
+	// ParcelsServiceGetParcelAttributesProcedure is the fully-qualified name of the ParcelsService's
+	// GetParcelAttributes RPC.
+	ParcelsServiceGetParcelAttributesProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcelAttributes"
+	// ParcelsServiceGetNumericalStatsProcedure is the fully-qualified name of the ParcelsService's
+	// GetNumericalStats RPC.
+	ParcelsServiceGetNumericalStatsProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetNumericalStats"
+	// ParcelsServiceGetCategoricalStatsProcedure is the fully-qualified name of the ParcelsService's
+	// GetCategoricalStats RPC.
+	ParcelsServiceGetCategoricalStatsProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetCategoricalStats"
+	// ParcelsServiceUpdateParcelsAttributeProcedure is the fully-qualified name of the ParcelsService's
+	// UpdateParcelsAttribute RPC.
+	ParcelsServiceUpdateParcelsAttributeProcedure = "/civil.mesh.parcels.v1.ParcelsService/UpdateParcelsAttribute"
 )
 
 // ParcelsServiceClient is a client for the civil.mesh.parcels.v1.ParcelsService service.
@@ -47,6 +62,16 @@ type ParcelsServiceClient interface {
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
 	// Retrieves the value for a specified property for a given parcel
 	GetParcelProperty(context.Context, *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error)
+	// Retrieves all of a specified parcel's attributes as an object.
+	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
+	// Retrieves specificied attributes about a parcel as an object.
+	GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error)
+	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
+	GetNumericalStats(context.Context, *connect.Request[v1.GetNumericalStatsRequest]) (*connect.Response[v1.GetNumericalStatsResponse], error)
+	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
+	GetCategoricalStats(context.Context, *connect.Request[v1.GetCategoricalStatsRequest]) (*connect.Response[v1.GetCategoricalStatsResponse], error)
+	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
+	UpdateParcelsAttribute(context.Context, *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error)
 }
 
 // NewParcelsServiceClient constructs a client for the civil.mesh.parcels.v1.ParcelsService service.
@@ -72,13 +97,48 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelProperty")),
 			connect.WithClientOptions(opts...),
 		),
+		getParcel: connect.NewClient[v1.GetParcelRequest, v1.GetParcelResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetParcelProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetParcel")),
+			connect.WithClientOptions(opts...),
+		),
+		getParcelAttributes: connect.NewClient[v1.GetParcelAttributesRequest, v1.GetParcelAttributesResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetParcelAttributesProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelAttributes")),
+			connect.WithClientOptions(opts...),
+		),
+		getNumericalStats: connect.NewClient[v1.GetNumericalStatsRequest, v1.GetNumericalStatsResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetNumericalStatsProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetNumericalStats")),
+			connect.WithClientOptions(opts...),
+		),
+		getCategoricalStats: connect.NewClient[v1.GetCategoricalStatsRequest, v1.GetCategoricalStatsResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetCategoricalStatsProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetCategoricalStats")),
+			connect.WithClientOptions(opts...),
+		),
+		updateParcelsAttribute: connect.NewClient[v1.UpdateParcelsAttributeRequest, v1.UpdateParcelsAttributeResponse](
+			httpClient,
+			baseURL+ParcelsServiceUpdateParcelsAttributeProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcelsAttribute")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // parcelsServiceClient implements ParcelsServiceClient.
 type parcelsServiceClient struct {
-	getParcelAttribute *connect.Client[v1.GetParcelAttributeRequest, v1.GetParcelAttributeResponse]
-	getParcelProperty  *connect.Client[v1.GetParcelPropertyRequest, v1.GetParcelPropertyResponse]
+	getParcelAttribute     *connect.Client[v1.GetParcelAttributeRequest, v1.GetParcelAttributeResponse]
+	getParcelProperty      *connect.Client[v1.GetParcelPropertyRequest, v1.GetParcelPropertyResponse]
+	getParcel              *connect.Client[v1.GetParcelRequest, v1.GetParcelResponse]
+	getParcelAttributes    *connect.Client[v1.GetParcelAttributesRequest, v1.GetParcelAttributesResponse]
+	getNumericalStats      *connect.Client[v1.GetNumericalStatsRequest, v1.GetNumericalStatsResponse]
+	getCategoricalStats    *connect.Client[v1.GetCategoricalStatsRequest, v1.GetCategoricalStatsResponse]
+	updateParcelsAttribute *connect.Client[v1.UpdateParcelsAttributeRequest, v1.UpdateParcelsAttributeResponse]
 }
 
 // GetParcelAttribute calls civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute.
@@ -91,12 +151,47 @@ func (c *parcelsServiceClient) GetParcelProperty(ctx context.Context, req *conne
 	return c.getParcelProperty.CallUnary(ctx, req)
 }
 
+// GetParcel calls civil.mesh.parcels.v1.ParcelsService.GetParcel.
+func (c *parcelsServiceClient) GetParcel(ctx context.Context, req *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error) {
+	return c.getParcel.CallUnary(ctx, req)
+}
+
+// GetParcelAttributes calls civil.mesh.parcels.v1.ParcelsService.GetParcelAttributes.
+func (c *parcelsServiceClient) GetParcelAttributes(ctx context.Context, req *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error) {
+	return c.getParcelAttributes.CallUnary(ctx, req)
+}
+
+// GetNumericalStats calls civil.mesh.parcels.v1.ParcelsService.GetNumericalStats.
+func (c *parcelsServiceClient) GetNumericalStats(ctx context.Context, req *connect.Request[v1.GetNumericalStatsRequest]) (*connect.Response[v1.GetNumericalStatsResponse], error) {
+	return c.getNumericalStats.CallUnary(ctx, req)
+}
+
+// GetCategoricalStats calls civil.mesh.parcels.v1.ParcelsService.GetCategoricalStats.
+func (c *parcelsServiceClient) GetCategoricalStats(ctx context.Context, req *connect.Request[v1.GetCategoricalStatsRequest]) (*connect.Response[v1.GetCategoricalStatsResponse], error) {
+	return c.getCategoricalStats.CallUnary(ctx, req)
+}
+
+// UpdateParcelsAttribute calls civil.mesh.parcels.v1.ParcelsService.UpdateParcelsAttribute.
+func (c *parcelsServiceClient) UpdateParcelsAttribute(ctx context.Context, req *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error) {
+	return c.updateParcelsAttribute.CallUnary(ctx, req)
+}
+
 // ParcelsServiceHandler is an implementation of the civil.mesh.parcels.v1.ParcelsService service.
 type ParcelsServiceHandler interface {
 	// Retrieves the value for a specified attribute for a given parcel
 	GetParcelAttribute(context.Context, *connect.Request[v1.GetParcelAttributeRequest]) (*connect.Response[v1.GetParcelAttributeResponse], error)
 	// Retrieves the value for a specified property for a given parcel
 	GetParcelProperty(context.Context, *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error)
+	// Retrieves all of a specified parcel's attributes as an object.
+	GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error)
+	// Retrieves specificied attributes about a parcel as an object.
+	GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error)
+	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
+	GetNumericalStats(context.Context, *connect.Request[v1.GetNumericalStatsRequest]) (*connect.Response[v1.GetNumericalStatsResponse], error)
+	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
+	GetCategoricalStats(context.Context, *connect.Request[v1.GetCategoricalStatsRequest]) (*connect.Response[v1.GetCategoricalStatsResponse], error)
+	// Updates a specified attribute for one or more parcels, identified by their parcel IDs.
+	UpdateParcelsAttribute(context.Context, *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error)
 }
 
 // NewParcelsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -118,12 +213,52 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelProperty")),
 		connect.WithHandlerOptions(opts...),
 	)
+	parcelsServiceGetParcelHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetParcelProcedure,
+		svc.GetParcel,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetParcel")),
+		connect.WithHandlerOptions(opts...),
+	)
+	parcelsServiceGetParcelAttributesHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetParcelAttributesProcedure,
+		svc.GetParcelAttributes,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelAttributes")),
+		connect.WithHandlerOptions(opts...),
+	)
+	parcelsServiceGetNumericalStatsHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetNumericalStatsProcedure,
+		svc.GetNumericalStats,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetNumericalStats")),
+		connect.WithHandlerOptions(opts...),
+	)
+	parcelsServiceGetCategoricalStatsHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetCategoricalStatsProcedure,
+		svc.GetCategoricalStats,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetCategoricalStats")),
+		connect.WithHandlerOptions(opts...),
+	)
+	parcelsServiceUpdateParcelsAttributeHandler := connect.NewUnaryHandler(
+		ParcelsServiceUpdateParcelsAttributeProcedure,
+		svc.UpdateParcelsAttribute,
+		connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcelsAttribute")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/civil.mesh.parcels.v1.ParcelsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ParcelsServiceGetParcelAttributeProcedure:
 			parcelsServiceGetParcelAttributeHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetParcelPropertyProcedure:
 			parcelsServiceGetParcelPropertyHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetParcelProcedure:
+			parcelsServiceGetParcelHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetParcelAttributesProcedure:
+			parcelsServiceGetParcelAttributesHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetNumericalStatsProcedure:
+			parcelsServiceGetNumericalStatsHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetCategoricalStatsProcedure:
+			parcelsServiceGetCategoricalStatsHandler.ServeHTTP(w, r)
+		case ParcelsServiceUpdateParcelsAttributeProcedure:
+			parcelsServiceUpdateParcelsAttributeHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -139,4 +274,24 @@ func (UnimplementedParcelsServiceHandler) GetParcelAttribute(context.Context, *c
 
 func (UnimplementedParcelsServiceHandler) GetParcelProperty(context.Context, *connect.Request[v1.GetParcelPropertyRequest]) (*connect.Response[v1.GetParcelPropertyResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcelProperty is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetParcel(context.Context, *connect.Request[v1.GetParcelRequest]) (*connect.Response[v1.GetParcelResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcel is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetParcelAttributes(context.Context, *connect.Request[v1.GetParcelAttributesRequest]) (*connect.Response[v1.GetParcelAttributesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcelAttributes is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetNumericalStats(context.Context, *connect.Request[v1.GetNumericalStatsRequest]) (*connect.Response[v1.GetNumericalStatsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetNumericalStats is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetCategoricalStats(context.Context, *connect.Request[v1.GetCategoricalStatsRequest]) (*connect.Response[v1.GetCategoricalStatsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetCategoricalStats is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) UpdateParcelsAttribute(context.Context, *connect.Request[v1.UpdateParcelsAttributeRequest]) (*connect.Response[v1.UpdateParcelsAttributeResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.UpdateParcelsAttribute is not implemented"))
 }

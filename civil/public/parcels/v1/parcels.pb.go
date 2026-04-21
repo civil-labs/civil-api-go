@@ -834,9 +834,10 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x12GetParcelAttribute\x122.civil.public.parcels.v1.GetParcelAttributeRequest\x1a3.civil.public.parcels.v1.GetParcelAttributeResponse\"\x00\x12\x82\x01\n" +
 	"\x13GetParcelAttributes\x123.civil.public.parcels.v1.GetParcelAttributesRequest\x1a4.civil.public.parcels.v1.GetParcelAttributesResponse\"\x00\x12|\n" +
 	"\x11GetNumericalStats\x121.civil.public.parcels.v1.GetNumericalStatsRequest\x1a2.civil.public.parcels.v1.GetNumericalStatsResponse\"\x00\x12\x82\x01\n" +
-	"\x13GetCategoricalStats\x123.civil.public.parcels.v1.GetCategoricalStatsRequest\x1a4.civil.public.parcels.v1.GetCategoricalStatsResponse\"\x00B\xe7\x03\xbaG\xf1\x01\x12\xa6\x01\n" +
+	"\x13GetCategoricalStats\x123.civil.public.parcels.v1.GetCategoricalStatsRequest\x1a4.civil.public.parcels.v1.GetCategoricalStatsResponse\"\x00B\x8b\x04\xbaG\x95\x02\x12\xa6\x01\n" +
 	"\tCivil API\x12\x91\x01Public API description for the Civil platform. Auth token can be retrieved by prefixing \"auth-\" to the beginning of your jurisdiction's endpoint.2\x050.0.2\x1a\x1d\n" +
-	"\x1bhttps://leepa.civillabs.app*':%\n" +
+	"\x1bhttps://leepa.civillabs.app\x1a\"\n" +
+	" https://louisville.civillabs.app*':%\n" +
 	"#\n" +
 	"\n" +
 	"BearerAuth\x12\x15\n" +
