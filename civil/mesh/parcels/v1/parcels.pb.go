@@ -260,10 +260,10 @@ func (x *GetParcelRequest) GetParcelId() string {
 }
 
 type GetParcelResponse struct {
-	state            protoimpl.MessageState `protogen:"open.v1"`
-	ParcelAttributes *structpb.Struct       `protobuf:"bytes,1,opt,name=parcel_attributes,json=parcelAttributes,proto3" json:"parcel_attributes,omitempty"`
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetParcelResponse) Reset() {
@@ -296,11 +296,11 @@ func (*GetParcelResponse) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetParcelResponse) GetParcelAttributes() *structpb.Struct {
+func (x *GetParcelResponse) GetParcelId() string {
 	if x != nil {
-		return x.ParcelAttributes
+		return x.ParcelId
 	}
-	return nil
+	return ""
 }
 
 type GetParcelAttributesRequest struct {
@@ -860,9 +860,10 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\rpropertyValue\";\n" +
 	"\x10GetParcelRequest\x12'\n" +
 	"\tparcel_id\x18\x01 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\"Y\n" +
-	"\x11GetParcelResponse\x12D\n" +
-	"\x11parcel_attributes\x18\x01 \x01(\v2\x17.google.protobuf.StructR\x10parcelAttributes\"\x82\x01\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\"<\n" +
+	"\x11GetParcelResponse\x12'\n" +
+	"\tparcel_id\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\"\x82\x01\n" +
 	"\x1aGetParcelAttributesRequest\x12'\n" +
 	"\tparcel_id\x18\x01 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\bparcelId\x12;\n" +
@@ -972,28 +973,27 @@ var file_civil_mesh_parcels_v1_parcels_proto_goTypes = []any{
 	(*structpb.Struct)(nil),                // 15: google.protobuf.Struct
 }
 var file_civil_mesh_parcels_v1_parcels_proto_depIdxs = []int32{
-	15, // 0: civil.mesh.parcels.v1.GetParcelResponse.parcel_attributes:type_name -> google.protobuf.Struct
-	15, // 1: civil.mesh.parcels.v1.GetParcelAttributesResponse.parcel_attributes:type_name -> google.protobuf.Struct
-	14, // 2: civil.mesh.parcels.v1.GetCategoricalStatsResponse.unique_values:type_name -> civil.mesh.parcels.v1.GetCategoricalStatsResponse.UniqueValuesEntry
-	0,  // 3: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:input_type -> civil.mesh.parcels.v1.GetParcelAttributeRequest
-	2,  // 4: civil.mesh.parcels.v1.ParcelsService.GetParcelProperty:input_type -> civil.mesh.parcels.v1.GetParcelPropertyRequest
-	4,  // 5: civil.mesh.parcels.v1.ParcelsService.GetParcel:input_type -> civil.mesh.parcels.v1.GetParcelRequest
-	6,  // 6: civil.mesh.parcels.v1.ParcelsService.GetParcelAttributes:input_type -> civil.mesh.parcels.v1.GetParcelAttributesRequest
-	8,  // 7: civil.mesh.parcels.v1.ParcelsService.GetNumericalStats:input_type -> civil.mesh.parcels.v1.GetNumericalStatsRequest
-	10, // 8: civil.mesh.parcels.v1.ParcelsService.GetCategoricalStats:input_type -> civil.mesh.parcels.v1.GetCategoricalStatsRequest
-	12, // 9: civil.mesh.parcels.v1.ParcelsService.UpdateParcelsAttribute:input_type -> civil.mesh.parcels.v1.UpdateParcelsAttributeRequest
-	1,  // 10: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:output_type -> civil.mesh.parcels.v1.GetParcelAttributeResponse
-	3,  // 11: civil.mesh.parcels.v1.ParcelsService.GetParcelProperty:output_type -> civil.mesh.parcels.v1.GetParcelPropertyResponse
-	5,  // 12: civil.mesh.parcels.v1.ParcelsService.GetParcel:output_type -> civil.mesh.parcels.v1.GetParcelResponse
-	7,  // 13: civil.mesh.parcels.v1.ParcelsService.GetParcelAttributes:output_type -> civil.mesh.parcels.v1.GetParcelAttributesResponse
-	9,  // 14: civil.mesh.parcels.v1.ParcelsService.GetNumericalStats:output_type -> civil.mesh.parcels.v1.GetNumericalStatsResponse
-	11, // 15: civil.mesh.parcels.v1.ParcelsService.GetCategoricalStats:output_type -> civil.mesh.parcels.v1.GetCategoricalStatsResponse
-	13, // 16: civil.mesh.parcels.v1.ParcelsService.UpdateParcelsAttribute:output_type -> civil.mesh.parcels.v1.UpdateParcelsAttributeResponse
-	10, // [10:17] is the sub-list for method output_type
-	3,  // [3:10] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	15, // 0: civil.mesh.parcels.v1.GetParcelAttributesResponse.parcel_attributes:type_name -> google.protobuf.Struct
+	14, // 1: civil.mesh.parcels.v1.GetCategoricalStatsResponse.unique_values:type_name -> civil.mesh.parcels.v1.GetCategoricalStatsResponse.UniqueValuesEntry
+	0,  // 2: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:input_type -> civil.mesh.parcels.v1.GetParcelAttributeRequest
+	2,  // 3: civil.mesh.parcels.v1.ParcelsService.GetParcelProperty:input_type -> civil.mesh.parcels.v1.GetParcelPropertyRequest
+	4,  // 4: civil.mesh.parcels.v1.ParcelsService.GetParcel:input_type -> civil.mesh.parcels.v1.GetParcelRequest
+	6,  // 5: civil.mesh.parcels.v1.ParcelsService.GetParcelAttributes:input_type -> civil.mesh.parcels.v1.GetParcelAttributesRequest
+	8,  // 6: civil.mesh.parcels.v1.ParcelsService.GetNumericalStats:input_type -> civil.mesh.parcels.v1.GetNumericalStatsRequest
+	10, // 7: civil.mesh.parcels.v1.ParcelsService.GetCategoricalStats:input_type -> civil.mesh.parcels.v1.GetCategoricalStatsRequest
+	12, // 8: civil.mesh.parcels.v1.ParcelsService.UpdateParcelsAttribute:input_type -> civil.mesh.parcels.v1.UpdateParcelsAttributeRequest
+	1,  // 9: civil.mesh.parcels.v1.ParcelsService.GetParcelAttribute:output_type -> civil.mesh.parcels.v1.GetParcelAttributeResponse
+	3,  // 10: civil.mesh.parcels.v1.ParcelsService.GetParcelProperty:output_type -> civil.mesh.parcels.v1.GetParcelPropertyResponse
+	5,  // 11: civil.mesh.parcels.v1.ParcelsService.GetParcel:output_type -> civil.mesh.parcels.v1.GetParcelResponse
+	7,  // 12: civil.mesh.parcels.v1.ParcelsService.GetParcelAttributes:output_type -> civil.mesh.parcels.v1.GetParcelAttributesResponse
+	9,  // 13: civil.mesh.parcels.v1.ParcelsService.GetNumericalStats:output_type -> civil.mesh.parcels.v1.GetNumericalStatsResponse
+	11, // 14: civil.mesh.parcels.v1.ParcelsService.GetCategoricalStats:output_type -> civil.mesh.parcels.v1.GetCategoricalStatsResponse
+	13, // 15: civil.mesh.parcels.v1.ParcelsService.UpdateParcelsAttribute:output_type -> civil.mesh.parcels.v1.UpdateParcelsAttributeResponse
+	9,  // [9:16] is the sub-list for method output_type
+	2,  // [2:9] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_civil_mesh_parcels_v1_parcels_proto_init() }
