@@ -23,15 +23,12 @@ const (
 )
 
 type ParcelAffordances struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Maximum Floor Area Ratio (FAR)
-	MaxFar *float64 `protobuf:"fixed64,1,opt,name=max_far,json=maxFar,proto3,oneof" json:"max_far,omitempty"`
-	// Minimum lot size in square feet
-	MinLotSizeSqFt *float64 `protobuf:"fixed64,2,opt,name=min_lot_size_sq_ft,json=minLotSizeSqFt,proto3,oneof" json:"min_lot_size_sq_ft,omitempty"`
-	// Maximum legally permitted building height in feet
-	MaxHeightFt   *float64 `protobuf:"fixed64,3,opt,name=max_height_ft,json=maxHeightFt,proto3,oneof" json:"max_height_ft,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	MaxFar         *float64               `protobuf:"fixed64,1,opt,name=max_far,json=maxFar,proto3,oneof" json:"max_far,omitempty"`
+	MinLotSizeSqFt *float64               `protobuf:"fixed64,2,opt,name=min_lot_size_sq_ft,json=minLotSizeSqFt,proto3,oneof" json:"min_lot_size_sq_ft,omitempty"`
+	MaxHeightFt    *float64               `protobuf:"fixed64,3,opt,name=max_height_ft,json=maxHeightFt,proto3,oneof" json:"max_height_ft,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
 }
 
 func (x *ParcelAffordances) Reset() {
@@ -86,19 +83,16 @@ func (x *ParcelAffordances) GetMaxHeightFt() float64 {
 }
 
 type ParcelImprovementsSummary struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	ImprovementIds []string               `protobuf:"bytes,1,rep,name=improvement_ids,json=improvementIds,proto3" json:"improvement_ids,omitempty"`
-	// Additives: Physically impossible to be negative
-	TotalAreaSqFt  *float64 `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3,oneof" json:"total_area_sq_ft,omitempty"`
-	TotalBathrooms *int32   `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3,oneof" json:"total_bathrooms,omitempty"`
-	TotalBedrooms  *int32   `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3,oneof" json:"total_bedrooms,omitempty"`
-	TotalUnits     *int32   `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3,oneof" json:"total_units,omitempty"`
-	// Temporals: Bounded to realistic historical/future parameters
-	OldestYearBuilt *int32 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
-	NewestYearBuilt *int32 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
-	// Qualitatives: Bounded to Civil's specific property condition ordinal scale
-	LowestConditionNum  *int32 `protobuf:"varint,8,opt,name=lowest_condition_num,json=lowestConditionNum,proto3,oneof" json:"lowest_condition_num,omitempty"`
-	HighestConditionNum *int32 `protobuf:"varint,9,opt,name=highest_condition_num,json=highestConditionNum,proto3,oneof" json:"highest_condition_num,omitempty"`
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ImprovementIds      []string               `protobuf:"bytes,1,rep,name=improvement_ids,json=improvementIds,proto3" json:"improvement_ids,omitempty"`
+	TotalAreaSqFt       *float64               `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3,oneof" json:"total_area_sq_ft,omitempty"`
+	TotalBathrooms      *int32                 `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3,oneof" json:"total_bathrooms,omitempty"`
+	TotalBedrooms       *int32                 `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3,oneof" json:"total_bedrooms,omitempty"`
+	TotalUnits          *int32                 `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3,oneof" json:"total_units,omitempty"`
+	OldestYearBuilt     *int32                 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
+	NewestYearBuilt     *int32                 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
+	LowestConditionNum  *int32                 `protobuf:"varint,8,opt,name=lowest_condition_num,json=lowestConditionNum,proto3,oneof" json:"lowest_condition_num,omitempty"`
+	HighestConditionNum *int32                 `protobuf:"varint,9,opt,name=highest_condition_num,json=highestConditionNum,proto3,oneof" json:"highest_condition_num,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
