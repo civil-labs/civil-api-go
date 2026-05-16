@@ -99,8 +99,8 @@ type ParcelImprovementsSummary struct {
 	TotalUnits               int32                  `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
 	OldestYearBuilt          *int32                 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
 	NewestYearBuilt          *int32                 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
-	WorstConditionId         *int32                 `protobuf:"varint,8,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
-	BestConditionId          *int32                 `protobuf:"varint,9,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
+	WorstConditionId         *string                `protobuf:"bytes,8,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
+	BestConditionId          *string                `protobuf:"bytes,9,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
 	MarketImprovementValue   *string                `protobuf:"bytes,10,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
 	AssessedImprovementValue *string                `protobuf:"bytes,11,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
 	unknownFields            protoimpl.UnknownFields
@@ -186,18 +186,18 @@ func (x *ParcelImprovementsSummary) GetNewestYearBuilt() int32 {
 	return 0
 }
 
-func (x *ParcelImprovementsSummary) GetWorstConditionId() int32 {
+func (x *ParcelImprovementsSummary) GetWorstConditionId() string {
 	if x != nil && x.WorstConditionId != nil {
 		return *x.WorstConditionId
 	}
-	return 0
+	return ""
 }
 
-func (x *ParcelImprovementsSummary) GetBestConditionId() int32 {
+func (x *ParcelImprovementsSummary) GetBestConditionId() string {
 	if x != nil && x.BestConditionId != nil {
 		return *x.BestConditionId
 	}
-	return 0
+	return ""
 }
 
 func (x *ParcelImprovementsSummary) GetMarketImprovementValue() string {
@@ -745,8 +745,8 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"totalUnits\x12/\n" +
 	"\x11oldest_year_built\x18\x06 \x01(\x05H\x00R\x0foldestYearBuilt\x88\x01\x01\x12/\n" +
 	"\x11newest_year_built\x18\a \x01(\x05H\x01R\x0fnewestYearBuilt\x88\x01\x01\x121\n" +
-	"\x12worst_condition_id\x18\b \x01(\x05H\x02R\x10worstConditionId\x88\x01\x01\x12/\n" +
-	"\x11best_condition_id\x18\t \x01(\x05H\x03R\x0fbestConditionId\x88\x01\x01\x12=\n" +
+	"\x12worst_condition_id\x18\b \x01(\tH\x02R\x10worstConditionId\x88\x01\x01\x12/\n" +
+	"\x11best_condition_id\x18\t \x01(\tH\x03R\x0fbestConditionId\x88\x01\x01\x12=\n" +
 	"\x18market_improvement_value\x18\n" +
 	" \x01(\tH\x04R\x16marketImprovementValue\x88\x01\x01\x12A\n" +
 	"\x1aassessed_improvement_value\x18\v \x01(\tH\x05R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
