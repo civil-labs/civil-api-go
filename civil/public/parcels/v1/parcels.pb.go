@@ -98,19 +98,21 @@ func (x *ParcelAffordances) GetMaxHeightFt() float64 {
 type ParcelImprovementsSummary struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	ImprovementIds []string               `protobuf:"bytes,1,rep,name=improvement_ids,json=improvementIds,proto3" json:"improvement_ids,omitempty"`
-	// Additives: Physically impossible to be negative
-	TotalAreaSqFt  *float64 `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3,oneof" json:"total_area_sq_ft,omitempty"`
-	TotalBathrooms *int32   `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3,oneof" json:"total_bathrooms,omitempty"`
-	TotalBedrooms  *int32   `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3,oneof" json:"total_bedrooms,omitempty"`
-	TotalUnits     *int32   `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3,oneof" json:"total_units,omitempty"`
-	// Temporals: Bounded to realistic historical/future parameters
+	// Physically impossible to be negative
+	TotalAreaSqFt  float64 `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3" json:"total_area_sq_ft,omitempty"`
+	TotalBathrooms int32   `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3" json:"total_bathrooms,omitempty"`
+	TotalBedrooms  int32   `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
+	TotalUnits     int32   `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
+	// Bounded to realistic historical/future parameters
 	OldestYearBuilt *int32 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
 	NewestYearBuilt *int32 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
-	// Qualitatives: Bounded to Civil's specific property condition ordinal scale
-	LowestConditionNum  *int32 `protobuf:"varint,8,opt,name=lowest_condition_num,json=lowestConditionNum,proto3,oneof" json:"lowest_condition_num,omitempty"`
-	HighestConditionNum *int32 `protobuf:"varint,9,opt,name=highest_condition_num,json=highestConditionNum,proto3,oneof" json:"highest_condition_num,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
+	// Worst and best based on the conditions' depreciation factors
+	WorstConditionId         *string `protobuf:"bytes,8,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
+	BestConditionId          *string `protobuf:"bytes,9,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
+	MarketImprovementValue   *string `protobuf:"bytes,10,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
+	AssessedImprovementValue *string `protobuf:"bytes,11,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
 }
 
 func (x *ParcelImprovementsSummary) Reset() {
@@ -151,29 +153,29 @@ func (x *ParcelImprovementsSummary) GetImprovementIds() []string {
 }
 
 func (x *ParcelImprovementsSummary) GetTotalAreaSqFt() float64 {
-	if x != nil && x.TotalAreaSqFt != nil {
-		return *x.TotalAreaSqFt
+	if x != nil {
+		return x.TotalAreaSqFt
 	}
 	return 0
 }
 
 func (x *ParcelImprovementsSummary) GetTotalBathrooms() int32 {
-	if x != nil && x.TotalBathrooms != nil {
-		return *x.TotalBathrooms
+	if x != nil {
+		return x.TotalBathrooms
 	}
 	return 0
 }
 
 func (x *ParcelImprovementsSummary) GetTotalBedrooms() int32 {
-	if x != nil && x.TotalBedrooms != nil {
-		return *x.TotalBedrooms
+	if x != nil {
+		return x.TotalBedrooms
 	}
 	return 0
 }
 
 func (x *ParcelImprovementsSummary) GetTotalUnits() int32 {
-	if x != nil && x.TotalUnits != nil {
-		return *x.TotalUnits
+	if x != nil {
+		return x.TotalUnits
 	}
 	return 0
 }
@@ -192,42 +194,55 @@ func (x *ParcelImprovementsSummary) GetNewestYearBuilt() int32 {
 	return 0
 }
 
-func (x *ParcelImprovementsSummary) GetLowestConditionNum() int32 {
-	if x != nil && x.LowestConditionNum != nil {
-		return *x.LowestConditionNum
+func (x *ParcelImprovementsSummary) GetWorstConditionId() string {
+	if x != nil && x.WorstConditionId != nil {
+		return *x.WorstConditionId
 	}
-	return 0
+	return ""
 }
 
-func (x *ParcelImprovementsSummary) GetHighestConditionNum() int32 {
-	if x != nil && x.HighestConditionNum != nil {
-		return *x.HighestConditionNum
+func (x *ParcelImprovementsSummary) GetBestConditionId() string {
+	if x != nil && x.BestConditionId != nil {
+		return *x.BestConditionId
 	}
-	return 0
+	return ""
+}
+
+func (x *ParcelImprovementsSummary) GetMarketImprovementValue() string {
+	if x != nil && x.MarketImprovementValue != nil {
+		return *x.MarketImprovementValue
+	}
+	return ""
+}
+
+func (x *ParcelImprovementsSummary) GetAssessedImprovementValue() string {
+	if x != nil && x.AssessedImprovementValue != nil {
+		return *x.AssessedImprovementValue
+	}
+	return ""
 }
 
 type Parcel struct {
-	state                    protoimpl.MessageState     `protogen:"open.v1"`
-	ParcelId                 string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	Address                  string                     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
-	AddressId                string                     `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	OwnerName                string                     `protobuf:"bytes,4,opt,name=owner_name,json=ownerName,proto3" json:"owner_name,omitempty"`
-	OwnerAddress             string                     `protobuf:"bytes,5,opt,name=owner_address,json=ownerAddress,proto3" json:"owner_address,omitempty"`
-	OwnerId                  string                     `protobuf:"bytes,6,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	LandAreaSqFt             float64                    `protobuf:"fixed64,7,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3" json:"land_area_sq_ft,omitempty"`
-	LandUseId                string                     `protobuf:"bytes,8,opt,name=land_use_id,json=landUseId,proto3" json:"land_use_id,omitempty"`
-	NeighborhoodId           *string                    `protobuf:"bytes,9,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
-	MarketAreaId             *string                    `protobuf:"bytes,10,opt,name=market_area_id,json=marketAreaId,proto3,oneof" json:"market_area_id,omitempty"`
-	ZoningIds                []string                   `protobuf:"bytes,11,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
-	MarketLandValue          string                     `protobuf:"bytes,12,opt,name=market_land_value,json=marketLandValue,proto3" json:"market_land_value,omitempty"`
-	AssessedLandValue        string                     `protobuf:"bytes,13,opt,name=assessed_land_value,json=assessedLandValue,proto3" json:"assessed_land_value,omitempty"`
-	MarketImprovementValue   string                     `protobuf:"bytes,14,opt,name=market_improvement_value,json=marketImprovementValue,proto3" json:"market_improvement_value,omitempty"`
-	AssessedImprovementValue string                     `protobuf:"bytes,15,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3" json:"assessed_improvement_value,omitempty"`
-	Affordances              *ParcelAffordances         `protobuf:"bytes,16,opt,name=affordances,proto3" json:"affordances,omitempty"`
-	ImprovementSummary       *ParcelImprovementsSummary `protobuf:"bytes,17,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
-	Properties               string                     `protobuf:"bytes,18,opt,name=properties,proto3" json:"properties,omitempty"`
-	unknownFields            protoimpl.UnknownFields
-	sizeCache                protoimpl.SizeCache
+	state              protoimpl.MessageState     `protogen:"open.v1"`
+	ParcelId           string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	Address            string                     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	AddressId          string                     `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
+	OwnerName          string                     `protobuf:"bytes,4,opt,name=owner_name,json=ownerName,proto3" json:"owner_name,omitempty"`
+	OwnerAddress       string                     `protobuf:"bytes,5,opt,name=owner_address,json=ownerAddress,proto3" json:"owner_address,omitempty"`
+	OwnerId            string                     `protobuf:"bytes,6,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	LandUseId          string                     `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3" json:"land_use_id,omitempty"`
+	NeighborhoodId     *string                    `protobuf:"bytes,8,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
+	LandAreaSqFt       *float64                   `protobuf:"fixed64,9,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
+	FrontageM          *float64                   `protobuf:"fixed64,10,opt,name=frontage_m,json=frontageM,proto3,oneof" json:"frontage_m,omitempty"`
+	DepthM             *float64                   `protobuf:"fixed64,11,opt,name=depth_m,json=depthM,proto3,oneof" json:"depth_m,omitempty"`
+	ZoningIds          []string                   `protobuf:"bytes,12,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
+	MarketLandValue    *string                    `protobuf:"bytes,13,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
+	AssessedLandValue  *string                    `protobuf:"bytes,14,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
+	Affordances        *ParcelAffordances         `protobuf:"bytes,15,opt,name=affordances,proto3" json:"affordances,omitempty"`
+	ImprovementSummary *ParcelImprovementsSummary `protobuf:"bytes,16,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
+	Properties         string                     `protobuf:"bytes,17,opt,name=properties,proto3" json:"properties,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *Parcel) Reset() {
@@ -302,13 +317,6 @@ func (x *Parcel) GetOwnerId() string {
 	return ""
 }
 
-func (x *Parcel) GetLandAreaSqFt() float64 {
-	if x != nil {
-		return x.LandAreaSqFt
-	}
-	return 0
-}
-
 func (x *Parcel) GetLandUseId() string {
 	if x != nil {
 		return x.LandUseId
@@ -323,11 +331,25 @@ func (x *Parcel) GetNeighborhoodId() string {
 	return ""
 }
 
-func (x *Parcel) GetMarketAreaId() string {
-	if x != nil && x.MarketAreaId != nil {
-		return *x.MarketAreaId
+func (x *Parcel) GetLandAreaSqFt() float64 {
+	if x != nil && x.LandAreaSqFt != nil {
+		return *x.LandAreaSqFt
 	}
-	return ""
+	return 0
+}
+
+func (x *Parcel) GetFrontageM() float64 {
+	if x != nil && x.FrontageM != nil {
+		return *x.FrontageM
+	}
+	return 0
+}
+
+func (x *Parcel) GetDepthM() float64 {
+	if x != nil && x.DepthM != nil {
+		return *x.DepthM
+	}
+	return 0
 }
 
 func (x *Parcel) GetZoningIds() []string {
@@ -338,29 +360,15 @@ func (x *Parcel) GetZoningIds() []string {
 }
 
 func (x *Parcel) GetMarketLandValue() string {
-	if x != nil {
-		return x.MarketLandValue
+	if x != nil && x.MarketLandValue != nil {
+		return *x.MarketLandValue
 	}
 	return ""
 }
 
 func (x *Parcel) GetAssessedLandValue() string {
-	if x != nil {
-		return x.AssessedLandValue
-	}
-	return ""
-}
-
-func (x *Parcel) GetMarketImprovementValue() string {
-	if x != nil {
-		return x.MarketImprovementValue
-	}
-	return ""
-}
-
-func (x *Parcel) GetAssessedImprovementValue() string {
-	if x != nil {
-		return x.AssessedImprovementValue
+	if x != nil && x.AssessedLandValue != nil {
+		return *x.AssessedLandValue
 	}
 	return ""
 }
@@ -394,9 +402,11 @@ type GetParcelsByIdRequest struct {
 	LegalAsOf *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	// The time to reset the database state to
 	// If omitted, defaults to the current time.
-	SystemAsOf    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	SystemAsOf               *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
+	ValuationId              *string                `protobuf:"bytes,4,opt,name=valuation_id,json=valuationId,proto3,oneof" json:"valuation_id,omitempty"`
+	NeighborhoodDefinitionId *string                `protobuf:"bytes,5,opt,name=neighborhood_definition_id,json=neighborhoodDefinitionId,proto3,oneof" json:"neighborhood_definition_id,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
 }
 
 func (x *GetParcelsByIdRequest) Reset() {
@@ -448,6 +458,20 @@ func (x *GetParcelsByIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
 		return x.SystemAsOf
 	}
 	return nil
+}
+
+func (x *GetParcelsByIdRequest) GetValuationId() string {
+	if x != nil && x.ValuationId != nil {
+		return *x.ValuationId
+	}
+	return ""
+}
+
+func (x *GetParcelsByIdRequest) GetNeighborhoodDefinitionId() string {
+	if x != nil && x.NeighborhoodDefinitionId != nil {
+		return *x.NeighborhoodDefinitionId
+	}
+	return ""
 }
 
 type GetParcelsByIdResponse struct {
@@ -987,37 +1011,36 @@ var File_civil_public_parcels_v1_parcels_proto protoreflect.FileDescriptor
 
 const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\n" +
-	"%civil/public/parcels/v1/parcels.proto\x12\x17civil.public.parcels.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc7\x03\n" +
-	"\x11ParcelAffordances\x12\xd4\x01\n" +
-	"\x0eaffordance_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the affordancces on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\raffordanceIds\x12,\n" +
+	"%civil/public/parcels/v1/parcels.proto\x12\x17civil.public.parcels.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc6\x03\n" +
+	"\x11ParcelAffordances\x12\xd3\x01\n" +
+	"\x0eaffordance_ids\x18\x01 \x03(\tB\xab\x01\xbaG\x96\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02?A list of unique identifiers for the affordances on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\raffordanceIds\x12,\n" +
 	"\amax_far\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\x06maxFar\x88\x01\x01\x12?\n" +
 	"\x12min_lot_size_sq_ft\x18\x03 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\x0eminLotSizeSqFt\x88\x01\x01\x127\n" +
 	"\rmax_height_ft\x18\x04 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\vmaxHeightFt\x88\x01\x01B\n" +
 	"\n" +
 	"\b_max_farB\x15\n" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
-	"\x0e_max_height_ft\"\x8a\a\n" +
+	"\x0e_max_height_ft\"\xc4\v\n" +
 	"\x19ParcelImprovementsSummary\x12\xd6\x01\n" +
-	"\x0fimprovement_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the improvements on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\x0eimprovementIds\x12<\n" +
-	"\x10total_area_sq_ft\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\rtotalAreaSqFt\x88\x01\x01\x125\n" +
-	"\x0ftotal_bathrooms\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00H\x01R\x0etotalBathrooms\x88\x01\x01\x123\n" +
-	"\x0etotal_bedrooms\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00H\x02R\rtotalBedrooms\x88\x01\x01\x12-\n" +
-	"\vtotal_units\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00H\x03R\n" +
-	"totalUnits\x88\x01\x01\x12D\n" +
-	"\x11oldest_year_built\x18\x06 \x01(\x05B\x13\xbaH\x10\x1a\x0e\x18\xb4\x10(\xa0\xa2\xff\xff\xff\xff\xff\xff\xff\x01H\x04R\x0foldestYearBuilt\x88\x01\x01\x12D\n" +
-	"\x11newest_year_built\x18\a \x01(\x05B\x13\xbaH\x10\x1a\x0e\x18\xb4\x10(\xa0\xa2\xff\xff\xff\xff\xff\xff\xff\x01H\x05R\x0fnewestYearBuilt\x88\x01\x01\x12@\n" +
-	"\x14lowest_condition_num\x18\b \x01(\x05B\t\xbaH\x06\x1a\x04\x18\n" +
-	"(\x01H\x06R\x12lowestConditionNum\x88\x01\x01\x12B\n" +
-	"\x15highest_condition_num\x18\t \x01(\x05B\t\xbaH\x06\x1a\x04\x18\n" +
-	"(\x01H\aR\x13highestConditionNum\x88\x01\x01B\x13\n" +
-	"\x11_total_area_sq_ftB\x12\n" +
-	"\x10_total_bathroomsB\x11\n" +
-	"\x0f_total_bedroomsB\x0e\n" +
-	"\f_total_unitsB\x14\n" +
+	"\x0fimprovement_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the improvements on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\x0eimprovementIds\x127\n" +
+	"\x10total_area_sq_ft\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00R\rtotalAreaSqFt\x120\n" +
+	"\x0ftotal_bathrooms\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x0etotalBathrooms\x12.\n" +
+	"\x0etotal_bedrooms\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\rtotalBedrooms\x12(\n" +
+	"\vtotal_units\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\n" +
+	"totalUnits\x12D\n" +
+	"\x11oldest_year_built\x18\x06 \x01(\x05B\x13\xbaH\x10\x1a\x0e\x18\xb4\x10(\xa0\xa2\xff\xff\xff\xff\xff\xff\xff\x01H\x00R\x0foldestYearBuilt\x88\x01\x01\x12D\n" +
+	"\x11newest_year_built\x18\a \x01(\x05B\x13\xbaH\x10\x1a\x0e\x18\xb4\x10(\xa0\xa2\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\x0fnewestYearBuilt\x88\x01\x01\x12\x96\x01\n" +
+	"\x12worst_condition_id\x18\b \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01H\x02R\x10worstConditionId\x88\x01\x01\x12\x94\x01\n" +
+	"\x11best_condition_id\x18\t \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x0fbestConditionId\x88\x01\x01\x12\xd8\x01\n" +
+	"\x18market_improvement_value\x18\n" +
+	" \x01(\tB\x98\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x04R\x16marketImprovementValue\x88\x01\x01\x12\xdc\x01\n" +
+	"\x1aassessed_improvement_value\x18\v \x01(\tB\x98\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x05R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
 	"\x12_oldest_year_builtB\x14\n" +
-	"\x12_newest_year_builtB\x17\n" +
-	"\x15_lowest_condition_numB\x18\n" +
-	"\x16_highest_condition_num\"\xba\x0e\n" +
+	"\x12_newest_year_builtB\x15\n" +
+	"\x13_worst_condition_idB\x14\n" +
+	"\x12_best_condition_idB\x1b\n" +
+	"\x19_market_improvement_valueB\x1d\n" +
+	"\x1b_assessed_improvement_value\"\xda\x0f\n" +
 	"\x06Parcel\x12z\n" +
 	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12$\n" +
 	"\aaddress\x18\x02 \x01(\tB\n" +
@@ -1029,33 +1052,42 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\x04R\townerName\x12/\n" +
 	"\rowner_address\x18\x05 \x01(\tB\n" +
 	"\xbaH\ar\x05\x10\x01\x18\x80\bR\fownerAddress\x12~\n" +
-	"\bowner_id\x18\x06 \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01R\aownerId\x125\n" +
-	"\x0fland_area_sq_ft\x18\a \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00R\flandAreaSqFt\x12\x88\x01\n" +
-	"\vland_use_id\x18\b \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01R\tlandUseId\x12\x9a\x01\n" +
-	"\x0fneighborhood_id\x18\t \x01(\tBl\xbaGa:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x024The unique identifier for the parcel's neighborhood.\xbaH\x05r\x03\xb0\x01\x01H\x00R\x0eneighborhoodId\x88\x01\x01\x12\x96\x01\n" +
-	"\x0emarket_area_id\x18\n" +
-	" \x01(\tBk\xbaG`:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x023The unique identifier for the parcel's market area.\xbaH\x05r\x03\xb0\x01\x01H\x01R\fmarketAreaId\x88\x01\x01\x12\xcf\x01\n" +
+	"\bowner_id\x18\x06 \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01R\aownerId\x12\x88\x01\n" +
+	"\vland_use_id\x18\a \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01R\tlandUseId\x12\x94\x02\n" +
+	"\x0fneighborhood_id\x18\b \x01(\tB\xe5\x01\xbaG\xd9\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02\xab\x01The unique identifier for the parcel's neighborhood. Will only populate if a neighborhood definition ID is provided, and the parcel has a neighborhood for that definition.\xbaH\x05r\x03\xb0\x01\x01H\x00R\x0eneighborhoodId\x88\x01\x01\x12:\n" +
+	"\x0fland_area_sq_ft\x18\t \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\flandAreaSqFt\x88\x01\x01\x122\n" +
 	"\n" +
-	"zoning_ids\x18\v \x03(\tB\xaf\x01\xbaG\x9a\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02CA list of unique identifiers for the zoning overlays on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\tzoningIds\x12L\n" +
-	"\x11market_land_value\x18\f \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\x0fmarketLandValue\x12P\n" +
-	"\x13assessed_land_value\x18\r \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\x11assessedLandValue\x12Z\n" +
-	"\x18market_improvement_value\x18\x0e \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\x16marketImprovementValue\x12^\n" +
-	"\x1aassessed_improvement_value\x18\x0f \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\x18assessedImprovementValue\x12L\n" +
-	"\vaffordances\x18\x10 \x01(\v2*.civil.public.parcels.v1.ParcelAffordancesR\vaffordances\x12c\n" +
-	"\x13improvement_summary\x18\x11 \x01(\v22.civil.public.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12)\n" +
+	"frontage_m\x18\n" +
+	" \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\tfrontageM\x88\x01\x01\x12,\n" +
+	"\adepth_m\x18\v \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x03R\x06depthM\x88\x01\x01\x12\xcf\x01\n" +
 	"\n" +
-	"properties\x18\x12 \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80@R\n" +
+	"zoning_ids\x18\f \x03(\tB\xaf\x01\xbaG\x9a\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02CA list of unique identifiers for the zoning overlays on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\tzoningIds\x12\xb0\x01\n" +
+	"\x11market_land_value\x18\r \x01(\tB\x7f\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x04R\x0fmarketLandValue\x88\x01\x01\x12\xb4\x01\n" +
+	"\x13assessed_land_value\x18\x0e \x01(\tB\x7f\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x05R\x11assessedLandValue\x88\x01\x01\x12L\n" +
+	"\vaffordances\x18\x0f \x01(\v2*.civil.public.parcels.v1.ParcelAffordancesR\vaffordances\x12c\n" +
+	"\x13improvement_summary\x18\x10 \x01(\v22.civil.public.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12)\n" +
+	"\n" +
+	"properties\x18\x11 \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80@R\n" +
 	"propertiesB\x12\n" +
-	"\x10_neighborhood_idB\x11\n" +
-	"\x0f_market_area_id\"\xc5\x04\n" +
+	"\x10_neighborhood_idB\x12\n" +
+	"\x10_land_area_sq_ftB\r\n" +
+	"\v_frontage_mB\n" +
+	"\n" +
+	"\b_depth_mB\x14\n" +
+	"\x12_market_land_valueB\x16\n" +
+	"\x14_assessed_land_value\"\xae\a\n" +
 	"\x15GetParcelsByIdRequest\x12\xbb\x01\n" +
 	"\n" +
 	"parcel_ids\x18\x01 \x03(\tB\x9b\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x10\x92\x01\r\b\x01\x10d\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9e\x01\n" +
 	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB]\xbaGG\x92\x02DThe real-world date to evaluate the parcel against. Defaults to now.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01\x12\xab\x01\n" +
 	"\fsystem_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampBh\xbaGP\x92\x02MThe transaction time to evaluate the database state against. Defaults to now.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\n" +
-	"systemAsOf\x88\x01\x01B\x0e\n" +
+	"systemAsOf\x88\x01\x01\x12\x85\x01\n" +
+	"\fvaluation_id\x18\x04 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier of a valuation.\xbaH\x05r\x03\xb0\x01\x01H\x02R\vvaluationId\x88\x01\x01\x12\xae\x01\n" +
+	"\x1aneighborhood_definition_id\x18\x05 \x01(\tBk\xbaG`:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x023The unique identifier of a neighborhood definition.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x18neighborhoodDefinitionId\x88\x01\x01B\x0e\n" +
 	"\f_legal_as_ofB\x0f\n" +
-	"\r_system_as_of\"\x8f\x02\n" +
+	"\r_system_as_ofB\x0f\n" +
+	"\r_valuation_idB\x1d\n" +
+	"\x1b_neighborhood_definition_id\"\x8f\x02\n" +
 	"\x16GetParcelsByIdResponse\x12\x97\x01\n" +
 	"\aparcels\x18\x01 \x03(\v2<.civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntryB?\xbaG<\x92\x029A dictionary of parcels, keyed by their unique parcel_id.R\aparcels\x1a[\n" +
 	"\fParcelsEntry\x12\x10\n" +
