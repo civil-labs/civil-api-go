@@ -104,13 +104,14 @@ type ParcelImprovementsSummary struct {
 	TotalBedrooms  int32   `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
 	TotalUnits     int32   `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
 	// Bounded to realistic historical/future parameters
-	OldestYearBuilt *int32 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
-	NewestYearBuilt *int32 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
+	OldestYearBuilt                     *int32  `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
+	NewestYearBuilt                     *int32  `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
+	WeightedAverageDepreciationModifier *string `protobuf:"bytes,8,opt,name=weighted_average_depreciation_modifier,json=weightedAverageDepreciationModifier,proto3,oneof" json:"weighted_average_depreciation_modifier,omitempty"`
 	// Worst and best based on the conditions' depreciation factors
-	WorstConditionId         *string `protobuf:"bytes,8,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
-	BestConditionId          *string `protobuf:"bytes,9,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
-	MarketImprovementValue   *string `protobuf:"bytes,10,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
-	AssessedImprovementValue *string `protobuf:"bytes,11,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
+	WorstConditionId         *string `protobuf:"bytes,9,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
+	BestConditionId          *string `protobuf:"bytes,10,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
+	MarketImprovementValue   *string `protobuf:"bytes,11,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
+	AssessedImprovementValue *string `protobuf:"bytes,12,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -192,6 +193,13 @@ func (x *ParcelImprovementsSummary) GetNewestYearBuilt() int32 {
 		return *x.NewestYearBuilt
 	}
 	return 0
+}
+
+func (x *ParcelImprovementsSummary) GetWeightedAverageDepreciationModifier() string {
+	if x != nil && x.WeightedAverageDepreciationModifier != nil {
+		return *x.WeightedAverageDepreciationModifier
+	}
+	return ""
 }
 
 func (x *ParcelImprovementsSummary) GetWorstConditionId() string {
@@ -1020,7 +1028,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\n" +
 	"\b_max_farB\x15\n" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
-	"\x0e_max_height_ft\"\xa8\v\n" +
+	"\x0e_max_height_ft\"\xcf\x0e\n" +
 	"\x19ParcelImprovementsSummary\x12\xd6\x01\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the improvements on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\x0eimprovementIds\x127\n" +
 	"\x10total_area_sq_ft\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00R\rtotalAreaSqFt\x120\n" +
@@ -1029,14 +1037,16 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\vtotal_units\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\n" +
 	"totalUnits\x126\n" +
 	"\x11oldest_year_built\x18\x06 \x01(\x05B\x05\xbaH\x02\x1a\x00H\x00R\x0foldestYearBuilt\x88\x01\x01\x126\n" +
-	"\x11newest_year_built\x18\a \x01(\x05B\x05\xbaH\x02\x1a\x00H\x01R\x0fnewestYearBuilt\x88\x01\x01\x12\x96\x01\n" +
-	"\x12worst_condition_id\x18\b \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01H\x02R\x10worstConditionId\x88\x01\x01\x12\x94\x01\n" +
-	"\x11best_condition_id\x18\t \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x0fbestConditionId\x88\x01\x01\x12\xd8\x01\n" +
-	"\x18market_improvement_value\x18\n" +
-	" \x01(\tB\x98\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x04R\x16marketImprovementValue\x88\x01\x01\x12\xdc\x01\n" +
-	"\x1aassessed_improvement_value\x18\v \x01(\tB\x98\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x05R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
+	"\x11newest_year_built\x18\a \x01(\x05B\x05\xbaH\x02\x1a\x00H\x01R\x0fnewestYearBuilt\x88\x01\x01\x12\x8c\x02\n" +
+	"&weighted_average_depreciation_modifier\x18\b \x01(\tB\xb1\x01\xbaG\x85\x01\x92\x02\x81\x01The average of the depreciation modifiers of the conditions of every improvement on this parcel, as weighted by their floor areas\xbaH%r#2!^(0(\\.[0-9]{1,4})?|1(\\.0{1,4})?)$H\x02R#weightedAverageDepreciationModifier\x88\x01\x01\x12\xcd\x01\n" +
+	"\x12worst_condition_id\x18\t \x01(\tB\x99\x01\xbaG\x8d\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02`The worst condition of an improvement on this parcel, as sorted by their depreciation modifiers.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x10worstConditionId\x88\x01\x01\x12\xca\x01\n" +
+	"\x11best_condition_id\x18\n" +
+	" \x01(\tB\x98\x01\xbaG\x8c\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02_The best condition of an improvement on this parcel, as sorted by their depreciation modifiers.\xbaH\x05r\x03\xb0\x01\x01H\x04R\x0fbestConditionId\x88\x01\x01\x12\xd8\x01\n" +
+	"\x18market_improvement_value\x18\v \x01(\tB\x98\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x05R\x16marketImprovementValue\x88\x01\x01\x12\xdc\x01\n" +
+	"\x1aassessed_improvement_value\x18\f \x01(\tB\x98\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x06R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
 	"\x12_oldest_year_builtB\x14\n" +
-	"\x12_newest_year_builtB\x15\n" +
+	"\x12_newest_year_builtB)\n" +
+	"'_weighted_average_depreciation_modifierB\x15\n" +
 	"\x13_worst_condition_idB\x14\n" +
 	"\x12_best_condition_idB\x1b\n" +
 	"\x19_market_improvement_valueB\x1d\n" +

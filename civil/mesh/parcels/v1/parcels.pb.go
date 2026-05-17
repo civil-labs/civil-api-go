@@ -91,20 +91,21 @@ func (x *ParcelAffordances) GetMaxHeightFt() float64 {
 }
 
 type ParcelImprovementsSummary struct {
-	state                    protoimpl.MessageState `protogen:"open.v1"`
-	ImprovementIds           []string               `protobuf:"bytes,1,rep,name=improvement_ids,json=improvementIds,proto3" json:"improvement_ids,omitempty"`
-	TotalAreaSqFt            float64                `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3" json:"total_area_sq_ft,omitempty"`
-	TotalBathrooms           int32                  `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3" json:"total_bathrooms,omitempty"`
-	TotalBedrooms            int32                  `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
-	TotalUnits               int32                  `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
-	OldestYearBuilt          *int32                 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
-	NewestYearBuilt          *int32                 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
-	WorstConditionId         *string                `protobuf:"bytes,8,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
-	BestConditionId          *string                `protobuf:"bytes,9,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
-	MarketImprovementValue   *string                `protobuf:"bytes,10,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
-	AssessedImprovementValue *string                `protobuf:"bytes,11,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
-	unknownFields            protoimpl.UnknownFields
-	sizeCache                protoimpl.SizeCache
+	state                               protoimpl.MessageState `protogen:"open.v1"`
+	ImprovementIds                      []string               `protobuf:"bytes,1,rep,name=improvement_ids,json=improvementIds,proto3" json:"improvement_ids,omitempty"`
+	TotalAreaSqFt                       float64                `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3" json:"total_area_sq_ft,omitempty"`
+	TotalBathrooms                      int32                  `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3" json:"total_bathrooms,omitempty"`
+	TotalBedrooms                       int32                  `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
+	TotalUnits                          int32                  `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
+	OldestYearBuilt                     *int32                 `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
+	NewestYearBuilt                     *int32                 `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
+	WeightedAverageDepreciationModifier *string                `protobuf:"bytes,8,opt,name=weighted_average_depreciation_modifier,json=weightedAverageDepreciationModifier,proto3,oneof" json:"weighted_average_depreciation_modifier,omitempty"`
+	WorstConditionId                    *string                `protobuf:"bytes,9,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
+	BestConditionId                     *string                `protobuf:"bytes,10,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
+	MarketImprovementValue              *string                `protobuf:"bytes,11,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
+	AssessedImprovementValue            *string                `protobuf:"bytes,12,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
+	unknownFields                       protoimpl.UnknownFields
+	sizeCache                           protoimpl.SizeCache
 }
 
 func (x *ParcelImprovementsSummary) Reset() {
@@ -184,6 +185,13 @@ func (x *ParcelImprovementsSummary) GetNewestYearBuilt() int32 {
 		return *x.NewestYearBuilt
 	}
 	return 0
+}
+
+func (x *ParcelImprovementsSummary) GetWeightedAverageDepreciationModifier() string {
+	if x != nil && x.WeightedAverageDepreciationModifier != nil {
+		return *x.WeightedAverageDepreciationModifier
+	}
+	return ""
 }
 
 func (x *ParcelImprovementsSummary) GetWorstConditionId() string {
@@ -735,7 +743,7 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\n" +
 	"\b_max_farB\x15\n" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
-	"\x0e_max_height_ft\"\xbb\x05\n" +
+	"\x0e_max_height_ft\"\xc0\x06\n" +
 	"\x19ParcelImprovementsSummary\x12'\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tR\x0eimprovementIds\x12'\n" +
 	"\x10total_area_sq_ft\x18\x02 \x01(\x01R\rtotalAreaSqFt\x12'\n" +
@@ -744,14 +752,16 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\vtotal_units\x18\x05 \x01(\x05R\n" +
 	"totalUnits\x12/\n" +
 	"\x11oldest_year_built\x18\x06 \x01(\x05H\x00R\x0foldestYearBuilt\x88\x01\x01\x12/\n" +
-	"\x11newest_year_built\x18\a \x01(\x05H\x01R\x0fnewestYearBuilt\x88\x01\x01\x121\n" +
-	"\x12worst_condition_id\x18\b \x01(\tH\x02R\x10worstConditionId\x88\x01\x01\x12/\n" +
-	"\x11best_condition_id\x18\t \x01(\tH\x03R\x0fbestConditionId\x88\x01\x01\x12=\n" +
-	"\x18market_improvement_value\x18\n" +
-	" \x01(\tH\x04R\x16marketImprovementValue\x88\x01\x01\x12A\n" +
-	"\x1aassessed_improvement_value\x18\v \x01(\tH\x05R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
+	"\x11newest_year_built\x18\a \x01(\x05H\x01R\x0fnewestYearBuilt\x88\x01\x01\x12X\n" +
+	"&weighted_average_depreciation_modifier\x18\b \x01(\tH\x02R#weightedAverageDepreciationModifier\x88\x01\x01\x121\n" +
+	"\x12worst_condition_id\x18\t \x01(\tH\x03R\x10worstConditionId\x88\x01\x01\x12/\n" +
+	"\x11best_condition_id\x18\n" +
+	" \x01(\tH\x04R\x0fbestConditionId\x88\x01\x01\x12=\n" +
+	"\x18market_improvement_value\x18\v \x01(\tH\x05R\x16marketImprovementValue\x88\x01\x01\x12A\n" +
+	"\x1aassessed_improvement_value\x18\f \x01(\tH\x06R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
 	"\x12_oldest_year_builtB\x14\n" +
-	"\x12_newest_year_builtB\x15\n" +
+	"\x12_newest_year_builtB)\n" +
+	"'_weighted_average_depreciation_modifierB\x15\n" +
 	"\x13_worst_condition_idB\x14\n" +
 	"\x12_best_condition_idB\x1b\n" +
 	"\x19_market_improvement_valueB\x1d\n" +
