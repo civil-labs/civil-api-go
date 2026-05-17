@@ -217,12 +217,12 @@ func (x *ParcelImprovementsSummary) GetAssessedImprovementValue() string {
 type Parcel struct {
 	state              protoimpl.MessageState     `protogen:"open.v1"`
 	ParcelId           string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	Address            string                     `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
-	AddressId          string                     `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	OwnerName          string                     `protobuf:"bytes,4,opt,name=owner_name,json=ownerName,proto3" json:"owner_name,omitempty"`
-	OwnerAddress       string                     `protobuf:"bytes,5,opt,name=owner_address,json=ownerAddress,proto3" json:"owner_address,omitempty"`
-	OwnerId            string                     `protobuf:"bytes,6,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	LandUseId          string                     `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3" json:"land_use_id,omitempty"`
+	Address            *string                    `protobuf:"bytes,2,opt,name=address,proto3,oneof" json:"address,omitempty"`
+	AddressId          *string                    `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
+	OwnerName          *string                    `protobuf:"bytes,4,opt,name=owner_name,json=ownerName,proto3,oneof" json:"owner_name,omitempty"`
+	OwnerAddress       *string                    `protobuf:"bytes,5,opt,name=owner_address,json=ownerAddress,proto3,oneof" json:"owner_address,omitempty"`
+	OwnerId            *string                    `protobuf:"bytes,6,opt,name=owner_id,json=ownerId,proto3,oneof" json:"owner_id,omitempty"`
+	LandUseId          *string                    `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
 	NeighborhoodId     *string                    `protobuf:"bytes,8,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
 	LandAreaSqFt       *float64                   `protobuf:"fixed64,9,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
 	FrontageM          *float64                   `protobuf:"fixed64,10,opt,name=frontage_m,json=frontageM,proto3,oneof" json:"frontage_m,omitempty"`
@@ -275,43 +275,43 @@ func (x *Parcel) GetParcelId() string {
 }
 
 func (x *Parcel) GetAddress() string {
-	if x != nil {
-		return x.Address
+	if x != nil && x.Address != nil {
+		return *x.Address
 	}
 	return ""
 }
 
 func (x *Parcel) GetAddressId() string {
-	if x != nil {
-		return x.AddressId
+	if x != nil && x.AddressId != nil {
+		return *x.AddressId
 	}
 	return ""
 }
 
 func (x *Parcel) GetOwnerName() string {
-	if x != nil {
-		return x.OwnerName
+	if x != nil && x.OwnerName != nil {
+		return *x.OwnerName
 	}
 	return ""
 }
 
 func (x *Parcel) GetOwnerAddress() string {
-	if x != nil {
-		return x.OwnerAddress
+	if x != nil && x.OwnerAddress != nil {
+		return *x.OwnerAddress
 	}
 	return ""
 }
 
 func (x *Parcel) GetOwnerId() string {
-	if x != nil {
-		return x.OwnerId
+	if x != nil && x.OwnerId != nil {
+		return *x.OwnerId
 	}
 	return ""
 }
 
 func (x *Parcel) GetLandUseId() string {
-	if x != nil {
-		return x.LandUseId
+	if x != nil && x.LandUseId != nil {
+		return *x.LandUseId
 	}
 	return ""
 }
@@ -755,32 +755,40 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_worst_condition_idB\x14\n" +
 	"\x12_best_condition_idB\x1b\n" +
 	"\x19_market_improvement_valueB\x1d\n" +
-	"\x1b_assessed_improvement_value\"\xbe\x06\n" +
+	"\x1b_assessed_improvement_value\"\xb5\a\n" +
 	"\x06Parcel\x12\x1b\n" +
-	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x18\n" +
-	"\aaddress\x18\x02 \x01(\tR\aaddress\x12\x1d\n" +
+	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x1d\n" +
+	"\aaddress\x18\x02 \x01(\tH\x00R\aaddress\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"address_id\x18\x03 \x01(\tR\taddressId\x12\x1d\n" +
+	"address_id\x18\x03 \x01(\tH\x01R\taddressId\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"owner_name\x18\x04 \x01(\tR\townerName\x12#\n" +
-	"\rowner_address\x18\x05 \x01(\tR\fownerAddress\x12\x19\n" +
-	"\bowner_id\x18\x06 \x01(\tR\aownerId\x12\x1e\n" +
-	"\vland_use_id\x18\a \x01(\tR\tlandUseId\x12,\n" +
-	"\x0fneighborhood_id\x18\b \x01(\tH\x00R\x0eneighborhoodId\x88\x01\x01\x12*\n" +
-	"\x0fland_area_sq_ft\x18\t \x01(\x01H\x01R\flandAreaSqFt\x88\x01\x01\x12\"\n" +
+	"owner_name\x18\x04 \x01(\tH\x02R\townerName\x88\x01\x01\x12(\n" +
+	"\rowner_address\x18\x05 \x01(\tH\x03R\fownerAddress\x88\x01\x01\x12\x1e\n" +
+	"\bowner_id\x18\x06 \x01(\tH\x04R\aownerId\x88\x01\x01\x12#\n" +
+	"\vland_use_id\x18\a \x01(\tH\x05R\tlandUseId\x88\x01\x01\x12,\n" +
+	"\x0fneighborhood_id\x18\b \x01(\tH\x06R\x0eneighborhoodId\x88\x01\x01\x12*\n" +
+	"\x0fland_area_sq_ft\x18\t \x01(\x01H\aR\flandAreaSqFt\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"frontage_m\x18\n" +
-	" \x01(\x01H\x02R\tfrontageM\x88\x01\x01\x12\x1c\n" +
-	"\adepth_m\x18\v \x01(\x01H\x03R\x06depthM\x88\x01\x01\x12\x1d\n" +
+	" \x01(\x01H\bR\tfrontageM\x88\x01\x01\x12\x1c\n" +
+	"\adepth_m\x18\v \x01(\x01H\tR\x06depthM\x88\x01\x01\x12\x1d\n" +
 	"\n" +
 	"zoning_ids\x18\f \x03(\tR\tzoningIds\x12/\n" +
-	"\x11market_land_value\x18\r \x01(\tH\x04R\x0fmarketLandValue\x88\x01\x01\x123\n" +
-	"\x13assessed_land_value\x18\x0e \x01(\tH\x05R\x11assessedLandValue\x88\x01\x01\x12J\n" +
+	"\x11market_land_value\x18\r \x01(\tH\n" +
+	"R\x0fmarketLandValue\x88\x01\x01\x123\n" +
+	"\x13assessed_land_value\x18\x0e \x01(\tH\vR\x11assessedLandValue\x88\x01\x01\x12J\n" +
 	"\vaffordances\x18\x0f \x01(\v2(.civil.mesh.parcels.v1.ParcelAffordancesR\vaffordances\x12a\n" +
 	"\x13improvement_summary\x18\x10 \x01(\v20.civil.mesh.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12\x1e\n" +
 	"\n" +
 	"properties\x18\x11 \x01(\tR\n" +
-	"propertiesB\x12\n" +
+	"propertiesB\n" +
+	"\n" +
+	"\b_addressB\r\n" +
+	"\v_address_idB\r\n" +
+	"\v_owner_nameB\x10\n" +
+	"\x0e_owner_addressB\v\n" +
+	"\t_owner_idB\x0e\n" +
+	"\f_land_use_idB\x12\n" +
 	"\x10_neighborhood_idB\x12\n" +
 	"\x10_land_area_sq_ftB\r\n" +
 	"\v_frontage_mB\n" +
