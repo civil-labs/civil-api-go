@@ -233,14 +233,14 @@ type Parcel struct {
 	LandUseId          *string                    `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
 	NeighborhoodId     *string                    `protobuf:"bytes,8,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
 	LandAreaSqFt       *float64                   `protobuf:"fixed64,9,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
-	FrontageM          *float64                   `protobuf:"fixed64,10,opt,name=frontage_m,json=frontageM,proto3,oneof" json:"frontage_m,omitempty"`
-	DepthM             *float64                   `protobuf:"fixed64,11,opt,name=depth_m,json=depthM,proto3,oneof" json:"depth_m,omitempty"`
+	FrontageFt         *float64                   `protobuf:"fixed64,10,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
+	DepthFt            *float64                   `protobuf:"fixed64,11,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
 	ZoningIds          []string                   `protobuf:"bytes,12,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
 	MarketLandValue    *string                    `protobuf:"bytes,13,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
 	AssessedLandValue  *string                    `protobuf:"bytes,14,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
 	Affordances        *ParcelAffordances         `protobuf:"bytes,15,opt,name=affordances,proto3" json:"affordances,omitempty"`
 	ImprovementSummary *ParcelImprovementsSummary `protobuf:"bytes,16,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
-	Properties         string                     `protobuf:"bytes,17,opt,name=properties,proto3" json:"properties,omitempty"`
+	Properties         *string                    `protobuf:"bytes,17,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -338,16 +338,16 @@ func (x *Parcel) GetLandAreaSqFt() float64 {
 	return 0
 }
 
-func (x *Parcel) GetFrontageM() float64 {
-	if x != nil && x.FrontageM != nil {
-		return *x.FrontageM
+func (x *Parcel) GetFrontageFt() float64 {
+	if x != nil && x.FrontageFt != nil {
+		return *x.FrontageFt
 	}
 	return 0
 }
 
-func (x *Parcel) GetDepthM() float64 {
-	if x != nil && x.DepthM != nil {
-		return *x.DepthM
+func (x *Parcel) GetDepthFt() float64 {
+	if x != nil && x.DepthFt != nil {
+		return *x.DepthFt
 	}
 	return 0
 }
@@ -388,8 +388,8 @@ func (x *Parcel) GetImprovementSummary() *ParcelImprovementsSummary {
 }
 
 func (x *Parcel) GetProperties() string {
-	if x != nil {
-		return x.Properties
+	if x != nil && x.Properties != nil {
+		return *x.Properties
 	}
 	return ""
 }
@@ -1040,7 +1040,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_worst_condition_idB\x14\n" +
 	"\x12_best_condition_idB\x1b\n" +
 	"\x19_market_improvement_valueB\x1d\n" +
-	"\x1b_assessed_improvement_value\"\xd2\x10\n" +
+	"\x1b_assessed_improvement_value\"\xec\x10\n" +
 	"\x06Parcel\x12z\n" +
 	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12)\n" +
 	"\aaddress\x18\x02 \x01(\tB\n" +
@@ -1055,21 +1055,21 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\bowner_id\x18\x06 \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01H\x04R\aownerId\x88\x01\x01\x12\x8d\x01\n" +
 	"\vland_use_id\x18\a \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01H\x05R\tlandUseId\x88\x01\x01\x12\x94\x02\n" +
 	"\x0fneighborhood_id\x18\b \x01(\tB\xe5\x01\xbaG\xd9\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02\xab\x01The unique identifier for the parcel's neighborhood. Will only populate if a neighborhood definition ID is provided, and the parcel has a neighborhood for that definition.\xbaH\x05r\x03\xb0\x01\x01H\x06R\x0eneighborhoodId\x88\x01\x01\x12:\n" +
-	"\x0fland_area_sq_ft\x18\t \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\aR\flandAreaSqFt\x88\x01\x01\x122\n" +
-	"\n" +
-	"frontage_m\x18\n" +
-	" \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\bR\tfrontageM\x88\x01\x01\x12,\n" +
-	"\adepth_m\x18\v \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\tR\x06depthM\x88\x01\x01\x12\xcf\x01\n" +
+	"\x0fland_area_sq_ft\x18\t \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\aR\flandAreaSqFt\x88\x01\x01\x124\n" +
+	"\vfrontage_ft\x18\n" +
+	" \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\bR\n" +
+	"frontageFt\x88\x01\x01\x12.\n" +
+	"\bdepth_ft\x18\v \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\tR\adepthFt\x88\x01\x01\x12\xcf\x01\n" +
 	"\n" +
 	"zoning_ids\x18\f \x03(\tB\xaf\x01\xbaG\x9a\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02CA list of unique identifiers for the zoning overlays on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\tzoningIds\x12\xb0\x01\n" +
 	"\x11market_land_value\x18\r \x01(\tB\x7f\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\n" +
 	"R\x0fmarketLandValue\x88\x01\x01\x12\xb4\x01\n" +
 	"\x13assessed_land_value\x18\x0e \x01(\tB\x7f\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\vR\x11assessedLandValue\x88\x01\x01\x12L\n" +
 	"\vaffordances\x18\x0f \x01(\v2*.civil.public.parcels.v1.ParcelAffordancesR\vaffordances\x12c\n" +
-	"\x13improvement_summary\x18\x10 \x01(\v22.civil.public.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12)\n" +
+	"\x13improvement_summary\x18\x10 \x01(\v22.civil.public.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12.\n" +
 	"\n" +
-	"properties\x18\x11 \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80@R\n" +
-	"propertiesB\n" +
+	"properties\x18\x11 \x01(\tB\t\xbaH\x06r\x04\x18\x80\x80@H\fR\n" +
+	"properties\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\r\n" +
 	"\v_address_idB\r\n" +
@@ -1078,12 +1078,12 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\t_owner_idB\x0e\n" +
 	"\f_land_use_idB\x12\n" +
 	"\x10_neighborhood_idB\x12\n" +
-	"\x10_land_area_sq_ftB\r\n" +
-	"\v_frontage_mB\n" +
-	"\n" +
-	"\b_depth_mB\x14\n" +
+	"\x10_land_area_sq_ftB\x0e\n" +
+	"\f_frontage_ftB\v\n" +
+	"\t_depth_ftB\x14\n" +
 	"\x12_market_land_valueB\x16\n" +
-	"\x14_assessed_land_value\"\xae\a\n" +
+	"\x14_assessed_land_valueB\r\n" +
+	"\v_properties\"\xae\a\n" +
 	"\x15GetParcelsByIdRequest\x12\xbb\x01\n" +
 	"\n" +
 	"parcel_ids\x18\x01 \x03(\tB\x9b\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x10\x92\x01\r\b\x01\x10d\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9e\x01\n" +
