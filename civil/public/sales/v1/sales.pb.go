@@ -29,14 +29,11 @@ type Sale struct {
 	SaleId        string                 `protobuf:"bytes,1,opt,name=sale_id,json=saleId,proto3" json:"sale_id,omitempty"`
 	SaleTimestamp *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=sale_timestamp,json=saleTimestamp,proto3" json:"sale_timestamp,omitempty"`
 	SalePrice     string                 `protobuf:"bytes,3,opt,name=sale_price,json=salePrice,proto3" json:"sale_price,omitempty"`
-	SaleDeedBook  string                 `protobuf:"bytes,4,opt,name=sale_deed_book,json=saleDeedBook,proto3" json:"sale_deed_book,omitempty"`
-	SaleDeedPage  string                 `protobuf:"bytes,5,opt,name=sale_deed_page,json=saleDeedPage,proto3" json:"sale_deed_page,omitempty"`
-	SaleDeedUri   string                 `protobuf:"bytes,6,opt,name=sale_deed_uri,json=saleDeedUri,proto3" json:"sale_deed_uri,omitempty"`
-	SellerName    string                 `protobuf:"bytes,7,opt,name=seller_name,json=sellerName,proto3" json:"seller_name,omitempty"`
-	SellerAddress string                 `protobuf:"bytes,8,opt,name=seller_address,json=sellerAddress,proto3" json:"seller_address,omitempty"`
-	SellerId      string                 `protobuf:"bytes,9,opt,name=seller_id,json=sellerId,proto3" json:"seller_id,omitempty"`
-	BuyerName     string                 `protobuf:"bytes,10,opt,name=buyer_name,json=buyerName,proto3" json:"buyer_name,omitempty"`
-	BuyerAddress  string                 `protobuf:"bytes,11,opt,name=buyer_address,json=buyerAddress,proto3" json:"buyer_address,omitempty"`
+	SellerName    *string                `protobuf:"bytes,4,opt,name=seller_name,json=sellerName,proto3,oneof" json:"seller_name,omitempty"`
+	SellerAddress *string                `protobuf:"bytes,5,opt,name=seller_address,json=sellerAddress,proto3,oneof" json:"seller_address,omitempty"`
+	SellerId      string                 `protobuf:"bytes,6,opt,name=seller_id,json=sellerId,proto3" json:"seller_id,omitempty"`
+	BuyerName     *string                `protobuf:"bytes,7,opt,name=buyer_name,json=buyerName,proto3,oneof" json:"buyer_name,omitempty"`
+	BuyerAddress  *string                `protobuf:"bytes,8,opt,name=buyer_address,json=buyerAddress,proto3,oneof" json:"buyer_address,omitempty"`
 	BuyerId       string                 `protobuf:"bytes,12,opt,name=buyer_id,json=buyerId,proto3" json:"buyer_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -93,37 +90,16 @@ func (x *Sale) GetSalePrice() string {
 	return ""
 }
 
-func (x *Sale) GetSaleDeedBook() string {
-	if x != nil {
-		return x.SaleDeedBook
-	}
-	return ""
-}
-
-func (x *Sale) GetSaleDeedPage() string {
-	if x != nil {
-		return x.SaleDeedPage
-	}
-	return ""
-}
-
-func (x *Sale) GetSaleDeedUri() string {
-	if x != nil {
-		return x.SaleDeedUri
-	}
-	return ""
-}
-
 func (x *Sale) GetSellerName() string {
-	if x != nil {
-		return x.SellerName
+	if x != nil && x.SellerName != nil {
+		return *x.SellerName
 	}
 	return ""
 }
 
 func (x *Sale) GetSellerAddress() string {
-	if x != nil {
-		return x.SellerAddress
+	if x != nil && x.SellerAddress != nil {
+		return *x.SellerAddress
 	}
 	return ""
 }
@@ -136,15 +112,15 @@ func (x *Sale) GetSellerId() string {
 }
 
 func (x *Sale) GetBuyerName() string {
-	if x != nil {
-		return x.BuyerName
+	if x != nil && x.BuyerName != nil {
+		return *x.BuyerName
 	}
 	return ""
 }
 
 func (x *Sale) GetBuyerAddress() string {
-	if x != nil {
-		return x.BuyerAddress
+	if x != nil && x.BuyerAddress != nil {
+		return *x.BuyerAddress
 	}
 	return ""
 }
@@ -158,6 +134,7 @@ func (x *Sale) GetBuyerId() string {
 
 type GetSalesByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
 	SystemAsOf    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -191,6 +168,13 @@ func (x *GetSalesByParcelIdRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetSalesByParcelIdRequest.ProtoReflect.Descriptor instead.
 func (*GetSalesByParcelIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_sales_v1_sales_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *GetSalesByParcelIdRequest) GetParcelIds() []string {
+	if x != nil {
+		return x.ParcelIds
+	}
+	return nil
 }
 
 func (x *GetSalesByParcelIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
@@ -312,25 +296,31 @@ var File_civil_public_sales_v1_sales_proto protoreflect.FileDescriptor
 
 const file_civil_public_sales_v1_sales_proto_rawDesc = "" +
 	"\n" +
-	"!civil/public/sales/v1/sales.proto\x12\x15civil.public.sales.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe9\x04\n" +
+	"!civil/public/sales/v1/sales.proto\x12\x15civil.public.sales.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc3\x06\n" +
 	"\x04Sale\x12q\n" +
 	"\asale_id\x18\x01 \x01(\tBX\xbaGM:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02 The unique identifier of a sale.\xbaH\x05r\x03\xb0\x01\x01R\x06saleId\x12y\n" +
-	"\x0esale_timestamp\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB6\xbaG \x92\x02\x1dThe time the sale occured at.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01R\rsaleTimestamp\x12?\n" +
+	"\x0esale_timestamp\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB6\xbaG \x92\x02\x1dThe time the sale occured at.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01R\rsaleTimestamp\x12D\n" +
 	"\n" +
-	"sale_price\x18\x03 \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\tsalePrice\x12$\n" +
-	"\x0esale_deed_book\x18\x04 \x01(\tR\fsaleDeedBook\x12$\n" +
-	"\x0esale_deed_page\x18\x05 \x01(\tR\fsaleDeedPage\x12\"\n" +
-	"\rsale_deed_uri\x18\x06 \x01(\tR\vsaleDeedUri\x12\x1f\n" +
-	"\vseller_name\x18\a \x01(\tR\n" +
-	"sellerName\x12%\n" +
-	"\x0eseller_address\x18\b \x01(\tR\rsellerAddress\x12\x1b\n" +
-	"\tseller_id\x18\t \x01(\tR\bsellerId\x12\x1d\n" +
+	"sale_price\x18\x03 \x01(\tB%\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$R\tsalePrice\x120\n" +
+	"\vseller_name\x18\x04 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x00R\n" +
+	"sellerName\x88\x01\x01\x126\n" +
+	"\x0eseller_address\x18\x05 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x01R\rsellerAddress\x88\x01\x01\x12z\n" +
+	"\tseller_id\x18\x06 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the seller.\xbaH\x05r\x03\xb0\x01\x01R\bsellerId\x12.\n" +
 	"\n" +
-	"buyer_name\x18\n" +
-	" \x01(\tR\tbuyerName\x12#\n" +
-	"\rbuyer_address\x18\v \x01(\tR\fbuyerAddress\x12\x19\n" +
-	"\bbuyer_id\x18\f \x01(\tR\abuyerId\"\xda\x01\n" +
-	"\x19GetSalesByParcelIdRequest\x12\xab\x01\n" +
+	"buyer_name\x18\a \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x02R\tbuyerName\x88\x01\x01\x124\n" +
+	"\rbuyer_address\x18\b \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x03R\fbuyerAddress\x88\x01\x01\x12w\n" +
+	"\bbuyer_id\x18\f \x01(\tB\\\xbaGQ:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02$The unique identifier for the buyer.\xbaH\x05r\x03\xb0\x01\x01R\abuyerIdB\x0e\n" +
+	"\f_seller_nameB\x11\n" +
+	"\x0f_seller_addressB\r\n" +
+	"\v_buyer_nameB\x10\n" +
+	"\x0e_buyer_address\"\x98\x03\n" +
+	"\x19GetSalesByParcelIdRequest\x12\xbb\x01\n" +
+	"\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x9b\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x10\x92\x01\r\b\x01\x10d\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\xab\x01\n" +
 	"\fsystem_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampBh\xbaGP\x92\x02MThe transaction time to evaluate the database state against. Defaults to now.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x00R\n" +
 	"systemAsOf\x88\x01\x01B\x0f\n" +
 	"\r_system_as_of\"\x1c\n" +
@@ -383,6 +373,7 @@ func file_civil_public_sales_v1_sales_proto_init() {
 	if File_civil_public_sales_v1_sales_proto != nil {
 		return
 	}
+	file_civil_public_sales_v1_sales_proto_msgTypes[0].OneofWrappers = []any{}
 	file_civil_public_sales_v1_sales_proto_msgTypes[1].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
