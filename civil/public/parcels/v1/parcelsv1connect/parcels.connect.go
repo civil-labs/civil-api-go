@@ -42,9 +42,9 @@ const (
 	// ParcelsServiceGetNumericalParcelAttributeStatsByIdProcedure is the fully-qualified name of the
 	// ParcelsService's GetNumericalParcelAttributeStatsById RPC.
 	ParcelsServiceGetNumericalParcelAttributeStatsByIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetNumericalParcelAttributeStatsById"
-	// ParcelsServiceGetCategoricalAttributeParcelStatsByIdProcedure is the fully-qualified name of the
-	// ParcelsService's GetCategoricalAttributeParcelStatsById RPC.
-	ParcelsServiceGetCategoricalAttributeParcelStatsByIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetCategoricalAttributeParcelStatsById"
+	// ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure is the fully-qualified name of the
+	// ParcelsService's GetCategoricalParcelAttributeStatsById RPC.
+	ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetCategoricalParcelAttributeStatsById"
 )
 
 // ParcelsServiceClient is a client for the civil.public.parcels.v1.ParcelsService service.
@@ -55,7 +55,7 @@ type ParcelsServiceClient interface {
 	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
 	GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error)
 	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
-	GetCategoricalAttributeParcelStatsById(context.Context, *connect.Request[v1.GetCategoricalAttributeParcelStatsByIdRequest]) (*connect.Response[v1.GetCategoricalAttributeParcelStatsByIdResponse], error)
+	GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error)
 }
 
 // NewParcelsServiceClient constructs a client for the civil.public.parcels.v1.ParcelsService
@@ -89,10 +89,10 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
-		getCategoricalAttributeParcelStatsById: connect.NewClient[v1.GetCategoricalAttributeParcelStatsByIdRequest, v1.GetCategoricalAttributeParcelStatsByIdResponse](
+		getCategoricalParcelAttributeStatsById: connect.NewClient[v1.GetCategoricalParcelAttributeStatsByIdRequest, v1.GetCategoricalParcelAttributeStatsByIdResponse](
 			httpClient,
-			baseURL+ParcelsServiceGetCategoricalAttributeParcelStatsByIdProcedure,
-			connect.WithSchema(parcelsServiceMethods.ByName("GetCategoricalAttributeParcelStatsById")),
+			baseURL+ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetCategoricalParcelAttributeStatsById")),
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
@@ -104,7 +104,7 @@ type parcelsServiceClient struct {
 	getParcelsById                         *connect.Client[v1.GetParcelsByIdRequest, v1.GetParcelsByIdResponse]
 	updateParcel                           *connect.Client[v1.UpdateParcelRequest, v1.UpdateParcelResponse]
 	getNumericalParcelAttributeStatsById   *connect.Client[v1.GetNumericalParcelAttributeStatsByIdRequest, v1.GetNumericalParcelAttributeStatsByIdResponse]
-	getCategoricalAttributeParcelStatsById *connect.Client[v1.GetCategoricalAttributeParcelStatsByIdRequest, v1.GetCategoricalAttributeParcelStatsByIdResponse]
+	getCategoricalParcelAttributeStatsById *connect.Client[v1.GetCategoricalParcelAttributeStatsByIdRequest, v1.GetCategoricalParcelAttributeStatsByIdResponse]
 }
 
 // GetParcelsById calls civil.public.parcels.v1.ParcelsService.GetParcelsById.
@@ -123,10 +123,10 @@ func (c *parcelsServiceClient) GetNumericalParcelAttributeStatsById(ctx context.
 	return c.getNumericalParcelAttributeStatsById.CallUnary(ctx, req)
 }
 
-// GetCategoricalAttributeParcelStatsById calls
-// civil.public.parcels.v1.ParcelsService.GetCategoricalAttributeParcelStatsById.
-func (c *parcelsServiceClient) GetCategoricalAttributeParcelStatsById(ctx context.Context, req *connect.Request[v1.GetCategoricalAttributeParcelStatsByIdRequest]) (*connect.Response[v1.GetCategoricalAttributeParcelStatsByIdResponse], error) {
-	return c.getCategoricalAttributeParcelStatsById.CallUnary(ctx, req)
+// GetCategoricalParcelAttributeStatsById calls
+// civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById.
+func (c *parcelsServiceClient) GetCategoricalParcelAttributeStatsById(ctx context.Context, req *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error) {
+	return c.getCategoricalParcelAttributeStatsById.CallUnary(ctx, req)
 }
 
 // ParcelsServiceHandler is an implementation of the civil.public.parcels.v1.ParcelsService service.
@@ -137,7 +137,7 @@ type ParcelsServiceHandler interface {
 	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
 	GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error)
 	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
-	GetCategoricalAttributeParcelStatsById(context.Context, *connect.Request[v1.GetCategoricalAttributeParcelStatsByIdRequest]) (*connect.Response[v1.GetCategoricalAttributeParcelStatsByIdResponse], error)
+	GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error)
 }
 
 // NewParcelsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -167,10 +167,10 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
-	parcelsServiceGetCategoricalAttributeParcelStatsByIdHandler := connect.NewUnaryHandler(
-		ParcelsServiceGetCategoricalAttributeParcelStatsByIdProcedure,
-		svc.GetCategoricalAttributeParcelStatsById,
-		connect.WithSchema(parcelsServiceMethods.ByName("GetCategoricalAttributeParcelStatsById")),
+	parcelsServiceGetCategoricalParcelAttributeStatsByIdHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure,
+		svc.GetCategoricalParcelAttributeStatsById,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetCategoricalParcelAttributeStatsById")),
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
@@ -182,8 +182,8 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 			parcelsServiceUpdateParcelHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetNumericalParcelAttributeStatsByIdProcedure:
 			parcelsServiceGetNumericalParcelAttributeStatsByIdHandler.ServeHTTP(w, r)
-		case ParcelsServiceGetCategoricalAttributeParcelStatsByIdProcedure:
-			parcelsServiceGetCategoricalAttributeParcelStatsByIdHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure:
+			parcelsServiceGetCategoricalParcelAttributeStatsByIdHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -205,6 +205,6 @@ func (UnimplementedParcelsServiceHandler) GetNumericalParcelAttributeStatsById(c
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById is not implemented"))
 }
 
-func (UnimplementedParcelsServiceHandler) GetCategoricalAttributeParcelStatsById(context.Context, *connect.Request[v1.GetCategoricalAttributeParcelStatsByIdRequest]) (*connect.Response[v1.GetCategoricalAttributeParcelStatsByIdResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetCategoricalAttributeParcelStatsById is not implemented"))
+func (UnimplementedParcelsServiceHandler) GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById is not implemented"))
 }
