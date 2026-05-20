@@ -223,26 +223,26 @@ func (x *ParcelImprovementsSummary) GetAssessedImprovementValue() string {
 }
 
 type Parcel struct {
-	state              protoimpl.MessageState     `protogen:"open.v1"`
-	ParcelId           string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	Address            *string                    `protobuf:"bytes,2,opt,name=address,proto3,oneof" json:"address,omitempty"`
-	AddressId          *string                    `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
-	OwnerName          *string                    `protobuf:"bytes,4,opt,name=owner_name,json=ownerName,proto3,oneof" json:"owner_name,omitempty"`
-	OwnerAddress       *string                    `protobuf:"bytes,5,opt,name=owner_address,json=ownerAddress,proto3,oneof" json:"owner_address,omitempty"`
-	PartyIds           []string                   `protobuf:"bytes,6,rep,name=party_ids,json=partyIds,proto3" json:"party_ids,omitempty"`
-	LandUseId          *string                    `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
-	NeighborhoodId     *string                    `protobuf:"bytes,8,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
-	LandAreaSqFt       *float64                   `protobuf:"fixed64,9,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
-	FrontageFt         *float64                   `protobuf:"fixed64,10,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
-	DepthFt            *float64                   `protobuf:"fixed64,11,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
-	ZoningIds          []string                   `protobuf:"bytes,12,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
-	MarketLandValue    *string                    `protobuf:"bytes,13,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
-	AssessedLandValue  *string                    `protobuf:"bytes,14,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
-	Affordances        *ParcelAffordances         `protobuf:"bytes,15,opt,name=affordances,proto3" json:"affordances,omitempty"`
-	ImprovementSummary *ParcelImprovementsSummary `protobuf:"bytes,16,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
-	Properties         *string                    `protobuf:"bytes,17,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
-	unknownFields      protoimpl.UnknownFields
-	sizeCache          protoimpl.SizeCache
+	state               protoimpl.MessageState     `protogen:"open.v1"`
+	ParcelId            string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	Address             *string                    `protobuf:"bytes,2,opt,name=address,proto3,oneof" json:"address,omitempty"`
+	AddressId           *string                    `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
+	PrimaryOwnerName    *string                    `protobuf:"bytes,4,opt,name=primary_owner_name,json=primaryOwnerName,proto3,oneof" json:"primary_owner_name,omitempty"`
+	PrimaryOwnerAddress *string                    `protobuf:"bytes,5,opt,name=primary_owner_address,json=primaryOwnerAddress,proto3,oneof" json:"primary_owner_address,omitempty"`
+	PartyIds            []string                   `protobuf:"bytes,6,rep,name=party_ids,json=partyIds,proto3" json:"party_ids,omitempty"`
+	LandUseId           *string                    `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
+	NeighborhoodId      *string                    `protobuf:"bytes,8,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
+	LandAreaSqFt        *float64                   `protobuf:"fixed64,9,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
+	FrontageFt          *float64                   `protobuf:"fixed64,10,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
+	DepthFt             *float64                   `protobuf:"fixed64,11,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
+	ZoningIds           []string                   `protobuf:"bytes,12,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
+	MarketLandValue     *string                    `protobuf:"bytes,13,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
+	AssessedLandValue   *string                    `protobuf:"bytes,14,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
+	Affordances         *ParcelAffordances         `protobuf:"bytes,15,opt,name=affordances,proto3" json:"affordances,omitempty"`
+	ImprovementSummary  *ParcelImprovementsSummary `protobuf:"bytes,16,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
+	Properties          *string                    `protobuf:"bytes,17,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
 }
 
 func (x *Parcel) Reset() {
@@ -296,16 +296,16 @@ func (x *Parcel) GetAddressId() string {
 	return ""
 }
 
-func (x *Parcel) GetOwnerName() string {
-	if x != nil && x.OwnerName != nil {
-		return *x.OwnerName
+func (x *Parcel) GetPrimaryOwnerName() string {
+	if x != nil && x.PrimaryOwnerName != nil {
+		return *x.PrimaryOwnerName
 	}
 	return ""
 }
 
-func (x *Parcel) GetOwnerAddress() string {
-	if x != nil && x.OwnerAddress != nil {
-		return *x.OwnerAddress
+func (x *Parcel) GetPrimaryOwnerAddress() string {
+	if x != nil && x.PrimaryOwnerAddress != nil {
+		return *x.PrimaryOwnerAddress
 	}
 	return ""
 }
@@ -765,15 +765,14 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_worst_condition_idB\x14\n" +
 	"\x12_best_condition_idB\x1b\n" +
 	"\x19_market_improvement_valueB\x1d\n" +
-	"\x1b_assessed_improvement_value\"\xbf\a\n" +
+	"\x1b_assessed_improvement_value\"\xed\a\n" +
 	"\x06Parcel\x12\x1b\n" +
 	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x1d\n" +
 	"\aaddress\x18\x02 \x01(\tH\x00R\aaddress\x88\x01\x01\x12\"\n" +
 	"\n" +
-	"address_id\x18\x03 \x01(\tH\x01R\taddressId\x88\x01\x01\x12\"\n" +
-	"\n" +
-	"owner_name\x18\x04 \x01(\tH\x02R\townerName\x88\x01\x01\x12(\n" +
-	"\rowner_address\x18\x05 \x01(\tH\x03R\fownerAddress\x88\x01\x01\x12\x1b\n" +
+	"address_id\x18\x03 \x01(\tH\x01R\taddressId\x88\x01\x01\x121\n" +
+	"\x12primary_owner_name\x18\x04 \x01(\tH\x02R\x10primaryOwnerName\x88\x01\x01\x127\n" +
+	"\x15primary_owner_address\x18\x05 \x01(\tH\x03R\x13primaryOwnerAddress\x88\x01\x01\x12\x1b\n" +
 	"\tparty_ids\x18\x06 \x03(\tR\bpartyIds\x12#\n" +
 	"\vland_use_id\x18\a \x01(\tH\x04R\tlandUseId\x88\x01\x01\x12,\n" +
 	"\x0fneighborhood_id\x18\b \x01(\tH\x05R\x0eneighborhoodId\x88\x01\x01\x12*\n" +
@@ -794,9 +793,9 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"properties\x88\x01\x01B\n" +
 	"\n" +
 	"\b_addressB\r\n" +
-	"\v_address_idB\r\n" +
-	"\v_owner_nameB\x10\n" +
-	"\x0e_owner_addressB\x0e\n" +
+	"\v_address_idB\x15\n" +
+	"\x13_primary_owner_nameB\x18\n" +
+	"\x16_primary_owner_addressB\x0e\n" +
 	"\f_land_use_idB\x12\n" +
 	"\x10_neighborhood_idB\x12\n" +
 	"\x10_land_area_sq_ftB\x0e\n" +
