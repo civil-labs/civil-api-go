@@ -23,13 +23,15 @@ const (
 )
 
 type ParcelAffordances struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	AffordanceIds  []string               `protobuf:"bytes,1,rep,name=affordance_ids,json=affordanceIds,proto3" json:"affordance_ids,omitempty"`
-	MaxFar         *float64               `protobuf:"fixed64,2,opt,name=max_far,json=maxFar,proto3,oneof" json:"max_far,omitempty"`
-	MinLotSizeSqFt *float64               `protobuf:"fixed64,3,opt,name=min_lot_size_sq_ft,json=minLotSizeSqFt,proto3,oneof" json:"min_lot_size_sq_ft,omitempty"`
-	MaxHeightFt    *float64               `protobuf:"fixed64,4,opt,name=max_height_ft,json=maxHeightFt,proto3,oneof" json:"max_height_ft,omitempty"`
-	unknownFields  protoimpl.UnknownFields
-	sizeCache      protoimpl.SizeCache
+	state                      protoimpl.MessageState `protogen:"open.v1"`
+	AffordanceIds              []string               `protobuf:"bytes,1,rep,name=affordance_ids,json=affordanceIds,proto3" json:"affordance_ids,omitempty"`
+	MaxFar                     *float64               `protobuf:"fixed64,2,opt,name=max_far,json=maxFar,proto3,oneof" json:"max_far,omitempty"`
+	MinLotSizeSqFt             *float64               `protobuf:"fixed64,3,opt,name=min_lot_size_sq_ft,json=minLotSizeSqFt,proto3,oneof" json:"min_lot_size_sq_ft,omitempty"`
+	MaxHeightFt                *float64               `protobuf:"fixed64,4,opt,name=max_height_ft,json=maxHeightFt,proto3,oneof" json:"max_height_ft,omitempty"`
+	MaxDwellingUnitsPerHectare *float64               `protobuf:"fixed64,5,opt,name=max_dwelling_units_per_hectare,json=maxDwellingUnitsPerHectare,proto3,oneof" json:"max_dwelling_units_per_hectare,omitempty"`
+	MaxLotCoveragePct          *float64               `protobuf:"fixed64,6,opt,name=max_lot_coverage_pct,json=maxLotCoveragePct,proto3,oneof" json:"max_lot_coverage_pct,omitempty"`
+	unknownFields              protoimpl.UnknownFields
+	sizeCache                  protoimpl.SizeCache
 }
 
 func (x *ParcelAffordances) Reset() {
@@ -86,6 +88,20 @@ func (x *ParcelAffordances) GetMinLotSizeSqFt() float64 {
 func (x *ParcelAffordances) GetMaxHeightFt() float64 {
 	if x != nil && x.MaxHeightFt != nil {
 		return *x.MaxHeightFt
+	}
+	return 0
+}
+
+func (x *ParcelAffordances) GetMaxDwellingUnitsPerHectare() float64 {
+	if x != nil && x.MaxDwellingUnitsPerHectare != nil {
+		return *x.MaxDwellingUnitsPerHectare
+	}
+	return 0
+}
+
+func (x *ParcelAffordances) GetMaxLotCoveragePct() float64 {
+	if x != nil && x.MaxLotCoveragePct != nil {
+		return *x.MaxLotCoveragePct
 	}
 	return 0
 }
@@ -734,16 +750,20 @@ var File_civil_mesh_parcels_v1_parcels_proto protoreflect.FileDescriptor
 
 const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\n" +
-	"#civil/mesh/parcels/v1/parcels.proto\x12\x15civil.mesh.parcels.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe7\x01\n" +
+	"#civil/mesh/parcels/v1/parcels.proto\x12\x15civil.mesh.parcels.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa2\x03\n" +
 	"\x11ParcelAffordances\x12%\n" +
 	"\x0eaffordance_ids\x18\x01 \x03(\tR\raffordanceIds\x12\x1c\n" +
 	"\amax_far\x18\x02 \x01(\x01H\x00R\x06maxFar\x88\x01\x01\x12/\n" +
 	"\x12min_lot_size_sq_ft\x18\x03 \x01(\x01H\x01R\x0eminLotSizeSqFt\x88\x01\x01\x12'\n" +
-	"\rmax_height_ft\x18\x04 \x01(\x01H\x02R\vmaxHeightFt\x88\x01\x01B\n" +
+	"\rmax_height_ft\x18\x04 \x01(\x01H\x02R\vmaxHeightFt\x88\x01\x01\x12G\n" +
+	"\x1emax_dwelling_units_per_hectare\x18\x05 \x01(\x01H\x03R\x1amaxDwellingUnitsPerHectare\x88\x01\x01\x124\n" +
+	"\x14max_lot_coverage_pct\x18\x06 \x01(\x01H\x04R\x11maxLotCoveragePct\x88\x01\x01B\n" +
 	"\n" +
 	"\b_max_farB\x15\n" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
-	"\x0e_max_height_ft\"\xc0\x06\n" +
+	"\x0e_max_height_ftB!\n" +
+	"\x1f_max_dwelling_units_per_hectareB\x17\n" +
+	"\x15_max_lot_coverage_pct\"\xc0\x06\n" +
 	"\x19ParcelImprovementsSummary\x12'\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tR\x0eimprovementIds\x12'\n" +
 	"\x10total_area_sq_ft\x18\x02 \x01(\x01R\rtotalAreaSqFt\x12'\n" +
