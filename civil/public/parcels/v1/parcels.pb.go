@@ -87,11 +87,11 @@ type ParcelAffordances struct {
 	// Minimum lot size in square feet
 	MinLotSizeSqFt *float64 `protobuf:"fixed64,3,opt,name=min_lot_size_sq_ft,json=minLotSizeSqFt,proto3,oneof" json:"min_lot_size_sq_ft,omitempty"`
 	// Maximum legally permitted building height in feet
-	MaxHeightFt                *float64 `protobuf:"fixed64,4,opt,name=max_height_ft,json=maxHeightFt,proto3,oneof" json:"max_height_ft,omitempty"`
-	MaxDwellingUnitsPerHectare *float64 `protobuf:"fixed64,5,opt,name=max_dwelling_units_per_hectare,json=maxDwellingUnitsPerHectare,proto3,oneof" json:"max_dwelling_units_per_hectare,omitempty"`
-	MaxLotCoveragePct          *float64 `protobuf:"fixed64,6,opt,name=max_lot_coverage_pct,json=maxLotCoveragePct,proto3,oneof" json:"max_lot_coverage_pct,omitempty"`
-	unknownFields              protoimpl.UnknownFields
-	sizeCache                  protoimpl.SizeCache
+	MaxHeightFt             *float64 `protobuf:"fixed64,4,opt,name=max_height_ft,json=maxHeightFt,proto3,oneof" json:"max_height_ft,omitempty"`
+	MaxDwellingUnitsPerAcre *float64 `protobuf:"fixed64,5,opt,name=max_dwelling_units_per_acre,json=maxDwellingUnitsPerAcre,proto3,oneof" json:"max_dwelling_units_per_acre,omitempty"`
+	MaxLotCoveragePct       *float64 `protobuf:"fixed64,6,opt,name=max_lot_coverage_pct,json=maxLotCoveragePct,proto3,oneof" json:"max_lot_coverage_pct,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *ParcelAffordances) Reset() {
@@ -152,9 +152,9 @@ func (x *ParcelAffordances) GetMaxHeightFt() float64 {
 	return 0
 }
 
-func (x *ParcelAffordances) GetMaxDwellingUnitsPerHectare() float64 {
-	if x != nil && x.MaxDwellingUnitsPerHectare != nil {
-		return *x.MaxDwellingUnitsPerHectare
+func (x *ParcelAffordances) GetMaxDwellingUnitsPerAcre() float64 {
+	if x != nil && x.MaxDwellingUnitsPerAcre != nil {
+		return *x.MaxDwellingUnitsPerAcre
 	}
 	return 0
 }
@@ -1114,19 +1114,19 @@ var File_civil_public_parcels_v1_parcels_proto protoreflect.FileDescriptor
 
 const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\n" +
-	"%civil/public/parcels/v1/parcels.proto\x12\x17civil.public.parcels.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa1\x05\n" +
+	"%civil/public/parcels/v1/parcels.proto\x12\x17civil.public.parcels.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x98\x05\n" +
 	"\x11ParcelAffordances\x12\xd3\x01\n" +
 	"\x0eaffordance_ids\x18\x01 \x03(\tB\xab\x01\xbaG\x96\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02?A list of unique identifiers for the affordances on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\raffordanceIds\x12,\n" +
 	"\amax_far\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\x06maxFar\x88\x01\x01\x12?\n" +
 	"\x12min_lot_size_sq_ft\x18\x03 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x01R\x0eminLotSizeSqFt\x88\x01\x01\x127\n" +
-	"\rmax_height_ft\x18\x04 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\vmaxHeightFt\x88\x01\x01\x12W\n" +
-	"\x1emax_dwelling_units_per_hectare\x18\x05 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x03R\x1amaxDwellingUnitsPerHectare\x88\x01\x01\x12D\n" +
+	"\rmax_height_ft\x18\x04 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\vmaxHeightFt\x88\x01\x01\x12Q\n" +
+	"\x1bmax_dwelling_units_per_acre\x18\x05 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x03R\x17maxDwellingUnitsPerAcre\x88\x01\x01\x12D\n" +
 	"\x14max_lot_coverage_pct\x18\x06 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x04R\x11maxLotCoveragePct\x88\x01\x01B\n" +
 	"\n" +
 	"\b_max_farB\x15\n" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
-	"\x0e_max_height_ftB!\n" +
-	"\x1f_max_dwelling_units_per_hectareB\x17\n" +
+	"\x0e_max_height_ftB\x1e\n" +
+	"\x1c_max_dwelling_units_per_acreB\x17\n" +
 	"\x15_max_lot_coverage_pct\"\xd9\x0e\n" +
 	"\x19ParcelImprovementsSummary\x12\xd6\x01\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the improvements on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\x0eimprovementIds\x127\n" +
