@@ -1153,17 +1153,17 @@ const file_civil_public_dex_v1_dex_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
 	"\tclient_id\x18\x02 \x01(\tR\bclientId\"4\n" +
 	"\x15RevokeRefreshResponse\x12\x1b\n" +
-	"\tnot_found\x18\x01 \x01(\bR\bnotFound2\xb2\x06\n" +
+	"\tnot_found\x18\x01 \x01(\bR\bnotFound2\xbe\x06\n" +
 	"\n" +
-	"DexService\x12\\\n" +
-	"\tGetClient\x12%.civil.public.dex.v1.GetClientRequest\x1a&.civil.public.dex.v1.GetClientResponse\"\x00\x12e\n" +
+	"DexService\x12_\n" +
+	"\tGetClient\x12%.civil.public.dex.v1.GetClientRequest\x1a&.civil.public.dex.v1.GetClientResponse\"\x03\x90\x02\x01\x12e\n" +
 	"\fCreateClient\x12(.civil.public.dex.v1.CreateClientRequest\x1a).civil.public.dex.v1.CreateClientResponse\"\x00\x12e\n" +
 	"\fUpdateClient\x12(.civil.public.dex.v1.UpdateClientRequest\x1a).civil.public.dex.v1.UpdateClientResponse\"\x00\x12e\n" +
-	"\fDeleteClient\x12(.civil.public.dex.v1.DeleteClientRequest\x1a).civil.public.dex.v1.DeleteClientResponse\"\x00\x12b\n" +
-	"\vListClients\x12'.civil.public.dex.v1.ListClientsRequest\x1a(.civil.public.dex.v1.ListClientsResponse\"\x00\x12_\n" +
+	"\fDeleteClient\x12(.civil.public.dex.v1.DeleteClientRequest\x1a).civil.public.dex.v1.DeleteClientResponse\"\x00\x12e\n" +
+	"\vListClients\x12'.civil.public.dex.v1.ListClientsRequest\x1a(.civil.public.dex.v1.ListClientsResponse\"\x03\x90\x02\x01\x12b\n" +
 	"\n" +
-	"GetVersion\x12&.civil.public.dex.v1.GetVersionRequest\x1a'.civil.public.dex.v1.GetVersionResponse\"\x00\x12b\n" +
-	"\vListRefresh\x12'.civil.public.dex.v1.ListRefreshRequest\x1a(.civil.public.dex.v1.ListRefreshResponse\"\x00\x12h\n" +
+	"GetVersion\x12&.civil.public.dex.v1.GetVersionRequest\x1a'.civil.public.dex.v1.GetVersionResponse\"\x03\x90\x02\x01\x12e\n" +
+	"\vListRefresh\x12'.civil.public.dex.v1.ListRefreshRequest\x1a(.civil.public.dex.v1.ListRefreshResponse\"\x03\x90\x02\x01\x12h\n" +
 	"\rRevokeRefresh\x12).civil.public.dex.v1.RevokeRefreshRequest\x1a*.civil.public.dex.v1.RevokeRefreshResponse\"\x00B\xd2\x01\n" +
 	"\x17com.civil.public.dex.v1B\bDexProtoP\x01Z<github.com/civil-labs/civil-api-go/civil/public/dex/v1;dexv1\xa2\x02\x03CPD\xaa\x02\x13Civil.Public.Dex.V1\xca\x02\x14Civil\\Public_\\Dex\\V1\xe2\x02 Civil\\Public_\\Dex\\V1\\GPBMetadata\xea\x02\x16Civil::Public::Dex::V1b\x06proto3"
 
