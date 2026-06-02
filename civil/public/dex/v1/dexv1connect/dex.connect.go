@@ -89,7 +89,6 @@ func NewDexServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			httpClient,
 			baseURL+DexServiceGetClientProcedure,
 			connect.WithSchema(dexServiceMethods.ByName("GetClient")),
-			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		createClient: connect.NewClient[v1.CreateClientRequest, v1.CreateClientResponse](
@@ -114,21 +113,18 @@ func NewDexServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			httpClient,
 			baseURL+DexServiceListClientsProcedure,
 			connect.WithSchema(dexServiceMethods.ByName("ListClients")),
-			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		getVersion: connect.NewClient[v1.GetVersionRequest, v1.GetVersionResponse](
 			httpClient,
 			baseURL+DexServiceGetVersionProcedure,
 			connect.WithSchema(dexServiceMethods.ByName("GetVersion")),
-			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		listRefresh: connect.NewClient[v1.ListRefreshRequest, v1.ListRefreshResponse](
 			httpClient,
 			baseURL+DexServiceListRefreshProcedure,
 			connect.WithSchema(dexServiceMethods.ByName("ListRefresh")),
-			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		revokeRefresh: connect.NewClient[v1.RevokeRefreshRequest, v1.RevokeRefreshResponse](
@@ -225,7 +221,6 @@ func NewDexServiceHandler(svc DexServiceHandler, opts ...connect.HandlerOption) 
 		DexServiceGetClientProcedure,
 		svc.GetClient,
 		connect.WithSchema(dexServiceMethods.ByName("GetClient")),
-		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	dexServiceCreateClientHandler := connect.NewUnaryHandler(
@@ -250,21 +245,18 @@ func NewDexServiceHandler(svc DexServiceHandler, opts ...connect.HandlerOption) 
 		DexServiceListClientsProcedure,
 		svc.ListClients,
 		connect.WithSchema(dexServiceMethods.ByName("ListClients")),
-		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	dexServiceGetVersionHandler := connect.NewUnaryHandler(
 		DexServiceGetVersionProcedure,
 		svc.GetVersion,
 		connect.WithSchema(dexServiceMethods.ByName("GetVersion")),
-		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	dexServiceListRefreshHandler := connect.NewUnaryHandler(
 		DexServiceListRefreshProcedure,
 		svc.ListRefresh,
 		connect.WithSchema(dexServiceMethods.ByName("ListRefresh")),
-		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	dexServiceRevokeRefreshHandler := connect.NewUnaryHandler(
