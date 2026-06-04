@@ -22,18 +22,16 @@ const (
 )
 
 type Client struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Id                string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Secret            string                 `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
-	RedirectUris      []string               `protobuf:"bytes,3,rep,name=redirect_uris,json=redirectUris,proto3" json:"redirect_uris,omitempty"`
-	TrustedPeers      []string               `protobuf:"bytes,4,rep,name=trusted_peers,json=trustedPeers,proto3" json:"trusted_peers,omitempty"`
-	Public            bool                   `protobuf:"varint,5,opt,name=public,proto3" json:"public,omitempty"`
-	Name              string                 `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
-	LogoUrl           string                 `protobuf:"bytes,7,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
-	AllowedConnectors []string               `protobuf:"bytes,8,rep,name=allowed_connectors,json=allowedConnectors,proto3" json:"allowed_connectors,omitempty"`
-	SsoSharedWith     []string               `protobuf:"bytes,9,rep,name=sso_shared_with,json=ssoSharedWith,proto3" json:"sso_shared_with,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Secret        string                 `protobuf:"bytes,2,opt,name=secret,proto3" json:"secret,omitempty"`
+	RedirectUris  []string               `protobuf:"bytes,3,rep,name=redirect_uris,json=redirectUris,proto3" json:"redirect_uris,omitempty"`
+	TrustedPeers  []string               `protobuf:"bytes,4,rep,name=trusted_peers,json=trustedPeers,proto3" json:"trusted_peers,omitempty"`
+	Public        bool                   `protobuf:"varint,5,opt,name=public,proto3" json:"public,omitempty"`
+	Name          string                 `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`
+	LogoUrl       string                 `protobuf:"bytes,7,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *Client) Reset() {
@@ -115,33 +113,17 @@ func (x *Client) GetLogoUrl() string {
 	return ""
 }
 
-func (x *Client) GetAllowedConnectors() []string {
-	if x != nil {
-		return x.AllowedConnectors
-	}
-	return nil
-}
-
-func (x *Client) GetSsoSharedWith() []string {
-	if x != nil {
-		return x.SsoSharedWith
-	}
-	return nil
-}
-
 // ClientInfo represents an OAuth2 client without sensitive information.
 type ClientInfo struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Id                string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	RedirectUris      []string               `protobuf:"bytes,2,rep,name=redirect_uris,json=redirectUris,proto3" json:"redirect_uris,omitempty"`
-	TrustedPeers      []string               `protobuf:"bytes,3,rep,name=trusted_peers,json=trustedPeers,proto3" json:"trusted_peers,omitempty"`
-	Public            bool                   `protobuf:"varint,4,opt,name=public,proto3" json:"public,omitempty"`
-	Name              string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
-	LogoUrl           string                 `protobuf:"bytes,6,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
-	AllowedConnectors []string               `protobuf:"bytes,7,rep,name=allowed_connectors,json=allowedConnectors,proto3" json:"allowed_connectors,omitempty"`
-	SsoSharedWith     []string               `protobuf:"bytes,8,rep,name=sso_shared_with,json=ssoSharedWith,proto3" json:"sso_shared_with,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	RedirectUris  []string               `protobuf:"bytes,2,rep,name=redirect_uris,json=redirectUris,proto3" json:"redirect_uris,omitempty"`
+	TrustedPeers  []string               `protobuf:"bytes,3,rep,name=trusted_peers,json=trustedPeers,proto3" json:"trusted_peers,omitempty"`
+	Public        bool                   `protobuf:"varint,4,opt,name=public,proto3" json:"public,omitempty"`
+	Name          string                 `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	LogoUrl       string                 `protobuf:"bytes,6,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *ClientInfo) Reset() {
@@ -214,20 +196,6 @@ func (x *ClientInfo) GetLogoUrl() string {
 		return x.LogoUrl
 	}
 	return ""
-}
-
-func (x *ClientInfo) GetAllowedConnectors() []string {
-	if x != nil {
-		return x.AllowedConnectors
-	}
-	return nil
-}
-
-func (x *ClientInfo) GetSsoSharedWith() []string {
-	if x != nil {
-		return x.SsoSharedWith
-	}
-	return nil
 }
 
 // GetClientReq is a request to retrieve client details.
@@ -512,16 +480,14 @@ func (x *DeleteClientResponse) GetNotFound() bool {
 
 // UpdateClientReq is a request to update an existing client.
 type UpdateClientRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Id                string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	RedirectUris      []string               `protobuf:"bytes,2,rep,name=redirect_uris,json=redirectUris,proto3" json:"redirect_uris,omitempty"`
-	TrustedPeers      []string               `protobuf:"bytes,3,rep,name=trusted_peers,json=trustedPeers,proto3" json:"trusted_peers,omitempty"`
-	Name              string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
-	LogoUrl           string                 `protobuf:"bytes,5,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
-	AllowedConnectors []string               `protobuf:"bytes,6,rep,name=allowed_connectors,json=allowedConnectors,proto3" json:"allowed_connectors,omitempty"`
-	SsoSharedWith     []string               `protobuf:"bytes,7,rep,name=sso_shared_with,json=ssoSharedWith,proto3" json:"sso_shared_with,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	RedirectUris  []string               `protobuf:"bytes,2,rep,name=redirect_uris,json=redirectUris,proto3" json:"redirect_uris,omitempty"`
+	TrustedPeers  []string               `protobuf:"bytes,3,rep,name=trusted_peers,json=trustedPeers,proto3" json:"trusted_peers,omitempty"`
+	Name          string                 `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`
+	LogoUrl       string                 `protobuf:"bytes,5,opt,name=logo_url,json=logoUrl,proto3" json:"logo_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateClientRequest) Reset() {
@@ -587,20 +553,6 @@ func (x *UpdateClientRequest) GetLogoUrl() string {
 		return x.LogoUrl
 	}
 	return ""
-}
-
-func (x *UpdateClientRequest) GetAllowedConnectors() []string {
-	if x != nil {
-		return x.AllowedConnectors
-	}
-	return nil
-}
-
-func (x *UpdateClientRequest) GetSsoSharedWith() []string {
-	if x != nil {
-		return x.SsoSharedWith
-	}
-	return nil
 }
 
 // UpdateClientResp returns the response from updating a client.
@@ -730,99 +682,6 @@ func (x *ListClientsResponse) GetClients() []*ClientInfo {
 	return nil
 }
 
-// VersionReq is a request to fetch version info.
-type GetVersionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetVersionRequest) Reset() {
-	*x = GetVersionRequest{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[12]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetVersionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetVersionRequest) ProtoMessage() {}
-
-func (x *GetVersionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[12]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetVersionRequest.ProtoReflect.Descriptor instead.
-func (*GetVersionRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{12}
-}
-
-// VersionResp holds the version info of components.
-type GetVersionResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// Semantic version of the server.
-	Server string `protobuf:"bytes,1,opt,name=server,proto3" json:"server,omitempty"`
-	// Numeric version of the API. It increases every time a new call is added to the API.
-	// Clients should use this info to determine if the server supports specific features.
-	Api           int32 `protobuf:"varint,2,opt,name=api,proto3" json:"api,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetVersionResponse) Reset() {
-	*x = GetVersionResponse{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[13]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetVersionResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetVersionResponse) ProtoMessage() {}
-
-func (x *GetVersionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[13]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetVersionResponse.ProtoReflect.Descriptor instead.
-func (*GetVersionResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *GetVersionResponse) GetServer() string {
-	if x != nil {
-		return x.Server
-	}
-	return ""
-}
-
-func (x *GetVersionResponse) GetApi() int32 {
-	if x != nil {
-		return x.Api
-	}
-	return 0
-}
-
 // RefreshTokenRef contains the metadata for a refresh token that is managed by the storage.
 type RefreshTokenRef struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
@@ -837,7 +696,7 @@ type RefreshTokenRef struct {
 
 func (x *RefreshTokenRef) Reset() {
 	*x = RefreshTokenRef{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[14]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -849,7 +708,7 @@ func (x *RefreshTokenRef) String() string {
 func (*RefreshTokenRef) ProtoMessage() {}
 
 func (x *RefreshTokenRef) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[14]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -862,7 +721,7 @@ func (x *RefreshTokenRef) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RefreshTokenRef.ProtoReflect.Descriptor instead.
 func (*RefreshTokenRef) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{14}
+	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *RefreshTokenRef) GetId() string {
@@ -904,7 +763,7 @@ type ListRefreshRequest struct {
 
 func (x *ListRefreshRequest) Reset() {
 	*x = ListRefreshRequest{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[15]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -916,7 +775,7 @@ func (x *ListRefreshRequest) String() string {
 func (*ListRefreshRequest) ProtoMessage() {}
 
 func (x *ListRefreshRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[15]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -929,7 +788,7 @@ func (x *ListRefreshRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRefreshRequest.ProtoReflect.Descriptor instead.
 func (*ListRefreshRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{15}
+	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListRefreshRequest) GetUserId() string {
@@ -949,7 +808,7 @@ type ListRefreshResponse struct {
 
 func (x *ListRefreshResponse) Reset() {
 	*x = ListRefreshResponse{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[16]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +820,7 @@ func (x *ListRefreshResponse) String() string {
 func (*ListRefreshResponse) ProtoMessage() {}
 
 func (x *ListRefreshResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[16]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +833,7 @@ func (x *ListRefreshResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListRefreshResponse.ProtoReflect.Descriptor instead.
 func (*ListRefreshResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{16}
+	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListRefreshResponse) GetRefreshTokens() []*RefreshTokenRef {
@@ -996,7 +855,7 @@ type RevokeRefreshRequest struct {
 
 func (x *RevokeRefreshRequest) Reset() {
 	*x = RevokeRefreshRequest{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[17]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1008,7 +867,7 @@ func (x *RevokeRefreshRequest) String() string {
 func (*RevokeRefreshRequest) ProtoMessage() {}
 
 func (x *RevokeRefreshRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[17]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1021,7 +880,7 @@ func (x *RevokeRefreshRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRefreshRequest.ProtoReflect.Descriptor instead.
 func (*RevokeRefreshRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{17}
+	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *RevokeRefreshRequest) GetUserId() string {
@@ -1049,7 +908,7 @@ type RevokeRefreshResponse struct {
 
 func (x *RevokeRefreshResponse) Reset() {
 	*x = RevokeRefreshResponse{}
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[18]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1061,7 +920,7 @@ func (x *RevokeRefreshResponse) String() string {
 func (*RevokeRefreshResponse) ProtoMessage() {}
 
 func (x *RevokeRefreshResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[18]
+	mi := &file_civil_public_dex_v1_dex_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1074,7 +933,7 @@ func (x *RevokeRefreshResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RevokeRefreshResponse.ProtoReflect.Descriptor instead.
 func (*RevokeRefreshResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{18}
+	return file_civil_public_dex_v1_dex_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *RevokeRefreshResponse) GetNotFound() bool {
@@ -1088,7 +947,7 @@ var File_civil_public_dex_v1_dex_proto protoreflect.FileDescriptor
 
 const file_civil_public_dex_v1_dex_proto_rawDesc = "" +
 	"\n" +
-	"\x1dcivil/public/dex/v1/dex.proto\x12\x13civil.public.dex.v1\"\x98\x02\n" +
+	"\x1dcivil/public/dex/v1/dex.proto\x12\x13civil.public.dex.v1\"\xc1\x01\n" +
 	"\x06Client\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x16\n" +
 	"\x06secret\x18\x02 \x01(\tR\x06secret\x12#\n" +
@@ -1096,9 +955,7 @@ const file_civil_public_dex_v1_dex_proto_rawDesc = "" +
 	"\rtrusted_peers\x18\x04 \x03(\tR\ftrustedPeers\x12\x16\n" +
 	"\x06public\x18\x05 \x01(\bR\x06public\x12\x12\n" +
 	"\x04name\x18\x06 \x01(\tR\x04name\x12\x19\n" +
-	"\blogo_url\x18\a \x01(\tR\alogoUrl\x12-\n" +
-	"\x12allowed_connectors\x18\b \x03(\tR\x11allowedConnectors\x12&\n" +
-	"\x0fsso_shared_with\x18\t \x03(\tR\rssoSharedWith\"\x84\x02\n" +
+	"\blogo_url\x18\a \x01(\tR\alogoUrl\"\xad\x01\n" +
 	"\n" +
 	"ClientInfo\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
@@ -1106,9 +963,7 @@ const file_civil_public_dex_v1_dex_proto_rawDesc = "" +
 	"\rtrusted_peers\x18\x03 \x03(\tR\ftrustedPeers\x12\x16\n" +
 	"\x06public\x18\x04 \x01(\bR\x06public\x12\x12\n" +
 	"\x04name\x18\x05 \x01(\tR\x04name\x12\x19\n" +
-	"\blogo_url\x18\x06 \x01(\tR\alogoUrl\x12-\n" +
-	"\x12allowed_connectors\x18\a \x03(\tR\x11allowedConnectors\x12&\n" +
-	"\x0fsso_shared_with\x18\b \x03(\tR\rssoSharedWith\"\"\n" +
+	"\blogo_url\x18\x06 \x01(\tR\alogoUrl\"\"\n" +
 	"\x10GetClientRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"H\n" +
 	"\x11GetClientResponse\x123\n" +
@@ -1121,24 +976,18 @@ const file_civil_public_dex_v1_dex_proto_rawDesc = "" +
 	"\x13DeleteClientRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"3\n" +
 	"\x14DeleteClientResponse\x12\x1b\n" +
-	"\tnot_found\x18\x01 \x01(\bR\bnotFound\"\xf5\x01\n" +
+	"\tnot_found\x18\x01 \x01(\bR\bnotFound\"\x9e\x01\n" +
 	"\x13UpdateClientRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12#\n" +
 	"\rredirect_uris\x18\x02 \x03(\tR\fredirectUris\x12#\n" +
 	"\rtrusted_peers\x18\x03 \x03(\tR\ftrustedPeers\x12\x12\n" +
 	"\x04name\x18\x04 \x01(\tR\x04name\x12\x19\n" +
-	"\blogo_url\x18\x05 \x01(\tR\alogoUrl\x12-\n" +
-	"\x12allowed_connectors\x18\x06 \x03(\tR\x11allowedConnectors\x12&\n" +
-	"\x0fsso_shared_with\x18\a \x03(\tR\rssoSharedWith\"3\n" +
+	"\blogo_url\x18\x05 \x01(\tR\alogoUrl\"3\n" +
 	"\x14UpdateClientResponse\x12\x1b\n" +
 	"\tnot_found\x18\x01 \x01(\bR\bnotFound\"\x14\n" +
 	"\x12ListClientsRequest\"P\n" +
 	"\x13ListClientsResponse\x129\n" +
-	"\aclients\x18\x01 \x03(\v2\x1f.civil.public.dex.v1.ClientInfoR\aclients\"\x13\n" +
-	"\x11GetVersionRequest\">\n" +
-	"\x12GetVersionResponse\x12\x16\n" +
-	"\x06server\x18\x01 \x01(\tR\x06server\x12\x10\n" +
-	"\x03api\x18\x02 \x01(\x05R\x03api\"z\n" +
+	"\aclients\x18\x01 \x03(\v2\x1f.civil.public.dex.v1.ClientInfoR\aclients\"z\n" +
 	"\x0fRefreshTokenRef\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tclient_id\x18\x02 \x01(\tR\bclientId\x12\x1d\n" +
@@ -1153,16 +1002,14 @@ const file_civil_public_dex_v1_dex_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1b\n" +
 	"\tclient_id\x18\x02 \x01(\tR\bclientId\"4\n" +
 	"\x15RevokeRefreshResponse\x12\x1b\n" +
-	"\tnot_found\x18\x01 \x01(\bR\bnotFound2\xb2\x06\n" +
+	"\tnot_found\x18\x01 \x01(\bR\bnotFound2\xd1\x05\n" +
 	"\n" +
 	"DexService\x12\\\n" +
 	"\tGetClient\x12%.civil.public.dex.v1.GetClientRequest\x1a&.civil.public.dex.v1.GetClientResponse\"\x00\x12e\n" +
 	"\fCreateClient\x12(.civil.public.dex.v1.CreateClientRequest\x1a).civil.public.dex.v1.CreateClientResponse\"\x00\x12e\n" +
 	"\fUpdateClient\x12(.civil.public.dex.v1.UpdateClientRequest\x1a).civil.public.dex.v1.UpdateClientResponse\"\x00\x12e\n" +
 	"\fDeleteClient\x12(.civil.public.dex.v1.DeleteClientRequest\x1a).civil.public.dex.v1.DeleteClientResponse\"\x00\x12b\n" +
-	"\vListClients\x12'.civil.public.dex.v1.ListClientsRequest\x1a(.civil.public.dex.v1.ListClientsResponse\"\x00\x12_\n" +
-	"\n" +
-	"GetVersion\x12&.civil.public.dex.v1.GetVersionRequest\x1a'.civil.public.dex.v1.GetVersionResponse\"\x00\x12b\n" +
+	"\vListClients\x12'.civil.public.dex.v1.ListClientsRequest\x1a(.civil.public.dex.v1.ListClientsResponse\"\x00\x12b\n" +
 	"\vListRefresh\x12'.civil.public.dex.v1.ListRefreshRequest\x1a(.civil.public.dex.v1.ListRefreshResponse\"\x00\x12h\n" +
 	"\rRevokeRefresh\x12).civil.public.dex.v1.RevokeRefreshRequest\x1a*.civil.public.dex.v1.RevokeRefreshResponse\"\x00B\xd2\x01\n" +
 	"\x17com.civil.public.dex.v1B\bDexProtoP\x01Z<github.com/civil-labs/civil-api-go/civil/public/dex/v1;dexv1\xa2\x02\x03CPD\xaa\x02\x13Civil.Public.Dex.V1\xca\x02\x14Civil\\Public_\\Dex\\V1\xe2\x02 Civil\\Public_\\Dex\\V1\\GPBMetadata\xea\x02\x16Civil::Public::Dex::V1b\x06proto3"
@@ -1179,7 +1026,7 @@ func file_civil_public_dex_v1_dex_proto_rawDescGZIP() []byte {
 	return file_civil_public_dex_v1_dex_proto_rawDescData
 }
 
-var file_civil_public_dex_v1_dex_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_civil_public_dex_v1_dex_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
 var file_civil_public_dex_v1_dex_proto_goTypes = []any{
 	(*Client)(nil),                // 0: civil.public.dex.v1.Client
 	(*ClientInfo)(nil),            // 1: civil.public.dex.v1.ClientInfo
@@ -1193,38 +1040,34 @@ var file_civil_public_dex_v1_dex_proto_goTypes = []any{
 	(*UpdateClientResponse)(nil),  // 9: civil.public.dex.v1.UpdateClientResponse
 	(*ListClientsRequest)(nil),    // 10: civil.public.dex.v1.ListClientsRequest
 	(*ListClientsResponse)(nil),   // 11: civil.public.dex.v1.ListClientsResponse
-	(*GetVersionRequest)(nil),     // 12: civil.public.dex.v1.GetVersionRequest
-	(*GetVersionResponse)(nil),    // 13: civil.public.dex.v1.GetVersionResponse
-	(*RefreshTokenRef)(nil),       // 14: civil.public.dex.v1.RefreshTokenRef
-	(*ListRefreshRequest)(nil),    // 15: civil.public.dex.v1.ListRefreshRequest
-	(*ListRefreshResponse)(nil),   // 16: civil.public.dex.v1.ListRefreshResponse
-	(*RevokeRefreshRequest)(nil),  // 17: civil.public.dex.v1.RevokeRefreshRequest
-	(*RevokeRefreshResponse)(nil), // 18: civil.public.dex.v1.RevokeRefreshResponse
+	(*RefreshTokenRef)(nil),       // 12: civil.public.dex.v1.RefreshTokenRef
+	(*ListRefreshRequest)(nil),    // 13: civil.public.dex.v1.ListRefreshRequest
+	(*ListRefreshResponse)(nil),   // 14: civil.public.dex.v1.ListRefreshResponse
+	(*RevokeRefreshRequest)(nil),  // 15: civil.public.dex.v1.RevokeRefreshRequest
+	(*RevokeRefreshResponse)(nil), // 16: civil.public.dex.v1.RevokeRefreshResponse
 }
 var file_civil_public_dex_v1_dex_proto_depIdxs = []int32{
 	0,  // 0: civil.public.dex.v1.GetClientResponse.client:type_name -> civil.public.dex.v1.Client
 	0,  // 1: civil.public.dex.v1.CreateClientRequest.client:type_name -> civil.public.dex.v1.Client
 	0,  // 2: civil.public.dex.v1.CreateClientResponse.client:type_name -> civil.public.dex.v1.Client
 	1,  // 3: civil.public.dex.v1.ListClientsResponse.clients:type_name -> civil.public.dex.v1.ClientInfo
-	14, // 4: civil.public.dex.v1.ListRefreshResponse.refresh_tokens:type_name -> civil.public.dex.v1.RefreshTokenRef
+	12, // 4: civil.public.dex.v1.ListRefreshResponse.refresh_tokens:type_name -> civil.public.dex.v1.RefreshTokenRef
 	2,  // 5: civil.public.dex.v1.DexService.GetClient:input_type -> civil.public.dex.v1.GetClientRequest
 	4,  // 6: civil.public.dex.v1.DexService.CreateClient:input_type -> civil.public.dex.v1.CreateClientRequest
 	8,  // 7: civil.public.dex.v1.DexService.UpdateClient:input_type -> civil.public.dex.v1.UpdateClientRequest
 	6,  // 8: civil.public.dex.v1.DexService.DeleteClient:input_type -> civil.public.dex.v1.DeleteClientRequest
 	10, // 9: civil.public.dex.v1.DexService.ListClients:input_type -> civil.public.dex.v1.ListClientsRequest
-	12, // 10: civil.public.dex.v1.DexService.GetVersion:input_type -> civil.public.dex.v1.GetVersionRequest
-	15, // 11: civil.public.dex.v1.DexService.ListRefresh:input_type -> civil.public.dex.v1.ListRefreshRequest
-	17, // 12: civil.public.dex.v1.DexService.RevokeRefresh:input_type -> civil.public.dex.v1.RevokeRefreshRequest
-	3,  // 13: civil.public.dex.v1.DexService.GetClient:output_type -> civil.public.dex.v1.GetClientResponse
-	5,  // 14: civil.public.dex.v1.DexService.CreateClient:output_type -> civil.public.dex.v1.CreateClientResponse
-	9,  // 15: civil.public.dex.v1.DexService.UpdateClient:output_type -> civil.public.dex.v1.UpdateClientResponse
-	7,  // 16: civil.public.dex.v1.DexService.DeleteClient:output_type -> civil.public.dex.v1.DeleteClientResponse
-	11, // 17: civil.public.dex.v1.DexService.ListClients:output_type -> civil.public.dex.v1.ListClientsResponse
-	13, // 18: civil.public.dex.v1.DexService.GetVersion:output_type -> civil.public.dex.v1.GetVersionResponse
-	16, // 19: civil.public.dex.v1.DexService.ListRefresh:output_type -> civil.public.dex.v1.ListRefreshResponse
-	18, // 20: civil.public.dex.v1.DexService.RevokeRefresh:output_type -> civil.public.dex.v1.RevokeRefreshResponse
-	13, // [13:21] is the sub-list for method output_type
-	5,  // [5:13] is the sub-list for method input_type
+	13, // 10: civil.public.dex.v1.DexService.ListRefresh:input_type -> civil.public.dex.v1.ListRefreshRequest
+	15, // 11: civil.public.dex.v1.DexService.RevokeRefresh:input_type -> civil.public.dex.v1.RevokeRefreshRequest
+	3,  // 12: civil.public.dex.v1.DexService.GetClient:output_type -> civil.public.dex.v1.GetClientResponse
+	5,  // 13: civil.public.dex.v1.DexService.CreateClient:output_type -> civil.public.dex.v1.CreateClientResponse
+	9,  // 14: civil.public.dex.v1.DexService.UpdateClient:output_type -> civil.public.dex.v1.UpdateClientResponse
+	7,  // 15: civil.public.dex.v1.DexService.DeleteClient:output_type -> civil.public.dex.v1.DeleteClientResponse
+	11, // 16: civil.public.dex.v1.DexService.ListClients:output_type -> civil.public.dex.v1.ListClientsResponse
+	14, // 17: civil.public.dex.v1.DexService.ListRefresh:output_type -> civil.public.dex.v1.ListRefreshResponse
+	16, // 18: civil.public.dex.v1.DexService.RevokeRefresh:output_type -> civil.public.dex.v1.RevokeRefreshResponse
+	12, // [12:19] is the sub-list for method output_type
+	5,  // [5:12] is the sub-list for method input_type
 	5,  // [5:5] is the sub-list for extension type_name
 	5,  // [5:5] is the sub-list for extension extendee
 	0,  // [0:5] is the sub-list for field type_name
@@ -1241,7 +1084,7 @@ func file_civil_public_dex_v1_dex_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_public_dex_v1_dex_proto_rawDesc), len(file_civil_public_dex_v1_dex_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   19,
+			NumMessages:   17,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

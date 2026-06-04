@@ -43,8 +43,6 @@ const (
 	DexServiceDeleteClientProcedure = "/civil.public.dex.v1.DexService/DeleteClient"
 	// DexServiceListClientsProcedure is the fully-qualified name of the DexService's ListClients RPC.
 	DexServiceListClientsProcedure = "/civil.public.dex.v1.DexService/ListClients"
-	// DexServiceGetVersionProcedure is the fully-qualified name of the DexService's GetVersion RPC.
-	DexServiceGetVersionProcedure = "/civil.public.dex.v1.DexService/GetVersion"
 	// DexServiceListRefreshProcedure is the fully-qualified name of the DexService's ListRefresh RPC.
 	DexServiceListRefreshProcedure = "/civil.public.dex.v1.DexService/ListRefresh"
 	// DexServiceRevokeRefreshProcedure is the fully-qualified name of the DexService's RevokeRefresh
@@ -64,8 +62,6 @@ type DexServiceClient interface {
 	DeleteClient(context.Context, *connect.Request[v1.DeleteClientRequest]) (*connect.Response[v1.DeleteClientResponse], error)
 	// ListClients lists all client entries.
 	ListClients(context.Context, *connect.Request[v1.ListClientsRequest]) (*connect.Response[v1.ListClientsResponse], error)
-	// GetVersion returns version information of the server.
-	GetVersion(context.Context, *connect.Request[v1.GetVersionRequest]) (*connect.Response[v1.GetVersionResponse], error)
 	// ListRefresh lists all the refresh token entries for a particular user.
 	ListRefresh(context.Context, *connect.Request[v1.ListRefreshRequest]) (*connect.Response[v1.ListRefreshResponse], error)
 	// RevokeRefresh revokes the refresh token for the provided user-client pair.
@@ -115,12 +111,6 @@ func NewDexServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(dexServiceMethods.ByName("ListClients")),
 			connect.WithClientOptions(opts...),
 		),
-		getVersion: connect.NewClient[v1.GetVersionRequest, v1.GetVersionResponse](
-			httpClient,
-			baseURL+DexServiceGetVersionProcedure,
-			connect.WithSchema(dexServiceMethods.ByName("GetVersion")),
-			connect.WithClientOptions(opts...),
-		),
 		listRefresh: connect.NewClient[v1.ListRefreshRequest, v1.ListRefreshResponse](
 			httpClient,
 			baseURL+DexServiceListRefreshProcedure,
@@ -143,7 +133,6 @@ type dexServiceClient struct {
 	updateClient  *connect.Client[v1.UpdateClientRequest, v1.UpdateClientResponse]
 	deleteClient  *connect.Client[v1.DeleteClientRequest, v1.DeleteClientResponse]
 	listClients   *connect.Client[v1.ListClientsRequest, v1.ListClientsResponse]
-	getVersion    *connect.Client[v1.GetVersionRequest, v1.GetVersionResponse]
 	listRefresh   *connect.Client[v1.ListRefreshRequest, v1.ListRefreshResponse]
 	revokeRefresh *connect.Client[v1.RevokeRefreshRequest, v1.RevokeRefreshResponse]
 }
@@ -173,11 +162,6 @@ func (c *dexServiceClient) ListClients(ctx context.Context, req *connect.Request
 	return c.listClients.CallUnary(ctx, req)
 }
 
-// GetVersion calls civil.public.dex.v1.DexService.GetVersion.
-func (c *dexServiceClient) GetVersion(ctx context.Context, req *connect.Request[v1.GetVersionRequest]) (*connect.Response[v1.GetVersionResponse], error) {
-	return c.getVersion.CallUnary(ctx, req)
-}
-
 // ListRefresh calls civil.public.dex.v1.DexService.ListRefresh.
 func (c *dexServiceClient) ListRefresh(ctx context.Context, req *connect.Request[v1.ListRefreshRequest]) (*connect.Response[v1.ListRefreshResponse], error) {
 	return c.listRefresh.CallUnary(ctx, req)
@@ -200,8 +184,6 @@ type DexServiceHandler interface {
 	DeleteClient(context.Context, *connect.Request[v1.DeleteClientRequest]) (*connect.Response[v1.DeleteClientResponse], error)
 	// ListClients lists all client entries.
 	ListClients(context.Context, *connect.Request[v1.ListClientsRequest]) (*connect.Response[v1.ListClientsResponse], error)
-	// GetVersion returns version information of the server.
-	GetVersion(context.Context, *connect.Request[v1.GetVersionRequest]) (*connect.Response[v1.GetVersionResponse], error)
 	// ListRefresh lists all the refresh token entries for a particular user.
 	ListRefresh(context.Context, *connect.Request[v1.ListRefreshRequest]) (*connect.Response[v1.ListRefreshResponse], error)
 	// RevokeRefresh revokes the refresh token for the provided user-client pair.
@@ -247,12 +229,6 @@ func NewDexServiceHandler(svc DexServiceHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(dexServiceMethods.ByName("ListClients")),
 		connect.WithHandlerOptions(opts...),
 	)
-	dexServiceGetVersionHandler := connect.NewUnaryHandler(
-		DexServiceGetVersionProcedure,
-		svc.GetVersion,
-		connect.WithSchema(dexServiceMethods.ByName("GetVersion")),
-		connect.WithHandlerOptions(opts...),
-	)
 	dexServiceListRefreshHandler := connect.NewUnaryHandler(
 		DexServiceListRefreshProcedure,
 		svc.ListRefresh,
@@ -277,8 +253,6 @@ func NewDexServiceHandler(svc DexServiceHandler, opts ...connect.HandlerOption) 
 			dexServiceDeleteClientHandler.ServeHTTP(w, r)
 		case DexServiceListClientsProcedure:
 			dexServiceListClientsHandler.ServeHTTP(w, r)
-		case DexServiceGetVersionProcedure:
-			dexServiceGetVersionHandler.ServeHTTP(w, r)
 		case DexServiceListRefreshProcedure:
 			dexServiceListRefreshHandler.ServeHTTP(w, r)
 		case DexServiceRevokeRefreshProcedure:
@@ -310,10 +284,6 @@ func (UnimplementedDexServiceHandler) DeleteClient(context.Context, *connect.Req
 
 func (UnimplementedDexServiceHandler) ListClients(context.Context, *connect.Request[v1.ListClientsRequest]) (*connect.Response[v1.ListClientsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.dex.v1.DexService.ListClients is not implemented"))
-}
-
-func (UnimplementedDexServiceHandler) GetVersion(context.Context, *connect.Request[v1.GetVersionRequest]) (*connect.Response[v1.GetVersionResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.dex.v1.DexService.GetVersion is not implemented"))
 }
 
 func (UnimplementedDexServiceHandler) ListRefresh(context.Context, *connect.Request[v1.ListRefreshRequest]) (*connect.Response[v1.ListRefreshResponse], error) {
