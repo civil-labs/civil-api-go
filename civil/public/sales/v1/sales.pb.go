@@ -9,6 +9,7 @@ package salesv1
 import (
 	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	_ "github.com/google/gnostic/openapiv3"
+	interval "google.golang.org/genproto/googleapis/type/interval"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -134,7 +135,7 @@ func (x *Sale) GetBuyerId() string {
 
 type GetSalesByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
 	SystemAsOf    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -170,11 +171,11 @@ func (*GetSalesByParcelIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_sales_v1_sales_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetSalesByParcelIdRequest) GetParcelIds() []string {
+func (x *GetSalesByParcelIdRequest) GetParcelId() string {
 	if x != nil {
-		return x.ParcelIds
+		return x.ParcelId
 	}
-	return nil
+	return ""
 }
 
 func (x *GetSalesByParcelIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
@@ -186,6 +187,7 @@ func (x *GetSalesByParcelIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
 
 type GetSalesByParcelIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Sales         []*Sale                `protobuf:"bytes,1,rep,name=sales,proto3" json:"sales,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -220,8 +222,19 @@ func (*GetSalesByParcelIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_sales_v1_sales_proto_rawDescGZIP(), []int{2}
 }
 
+func (x *GetSalesByParcelIdResponse) GetSales() []*Sale {
+	if x != nil {
+		return x.Sales
+	}
+	return nil
+}
+
 type GetSalesByPolygonRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	WktPolygon    string                 `protobuf:"bytes,1,opt,name=wkt_polygon,json=wktPolygon,proto3" json:"wkt_polygon,omitempty"`
+	TimeRange     *interval.Interval     `protobuf:"bytes,2,opt,name=time_range,json=timeRange,proto3" json:"time_range,omitempty"`
+	MinSalePrice  string                 `protobuf:"bytes,3,opt,name=min_sale_price,json=minSalePrice,proto3" json:"min_sale_price,omitempty"`
+	MaxSalePrice  string                 `protobuf:"bytes,4,opt,name=max_sale_price,json=maxSalePrice,proto3" json:"max_sale_price,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -256,8 +269,37 @@ func (*GetSalesByPolygonRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_sales_v1_sales_proto_rawDescGZIP(), []int{3}
 }
 
+func (x *GetSalesByPolygonRequest) GetWktPolygon() string {
+	if x != nil {
+		return x.WktPolygon
+	}
+	return ""
+}
+
+func (x *GetSalesByPolygonRequest) GetTimeRange() *interval.Interval {
+	if x != nil {
+		return x.TimeRange
+	}
+	return nil
+}
+
+func (x *GetSalesByPolygonRequest) GetMinSalePrice() string {
+	if x != nil {
+		return x.MinSalePrice
+	}
+	return ""
+}
+
+func (x *GetSalesByPolygonRequest) GetMaxSalePrice() string {
+	if x != nil {
+		return x.MaxSalePrice
+	}
+	return ""
+}
+
 type GetSalesByPolygonResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Sales         []*Sale                `protobuf:"bytes,1,rep,name=sales,proto3" json:"sales,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -292,11 +334,18 @@ func (*GetSalesByPolygonResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_sales_v1_sales_proto_rawDescGZIP(), []int{4}
 }
 
+func (x *GetSalesByPolygonResponse) GetSales() []*Sale {
+	if x != nil {
+		return x.Sales
+	}
+	return nil
+}
+
 var File_civil_public_sales_v1_sales_proto protoreflect.FileDescriptor
 
 const file_civil_public_sales_v1_sales_proto_rawDesc = "" +
 	"\n" +
-	"!civil/public/sales/v1/sales.proto\x12\x15civil.public.sales.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xc3\x06\n" +
+	"!civil/public/sales/v1/sales.proto\x12\x15civil.public.sales.v1\x1a\x1bbuf/validate/validate.proto\x1a$gnostic/openapi/v3/annotations.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1agoogle/type/interval.proto\"\xc3\x06\n" +
 	"\x04Sale\x12q\n" +
 	"\asale_id\x18\x01 \x01(\tBX\xbaGM:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02 The unique identifier of a sale.\xbaH\x05r\x03\xb0\x01\x01R\x06saleId\x12y\n" +
 	"\x0esale_timestamp\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB6\xbaG \x92\x02\x1dThe time the sale occured at.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01R\rsaleTimestamp\x12D\n" +
@@ -317,16 +366,25 @@ const file_civil_public_sales_v1_sales_proto_rawDesc = "" +
 	"\f_seller_nameB\x11\n" +
 	"\x0f_seller_addressB\r\n" +
 	"\v_buyer_nameB\x10\n" +
-	"\x0e_buyer_address\"\x98\x03\n" +
-	"\x19GetSalesByParcelIdRequest\x12\xbb\x01\n" +
-	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x9b\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x10\x92\x01\r\b\x01\x10d\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\xab\x01\n" +
+	"\x0e_buyer_address\"\xd6\x02\n" +
+	"\x19GetSalesByParcelIdRequest\x12z\n" +
+	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12\xab\x01\n" +
 	"\fsystem_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampBh\xbaGP\x92\x02MThe transaction time to evaluate the database state against. Defaults to now.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x00R\n" +
 	"systemAsOf\x88\x01\x01B\x0f\n" +
-	"\r_system_as_of\"\x1c\n" +
-	"\x1aGetSalesByParcelIdResponse\"\x1a\n" +
-	"\x18GetSalesByPolygonRequest\"\x1b\n" +
-	"\x19GetSalesByPolygonResponse2\x8b\x02\n" +
+	"\r_system_as_of\"Y\n" +
+	"\x1aGetSalesByParcelIdResponse\x12;\n" +
+	"\x05sales\x18\x01 \x03(\v2\x1b.civil.public.sales.v1.SaleB\b\xbaH\x05\x92\x01\x02\x10\n" +
+	"R\x05sales\"\x91\x04\n" +
+	"\x18GetSalesByPolygonRequest\x12\x9b\x01\n" +
+	"\vwkt_polygon\x18\x01 \x01(\tBz\xbaHwru\x18\x90N2p^(?i)(POINT|LINESTRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON|GEOMETRYCOLLECTION)\\s*(Z|M|ZM)?\\s*\\(.*\\)$R\n" +
+	"wktPolygon\x12\xc6\x01\n" +
+	"\n" +
+	"time_range\x18\x02 \x01(\v2\x15.google.type.IntervalB\x8f\x01\xbaH\x8b\x01\xba\x01\x87\x01\n" +
+	"\x10valid_time_range\x12\"start_time must be before end_time\x1aO!has(this.start_time) || !has(this.end_time) || this.start_time < this.end_timeR\ttimeRange\x12F\n" +
+	"\x0emin_sale_price\x18\x03 \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\fminSalePrice\x12F\n" +
+	"\x0emax_sale_price\x18\x04 \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$R\fmaxSalePrice\"X\n" +
+	"\x19GetSalesByPolygonResponse\x12;\n" +
+	"\x05sales\x18\x01 \x03(\v2\x1b.civil.public.sales.v1.SaleB\b\xbaH\x05\x92\x01\x02\x10dR\x05sales2\x8b\x02\n" +
 	"\fSalesService\x12~\n" +
 	"\x12GetSalesByParcelId\x120.civil.public.sales.v1.GetSalesByParcelIdRequest\x1a1.civil.public.sales.v1.GetSalesByParcelIdResponse\"\x03\x90\x02\x01\x12{\n" +
 	"\x11GetSalesByPolygon\x12/.civil.public.sales.v1.GetSalesByPolygonRequest\x1a0.civil.public.sales.v1.GetSalesByPolygonResponse\"\x03\x90\x02\x01B\xe2\x01\n" +
@@ -353,19 +411,23 @@ var file_civil_public_sales_v1_sales_proto_goTypes = []any{
 	(*GetSalesByPolygonRequest)(nil),   // 3: civil.public.sales.v1.GetSalesByPolygonRequest
 	(*GetSalesByPolygonResponse)(nil),  // 4: civil.public.sales.v1.GetSalesByPolygonResponse
 	(*timestamppb.Timestamp)(nil),      // 5: google.protobuf.Timestamp
+	(*interval.Interval)(nil),          // 6: google.type.Interval
 }
 var file_civil_public_sales_v1_sales_proto_depIdxs = []int32{
 	5, // 0: civil.public.sales.v1.Sale.sale_timestamp:type_name -> google.protobuf.Timestamp
 	5, // 1: civil.public.sales.v1.GetSalesByParcelIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
-	1, // 2: civil.public.sales.v1.SalesService.GetSalesByParcelId:input_type -> civil.public.sales.v1.GetSalesByParcelIdRequest
-	3, // 3: civil.public.sales.v1.SalesService.GetSalesByPolygon:input_type -> civil.public.sales.v1.GetSalesByPolygonRequest
-	2, // 4: civil.public.sales.v1.SalesService.GetSalesByParcelId:output_type -> civil.public.sales.v1.GetSalesByParcelIdResponse
-	4, // 5: civil.public.sales.v1.SalesService.GetSalesByPolygon:output_type -> civil.public.sales.v1.GetSalesByPolygonResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	0, // 2: civil.public.sales.v1.GetSalesByParcelIdResponse.sales:type_name -> civil.public.sales.v1.Sale
+	6, // 3: civil.public.sales.v1.GetSalesByPolygonRequest.time_range:type_name -> google.type.Interval
+	0, // 4: civil.public.sales.v1.GetSalesByPolygonResponse.sales:type_name -> civil.public.sales.v1.Sale
+	1, // 5: civil.public.sales.v1.SalesService.GetSalesByParcelId:input_type -> civil.public.sales.v1.GetSalesByParcelIdRequest
+	3, // 6: civil.public.sales.v1.SalesService.GetSalesByPolygon:input_type -> civil.public.sales.v1.GetSalesByPolygonRequest
+	2, // 7: civil.public.sales.v1.SalesService.GetSalesByParcelId:output_type -> civil.public.sales.v1.GetSalesByParcelIdResponse
+	4, // 8: civil.public.sales.v1.SalesService.GetSalesByPolygon:output_type -> civil.public.sales.v1.GetSalesByPolygonResponse
+	7, // [7:9] is the sub-list for method output_type
+	5, // [5:7] is the sub-list for method input_type
+	5, // [5:5] is the sub-list for extension type_name
+	5, // [5:5] is the sub-list for extension extendee
+	0, // [0:5] is the sub-list for field type_name
 }
 
 func init() { file_civil_public_sales_v1_sales_proto_init() }
