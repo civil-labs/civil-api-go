@@ -22,6 +22,61 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type ParcelAttribute int32
+
+const (
+	ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED     ParcelAttribute = 0
+	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT ParcelAttribute = 1
+	ParcelAttribute_PARCEL_ATTRIBUTE_FRONTAGE_FT     ParcelAttribute = 2
+	ParcelAttribute_PARCEL_ATTRIBUTE_DEPTH_FT        ParcelAttribute = 3
+	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_USE_ID     ParcelAttribute = 4
+)
+
+// Enum value maps for ParcelAttribute.
+var (
+	ParcelAttribute_name = map[int32]string{
+		0: "PARCEL_ATTRIBUTE_UNSPECIFIED",
+		1: "PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT",
+		2: "PARCEL_ATTRIBUTE_FRONTAGE_FT",
+		3: "PARCEL_ATTRIBUTE_DEPTH_FT",
+		4: "PARCEL_ATTRIBUTE_LAND_USE_ID",
+	}
+	ParcelAttribute_value = map[string]int32{
+		"PARCEL_ATTRIBUTE_UNSPECIFIED":     0,
+		"PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT": 1,
+		"PARCEL_ATTRIBUTE_FRONTAGE_FT":     2,
+		"PARCEL_ATTRIBUTE_DEPTH_FT":        3,
+		"PARCEL_ATTRIBUTE_LAND_USE_ID":     4,
+	}
+)
+
+func (x ParcelAttribute) Enum() *ParcelAttribute {
+	p := new(ParcelAttribute)
+	*p = x
+	return p
+}
+
+func (x ParcelAttribute) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ParcelAttribute) Descriptor() protoreflect.EnumDescriptor {
+	return file_civil_mesh_parcels_v1_parcels_proto_enumTypes[0].Descriptor()
+}
+
+func (ParcelAttribute) Type() protoreflect.EnumType {
+	return &file_civil_mesh_parcels_v1_parcels_proto_enumTypes[0]
+}
+
+func (x ParcelAttribute) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ParcelAttribute.Descriptor instead.
+func (ParcelAttribute) EnumDescriptor() ([]byte, []int) {
+	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{0}
+}
+
 type ParcelAffordances struct {
 	state                   protoimpl.MessageState `protogen:"open.v1"`
 	AffordanceIds           []string               `protobuf:"bytes,1,rep,name=affordance_ids,json=affordanceIds,proto3" json:"affordance_ids,omitempty"`
@@ -532,6 +587,13 @@ func (x *GetParcelsByIdResponse) GetParcels() map[string]*Parcel {
 
 type UpdateParcelRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	AddressId     *string                `protobuf:"bytes,2,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
+	LandUseId     *string                `protobuf:"bytes,3,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
+	LandAreaSqFt  *float64               `protobuf:"fixed64,4,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
+	FrontageFt    *float64               `protobuf:"fixed64,5,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
+	DepthFt       *float64               `protobuf:"fixed64,6,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
+	Properties    *string                `protobuf:"bytes,7,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -564,6 +626,55 @@ func (x *UpdateParcelRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use UpdateParcelRequest.ProtoReflect.Descriptor instead.
 func (*UpdateParcelRequest) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *UpdateParcelRequest) GetParcelId() string {
+	if x != nil {
+		return x.ParcelId
+	}
+	return ""
+}
+
+func (x *UpdateParcelRequest) GetAddressId() string {
+	if x != nil && x.AddressId != nil {
+		return *x.AddressId
+	}
+	return ""
+}
+
+func (x *UpdateParcelRequest) GetLandUseId() string {
+	if x != nil && x.LandUseId != nil {
+		return *x.LandUseId
+	}
+	return ""
+}
+
+func (x *UpdateParcelRequest) GetLandAreaSqFt() float64 {
+	if x != nil && x.LandAreaSqFt != nil {
+		return *x.LandAreaSqFt
+	}
+	return 0
+}
+
+func (x *UpdateParcelRequest) GetFrontageFt() float64 {
+	if x != nil && x.FrontageFt != nil {
+		return *x.FrontageFt
+	}
+	return 0
+}
+
+func (x *UpdateParcelRequest) GetDepthFt() float64 {
+	if x != nil && x.DepthFt != nil {
+		return *x.DepthFt
+	}
+	return 0
+}
+
+func (x *UpdateParcelRequest) GetProperties() string {
+	if x != nil && x.Properties != nil {
+		return *x.Properties
+	}
+	return ""
 }
 
 type UpdateParcelResponse struct {
@@ -604,6 +715,10 @@ func (*UpdateParcelResponse) Descriptor() ([]byte, []int) {
 
 type GetNumericalParcelStatsByIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	Attribute     ParcelAttribute        `protobuf:"varint,2,opt,name=attribute,proto3,enum=civil.mesh.parcels.v1.ParcelAttribute" json:"attribute,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
+	SystemAsOf    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -638,10 +753,55 @@ func (*GetNumericalParcelStatsByIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{7}
 }
 
+func (x *GetNumericalParcelStatsByIdRequest) GetParcelIds() []string {
+	if x != nil {
+		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetNumericalParcelStatsByIdRequest) GetAttribute() ParcelAttribute {
+	if x != nil {
+		return x.Attribute
+	}
+	return ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED
+}
+
+func (x *GetNumericalParcelStatsByIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
+	}
+	return nil
+}
+
+func (x *GetNumericalParcelStatsByIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.SystemAsOf
+	}
+	return nil
+}
+
 type GetNumericalParcelStatsByIdResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state                   protoimpl.MessageState `protogen:"open.v1"`
+	Mode                    float32                `protobuf:"fixed32,1,opt,name=mode,proto3" json:"mode,omitempty"`
+	Minimum                 float32                `protobuf:"fixed32,2,opt,name=minimum,proto3" json:"minimum,omitempty"`
+	Maximum                 float32                `protobuf:"fixed32,3,opt,name=maximum,proto3" json:"maximum,omitempty"`
+	Range                   float32                `protobuf:"fixed32,4,opt,name=range,proto3" json:"range,omitempty"`
+	Percentile_10           float32                `protobuf:"fixed32,5,opt,name=percentile_10,json=percentile10,proto3" json:"percentile_10,omitempty"`
+	Percentile_20           float32                `protobuf:"fixed32,6,opt,name=percentile_20,json=percentile20,proto3" json:"percentile_20,omitempty"`
+	Percentile_30           float32                `protobuf:"fixed32,7,opt,name=percentile_30,json=percentile30,proto3" json:"percentile_30,omitempty"`
+	Percentile_40           float32                `protobuf:"fixed32,8,opt,name=percentile_40,json=percentile40,proto3" json:"percentile_40,omitempty"`
+	Percentile_50           float32                `protobuf:"fixed32,9,opt,name=percentile_50,json=percentile50,proto3" json:"percentile_50,omitempty"`
+	Percentile_60           float32                `protobuf:"fixed32,10,opt,name=percentile_60,json=percentile60,proto3" json:"percentile_60,omitempty"`
+	Percentile_70           float32                `protobuf:"fixed32,11,opt,name=percentile_70,json=percentile70,proto3" json:"percentile_70,omitempty"`
+	Percentile_80           float32                `protobuf:"fixed32,12,opt,name=percentile_80,json=percentile80,proto3" json:"percentile_80,omitempty"`
+	Percentile_90           float32                `protobuf:"fixed32,13,opt,name=percentile_90,json=percentile90,proto3" json:"percentile_90,omitempty"`
+	Percentile_100          float32                `protobuf:"fixed32,14,opt,name=percentile_100,json=percentile100,proto3" json:"percentile_100,omitempty"`
+	Mean                    float32                `protobuf:"fixed32,15,opt,name=mean,proto3" json:"mean,omitempty"`
+	StandardDeviation       float32                `protobuf:"fixed32,16,opt,name=standard_deviation,json=standardDeviation,proto3" json:"standard_deviation,omitempty"`
+	CoefficientOfDispersion float32                `protobuf:"fixed32,17,opt,name=coefficient_of_dispersion,json=coefficientOfDispersion,proto3" json:"coefficient_of_dispersion,omitempty"`
+	unknownFields           protoimpl.UnknownFields
+	sizeCache               protoimpl.SizeCache
 }
 
 func (x *GetNumericalParcelStatsByIdResponse) Reset() {
@@ -674,8 +834,131 @@ func (*GetNumericalParcelStatsByIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{8}
 }
 
+func (x *GetNumericalParcelStatsByIdResponse) GetMode() float32 {
+	if x != nil {
+		return x.Mode
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetMinimum() float32 {
+	if x != nil {
+		return x.Minimum
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetMaximum() float32 {
+	if x != nil {
+		return x.Maximum
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetRange() float32 {
+	if x != nil {
+		return x.Range
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_10() float32 {
+	if x != nil {
+		return x.Percentile_10
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_20() float32 {
+	if x != nil {
+		return x.Percentile_20
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_30() float32 {
+	if x != nil {
+		return x.Percentile_30
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_40() float32 {
+	if x != nil {
+		return x.Percentile_40
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_50() float32 {
+	if x != nil {
+		return x.Percentile_50
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_60() float32 {
+	if x != nil {
+		return x.Percentile_60
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_70() float32 {
+	if x != nil {
+		return x.Percentile_70
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_80() float32 {
+	if x != nil {
+		return x.Percentile_80
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_90() float32 {
+	if x != nil {
+		return x.Percentile_90
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetPercentile_100() float32 {
+	if x != nil {
+		return x.Percentile_100
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetMean() float32 {
+	if x != nil {
+		return x.Mean
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetStandardDeviation() float32 {
+	if x != nil {
+		return x.StandardDeviation
+	}
+	return 0
+}
+
+func (x *GetNumericalParcelStatsByIdResponse) GetCoefficientOfDispersion() float32 {
+	if x != nil {
+		return x.CoefficientOfDispersion
+	}
+	return 0
+}
+
 type GetCategoricalParcelStatsByIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	Attribute     ParcelAttribute        `protobuf:"varint,2,opt,name=attribute,proto3,enum=civil.mesh.parcels.v1.ParcelAttribute" json:"attribute,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
+	SystemAsOf    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -710,8 +993,38 @@ func (*GetCategoricalParcelStatsByIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{9}
 }
 
+func (x *GetCategoricalParcelStatsByIdRequest) GetParcelIds() []string {
+	if x != nil {
+		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetCategoricalParcelStatsByIdRequest) GetAttribute() ParcelAttribute {
+	if x != nil {
+		return x.Attribute
+	}
+	return ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED
+}
+
+func (x *GetCategoricalParcelStatsByIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
+	}
+	return nil
+}
+
+func (x *GetCategoricalParcelStatsByIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.SystemAsOf
+	}
+	return nil
+}
+
 type GetCategoricalParcelStatsByIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Mode          string                 `protobuf:"bytes,1,opt,name=mode,proto3" json:"mode,omitempty"`
+	UniqueValues  map[string]int32       `protobuf:"bytes,2,rep,name=unique_values,json=uniqueValues,proto3" json:"unique_values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -744,6 +1057,20 @@ func (x *GetCategoricalParcelStatsByIdResponse) ProtoReflect() protoreflect.Mess
 // Deprecated: Use GetCategoricalParcelStatsByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetCategoricalParcelStatsByIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetCategoricalParcelStatsByIdResponse) GetMode() string {
+	if x != nil {
+		return x.Mode
+	}
+	return ""
+}
+
+func (x *GetCategoricalParcelStatsByIdResponse) GetUniqueValues() map[string]int32 {
+	if x != nil {
+		return x.UniqueValues
+	}
+	return nil
 }
 
 var File_civil_mesh_parcels_v1_parcels_proto protoreflect.FileDescriptor
@@ -840,13 +1167,75 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\aparcels\x18\x01 \x03(\v2:.civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntryR\aparcels\x1aY\n" +
 	"\fParcelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x123\n" +
-	"\x05value\x18\x02 \x01(\v2\x1d.civil.mesh.parcels.v1.ParcelR\x05value:\x028\x01\"\x15\n" +
-	"\x13UpdateParcelRequest\"\x16\n" +
-	"\x14UpdateParcelResponse\"$\n" +
-	"\"GetNumericalParcelStatsByIdRequest\"%\n" +
-	"#GetNumericalParcelStatsByIdResponse\"&\n" +
-	"$GetCategoricalParcelStatsByIdRequest\"'\n" +
-	"%GetCategoricalParcelStatsByIdResponse2\xa4\x04\n" +
+	"\x05value\x18\x02 \x01(\v2\x1d.civil.mesh.parcels.v1.ParcelR\x05value:\x028\x01\"\xf1\x02\n" +
+	"\x13UpdateParcelRequest\x12\x1b\n" +
+	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\"\n" +
+	"\n" +
+	"address_id\x18\x02 \x01(\tH\x00R\taddressId\x88\x01\x01\x12#\n" +
+	"\vland_use_id\x18\x03 \x01(\tH\x01R\tlandUseId\x88\x01\x01\x12*\n" +
+	"\x0fland_area_sq_ft\x18\x04 \x01(\x01H\x02R\flandAreaSqFt\x88\x01\x01\x12$\n" +
+	"\vfrontage_ft\x18\x05 \x01(\x01H\x03R\n" +
+	"frontageFt\x88\x01\x01\x12\x1e\n" +
+	"\bdepth_ft\x18\x06 \x01(\x01H\x04R\adepthFt\x88\x01\x01\x12#\n" +
+	"\n" +
+	"properties\x18\a \x01(\tH\x05R\n" +
+	"properties\x88\x01\x01B\r\n" +
+	"\v_address_idB\x0e\n" +
+	"\f_land_use_idB\x12\n" +
+	"\x10_land_area_sq_ftB\x0e\n" +
+	"\f_frontage_ftB\v\n" +
+	"\t_depth_ftB\r\n" +
+	"\v_properties\"\x16\n" +
+	"\x14UpdateParcelResponse\"\xae\x02\n" +
+	"\"GetNumericalParcelStatsByIdRequest\x12\x1d\n" +
+	"\n" +
+	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\x12D\n" +
+	"\tattribute\x18\x02 \x01(\x0e2&.civil.mesh.parcels.v1.ParcelAttributeR\tattribute\x12?\n" +
+	"\vlegal_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\tlegalAsOf\x88\x01\x01\x12A\n" +
+	"\fsystem_as_of\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\n" +
+	"systemAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_ofB\x0f\n" +
+	"\r_system_as_of\"\xf6\x04\n" +
+	"#GetNumericalParcelStatsByIdResponse\x12\x12\n" +
+	"\x04mode\x18\x01 \x01(\x02R\x04mode\x12\x18\n" +
+	"\aminimum\x18\x02 \x01(\x02R\aminimum\x12\x18\n" +
+	"\amaximum\x18\x03 \x01(\x02R\amaximum\x12\x14\n" +
+	"\x05range\x18\x04 \x01(\x02R\x05range\x12#\n" +
+	"\rpercentile_10\x18\x05 \x01(\x02R\fpercentile10\x12#\n" +
+	"\rpercentile_20\x18\x06 \x01(\x02R\fpercentile20\x12#\n" +
+	"\rpercentile_30\x18\a \x01(\x02R\fpercentile30\x12#\n" +
+	"\rpercentile_40\x18\b \x01(\x02R\fpercentile40\x12#\n" +
+	"\rpercentile_50\x18\t \x01(\x02R\fpercentile50\x12#\n" +
+	"\rpercentile_60\x18\n" +
+	" \x01(\x02R\fpercentile60\x12#\n" +
+	"\rpercentile_70\x18\v \x01(\x02R\fpercentile70\x12#\n" +
+	"\rpercentile_80\x18\f \x01(\x02R\fpercentile80\x12#\n" +
+	"\rpercentile_90\x18\r \x01(\x02R\fpercentile90\x12%\n" +
+	"\x0epercentile_100\x18\x0e \x01(\x02R\rpercentile100\x12\x12\n" +
+	"\x04mean\x18\x0f \x01(\x02R\x04mean\x12-\n" +
+	"\x12standard_deviation\x18\x10 \x01(\x02R\x11standardDeviation\x12:\n" +
+	"\x19coefficient_of_dispersion\x18\x11 \x01(\x02R\x17coefficientOfDispersion\"\xb0\x02\n" +
+	"$GetCategoricalParcelStatsByIdRequest\x12\x1d\n" +
+	"\n" +
+	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\x12D\n" +
+	"\tattribute\x18\x02 \x01(\x0e2&.civil.mesh.parcels.v1.ParcelAttributeR\tattribute\x12?\n" +
+	"\vlegal_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\tlegalAsOf\x88\x01\x01\x12A\n" +
+	"\fsystem_as_of\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\n" +
+	"systemAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_ofB\x0f\n" +
+	"\r_system_as_of\"\xf1\x01\n" +
+	"%GetCategoricalParcelStatsByIdResponse\x12\x12\n" +
+	"\x04mode\x18\x01 \x01(\tR\x04mode\x12s\n" +
+	"\runique_values\x18\x02 \x03(\v2N.civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse.UniqueValuesEntryR\funiqueValues\x1a?\n" +
+	"\x11UniqueValuesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01*\xbc\x01\n" +
+	"\x0fParcelAttribute\x12 \n" +
+	"\x1cPARCEL_ATTRIBUTE_UNSPECIFIED\x10\x00\x12$\n" +
+	" PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT\x10\x01\x12 \n" +
+	"\x1cPARCEL_ATTRIBUTE_FRONTAGE_FT\x10\x02\x12\x1d\n" +
+	"\x19PARCEL_ATTRIBUTE_DEPTH_FT\x10\x03\x12 \n" +
+	"\x1cPARCEL_ATTRIBUTE_LAND_USE_ID\x10\x042\xa4\x04\n" +
 	"\x0eParcelsService\x12o\n" +
 	"\x0eGetParcelsById\x12,.civil.mesh.parcels.v1.GetParcelsByIdRequest\x1a-.civil.mesh.parcels.v1.GetParcelsByIdResponse\"\x00\x12i\n" +
 	"\fUpdateParcel\x12*.civil.mesh.parcels.v1.UpdateParcelRequest\x1a+.civil.mesh.parcels.v1.UpdateParcelResponse\"\x00\x12\x96\x01\n" +
@@ -866,42 +1255,52 @@ func file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP() []byte {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescData
 }
 
-var file_civil_mesh_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_civil_mesh_parcels_v1_parcels_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_civil_mesh_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_civil_mesh_parcels_v1_parcels_proto_goTypes = []any{
-	(*ParcelAffordances)(nil),                     // 0: civil.mesh.parcels.v1.ParcelAffordances
-	(*ParcelImprovementsSummary)(nil),             // 1: civil.mesh.parcels.v1.ParcelImprovementsSummary
-	(*Parcel)(nil),                                // 2: civil.mesh.parcels.v1.Parcel
-	(*GetParcelsByIdRequest)(nil),                 // 3: civil.mesh.parcels.v1.GetParcelsByIdRequest
-	(*GetParcelsByIdResponse)(nil),                // 4: civil.mesh.parcels.v1.GetParcelsByIdResponse
-	(*UpdateParcelRequest)(nil),                   // 5: civil.mesh.parcels.v1.UpdateParcelRequest
-	(*UpdateParcelResponse)(nil),                  // 6: civil.mesh.parcels.v1.UpdateParcelResponse
-	(*GetNumericalParcelStatsByIdRequest)(nil),    // 7: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
-	(*GetNumericalParcelStatsByIdResponse)(nil),   // 8: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
-	(*GetCategoricalParcelStatsByIdRequest)(nil),  // 9: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
-	(*GetCategoricalParcelStatsByIdResponse)(nil), // 10: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
-	nil,                           // 11: civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
-	(*timestamppb.Timestamp)(nil), // 12: google.protobuf.Timestamp
+	(ParcelAttribute)(0),                          // 0: civil.mesh.parcels.v1.ParcelAttribute
+	(*ParcelAffordances)(nil),                     // 1: civil.mesh.parcels.v1.ParcelAffordances
+	(*ParcelImprovementsSummary)(nil),             // 2: civil.mesh.parcels.v1.ParcelImprovementsSummary
+	(*Parcel)(nil),                                // 3: civil.mesh.parcels.v1.Parcel
+	(*GetParcelsByIdRequest)(nil),                 // 4: civil.mesh.parcels.v1.GetParcelsByIdRequest
+	(*GetParcelsByIdResponse)(nil),                // 5: civil.mesh.parcels.v1.GetParcelsByIdResponse
+	(*UpdateParcelRequest)(nil),                   // 6: civil.mesh.parcels.v1.UpdateParcelRequest
+	(*UpdateParcelResponse)(nil),                  // 7: civil.mesh.parcels.v1.UpdateParcelResponse
+	(*GetNumericalParcelStatsByIdRequest)(nil),    // 8: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
+	(*GetNumericalParcelStatsByIdResponse)(nil),   // 9: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
+	(*GetCategoricalParcelStatsByIdRequest)(nil),  // 10: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
+	(*GetCategoricalParcelStatsByIdResponse)(nil), // 11: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
+	nil,                           // 12: civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
+	nil,                           // 13: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse.UniqueValuesEntry
+	(*timestamppb.Timestamp)(nil), // 14: google.protobuf.Timestamp
 }
 var file_civil_mesh_parcels_v1_parcels_proto_depIdxs = []int32{
-	0,  // 0: civil.mesh.parcels.v1.Parcel.affordances:type_name -> civil.mesh.parcels.v1.ParcelAffordances
-	1,  // 1: civil.mesh.parcels.v1.Parcel.improvement_summary:type_name -> civil.mesh.parcels.v1.ParcelImprovementsSummary
-	12, // 2: civil.mesh.parcels.v1.GetParcelsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
-	12, // 3: civil.mesh.parcels.v1.GetParcelsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
-	11, // 4: civil.mesh.parcels.v1.GetParcelsByIdResponse.parcels:type_name -> civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
-	2,  // 5: civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry.value:type_name -> civil.mesh.parcels.v1.Parcel
-	3,  // 6: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:input_type -> civil.mesh.parcels.v1.GetParcelsByIdRequest
-	5,  // 7: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.mesh.parcels.v1.UpdateParcelRequest
-	7,  // 8: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:input_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
-	9,  // 9: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:input_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
-	4,  // 10: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.mesh.parcels.v1.GetParcelsByIdResponse
-	6,  // 11: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.mesh.parcels.v1.UpdateParcelResponse
-	8,  // 12: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
-	10, // 13: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
-	10, // [10:14] is the sub-list for method output_type
-	6,  // [6:10] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	1,  // 0: civil.mesh.parcels.v1.Parcel.affordances:type_name -> civil.mesh.parcels.v1.ParcelAffordances
+	2,  // 1: civil.mesh.parcels.v1.Parcel.improvement_summary:type_name -> civil.mesh.parcels.v1.ParcelImprovementsSummary
+	14, // 2: civil.mesh.parcels.v1.GetParcelsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	14, // 3: civil.mesh.parcels.v1.GetParcelsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	12, // 4: civil.mesh.parcels.v1.GetParcelsByIdResponse.parcels:type_name -> civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
+	0,  // 5: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest.attribute:type_name -> civil.mesh.parcels.v1.ParcelAttribute
+	14, // 6: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	14, // 7: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	0,  // 8: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest.attribute:type_name -> civil.mesh.parcels.v1.ParcelAttribute
+	14, // 9: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	14, // 10: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	13, // 11: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse.unique_values:type_name -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse.UniqueValuesEntry
+	3,  // 12: civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry.value:type_name -> civil.mesh.parcels.v1.Parcel
+	4,  // 13: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:input_type -> civil.mesh.parcels.v1.GetParcelsByIdRequest
+	6,  // 14: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.mesh.parcels.v1.UpdateParcelRequest
+	8,  // 15: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:input_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
+	10, // 16: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:input_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
+	5,  // 17: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.mesh.parcels.v1.GetParcelsByIdResponse
+	7,  // 18: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.mesh.parcels.v1.UpdateParcelResponse
+	9,  // 19: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
+	11, // 20: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
+	17, // [17:21] is the sub-list for method output_type
+	13, // [13:17] is the sub-list for method input_type
+	13, // [13:13] is the sub-list for extension type_name
+	13, // [13:13] is the sub-list for extension extendee
+	0,  // [0:13] is the sub-list for field type_name
 }
 
 func init() { file_civil_mesh_parcels_v1_parcels_proto_init() }
@@ -913,18 +1312,22 @@ func file_civil_mesh_parcels_v1_parcels_proto_init() {
 	file_civil_mesh_parcels_v1_parcels_proto_msgTypes[1].OneofWrappers = []any{}
 	file_civil_mesh_parcels_v1_parcels_proto_msgTypes[2].OneofWrappers = []any{}
 	file_civil_mesh_parcels_v1_parcels_proto_msgTypes[3].OneofWrappers = []any{}
+	file_civil_mesh_parcels_v1_parcels_proto_msgTypes[5].OneofWrappers = []any{}
+	file_civil_mesh_parcels_v1_parcels_proto_msgTypes[7].OneofWrappers = []any{}
+	file_civil_mesh_parcels_v1_parcels_proto_msgTypes[9].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_mesh_parcels_v1_parcels_proto_rawDesc), len(file_civil_mesh_parcels_v1_parcels_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   12,
+			NumEnums:      1,
+			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_civil_mesh_parcels_v1_parcels_proto_goTypes,
 		DependencyIndexes: file_civil_mesh_parcels_v1_parcels_proto_depIdxs,
+		EnumInfos:         file_civil_mesh_parcels_v1_parcels_proto_enumTypes,
 		MessageInfos:      file_civil_mesh_parcels_v1_parcels_proto_msgTypes,
 	}.Build()
 	File_civil_mesh_parcels_v1_parcels_proto = out.File

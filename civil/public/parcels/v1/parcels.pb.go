@@ -599,18 +599,16 @@ func (x *GetParcelsByIdResponse) GetParcels() map[string]*Parcel {
 }
 
 type UpdateParcelRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	ParcelId          string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	LandAreaSqFt      *float64               `protobuf:"fixed64,2,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
-	MarketLandValue   *string                `protobuf:"bytes,3,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
-	AssessedLandValue *string                `protobuf:"bytes,4,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
-	AddressId         *string                `protobuf:"bytes,5,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
-	OwnerId           *string                `protobuf:"bytes,6,opt,name=owner_id,json=ownerId,proto3,oneof" json:"owner_id,omitempty"`
-	LandUseId         *string                `protobuf:"bytes,7,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
-	NeighborhoodId    *string                `protobuf:"bytes,8,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
-	MarketAreaId      *string                `protobuf:"bytes,9,opt,name=market_area_id,json=marketAreaId,proto3,oneof" json:"market_area_id,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId      string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	AddressId     *string                `protobuf:"bytes,2,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
+	LandUseId     *string                `protobuf:"bytes,3,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
+	LandAreaSqFt  *float64               `protobuf:"fixed64,4,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
+	FrontageFt    *float64               `protobuf:"fixed64,5,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
+	DepthFt       *float64               `protobuf:"fixed64,6,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
+	Properties    *string                `protobuf:"bytes,7,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *UpdateParcelRequest) Reset() {
@@ -650,37 +648,9 @@ func (x *UpdateParcelRequest) GetParcelId() string {
 	return ""
 }
 
-func (x *UpdateParcelRequest) GetLandAreaSqFt() float64 {
-	if x != nil && x.LandAreaSqFt != nil {
-		return *x.LandAreaSqFt
-	}
-	return 0
-}
-
-func (x *UpdateParcelRequest) GetMarketLandValue() string {
-	if x != nil && x.MarketLandValue != nil {
-		return *x.MarketLandValue
-	}
-	return ""
-}
-
-func (x *UpdateParcelRequest) GetAssessedLandValue() string {
-	if x != nil && x.AssessedLandValue != nil {
-		return *x.AssessedLandValue
-	}
-	return ""
-}
-
 func (x *UpdateParcelRequest) GetAddressId() string {
 	if x != nil && x.AddressId != nil {
 		return *x.AddressId
-	}
-	return ""
-}
-
-func (x *UpdateParcelRequest) GetOwnerId() string {
-	if x != nil && x.OwnerId != nil {
-		return *x.OwnerId
 	}
 	return ""
 }
@@ -692,16 +662,30 @@ func (x *UpdateParcelRequest) GetLandUseId() string {
 	return ""
 }
 
-func (x *UpdateParcelRequest) GetNeighborhoodId() string {
-	if x != nil && x.NeighborhoodId != nil {
-		return *x.NeighborhoodId
+func (x *UpdateParcelRequest) GetLandAreaSqFt() float64 {
+	if x != nil && x.LandAreaSqFt != nil {
+		return *x.LandAreaSqFt
 	}
-	return ""
+	return 0
 }
 
-func (x *UpdateParcelRequest) GetMarketAreaId() string {
-	if x != nil && x.MarketAreaId != nil {
-		return *x.MarketAreaId
+func (x *UpdateParcelRequest) GetFrontageFt() float64 {
+	if x != nil && x.FrontageFt != nil {
+		return *x.FrontageFt
+	}
+	return 0
+}
+
+func (x *UpdateParcelRequest) GetDepthFt() float64 {
+	if x != nil && x.DepthFt != nil {
+		return *x.DepthFt
+	}
+	return 0
+}
+
+func (x *UpdateParcelRequest) GetProperties() string {
+	if x != nil && x.Properties != nil {
+		return *x.Properties
 	}
 	return ""
 }
@@ -1208,26 +1192,25 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\aparcels\x18\x01 \x03(\v2<.civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntryB?\xbaG<\x92\x029A dictionary of parcels, keyed by their unique parcel_id.R\aparcels\x1a[\n" +
 	"\fParcelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x125\n" +
-	"\x05value\x18\x02 \x01(\v2\x1f.civil.public.parcels.v1.ParcelR\x05value:\x028\x01\"\xe6\t\n" +
+	"\x05value\x18\x02 \x01(\v2\x1f.civil.public.parcels.v1.ParcelR\x05value:\x028\x01\"\xdf\x05\n" +
 	"\x13UpdateParcelRequest\x12z\n" +
-	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12:\n" +
-	"\x0fland_area_sq_ft\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x00R\flandAreaSqFt\x88\x01\x01\x12Q\n" +
-	"\x11market_land_value\x18\x03 \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x01R\x0fmarketLandValue\x88\x01\x01\x12U\n" +
-	"\x13assessed_land_value\x18\x04 \x01(\tB \xbaH\x1dr\x1b2\x19^-?[0-9]+(\\.[0-9]{1,4})?$H\x02R\x11assessedLandValue\x88\x01\x01\x12\x8b\x01\n" +
+	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12\x8b\x01\n" +
 	"\n" +
-	"address_id\x18\x05 \x01(\tBg\xbaG\\:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02/The unique identifier for the parcel's address.\xbaH\x05r\x03\xb0\x01\x01H\x03R\taddressId\x88\x01\x01\x12\x83\x01\n" +
-	"\bowner_id\x18\x06 \x01(\tBc\xbaGX:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02+The unique identifier for the parcel owner.\xbaH\x05r\x03\xb0\x01\x01H\x04R\aownerId\x88\x01\x01\x12\x8d\x01\n" +
-	"\vland_use_id\x18\a \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01H\x05R\tlandUseId\x88\x01\x01\x12\x9a\x01\n" +
-	"\x0fneighborhood_id\x18\b \x01(\tBl\xbaGa:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x024The unique identifier for the parcel's neighborhood.\xbaH\x05r\x03\xb0\x01\x01H\x06R\x0eneighborhoodId\x88\x01\x01\x12\x96\x01\n" +
-	"\x0emarket_area_id\x18\t \x01(\tBk\xbaG`:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x023The unique identifier for the parcel's market area.\xbaH\x05r\x03\xb0\x01\x01H\aR\fmarketAreaId\x88\x01\x01B\x12\n" +
-	"\x10_land_area_sq_ftB\x14\n" +
-	"\x12_market_land_valueB\x16\n" +
-	"\x14_assessed_land_valueB\r\n" +
-	"\v_address_idB\v\n" +
-	"\t_owner_idB\x0e\n" +
+	"address_id\x18\x02 \x01(\tBg\xbaG\\:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02/The unique identifier for the parcel's address.\xbaH\x05r\x03\xb0\x01\x01H\x00R\taddressId\x88\x01\x01\x12\x8d\x01\n" +
+	"\vland_use_id\x18\x03 \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01H\x01R\tlandUseId\x88\x01\x01\x12:\n" +
+	"\x0fland_area_sq_ft\x18\x04 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x02R\flandAreaSqFt\x88\x01\x01\x124\n" +
+	"\vfrontage_ft\x18\x05 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x03R\n" +
+	"frontageFt\x88\x01\x01\x12.\n" +
+	"\bdepth_ft\x18\x06 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x04R\adepthFt\x88\x01\x01\x12-\n" +
+	"\n" +
+	"properties\x18\a \x01(\tB\b\xbaH\x05r\x03(\x80(H\x05R\n" +
+	"properties\x88\x01\x01B\r\n" +
+	"\v_address_idB\x0e\n" +
 	"\f_land_use_idB\x12\n" +
-	"\x10_neighborhood_idB\x11\n" +
-	"\x0f_market_area_id\"\x16\n" +
+	"\x10_land_area_sq_ftB\x0e\n" +
+	"\f_frontage_ftB\v\n" +
+	"\t_depth_ftB\r\n" +
+	"\v_properties\"\x16\n" +
 	"\x14UpdateParcelResponse\"\xb4\x05\n" +
 	"+GetNumericalParcelAttributeStatsByIdRequest\x12\xbc\x01\n" +
 	"\n" +
