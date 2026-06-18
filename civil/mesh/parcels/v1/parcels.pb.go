@@ -296,7 +296,7 @@ func (x *ParcelImprovementsSummary) GetAssessedImprovementValue() string {
 type Parcel struct {
 	state               protoimpl.MessageState     `protogen:"open.v1"`
 	ParcelId            string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	Address             *string                    `protobuf:"bytes,2,opt,name=address,proto3,oneof" json:"address,omitempty"`
+	FormattedAddress    *string                    `protobuf:"bytes,2,opt,name=formatted_address,json=formattedAddress,proto3,oneof" json:"formatted_address,omitempty"`
 	AddressId           *string                    `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
 	PrimaryOwnerName    *string                    `protobuf:"bytes,4,opt,name=primary_owner_name,json=primaryOwnerName,proto3,oneof" json:"primary_owner_name,omitempty"`
 	PrimaryOwnerAddress *string                    `protobuf:"bytes,5,opt,name=primary_owner_address,json=primaryOwnerAddress,proto3,oneof" json:"primary_owner_address,omitempty"`
@@ -353,9 +353,9 @@ func (x *Parcel) GetParcelId() string {
 	return ""
 }
 
-func (x *Parcel) GetAddress() string {
-	if x != nil && x.Address != nil {
-		return *x.Address
+func (x *Parcel) GetFormattedAddress() string {
+	if x != nil && x.FormattedAddress != nil {
+		return *x.FormattedAddress
 	}
 	return ""
 }
@@ -1112,10 +1112,10 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_worst_condition_idB\x14\n" +
 	"\x12_best_condition_idB\x1b\n" +
 	"\x19_market_improvement_valueB\x1d\n" +
-	"\x1b_assessed_improvement_value\"\xed\a\n" +
+	"\x1b_assessed_improvement_value\"\x8a\b\n" +
 	"\x06Parcel\x12\x1b\n" +
-	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x1d\n" +
-	"\aaddress\x18\x02 \x01(\tH\x00R\aaddress\x88\x01\x01\x12\"\n" +
+	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x120\n" +
+	"\x11formatted_address\x18\x02 \x01(\tH\x00R\x10formattedAddress\x88\x01\x01\x12\"\n" +
 	"\n" +
 	"address_id\x18\x03 \x01(\tH\x01R\taddressId\x88\x01\x01\x121\n" +
 	"\x12primary_owner_name\x18\x04 \x01(\tH\x02R\x10primaryOwnerName\x88\x01\x01\x127\n" +
@@ -1137,9 +1137,8 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13improvement_summary\x18\x10 \x01(\v20.civil.mesh.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12#\n" +
 	"\n" +
 	"properties\x18\x11 \x01(\tH\vR\n" +
-	"properties\x88\x01\x01B\n" +
-	"\n" +
-	"\b_addressB\r\n" +
+	"properties\x88\x01\x01B\x14\n" +
+	"\x12_formatted_addressB\r\n" +
 	"\v_address_idB\x15\n" +
 	"\x13_primary_owner_nameB\x18\n" +
 	"\x16_primary_owner_addressB\x0e\n" +
