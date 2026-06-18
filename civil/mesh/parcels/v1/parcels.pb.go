@@ -1775,12 +1775,14 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	" PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT\x10\x01\x12 \n" +
 	"\x1cPARCEL_ATTRIBUTE_FRONTAGE_FT\x10\x02\x12\x1d\n" +
 	"\x19PARCEL_ATTRIBUTE_DEPTH_FT\x10\x03\x12 \n" +
-	"\x1cPARCEL_ATTRIBUTE_LAND_USE_ID\x10\x042\xa4\x04\n" +
+	"\x1cPARCEL_ATTRIBUTE_LAND_USE_ID\x10\x042\xa8\x06\n" +
 	"\x0eParcelsService\x12o\n" +
 	"\x0eGetParcelsById\x12,.civil.mesh.parcels.v1.GetParcelsByIdRequest\x1a-.civil.mesh.parcels.v1.GetParcelsByIdResponse\"\x00\x12i\n" +
 	"\fUpdateParcel\x12*.civil.mesh.parcels.v1.UpdateParcelRequest\x1a+.civil.mesh.parcels.v1.UpdateParcelResponse\"\x00\x12\x96\x01\n" +
 	"\x1bGetNumericalParcelStatsById\x129.civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest\x1a:.civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse\"\x00\x12\x9c\x01\n" +
-	"\x1dGetCategoricalParcelStatsById\x12;.civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest\x1a<.civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse\"\x00B\xe4\x01\n" +
+	"\x1dGetCategoricalParcelStatsById\x12;.civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest\x1a<.civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse\"\x00\x12\x81\x01\n" +
+	"\x14GetEquityComparables\x122.civil.mesh.parcels.v1.GetEquityComparablesRequest\x1a3.civil.mesh.parcels.v1.GetEquityComparablesResponse\"\x00\x12~\n" +
+	"\x13GetSalesComparables\x121.civil.mesh.parcels.v1.GetSalesComparablesRequest\x1a2.civil.mesh.parcels.v1.GetSalesComparablesResponse\"\x00B\xe4\x01\n" +
 	"\x19com.civil.mesh.parcels.v1B\fParcelsProtoP\x01ZBgithub.com/civil-labs/civil-api-go/civil/mesh/parcels/v1;parcelsv1\xa2\x02\x03CMP\xaa\x02\x15Civil.Mesh.Parcels.V1\xca\x02\x15Civil\\Mesh\\Parcels\\V1\xe2\x02!Civil\\Mesh\\Parcels\\V1\\GPBMetadata\xea\x02\x18Civil::Mesh::Parcels::V1b\x06proto3"
 
 var (
@@ -1855,12 +1857,16 @@ var file_civil_mesh_parcels_v1_parcels_proto_depIdxs = []int32{
 	6,  // 26: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.mesh.parcels.v1.UpdateParcelRequest
 	8,  // 27: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:input_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
 	10, // 28: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:input_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
-	5,  // 29: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.mesh.parcels.v1.GetParcelsByIdResponse
-	7,  // 30: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.mesh.parcels.v1.UpdateParcelResponse
-	9,  // 31: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
-	11, // 32: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
-	29, // [29:33] is the sub-list for method output_type
-	25, // [25:29] is the sub-list for method input_type
+	16, // 29: civil.mesh.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.mesh.parcels.v1.GetEquityComparablesRequest
+	18, // 30: civil.mesh.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.mesh.parcels.v1.GetSalesComparablesRequest
+	5,  // 31: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.mesh.parcels.v1.GetParcelsByIdResponse
+	7,  // 32: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.mesh.parcels.v1.UpdateParcelResponse
+	9,  // 33: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
+	11, // 34: civil.mesh.parcels.v1.ParcelsService.GetCategoricalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
+	17, // 35: civil.mesh.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.mesh.parcels.v1.GetEquityComparablesResponse
+	19, // 36: civil.mesh.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.mesh.parcels.v1.GetSalesComparablesResponse
+	31, // [31:37] is the sub-list for method output_type
+	25, // [25:31] is the sub-list for method input_type
 	25, // [25:25] is the sub-list for extension type_name
 	25, // [25:25] is the sub-list for extension extendee
 	0,  // [0:25] is the sub-list for field type_name

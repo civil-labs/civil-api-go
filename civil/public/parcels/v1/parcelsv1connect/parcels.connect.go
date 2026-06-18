@@ -45,6 +45,12 @@ const (
 	// ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure is the fully-qualified name of the
 	// ParcelsService's GetCategoricalParcelAttributeStatsById RPC.
 	ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetCategoricalParcelAttributeStatsById"
+	// ParcelsServiceGetEquityComparablesProcedure is the fully-qualified name of the ParcelsService's
+	// GetEquityComparables RPC.
+	ParcelsServiceGetEquityComparablesProcedure = "/civil.public.parcels.v1.ParcelsService/GetEquityComparables"
+	// ParcelsServiceGetSalesComparablesProcedure is the fully-qualified name of the ParcelsService's
+	// GetSalesComparables RPC.
+	ParcelsServiceGetSalesComparablesProcedure = "/civil.public.parcels.v1.ParcelsService/GetSalesComparables"
 )
 
 // ParcelsServiceClient is a client for the civil.public.parcels.v1.ParcelsService service.
@@ -56,6 +62,8 @@ type ParcelsServiceClient interface {
 	GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error)
 	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
 	GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error)
+	GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error)
+	GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error)
 }
 
 // NewParcelsServiceClient constructs a client for the civil.public.parcels.v1.ParcelsService
@@ -96,6 +104,20 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
+		getEquityComparables: connect.NewClient[v1.GetEquityComparablesRequest, v1.GetEquityComparablesResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetEquityComparablesProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetEquityComparables")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
+		getSalesComparables: connect.NewClient[v1.GetSalesComparablesRequest, v1.GetSalesComparablesResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetSalesComparablesProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetSalesComparables")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -105,6 +127,8 @@ type parcelsServiceClient struct {
 	updateParcel                           *connect.Client[v1.UpdateParcelRequest, v1.UpdateParcelResponse]
 	getNumericalParcelAttributeStatsById   *connect.Client[v1.GetNumericalParcelAttributeStatsByIdRequest, v1.GetNumericalParcelAttributeStatsByIdResponse]
 	getCategoricalParcelAttributeStatsById *connect.Client[v1.GetCategoricalParcelAttributeStatsByIdRequest, v1.GetCategoricalParcelAttributeStatsByIdResponse]
+	getEquityComparables                   *connect.Client[v1.GetEquityComparablesRequest, v1.GetEquityComparablesResponse]
+	getSalesComparables                    *connect.Client[v1.GetSalesComparablesRequest, v1.GetSalesComparablesResponse]
 }
 
 // GetParcelsById calls civil.public.parcels.v1.ParcelsService.GetParcelsById.
@@ -129,6 +153,16 @@ func (c *parcelsServiceClient) GetCategoricalParcelAttributeStatsById(ctx contex
 	return c.getCategoricalParcelAttributeStatsById.CallUnary(ctx, req)
 }
 
+// GetEquityComparables calls civil.public.parcels.v1.ParcelsService.GetEquityComparables.
+func (c *parcelsServiceClient) GetEquityComparables(ctx context.Context, req *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error) {
+	return c.getEquityComparables.CallUnary(ctx, req)
+}
+
+// GetSalesComparables calls civil.public.parcels.v1.ParcelsService.GetSalesComparables.
+func (c *parcelsServiceClient) GetSalesComparables(ctx context.Context, req *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error) {
+	return c.getSalesComparables.CallUnary(ctx, req)
+}
+
 // ParcelsServiceHandler is an implementation of the civil.public.parcels.v1.ParcelsService service.
 type ParcelsServiceHandler interface {
 	// Retrieves all of a specified parcel's attributes as an object.
@@ -138,6 +172,8 @@ type ParcelsServiceHandler interface {
 	GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error)
 	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
 	GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error)
+	GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error)
+	GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error)
 }
 
 // NewParcelsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -174,6 +210,20 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
+	parcelsServiceGetEquityComparablesHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetEquityComparablesProcedure,
+		svc.GetEquityComparables,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetEquityComparables")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
+	parcelsServiceGetSalesComparablesHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetSalesComparablesProcedure,
+		svc.GetSalesComparables,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetSalesComparables")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/civil.public.parcels.v1.ParcelsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ParcelsServiceGetParcelsByIdProcedure:
@@ -184,6 +234,10 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 			parcelsServiceGetNumericalParcelAttributeStatsByIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure:
 			parcelsServiceGetCategoricalParcelAttributeStatsByIdHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetEquityComparablesProcedure:
+			parcelsServiceGetEquityComparablesHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetSalesComparablesProcedure:
+			parcelsServiceGetSalesComparablesHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -207,4 +261,12 @@ func (UnimplementedParcelsServiceHandler) GetNumericalParcelAttributeStatsById(c
 
 func (UnimplementedParcelsServiceHandler) GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetEquityComparables is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetSalesComparables is not implemented"))
 }
