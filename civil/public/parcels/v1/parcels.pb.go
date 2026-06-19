@@ -28,19 +28,20 @@ const (
 type ParcelAttribute int32
 
 const (
-	ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED            ParcelAttribute = 0
-	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT        ParcelAttribute = 1
-	ParcelAttribute_PARCEL_ATTRIBUTE_FRONTAGE_FT            ParcelAttribute = 2
-	ParcelAttribute_PARCEL_ATTRIBUTE_DEPTH_FT               ParcelAttribute = 3
-	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_USE_ID            ParcelAttribute = 4
-	ParcelAttribute_PARCEL_ATTRIBUTE_ZONING_ID              ParcelAttribute = 5
-	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT ParcelAttribute = 6
-	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR       ParcelAttribute = 7
-	ParcelAttribute_PARCEL_ATTRIBUTE_BEDROOMS               ParcelAttribute = 8
-	ParcelAttribute_PARCEL_ATTRIBUTE_BATHROOMS              ParcelAttribute = 9
-	ParcelAttribute_PARCEL_ATTRIBUTE_UNITS                  ParcelAttribute = 10
-	ParcelAttribute_PARCEL_ATTRIBUTE_CONDITION_ID           ParcelAttribute = 11
-	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID    ParcelAttribute = 12
+	ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED                      ParcelAttribute = 0
+	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT                  ParcelAttribute = 1
+	ParcelAttribute_PARCEL_ATTRIBUTE_FRONTAGE_FT                      ParcelAttribute = 2
+	ParcelAttribute_PARCEL_ATTRIBUTE_DEPTH_FT                         ParcelAttribute = 3
+	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_USE_ID                      ParcelAttribute = 4
+	ParcelAttribute_PARCEL_ATTRIBUTE_ZONING_ID                        ParcelAttribute = 5
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT           ParcelAttribute = 6
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT           ParcelAttribute = 7
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT ParcelAttribute = 8
+	ParcelAttribute_PARCEL_ATTRIBUTE_BEDROOMS                         ParcelAttribute = 9
+	ParcelAttribute_PARCEL_ATTRIBUTE_BATHROOMS                        ParcelAttribute = 10
+	ParcelAttribute_PARCEL_ATTRIBUTE_UNITS                            ParcelAttribute = 11
+	ParcelAttribute_PARCEL_ATTRIBUTE_CONDITION_ID                     ParcelAttribute = 12
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID              ParcelAttribute = 13
 )
 
 // Enum value maps for ParcelAttribute.
@@ -53,27 +54,29 @@ var (
 		4:  "PARCEL_ATTRIBUTE_LAND_USE_ID",
 		5:  "PARCEL_ATTRIBUTE_ZONING_ID",
 		6:  "PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT",
-		7:  "PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR",
-		8:  "PARCEL_ATTRIBUTE_BEDROOMS",
-		9:  "PARCEL_ATTRIBUTE_BATHROOMS",
-		10: "PARCEL_ATTRIBUTE_UNITS",
-		11: "PARCEL_ATTRIBUTE_CONDITION_ID",
-		12: "PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID",
+		7:  "PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT",
+		8:  "PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT",
+		9:  "PARCEL_ATTRIBUTE_BEDROOMS",
+		10: "PARCEL_ATTRIBUTE_BATHROOMS",
+		11: "PARCEL_ATTRIBUTE_UNITS",
+		12: "PARCEL_ATTRIBUTE_CONDITION_ID",
+		13: "PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID",
 	}
 	ParcelAttribute_value = map[string]int32{
-		"PARCEL_ATTRIBUTE_UNSPECIFIED":            0,
-		"PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT":        1,
-		"PARCEL_ATTRIBUTE_FRONTAGE_FT":            2,
-		"PARCEL_ATTRIBUTE_DEPTH_FT":               3,
-		"PARCEL_ATTRIBUTE_LAND_USE_ID":            4,
-		"PARCEL_ATTRIBUTE_ZONING_ID":              5,
-		"PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT": 6,
-		"PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR":       7,
-		"PARCEL_ATTRIBUTE_BEDROOMS":               8,
-		"PARCEL_ATTRIBUTE_BATHROOMS":              9,
-		"PARCEL_ATTRIBUTE_UNITS":                  10,
-		"PARCEL_ATTRIBUTE_CONDITION_ID":           11,
-		"PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID":    12,
+		"PARCEL_ATTRIBUTE_UNSPECIFIED":                      0,
+		"PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT":                  1,
+		"PARCEL_ATTRIBUTE_FRONTAGE_FT":                      2,
+		"PARCEL_ATTRIBUTE_DEPTH_FT":                         3,
+		"PARCEL_ATTRIBUTE_LAND_USE_ID":                      4,
+		"PARCEL_ATTRIBUTE_ZONING_ID":                        5,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT":           6,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT":           7,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT": 8,
+		"PARCEL_ATTRIBUTE_BEDROOMS":                         9,
+		"PARCEL_ATTRIBUTE_BATHROOMS":                        10,
+		"PARCEL_ATTRIBUTE_UNITS":                            11,
+		"PARCEL_ATTRIBUTE_CONDITION_ID":                     12,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID":              13,
 	}
 )
 
@@ -1120,12 +1123,13 @@ func (x *GetCategoricalParcelAttributeStatsByIdResponse) GetUniqueValues() map[s
 }
 
 type ComparableCriteria struct {
-	state                protoimpl.MessageState `protogen:"open.v1"`
-	Attribute            ParcelAttribute        `protobuf:"varint,1,opt,name=attribute,proto3,enum=civil.public.parcels.v1.ParcelAttribute" json:"attribute,omitempty"`
-	NumericalTolerance   *float64               `protobuf:"fixed64,2,opt,name=numerical_tolerance,json=numericalTolerance,proto3,oneof" json:"numerical_tolerance,omitempty"`
-	CategoricalTolerance []string               `protobuf:"bytes,3,rep,name=categorical_tolerance,json=categoricalTolerance,proto3" json:"categorical_tolerance,omitempty"`
-	unknownFields        protoimpl.UnknownFields
-	sizeCache            protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	Attribute             ParcelAttribute        `protobuf:"varint,1,opt,name=attribute,proto3,enum=civil.public.parcels.v1.ParcelAttribute" json:"attribute,omitempty"`
+	MinNumericalTolerance *float64               `protobuf:"fixed64,2,opt,name=min_numerical_tolerance,json=minNumericalTolerance,proto3,oneof" json:"min_numerical_tolerance,omitempty"`
+	MaxNumericalTolerance *float64               `protobuf:"fixed64,3,opt,name=max_numerical_tolerance,json=maxNumericalTolerance,proto3,oneof" json:"max_numerical_tolerance,omitempty"`
+	CategoricalTolerance  []string               `protobuf:"bytes,4,rep,name=categorical_tolerance,json=categoricalTolerance,proto3" json:"categorical_tolerance,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *ComparableCriteria) Reset() {
@@ -1165,9 +1169,16 @@ func (x *ComparableCriteria) GetAttribute() ParcelAttribute {
 	return ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED
 }
 
-func (x *ComparableCriteria) GetNumericalTolerance() float64 {
-	if x != nil && x.NumericalTolerance != nil {
-		return *x.NumericalTolerance
+func (x *ComparableCriteria) GetMinNumericalTolerance() float64 {
+	if x != nil && x.MinNumericalTolerance != nil {
+		return *x.MinNumericalTolerance
+	}
+	return 0
+}
+
+func (x *ComparableCriteria) GetMaxNumericalTolerance() float64 {
+	if x != nil && x.MaxNumericalTolerance != nil {
+		return *x.MaxNumericalTolerance
 	}
 	return 0
 }
@@ -1785,12 +1796,14 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\runique_values\x18\x02 \x03(\v2Y.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntryB\x19\xbaH\x16\x9a\x01\x13\b\x01\x102\"\ar\x05\x10\x01\x18\x80\x02*\x04\x1a\x02(\x00R\funiqueValues\x1a?\n" +
 	"\x11UniqueValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xdf\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc3\x02\n" +
 	"\x12ComparableCriteria\x12F\n" +
-	"\tattribute\x18\x01 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeR\tattribute\x124\n" +
-	"\x13numerical_tolerance\x18\x02 \x01(\x01H\x00R\x12numericalTolerance\x88\x01\x01\x123\n" +
-	"\x15categorical_tolerance\x18\x03 \x03(\tR\x14categoricalToleranceB\x16\n" +
-	"\x14_numerical_tolerance\"\xe7\x01\n" +
+	"\tattribute\x18\x01 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeR\tattribute\x12;\n" +
+	"\x17min_numerical_tolerance\x18\x02 \x01(\x01H\x00R\x15minNumericalTolerance\x88\x01\x01\x12;\n" +
+	"\x17max_numerical_tolerance\x18\x03 \x01(\x01H\x01R\x15maxNumericalTolerance\x88\x01\x01\x123\n" +
+	"\x15categorical_tolerance\x18\x04 \x03(\tR\x14categoricalToleranceB\x1a\n" +
+	"\x18_min_numerical_toleranceB\x1a\n" +
+	"\x18_max_numerical_tolerance\"\xe7\x01\n" +
 	"\x13ComparableAttribute\x12F\n" +
 	"\tattribute\x18\x01 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeR\tattribute\x12,\n" +
 	"\x0fnumerical_value\x18\x02 \x01(\x01H\x00R\x0enumericalValue\x88\x01\x01\x120\n" +
@@ -1838,7 +1851,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\aparcels\x18\x01 \x03(\v2A.civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntryR\aparcels\x1ai\n" +
 	"\fParcelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12C\n" +
-	"\x05value\x18\x02 \x01(\v2-.civil.public.parcels.v1.SaleComparableParcelR\x05value:\x028\x01*\xd8\x03\n" +
+	"\x05value\x18\x02 \x01(\v2-.civil.public.parcels.v1.SaleComparableParcelR\x05value:\x028\x01*\x95\x04\n" +
 	"\x0fParcelAttribute\x12 \n" +
 	"\x1cPARCEL_ATTRIBUTE_UNSPECIFIED\x10\x00\x12$\n" +
 	" PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT\x10\x01\x12 \n" +
@@ -1846,14 +1859,15 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x19PARCEL_ATTRIBUTE_DEPTH_FT\x10\x03\x12 \n" +
 	"\x1cPARCEL_ATTRIBUTE_LAND_USE_ID\x10\x04\x12\x1e\n" +
 	"\x1aPARCEL_ATTRIBUTE_ZONING_ID\x10\x05\x12+\n" +
-	"'PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT\x10\x06\x12%\n" +
-	"!PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR\x10\a\x12\x1d\n" +
-	"\x19PARCEL_ATTRIBUTE_BEDROOMS\x10\b\x12\x1e\n" +
-	"\x1aPARCEL_ATTRIBUTE_BATHROOMS\x10\t\x12\x1a\n" +
-	"\x16PARCEL_ATTRIBUTE_UNITS\x10\n" +
-	"\x12!\n" +
-	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\v\x12(\n" +
-	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\f2\x86\a\n" +
+	"'PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT\x10\x06\x12+\n" +
+	"'PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT\x10\a\x125\n" +
+	"1PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT\x10\b\x12\x1d\n" +
+	"\x19PARCEL_ATTRIBUTE_BEDROOMS\x10\t\x12\x1e\n" +
+	"\x1aPARCEL_ATTRIBUTE_BATHROOMS\x10\n" +
+	"\x12\x1a\n" +
+	"\x16PARCEL_ATTRIBUTE_UNITS\x10\v\x12!\n" +
+	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\f\x12(\n" +
+	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\x86\a\n" +
 	"\x0eParcelsService\x12v\n" +
 	"\x0eGetParcelsById\x12..civil.public.parcels.v1.GetParcelsByIdRequest\x1a/.civil.public.parcels.v1.GetParcelsByIdResponse\"\x03\x90\x02\x01\x12m\n" +
 	"\fUpdateParcel\x12,.civil.public.parcels.v1.UpdateParcelRequest\x1a-.civil.public.parcels.v1.UpdateParcelResponse\"\x00\x12\xb8\x01\n" +

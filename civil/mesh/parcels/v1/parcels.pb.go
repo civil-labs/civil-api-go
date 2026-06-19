@@ -26,19 +26,20 @@ const (
 type ParcelAttribute int32
 
 const (
-	ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED            ParcelAttribute = 0
-	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT        ParcelAttribute = 1
-	ParcelAttribute_PARCEL_ATTRIBUTE_FRONTAGE_FT            ParcelAttribute = 2
-	ParcelAttribute_PARCEL_ATTRIBUTE_DEPTH_FT               ParcelAttribute = 3
-	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_USE_ID            ParcelAttribute = 4
-	ParcelAttribute_PARCEL_ATTRIBUTE_ZONING_ID              ParcelAttribute = 5
-	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT ParcelAttribute = 6
-	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR       ParcelAttribute = 7
-	ParcelAttribute_PARCEL_ATTRIBUTE_BEDROOMS               ParcelAttribute = 8
-	ParcelAttribute_PARCEL_ATTRIBUTE_BATHROOMS              ParcelAttribute = 9
-	ParcelAttribute_PARCEL_ATTRIBUTE_UNITS                  ParcelAttribute = 10
-	ParcelAttribute_PARCEL_ATTRIBUTE_CONDITION_ID           ParcelAttribute = 11
-	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID    ParcelAttribute = 12
+	ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED                      ParcelAttribute = 0
+	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT                  ParcelAttribute = 1
+	ParcelAttribute_PARCEL_ATTRIBUTE_FRONTAGE_FT                      ParcelAttribute = 2
+	ParcelAttribute_PARCEL_ATTRIBUTE_DEPTH_FT                         ParcelAttribute = 3
+	ParcelAttribute_PARCEL_ATTRIBUTE_LAND_USE_ID                      ParcelAttribute = 4
+	ParcelAttribute_PARCEL_ATTRIBUTE_ZONING_ID                        ParcelAttribute = 5
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT           ParcelAttribute = 6
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT           ParcelAttribute = 7
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT ParcelAttribute = 8
+	ParcelAttribute_PARCEL_ATTRIBUTE_BEDROOMS                         ParcelAttribute = 9
+	ParcelAttribute_PARCEL_ATTRIBUTE_BATHROOMS                        ParcelAttribute = 10
+	ParcelAttribute_PARCEL_ATTRIBUTE_UNITS                            ParcelAttribute = 11
+	ParcelAttribute_PARCEL_ATTRIBUTE_CONDITION_ID                     ParcelAttribute = 12
+	ParcelAttribute_PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID              ParcelAttribute = 13
 )
 
 // Enum value maps for ParcelAttribute.
@@ -51,27 +52,29 @@ var (
 		4:  "PARCEL_ATTRIBUTE_LAND_USE_ID",
 		5:  "PARCEL_ATTRIBUTE_ZONING_ID",
 		6:  "PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT",
-		7:  "PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR",
-		8:  "PARCEL_ATTRIBUTE_BEDROOMS",
-		9:  "PARCEL_ATTRIBUTE_BATHROOMS",
-		10: "PARCEL_ATTRIBUTE_UNITS",
-		11: "PARCEL_ATTRIBUTE_CONDITION_ID",
-		12: "PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID",
+		7:  "PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT",
+		8:  "PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT",
+		9:  "PARCEL_ATTRIBUTE_BEDROOMS",
+		10: "PARCEL_ATTRIBUTE_BATHROOMS",
+		11: "PARCEL_ATTRIBUTE_UNITS",
+		12: "PARCEL_ATTRIBUTE_CONDITION_ID",
+		13: "PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID",
 	}
 	ParcelAttribute_value = map[string]int32{
-		"PARCEL_ATTRIBUTE_UNSPECIFIED":            0,
-		"PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT":        1,
-		"PARCEL_ATTRIBUTE_FRONTAGE_FT":            2,
-		"PARCEL_ATTRIBUTE_DEPTH_FT":               3,
-		"PARCEL_ATTRIBUTE_LAND_USE_ID":            4,
-		"PARCEL_ATTRIBUTE_ZONING_ID":              5,
-		"PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT": 6,
-		"PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR":       7,
-		"PARCEL_ATTRIBUTE_BEDROOMS":               8,
-		"PARCEL_ATTRIBUTE_BATHROOMS":              9,
-		"PARCEL_ATTRIBUTE_UNITS":                  10,
-		"PARCEL_ATTRIBUTE_CONDITION_ID":           11,
-		"PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID":    12,
+		"PARCEL_ATTRIBUTE_UNSPECIFIED":                      0,
+		"PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT":                  1,
+		"PARCEL_ATTRIBUTE_FRONTAGE_FT":                      2,
+		"PARCEL_ATTRIBUTE_DEPTH_FT":                         3,
+		"PARCEL_ATTRIBUTE_LAND_USE_ID":                      4,
+		"PARCEL_ATTRIBUTE_ZONING_ID":                        5,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT":           6,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT":           7,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT": 8,
+		"PARCEL_ATTRIBUTE_BEDROOMS":                         9,
+		"PARCEL_ATTRIBUTE_BATHROOMS":                        10,
+		"PARCEL_ATTRIBUTE_UNITS":                            11,
+		"PARCEL_ATTRIBUTE_CONDITION_ID":                     12,
+		"PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID":              13,
 	}
 )
 
@@ -1793,7 +1796,7 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\aparcels\x18\x01 \x03(\v2?.civil.mesh.parcels.v1.GetSalesComparablesResponse.ParcelsEntryR\aparcels\x1ag\n" +
 	"\fParcelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12A\n" +
-	"\x05value\x18\x02 \x01(\v2+.civil.mesh.parcels.v1.SaleComparableParcelR\x05value:\x028\x01*\xd8\x03\n" +
+	"\x05value\x18\x02 \x01(\v2+.civil.mesh.parcels.v1.SaleComparableParcelR\x05value:\x028\x01*\x95\x04\n" +
 	"\x0fParcelAttribute\x12 \n" +
 	"\x1cPARCEL_ATTRIBUTE_UNSPECIFIED\x10\x00\x12$\n" +
 	" PARCEL_ATTRIBUTE_LAND_AREA_SQ_FT\x10\x01\x12 \n" +
@@ -1801,14 +1804,15 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x19PARCEL_ATTRIBUTE_DEPTH_FT\x10\x03\x12 \n" +
 	"\x1cPARCEL_ATTRIBUTE_LAND_USE_ID\x10\x04\x12\x1e\n" +
 	"\x1aPARCEL_ATTRIBUTE_ZONING_ID\x10\x05\x12+\n" +
-	"'PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT\x10\x06\x12%\n" +
-	"!PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR\x10\a\x12\x1d\n" +
-	"\x19PARCEL_ATTRIBUTE_BEDROOMS\x10\b\x12\x1e\n" +
-	"\x1aPARCEL_ATTRIBUTE_BATHROOMS\x10\t\x12\x1a\n" +
-	"\x16PARCEL_ATTRIBUTE_UNITS\x10\n" +
-	"\x12!\n" +
-	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\v\x12(\n" +
-	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\f2\xa8\x06\n" +
+	"'PARCEL_ATTRIBUTE_IMPROVEMENT_AREA_SQ_FT\x10\x06\x12+\n" +
+	"'PARCEL_ATTRIBUTE_IMPROVEMENT_YEAR_BUILT\x10\a\x125\n" +
+	"1PARCEL_ATTRIBUTE_IMPROVEMENT_EFFECTIVE_YEAR_BUILT\x10\b\x12\x1d\n" +
+	"\x19PARCEL_ATTRIBUTE_BEDROOMS\x10\t\x12\x1e\n" +
+	"\x1aPARCEL_ATTRIBUTE_BATHROOMS\x10\n" +
+	"\x12\x1a\n" +
+	"\x16PARCEL_ATTRIBUTE_UNITS\x10\v\x12!\n" +
+	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\f\x12(\n" +
+	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xa8\x06\n" +
 	"\x0eParcelsService\x12o\n" +
 	"\x0eGetParcelsById\x12,.civil.mesh.parcels.v1.GetParcelsByIdRequest\x1a-.civil.mesh.parcels.v1.GetParcelsByIdResponse\"\x00\x12i\n" +
 	"\fUpdateParcel\x12*.civil.mesh.parcels.v1.UpdateParcelRequest\x1a+.civil.mesh.parcels.v1.UpdateParcelResponse\"\x00\x12\x96\x01\n" +
