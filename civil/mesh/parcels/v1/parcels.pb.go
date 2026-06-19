@@ -1102,12 +1102,13 @@ func (x *GetCategoricalParcelStatsByIdResponse) GetUniqueValues() map[string]int
 }
 
 type ComparableCriteria struct {
-	state                protoimpl.MessageState `protogen:"open.v1"`
-	Attribute            ParcelAttribute        `protobuf:"varint,1,opt,name=attribute,proto3,enum=civil.mesh.parcels.v1.ParcelAttribute" json:"attribute,omitempty"`
-	NumericalTolerance   *float64               `protobuf:"fixed64,2,opt,name=numerical_tolerance,json=numericalTolerance,proto3,oneof" json:"numerical_tolerance,omitempty"`
-	CategoricalTolerance []string               `protobuf:"bytes,3,rep,name=categorical_tolerance,json=categoricalTolerance,proto3" json:"categorical_tolerance,omitempty"`
-	unknownFields        protoimpl.UnknownFields
-	sizeCache            protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	Attribute             ParcelAttribute        `protobuf:"varint,1,opt,name=attribute,proto3,enum=civil.mesh.parcels.v1.ParcelAttribute" json:"attribute,omitempty"`
+	MinNumericalTolerance *float64               `protobuf:"fixed64,2,opt,name=min_numerical_tolerance,json=minNumericalTolerance,proto3,oneof" json:"min_numerical_tolerance,omitempty"`
+	MaxNumericalTolerance *float64               `protobuf:"fixed64,3,opt,name=max_numerical_tolerance,json=maxNumericalTolerance,proto3,oneof" json:"max_numerical_tolerance,omitempty"`
+	CategoricalTolerance  []string               `protobuf:"bytes,4,rep,name=categorical_tolerance,json=categoricalTolerance,proto3" json:"categorical_tolerance,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *ComparableCriteria) Reset() {
@@ -1147,9 +1148,16 @@ func (x *ComparableCriteria) GetAttribute() ParcelAttribute {
 	return ParcelAttribute_PARCEL_ATTRIBUTE_UNSPECIFIED
 }
 
-func (x *ComparableCriteria) GetNumericalTolerance() float64 {
-	if x != nil && x.NumericalTolerance != nil {
-		return *x.NumericalTolerance
+func (x *ComparableCriteria) GetMinNumericalTolerance() float64 {
+	if x != nil && x.MinNumericalTolerance != nil {
+		return *x.MinNumericalTolerance
+	}
+	return 0
+}
+
+func (x *ComparableCriteria) GetMaxNumericalTolerance() float64 {
+	if x != nil && x.MaxNumericalTolerance != nil {
+		return *x.MaxNumericalTolerance
 	}
 	return 0
 }
@@ -1744,12 +1752,14 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\runique_values\x18\x02 \x03(\v2N.civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse.UniqueValuesEntryR\funiqueValues\x1a?\n" +
 	"\x11UniqueValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xdd\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc1\x02\n" +
 	"\x12ComparableCriteria\x12D\n" +
-	"\tattribute\x18\x01 \x01(\x0e2&.civil.mesh.parcels.v1.ParcelAttributeR\tattribute\x124\n" +
-	"\x13numerical_tolerance\x18\x02 \x01(\x01H\x00R\x12numericalTolerance\x88\x01\x01\x123\n" +
-	"\x15categorical_tolerance\x18\x03 \x03(\tR\x14categoricalToleranceB\x16\n" +
-	"\x14_numerical_tolerance\"\xe5\x01\n" +
+	"\tattribute\x18\x01 \x01(\x0e2&.civil.mesh.parcels.v1.ParcelAttributeR\tattribute\x12;\n" +
+	"\x17min_numerical_tolerance\x18\x02 \x01(\x01H\x00R\x15minNumericalTolerance\x88\x01\x01\x12;\n" +
+	"\x17max_numerical_tolerance\x18\x03 \x01(\x01H\x01R\x15maxNumericalTolerance\x88\x01\x01\x123\n" +
+	"\x15categorical_tolerance\x18\x04 \x03(\tR\x14categoricalToleranceB\x1a\n" +
+	"\x18_min_numerical_toleranceB\x1a\n" +
+	"\x18_max_numerical_tolerance\"\xe5\x01\n" +
 	"\x13ComparableAttribute\x12D\n" +
 	"\tattribute\x18\x01 \x01(\x0e2&.civil.mesh.parcels.v1.ParcelAttributeR\tattribute\x12,\n" +
 	"\x0fnumerical_value\x18\x02 \x01(\x01H\x00R\x0enumericalValue\x88\x01\x01\x120\n" +
