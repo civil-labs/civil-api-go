@@ -58,6 +58,7 @@ func NewInstanceServiceClient(httpClient connect.HTTPClient, baseURL string, opt
 			httpClient,
 			baseURL+InstanceServiceGetInstanceMetadataProcedure,
 			connect.WithSchema(instanceServiceMethods.ByName("GetInstanceMetadata")),
+			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -90,6 +91,7 @@ func NewInstanceServiceHandler(svc InstanceServiceHandler, opts ...connect.Handl
 		InstanceServiceGetInstanceMetadataProcedure,
 		svc.GetInstanceMetadata,
 		connect.WithSchema(instanceServiceMethods.ByName("GetInstanceMetadata")),
+		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/civil.public.instance.v1.InstanceService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

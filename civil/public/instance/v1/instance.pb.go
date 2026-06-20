@@ -109,9 +109,9 @@ const file_civil_public_instance_v1_instance_proto_rawDesc = "" +
 	"'civil/public/instance/v1/instance.proto\x12\x18civil.public.instance.v1\x1a\x1cgoogle/protobuf/struct.proto\"\x1c\n" +
 	"\x1aGetInstanceMetadataRequest\"R\n" +
 	"\x1bGetInstanceMetadataResponse\x123\n" +
-	"\bmetadata\x18\x01 \x01(\v2\x17.google.protobuf.StructR\bmetadata2\x98\x01\n" +
-	"\x0fInstanceService\x12\x84\x01\n" +
-	"\x13GetInstanceMetadata\x124.civil.public.instance.v1.GetInstanceMetadataRequest\x1a5.civil.public.instance.v1.GetInstanceMetadataResponse\"\x00B\xfa\x01\n" +
+	"\bmetadata\x18\x01 \x01(\v2\x17.google.protobuf.StructR\bmetadata2\x9b\x01\n" +
+	"\x0fInstanceService\x12\x87\x01\n" +
+	"\x13GetInstanceMetadata\x124.civil.public.instance.v1.GetInstanceMetadataRequest\x1a5.civil.public.instance.v1.GetInstanceMetadataResponse\"\x03\x90\x02\x01B\xfa\x01\n" +
 	"\x1ccom.civil.public.instance.v1B\rInstanceProtoP\x01ZFgithub.com/civil-labs/civil-api-go/civil/public/instance/v1;instancev1\xa2\x02\x03CPI\xaa\x02\x18Civil.Public.Instance.V1\xca\x02\x19Civil\\Public_\\Instance\\V1\xe2\x02%Civil\\Public_\\Instance\\V1\\GPBMetadata\xea\x02\x1bCivil::Public::Instance::V1b\x06proto3"
 
 var (
