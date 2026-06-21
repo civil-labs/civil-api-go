@@ -174,9 +174,9 @@ type ImprovementCondition struct {
 	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Set to optional to allow it to properly pass zero values
-	DepcreciationModifier *float32 `protobuf:"fixed32,3,opt,name=depcreciation_modifier,json=depcreciationModifier,proto3,oneof" json:"depcreciation_modifier,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	DepreciationModifier *float32 `protobuf:"fixed32,3,opt,name=depreciation_modifier,json=depreciationModifier,proto3,oneof" json:"depreciation_modifier,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
 }
 
 func (x *ImprovementCondition) Reset() {
@@ -223,9 +223,9 @@ func (x *ImprovementCondition) GetName() string {
 	return ""
 }
 
-func (x *ImprovementCondition) GetDepcreciationModifier() float32 {
-	if x != nil && x.DepcreciationModifier != nil {
-		return *x.DepcreciationModifier
+func (x *ImprovementCondition) GetDepreciationModifier() float32 {
+	if x != nil && x.DepreciationModifier != nil {
+		return *x.DepreciationModifier
 	}
 	return 0
 }
@@ -325,12 +325,12 @@ const file_civil_public_improvements_v1_improvements_proto_rawDesc = "" +
 	"\x11improvement_types\x18\x01 \x03(\v2O.civil.public.improvements.v1.GetImprovementTypesResponse.ImprovementTypesEntryR\x10improvementTypes\x1ar\n" +
 	"\x15ImprovementTypesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12C\n" +
-	"\x05value\x18\x02 \x01(\v2-.civil.public.improvements.v1.ImprovementTypeR\x05value:\x028\x01\"\x91\x01\n" +
+	"\x05value\x18\x02 \x01(\v2-.civil.public.improvements.v1.ImprovementTypeR\x05value:\x028\x01\"\x8e\x01\n" +
 	"\x14ImprovementCondition\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x12:\n" +
-	"\x16depcreciation_modifier\x18\x03 \x01(\x02H\x00R\x15depcreciationModifier\x88\x01\x01B\x19\n" +
-	"\x17_depcreciation_modifier\"!\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x128\n" +
+	"\x15depreciation_modifier\x18\x03 \x01(\x02H\x00R\x14depreciationModifier\x88\x01\x01B\x18\n" +
+	"\x16_depreciation_modifier\"!\n" +
 	"\x1fGetImprovementConditionsRequest\"\xb3\x02\n" +
 	" GetImprovementConditionsResponse\x12\x90\x01\n" +
 	"\x16improvement_conditions\x18\x01 \x03(\v2Y.civil.public.improvements.v1.GetImprovementConditionsResponse.ImprovementConditionsEntryR\x15improvementConditions\x1a|\n" +
