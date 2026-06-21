@@ -21,8 +21,8 @@ import (
 const _ = connect.IsAtLeastVersion1_13_0
 
 const (
-	// ImprovementServiceName is the fully-qualified name of the ImprovementService service.
-	ImprovementServiceName = "civil.public.improvements.v1.ImprovementService"
+	// ImprovementsServiceName is the fully-qualified name of the ImprovementsService service.
+	ImprovementsServiceName = "civil.public.improvements.v1.ImprovementsService"
 )
 
 // These constants are the fully-qualified names of the RPCs defined in this package. They're
@@ -33,114 +33,114 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// ImprovementServiceGetImprovementTypesProcedure is the fully-qualified name of the
-	// ImprovementService's GetImprovementTypes RPC.
-	ImprovementServiceGetImprovementTypesProcedure = "/civil.public.improvements.v1.ImprovementService/GetImprovementTypes"
-	// ImprovementServiceGetImprovementConditionsProcedure is the fully-qualified name of the
-	// ImprovementService's GetImprovementConditions RPC.
-	ImprovementServiceGetImprovementConditionsProcedure = "/civil.public.improvements.v1.ImprovementService/GetImprovementConditions"
+	// ImprovementsServiceGetImprovementTypesProcedure is the fully-qualified name of the
+	// ImprovementsService's GetImprovementTypes RPC.
+	ImprovementsServiceGetImprovementTypesProcedure = "/civil.public.improvements.v1.ImprovementsService/GetImprovementTypes"
+	// ImprovementsServiceGetImprovementConditionsProcedure is the fully-qualified name of the
+	// ImprovementsService's GetImprovementConditions RPC.
+	ImprovementsServiceGetImprovementConditionsProcedure = "/civil.public.improvements.v1.ImprovementsService/GetImprovementConditions"
 )
 
-// ImprovementServiceClient is a client for the civil.public.improvements.v1.ImprovementService
+// ImprovementsServiceClient is a client for the civil.public.improvements.v1.ImprovementsService
 // service.
-type ImprovementServiceClient interface {
+type ImprovementsServiceClient interface {
 	GetImprovementTypes(context.Context, *connect.Request[v1.GetImprovementTypesRequest]) (*connect.Response[v1.GetImprovementTypesResponse], error)
 	GetImprovementConditions(context.Context, *connect.Request[v1.GetImprovementConditionsRequest]) (*connect.Response[v1.GetImprovementConditionsResponse], error)
 }
 
-// NewImprovementServiceClient constructs a client for the
-// civil.public.improvements.v1.ImprovementService service. By default, it uses the Connect protocol
-// with the binary Protobuf Codec, asks for gzipped responses, and sends uncompressed requests. To
-// use the gRPC or gRPC-Web protocols, supply the connect.WithGRPC() or connect.WithGRPCWeb()
-// options.
+// NewImprovementsServiceClient constructs a client for the
+// civil.public.improvements.v1.ImprovementsService service. By default, it uses the Connect
+// protocol with the binary Protobuf Codec, asks for gzipped responses, and sends uncompressed
+// requests. To use the gRPC or gRPC-Web protocols, supply the connect.WithGRPC() or
+// connect.WithGRPCWeb() options.
 //
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
-func NewImprovementServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ImprovementServiceClient {
+func NewImprovementsServiceClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) ImprovementsServiceClient {
 	baseURL = strings.TrimRight(baseURL, "/")
-	improvementServiceMethods := v1.File_civil_public_improvements_v1_improvements_proto.Services().ByName("ImprovementService").Methods()
-	return &improvementServiceClient{
+	improvementsServiceMethods := v1.File_civil_public_improvements_v1_improvements_proto.Services().ByName("ImprovementsService").Methods()
+	return &improvementsServiceClient{
 		getImprovementTypes: connect.NewClient[v1.GetImprovementTypesRequest, v1.GetImprovementTypesResponse](
 			httpClient,
-			baseURL+ImprovementServiceGetImprovementTypesProcedure,
-			connect.WithSchema(improvementServiceMethods.ByName("GetImprovementTypes")),
+			baseURL+ImprovementsServiceGetImprovementTypesProcedure,
+			connect.WithSchema(improvementsServiceMethods.ByName("GetImprovementTypes")),
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 		getImprovementConditions: connect.NewClient[v1.GetImprovementConditionsRequest, v1.GetImprovementConditionsResponse](
 			httpClient,
-			baseURL+ImprovementServiceGetImprovementConditionsProcedure,
-			connect.WithSchema(improvementServiceMethods.ByName("GetImprovementConditions")),
+			baseURL+ImprovementsServiceGetImprovementConditionsProcedure,
+			connect.WithSchema(improvementsServiceMethods.ByName("GetImprovementConditions")),
 			connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 			connect.WithClientOptions(opts...),
 		),
 	}
 }
 
-// improvementServiceClient implements ImprovementServiceClient.
-type improvementServiceClient struct {
+// improvementsServiceClient implements ImprovementsServiceClient.
+type improvementsServiceClient struct {
 	getImprovementTypes      *connect.Client[v1.GetImprovementTypesRequest, v1.GetImprovementTypesResponse]
 	getImprovementConditions *connect.Client[v1.GetImprovementConditionsRequest, v1.GetImprovementConditionsResponse]
 }
 
-// GetImprovementTypes calls civil.public.improvements.v1.ImprovementService.GetImprovementTypes.
-func (c *improvementServiceClient) GetImprovementTypes(ctx context.Context, req *connect.Request[v1.GetImprovementTypesRequest]) (*connect.Response[v1.GetImprovementTypesResponse], error) {
+// GetImprovementTypes calls civil.public.improvements.v1.ImprovementsService.GetImprovementTypes.
+func (c *improvementsServiceClient) GetImprovementTypes(ctx context.Context, req *connect.Request[v1.GetImprovementTypesRequest]) (*connect.Response[v1.GetImprovementTypesResponse], error) {
 	return c.getImprovementTypes.CallUnary(ctx, req)
 }
 
 // GetImprovementConditions calls
-// civil.public.improvements.v1.ImprovementService.GetImprovementConditions.
-func (c *improvementServiceClient) GetImprovementConditions(ctx context.Context, req *connect.Request[v1.GetImprovementConditionsRequest]) (*connect.Response[v1.GetImprovementConditionsResponse], error) {
+// civil.public.improvements.v1.ImprovementsService.GetImprovementConditions.
+func (c *improvementsServiceClient) GetImprovementConditions(ctx context.Context, req *connect.Request[v1.GetImprovementConditionsRequest]) (*connect.Response[v1.GetImprovementConditionsResponse], error) {
 	return c.getImprovementConditions.CallUnary(ctx, req)
 }
 
-// ImprovementServiceHandler is an implementation of the
-// civil.public.improvements.v1.ImprovementService service.
-type ImprovementServiceHandler interface {
+// ImprovementsServiceHandler is an implementation of the
+// civil.public.improvements.v1.ImprovementsService service.
+type ImprovementsServiceHandler interface {
 	GetImprovementTypes(context.Context, *connect.Request[v1.GetImprovementTypesRequest]) (*connect.Response[v1.GetImprovementTypesResponse], error)
 	GetImprovementConditions(context.Context, *connect.Request[v1.GetImprovementConditionsRequest]) (*connect.Response[v1.GetImprovementConditionsResponse], error)
 }
 
-// NewImprovementServiceHandler builds an HTTP handler from the service implementation. It returns
+// NewImprovementsServiceHandler builds an HTTP handler from the service implementation. It returns
 // the path on which to mount the handler and the handler itself.
 //
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
-func NewImprovementServiceHandler(svc ImprovementServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
-	improvementServiceMethods := v1.File_civil_public_improvements_v1_improvements_proto.Services().ByName("ImprovementService").Methods()
-	improvementServiceGetImprovementTypesHandler := connect.NewUnaryHandler(
-		ImprovementServiceGetImprovementTypesProcedure,
+func NewImprovementsServiceHandler(svc ImprovementsServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	improvementsServiceMethods := v1.File_civil_public_improvements_v1_improvements_proto.Services().ByName("ImprovementsService").Methods()
+	improvementsServiceGetImprovementTypesHandler := connect.NewUnaryHandler(
+		ImprovementsServiceGetImprovementTypesProcedure,
 		svc.GetImprovementTypes,
-		connect.WithSchema(improvementServiceMethods.ByName("GetImprovementTypes")),
+		connect.WithSchema(improvementsServiceMethods.ByName("GetImprovementTypes")),
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
-	improvementServiceGetImprovementConditionsHandler := connect.NewUnaryHandler(
-		ImprovementServiceGetImprovementConditionsProcedure,
+	improvementsServiceGetImprovementConditionsHandler := connect.NewUnaryHandler(
+		ImprovementsServiceGetImprovementConditionsProcedure,
 		svc.GetImprovementConditions,
-		connect.WithSchema(improvementServiceMethods.ByName("GetImprovementConditions")),
+		connect.WithSchema(improvementsServiceMethods.ByName("GetImprovementConditions")),
 		connect.WithIdempotency(connect.IdempotencyNoSideEffects),
 		connect.WithHandlerOptions(opts...),
 	)
-	return "/civil.public.improvements.v1.ImprovementService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	return "/civil.public.improvements.v1.ImprovementsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case ImprovementServiceGetImprovementTypesProcedure:
-			improvementServiceGetImprovementTypesHandler.ServeHTTP(w, r)
-		case ImprovementServiceGetImprovementConditionsProcedure:
-			improvementServiceGetImprovementConditionsHandler.ServeHTTP(w, r)
+		case ImprovementsServiceGetImprovementTypesProcedure:
+			improvementsServiceGetImprovementTypesHandler.ServeHTTP(w, r)
+		case ImprovementsServiceGetImprovementConditionsProcedure:
+			improvementsServiceGetImprovementConditionsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
 	})
 }
 
-// UnimplementedImprovementServiceHandler returns CodeUnimplemented from all methods.
-type UnimplementedImprovementServiceHandler struct{}
+// UnimplementedImprovementsServiceHandler returns CodeUnimplemented from all methods.
+type UnimplementedImprovementsServiceHandler struct{}
 
-func (UnimplementedImprovementServiceHandler) GetImprovementTypes(context.Context, *connect.Request[v1.GetImprovementTypesRequest]) (*connect.Response[v1.GetImprovementTypesResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.improvements.v1.ImprovementService.GetImprovementTypes is not implemented"))
+func (UnimplementedImprovementsServiceHandler) GetImprovementTypes(context.Context, *connect.Request[v1.GetImprovementTypesRequest]) (*connect.Response[v1.GetImprovementTypesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.improvements.v1.ImprovementsService.GetImprovementTypes is not implemented"))
 }
 
-func (UnimplementedImprovementServiceHandler) GetImprovementConditions(context.Context, *connect.Request[v1.GetImprovementConditionsRequest]) (*connect.Response[v1.GetImprovementConditionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.improvements.v1.ImprovementService.GetImprovementConditions is not implemented"))
+func (UnimplementedImprovementsServiceHandler) GetImprovementConditions(context.Context, *connect.Request[v1.GetImprovementConditionsRequest]) (*connect.Response[v1.GetImprovementConditionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.improvements.v1.ImprovementsService.GetImprovementConditions is not implemented"))
 }

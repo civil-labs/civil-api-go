@@ -334,8 +334,8 @@ const file_civil_public_improvements_v1_improvements_proto_rawDesc = "" +
 	"\x16improvement_conditions\x18\x01 \x03(\v2Y.civil.public.improvements.v1.GetImprovementConditionsResponse.ImprovementConditionsEntryR\x15improvementConditions\x1a|\n" +
 	"\x1aImprovementConditionsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12H\n" +
-	"\x05value\x18\x02 \x01(\v22.civil.public.improvements.v1.ImprovementConditionR\x05value:\x028\x012\xc7\x02\n" +
-	"\x12ImprovementService\x12\x8f\x01\n" +
+	"\x05value\x18\x02 \x01(\v22.civil.public.improvements.v1.ImprovementConditionR\x05value:\x028\x012\xc8\x02\n" +
+	"\x13ImprovementsService\x12\x8f\x01\n" +
 	"\x13GetImprovementTypes\x128.civil.public.improvements.v1.GetImprovementTypesRequest\x1a9.civil.public.improvements.v1.GetImprovementTypesResponse\"\x03\x90\x02\x01\x12\x9e\x01\n" +
 	"\x18GetImprovementConditions\x12=.civil.public.improvements.v1.GetImprovementConditionsRequest\x1a>.civil.public.improvements.v1.GetImprovementConditionsResponse\"\x03\x90\x02\x01B\x9a\x02\n" +
 	" com.civil.public.improvements.v1B\x11ImprovementsProtoP\x01ZNgithub.com/civil-labs/civil-api-go/civil/public/improvements/v1;improvementsv1\xa2\x02\x03CPI\xaa\x02\x1cCivil.Public.Improvements.V1\xca\x02\x1dCivil\\Public_\\Improvements\\V1\xe2\x02)Civil\\Public_\\Improvements\\V1\\GPBMetadata\xea\x02\x1fCivil::Public::Improvements::V1b\x06proto3"
@@ -368,10 +368,10 @@ var file_civil_public_improvements_v1_improvements_proto_depIdxs = []int32{
 	7, // 1: civil.public.improvements.v1.GetImprovementConditionsResponse.improvement_conditions:type_name -> civil.public.improvements.v1.GetImprovementConditionsResponse.ImprovementConditionsEntry
 	0, // 2: civil.public.improvements.v1.GetImprovementTypesResponse.ImprovementTypesEntry.value:type_name -> civil.public.improvements.v1.ImprovementType
 	3, // 3: civil.public.improvements.v1.GetImprovementConditionsResponse.ImprovementConditionsEntry.value:type_name -> civil.public.improvements.v1.ImprovementCondition
-	1, // 4: civil.public.improvements.v1.ImprovementService.GetImprovementTypes:input_type -> civil.public.improvements.v1.GetImprovementTypesRequest
-	4, // 5: civil.public.improvements.v1.ImprovementService.GetImprovementConditions:input_type -> civil.public.improvements.v1.GetImprovementConditionsRequest
-	2, // 6: civil.public.improvements.v1.ImprovementService.GetImprovementTypes:output_type -> civil.public.improvements.v1.GetImprovementTypesResponse
-	5, // 7: civil.public.improvements.v1.ImprovementService.GetImprovementConditions:output_type -> civil.public.improvements.v1.GetImprovementConditionsResponse
+	1, // 4: civil.public.improvements.v1.ImprovementsService.GetImprovementTypes:input_type -> civil.public.improvements.v1.GetImprovementTypesRequest
+	4, // 5: civil.public.improvements.v1.ImprovementsService.GetImprovementConditions:input_type -> civil.public.improvements.v1.GetImprovementConditionsRequest
+	2, // 6: civil.public.improvements.v1.ImprovementsService.GetImprovementTypes:output_type -> civil.public.improvements.v1.GetImprovementTypesResponse
+	5, // 7: civil.public.improvements.v1.ImprovementsService.GetImprovementConditions:output_type -> civil.public.improvements.v1.GetImprovementConditionsResponse
 	6, // [6:8] is the sub-list for method output_type
 	4, // [4:6] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
