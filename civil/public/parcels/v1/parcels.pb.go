@@ -1734,11 +1734,12 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\f_frontage_ftB\v\n" +
 	"\t_depth_ftB\r\n" +
 	"\v_properties\"\x16\n" +
-	"\x14UpdateParcelResponse\"\xb4\x05\n" +
+	"\x14UpdateParcelResponse\"\xc0\x05\n" +
 	"+GetNumericalParcelAttributeStatsByIdRequest\x12\xbc\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x9c\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12V\n" +
-	"\tattribute\x18\x02 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeB\x0e\xbaH\v\x82\x01\b\x10\x01\x18\x01\x18\x02\x18\x03R\tattribute\x12\x9e\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x9c\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12b\n" +
+	"\tattribute\x18\x02 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeB\x1a\xbaH\x17\x82\x01\x14\x10\x01\x18\x01\x18\x02\x18\x03\x18\x06\x18\a\x18\b\x18\t\x18\n" +
+	"\x18\vR\tattribute\x12\x9e\x01\n" +
 	"\vlegal_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB]\xbaGG\x92\x02DThe real-world date to evaluate the parcel against. Defaults to now.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01\x12\xab\x01\n" +
 	"\fsystem_as_of\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampBh\xbaGP\x92\x02MThe transaction time to evaluate the database state against. Defaults to now.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\n" +
 	"systemAsOf\x88\x01\x01B\x0e\n" +
@@ -1779,12 +1780,12 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x12standard_deviation\x18\x10 \x01(\x02B\x05\xbaH\x02\n" +
 	"\x00R\x11standardDeviation\x12A\n" +
 	"\x19coefficient_of_dispersion\x18\x11 \x01(\x02B\x05\xbaH\x02\n" +
-	"\x00R\x17coefficientOfDispersion\"\xb2\x05\n" +
+	"\x00R\x17coefficientOfDispersion\"\xb8\x05\n" +
 	"-GetCategoricalParcelAttributeStatsByIdRequest\x12\xbc\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x9c\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12R\n" +
-	"\tattribute\x18\x02 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeB\n" +
-	"\xbaH\a\x82\x01\x04\x10\x01\x18\x04R\tattribute\x12\x9e\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x9c\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12X\n" +
+	"\tattribute\x18\x02 \x01(\x0e2(.civil.public.parcels.v1.ParcelAttributeB\x10\xbaH\r\x82\x01\n" +
+	"\x10\x01\x18\x04\x18\x05\x18\f\x18\rR\tattribute\x12\x9e\x01\n" +
 	"\vlegal_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB]\xbaGG\x92\x02DThe real-world date to evaluate the parcel against. Defaults to now.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01\x12\xab\x01\n" +
 	"\fsystem_as_of\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampBh\xbaGP\x92\x02MThe transaction time to evaluate the database state against. Defaults to now.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\n" +
 	"systemAsOf\x88\x01\x01B\x0e\n" +
