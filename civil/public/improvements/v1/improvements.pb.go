@@ -170,10 +170,11 @@ func (x *GetImprovementTypesResponse) GetImprovementTypes() map[string]*Improvem
 }
 
 type ImprovementCondition struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	Id                    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name                  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	DepcreciationModifier float32                `protobuf:"fixed32,3,opt,name=depcreciation_modifier,json=depcreciationModifier,proto3" json:"depcreciation_modifier,omitempty"`
+	state protoimpl.MessageState `protogen:"open.v1"`
+	Id    string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name  string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	// Set to optional to allow it to properly pass zero values
+	DepcreciationModifier *float32 `protobuf:"fixed32,3,opt,name=depcreciation_modifier,json=depcreciationModifier,proto3,oneof" json:"depcreciation_modifier,omitempty"`
 	unknownFields         protoimpl.UnknownFields
 	sizeCache             protoimpl.SizeCache
 }
@@ -223,8 +224,8 @@ func (x *ImprovementCondition) GetName() string {
 }
 
 func (x *ImprovementCondition) GetDepcreciationModifier() float32 {
-	if x != nil {
-		return x.DepcreciationModifier
+	if x != nil && x.DepcreciationModifier != nil {
+		return *x.DepcreciationModifier
 	}
 	return 0
 }
@@ -324,11 +325,12 @@ const file_civil_public_improvements_v1_improvements_proto_rawDesc = "" +
 	"\x11improvement_types\x18\x01 \x03(\v2O.civil.public.improvements.v1.GetImprovementTypesResponse.ImprovementTypesEntryR\x10improvementTypes\x1ar\n" +
 	"\x15ImprovementTypesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12C\n" +
-	"\x05value\x18\x02 \x01(\v2-.civil.public.improvements.v1.ImprovementTypeR\x05value:\x028\x01\"q\n" +
+	"\x05value\x18\x02 \x01(\v2-.civil.public.improvements.v1.ImprovementTypeR\x05value:\x028\x01\"\x91\x01\n" +
 	"\x14ImprovementCondition\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04name\x125\n" +
-	"\x16depcreciation_modifier\x18\x03 \x01(\x02R\x15depcreciationModifier\"!\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12:\n" +
+	"\x16depcreciation_modifier\x18\x03 \x01(\x02H\x00R\x15depcreciationModifier\x88\x01\x01B\x19\n" +
+	"\x17_depcreciation_modifier\"!\n" +
 	"\x1fGetImprovementConditionsRequest\"\xb3\x02\n" +
 	" GetImprovementConditionsResponse\x12\x90\x01\n" +
 	"\x16improvement_conditions\x18\x01 \x03(\v2Y.civil.public.improvements.v1.GetImprovementConditionsResponse.ImprovementConditionsEntryR\x15improvementConditions\x1a|\n" +
@@ -384,6 +386,7 @@ func file_civil_public_improvements_v1_improvements_proto_init() {
 	if File_civil_public_improvements_v1_improvements_proto != nil {
 		return
 	}
+	file_civil_public_improvements_v1_improvements_proto_msgTypes[3].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
