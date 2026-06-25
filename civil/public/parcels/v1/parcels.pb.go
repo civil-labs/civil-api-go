@@ -1730,27 +1730,27 @@ func (x *GetParcelByFeatureIdResponse) GetParcel() *Parcel {
 	return nil
 }
 
-type GetParcelIdByFeatureIdRequest struct {
+type GetParcelIdsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureId     []int64                `protobuf:"varint,1,rep,packed,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetParcelIdByFeatureIdRequest) Reset() {
-	*x = GetParcelIdByFeatureIdRequest{}
+func (x *GetParcelIdsByFeatureIdRequest) Reset() {
+	*x = GetParcelIdsByFeatureIdRequest{}
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetParcelIdByFeatureIdRequest) String() string {
+func (x *GetParcelIdsByFeatureIdRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetParcelIdByFeatureIdRequest) ProtoMessage() {}
+func (*GetParcelIdsByFeatureIdRequest) ProtoMessage() {}
 
-func (x *GetParcelIdByFeatureIdRequest) ProtoReflect() protoreflect.Message {
+func (x *GetParcelIdsByFeatureIdRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1762,39 +1762,39 @@ func (x *GetParcelIdByFeatureIdRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetParcelIdByFeatureIdRequest.ProtoReflect.Descriptor instead.
-func (*GetParcelIdByFeatureIdRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetParcelIdsByFeatureIdRequest.ProtoReflect.Descriptor instead.
+func (*GetParcelIdsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{21}
 }
 
-func (x *GetParcelIdByFeatureIdRequest) GetFeatureId() []int64 {
+func (x *GetParcelIdsByFeatureIdRequest) GetFeatureId() []int64 {
 	if x != nil {
 		return x.FeatureId
 	}
 	return nil
 }
 
-type GetParcelIdByFeatureIdResponse struct {
+type GetParcelIdsByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     map[int64]string       `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetParcelIdByFeatureIdResponse) Reset() {
-	*x = GetParcelIdByFeatureIdResponse{}
+func (x *GetParcelIdsByFeatureIdResponse) Reset() {
+	*x = GetParcelIdsByFeatureIdResponse{}
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetParcelIdByFeatureIdResponse) String() string {
+func (x *GetParcelIdsByFeatureIdResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetParcelIdByFeatureIdResponse) ProtoMessage() {}
+func (*GetParcelIdsByFeatureIdResponse) ProtoMessage() {}
 
-func (x *GetParcelIdByFeatureIdResponse) ProtoReflect() protoreflect.Message {
+func (x *GetParcelIdsByFeatureIdResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1806,12 +1806,12 @@ func (x *GetParcelIdByFeatureIdResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetParcelIdByFeatureIdResponse.ProtoReflect.Descriptor instead.
-func (*GetParcelIdByFeatureIdResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetParcelIdsByFeatureIdResponse.ProtoReflect.Descriptor instead.
+func (*GetParcelIdsByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *GetParcelIdByFeatureIdResponse) GetParcelIds() map[int64]string {
+func (x *GetParcelIdsByFeatureIdResponse) GetParcelIds() map[int64]string {
 	if x != nil {
 		return x.ParcelIds
 	}
@@ -2063,13 +2063,13 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\r_valuation_idB\x1d\n" +
 	"\x1b_neighborhood_definition_id\"W\n" +
 	"\x1cGetParcelByFeatureIdResponse\x127\n" +
-	"\x06parcel\x18\x01 \x01(\v2\x1f.civil.public.parcels.v1.ParcelR\x06parcel\">\n" +
-	"\x1dGetParcelIdByFeatureIdRequest\x12\x1d\n" +
+	"\x06parcel\x18\x01 \x01(\v2\x1f.civil.public.parcels.v1.ParcelR\x06parcel\"?\n" +
+	"\x1eGetParcelIdsByFeatureIdRequest\x12\x1d\n" +
 	"\n" +
-	"feature_id\x18\x01 \x03(\x03R\tfeatureId\"\xc5\x01\n" +
-	"\x1eGetParcelIdByFeatureIdResponse\x12e\n" +
+	"feature_id\x18\x01 \x03(\x03R\tfeatureId\"\xc7\x01\n" +
+	"\x1fGetParcelIdsByFeatureIdResponse\x12f\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\v2F.civil.public.parcels.v1.GetParcelIdByFeatureIdResponse.ParcelIdsEntryR\tparcelIds\x1a<\n" +
+	"parcel_ids\x18\x01 \x03(\v2G.civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntryR\tparcelIds\x1a<\n" +
 	"\x0eParcelIdsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01*\x95\x04\n" +
@@ -2088,14 +2088,16 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x12\x1a\n" +
 	"\x16PARCEL_ATTRIBUTE_UNITS\x10\v\x12!\n" +
 	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\f\x12(\n" +
-	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\x86\a\n" +
-	"\x0eParcelsService\x12v\n" +
-	"\x0eGetParcelsById\x12..civil.public.parcels.v1.GetParcelsByIdRequest\x1a/.civil.public.parcels.v1.GetParcelsByIdResponse\"\x03\x90\x02\x01\x12m\n" +
-	"\fUpdateParcel\x12,.civil.public.parcels.v1.UpdateParcelRequest\x1a-.civil.public.parcels.v1.UpdateParcelResponse\"\x00\x12\xb8\x01\n" +
-	"$GetNumericalParcelAttributeStatsById\x12D.civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest\x1aE.civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse\"\x03\x90\x02\x01\x12\xbe\x01\n" +
-	"&GetCategoricalParcelAttributeStatsById\x12F.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest\x1aG.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse\"\x03\x90\x02\x01\x12\x88\x01\n" +
-	"\x14GetEquityComparables\x124.civil.public.parcels.v1.GetEquityComparablesRequest\x1a5.civil.public.parcels.v1.GetEquityComparablesResponse\"\x03\x90\x02\x01\x12\x85\x01\n" +
-	"\x13GetSalesComparables\x123.civil.public.parcels.v1.GetSalesComparablesRequest\x1a4.civil.public.parcels.v1.GetSalesComparablesResponse\"\x03\x90\x02\x01B\x8b\x04\xbaG\x95\x02\x12\xa6\x01\n" +
+	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\x90\t\n" +
+	"\x0eParcelsService\x12s\n" +
+	"\x0eGetParcelsById\x12..civil.public.parcels.v1.GetParcelsByIdRequest\x1a/.civil.public.parcels.v1.GetParcelsByIdResponse\"\x00\x12m\n" +
+	"\fUpdateParcel\x12,.civil.public.parcels.v1.UpdateParcelRequest\x1a-.civil.public.parcels.v1.UpdateParcelResponse\"\x00\x12\xb5\x01\n" +
+	"$GetNumericalParcelAttributeStatsById\x12D.civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest\x1aE.civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse\"\x00\x12\xbb\x01\n" +
+	"&GetCategoricalParcelAttributeStatsById\x12F.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest\x1aG.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse\"\x00\x12\x85\x01\n" +
+	"\x14GetEquityComparables\x124.civil.public.parcels.v1.GetEquityComparablesRequest\x1a5.civil.public.parcels.v1.GetEquityComparablesResponse\"\x00\x12\x82\x01\n" +
+	"\x13GetSalesComparables\x123.civil.public.parcels.v1.GetSalesComparablesRequest\x1a4.civil.public.parcels.v1.GetSalesComparablesResponse\"\x00\x12\x85\x01\n" +
+	"\x14GetParcelByFeatureId\x124.civil.public.parcels.v1.GetParcelByFeatureIdRequest\x1a5.civil.public.parcels.v1.GetParcelByFeatureIdResponse\"\x00\x12\x8e\x01\n" +
+	"\x17GetParcelIdsByFeatureId\x127.civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest\x1a8.civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse\"\x00B\x8b\x04\xbaG\x95\x02\x12\xa6\x01\n" +
 	"\tCivil API\x12\x91\x01Public API description for the Civil platform. Auth token can be retrieved by prefixing \"auth-\" to the beginning of your jurisdiction's endpoint.2\x050.0.3\x1a\x1d\n" +
 	"\x1bhttps://leepa.civillabs.app\x1a\"\n" +
 	" https://louisville.civillabs.app*':%\n" +
@@ -2143,13 +2145,13 @@ var file_civil_public_parcels_v1_parcels_proto_goTypes = []any{
 	(*GetSalesComparablesResponse)(nil),                    // 19: civil.public.parcels.v1.GetSalesComparablesResponse
 	(*GetParcelByFeatureIdRequest)(nil),                    // 20: civil.public.parcels.v1.GetParcelByFeatureIdRequest
 	(*GetParcelByFeatureIdResponse)(nil),                   // 21: civil.public.parcels.v1.GetParcelByFeatureIdResponse
-	(*GetParcelIdByFeatureIdRequest)(nil),                  // 22: civil.public.parcels.v1.GetParcelIdByFeatureIdRequest
-	(*GetParcelIdByFeatureIdResponse)(nil),                 // 23: civil.public.parcels.v1.GetParcelIdByFeatureIdResponse
+	(*GetParcelIdsByFeatureIdRequest)(nil),                 // 22: civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
+	(*GetParcelIdsByFeatureIdResponse)(nil),                // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
 	nil,                                                    // 24: civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
 	nil,                                                    // 25: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntry
 	nil,                                                    // 26: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
 	nil,                                                    // 27: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
-	nil,                                                    // 28: civil.public.parcels.v1.GetParcelIdByFeatureIdResponse.ParcelIdsEntry
+	nil,                                                    // 28: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
 	(*timestamppb.Timestamp)(nil),                          // 29: google.protobuf.Timestamp
 	(*interval.Interval)(nil),                              // 30: google.type.Interval
 }
@@ -2177,7 +2179,7 @@ var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
 	30, // 20: civil.public.parcels.v1.GetSalesComparablesRequest.time_range:type_name -> google.type.Interval
 	27, // 21: civil.public.parcels.v1.GetSalesComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
 	3,  // 22: civil.public.parcels.v1.GetParcelByFeatureIdResponse.parcel:type_name -> civil.public.parcels.v1.Parcel
-	28, // 23: civil.public.parcels.v1.GetParcelIdByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdByFeatureIdResponse.ParcelIdsEntry
+	28, // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
 	3,  // 24: civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.Parcel
 	14, // 25: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
 	15, // 26: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
@@ -2187,14 +2189,18 @@ var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
 	10, // 30: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
 	16, // 31: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
 	18, // 32: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
-	5,  // 33: civil.public.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.public.parcels.v1.GetParcelsByIdResponse
-	7,  // 34: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
-	9,  // 35: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
-	11, // 36: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
-	17, // 37: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
-	19, // 38: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
-	33, // [33:39] is the sub-list for method output_type
-	27, // [27:33] is the sub-list for method input_type
+	20, // 33: civil.public.parcels.v1.ParcelsService.GetParcelByFeatureId:input_type -> civil.public.parcels.v1.GetParcelByFeatureIdRequest
+	22, // 34: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
+	5,  // 35: civil.public.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.public.parcels.v1.GetParcelsByIdResponse
+	7,  // 36: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
+	9,  // 37: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
+	11, // 38: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
+	17, // 39: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
+	19, // 40: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
+	21, // 41: civil.public.parcels.v1.ParcelsService.GetParcelByFeatureId:output_type -> civil.public.parcels.v1.GetParcelByFeatureIdResponse
+	23, // 42: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
+	35, // [35:43] is the sub-list for method output_type
+	27, // [27:35] is the sub-list for method input_type
 	27, // [27:27] is the sub-list for extension type_name
 	27, // [27:27] is the sub-list for extension extendee
 	0,  // [0:27] is the sub-list for field type_name

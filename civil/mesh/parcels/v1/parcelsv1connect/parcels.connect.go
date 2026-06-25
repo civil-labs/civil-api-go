@@ -51,6 +51,12 @@ const (
 	// ParcelsServiceGetSalesComparablesProcedure is the fully-qualified name of the ParcelsService's
 	// GetSalesComparables RPC.
 	ParcelsServiceGetSalesComparablesProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetSalesComparables"
+	// ParcelsServiceGetParcelByFeatureIdProcedure is the fully-qualified name of the ParcelsService's
+	// GetParcelByFeatureId RPC.
+	ParcelsServiceGetParcelByFeatureIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcelByFeatureId"
+	// ParcelsServiceGetParcelIdsByFeatureIdProcedure is the fully-qualified name of the
+	// ParcelsService's GetParcelIdsByFeatureId RPC.
+	ParcelsServiceGetParcelIdsByFeatureIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetParcelIdsByFeatureId"
 )
 
 // ParcelsServiceClient is a client for the civil.mesh.parcels.v1.ParcelsService service.
@@ -64,6 +70,8 @@ type ParcelsServiceClient interface {
 	GetCategoricalParcelStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelStatsByIdResponse], error)
 	GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error)
 	GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error)
+	GetParcelByFeatureId(context.Context, *connect.Request[v1.GetParcelByFeatureIdRequest]) (*connect.Response[v1.GetParcelByFeatureIdResponse], error)
+	GetParcelIdsByFeatureId(context.Context, *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error)
 }
 
 // NewParcelsServiceClient constructs a client for the civil.mesh.parcels.v1.ParcelsService service.
@@ -113,6 +121,18 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetSalesComparables")),
 			connect.WithClientOptions(opts...),
 		),
+		getParcelByFeatureId: connect.NewClient[v1.GetParcelByFeatureIdRequest, v1.GetParcelByFeatureIdResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetParcelByFeatureIdProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelByFeatureId")),
+			connect.WithClientOptions(opts...),
+		),
+		getParcelIdsByFeatureId: connect.NewClient[v1.GetParcelIdsByFeatureIdRequest, v1.GetParcelIdsByFeatureIdResponse](
+			httpClient,
+			baseURL+ParcelsServiceGetParcelIdsByFeatureIdProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelIdsByFeatureId")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -124,6 +144,8 @@ type parcelsServiceClient struct {
 	getCategoricalParcelStatsById *connect.Client[v1.GetCategoricalParcelStatsByIdRequest, v1.GetCategoricalParcelStatsByIdResponse]
 	getEquityComparables          *connect.Client[v1.GetEquityComparablesRequest, v1.GetEquityComparablesResponse]
 	getSalesComparables           *connect.Client[v1.GetSalesComparablesRequest, v1.GetSalesComparablesResponse]
+	getParcelByFeatureId          *connect.Client[v1.GetParcelByFeatureIdRequest, v1.GetParcelByFeatureIdResponse]
+	getParcelIdsByFeatureId       *connect.Client[v1.GetParcelIdsByFeatureIdRequest, v1.GetParcelIdsByFeatureIdResponse]
 }
 
 // GetParcelsById calls civil.mesh.parcels.v1.ParcelsService.GetParcelsById.
@@ -158,6 +180,16 @@ func (c *parcelsServiceClient) GetSalesComparables(ctx context.Context, req *con
 	return c.getSalesComparables.CallUnary(ctx, req)
 }
 
+// GetParcelByFeatureId calls civil.mesh.parcels.v1.ParcelsService.GetParcelByFeatureId.
+func (c *parcelsServiceClient) GetParcelByFeatureId(ctx context.Context, req *connect.Request[v1.GetParcelByFeatureIdRequest]) (*connect.Response[v1.GetParcelByFeatureIdResponse], error) {
+	return c.getParcelByFeatureId.CallUnary(ctx, req)
+}
+
+// GetParcelIdsByFeatureId calls civil.mesh.parcels.v1.ParcelsService.GetParcelIdsByFeatureId.
+func (c *parcelsServiceClient) GetParcelIdsByFeatureId(ctx context.Context, req *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error) {
+	return c.getParcelIdsByFeatureId.CallUnary(ctx, req)
+}
+
 // ParcelsServiceHandler is an implementation of the civil.mesh.parcels.v1.ParcelsService service.
 type ParcelsServiceHandler interface {
 	// Retrieves the value for a specified attribute for a given parcel
@@ -169,6 +201,8 @@ type ParcelsServiceHandler interface {
 	GetCategoricalParcelStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelStatsByIdResponse], error)
 	GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error)
 	GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error)
+	GetParcelByFeatureId(context.Context, *connect.Request[v1.GetParcelByFeatureIdRequest]) (*connect.Response[v1.GetParcelByFeatureIdResponse], error)
+	GetParcelIdsByFeatureId(context.Context, *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error)
 }
 
 // NewParcelsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -214,6 +248,18 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetSalesComparables")),
 		connect.WithHandlerOptions(opts...),
 	)
+	parcelsServiceGetParcelByFeatureIdHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetParcelByFeatureIdProcedure,
+		svc.GetParcelByFeatureId,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelByFeatureId")),
+		connect.WithHandlerOptions(opts...),
+	)
+	parcelsServiceGetParcelIdsByFeatureIdHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetParcelIdsByFeatureIdProcedure,
+		svc.GetParcelIdsByFeatureId,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelIdsByFeatureId")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/civil.mesh.parcels.v1.ParcelsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ParcelsServiceGetParcelsByIdProcedure:
@@ -228,6 +274,10 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 			parcelsServiceGetEquityComparablesHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetSalesComparablesProcedure:
 			parcelsServiceGetSalesComparablesHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetParcelByFeatureIdProcedure:
+			parcelsServiceGetParcelByFeatureIdHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetParcelIdsByFeatureIdProcedure:
+			parcelsServiceGetParcelIdsByFeatureIdHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -259,4 +309,12 @@ func (UnimplementedParcelsServiceHandler) GetEquityComparables(context.Context, 
 
 func (UnimplementedParcelsServiceHandler) GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetSalesComparables is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetParcelByFeatureId(context.Context, *connect.Request[v1.GetParcelByFeatureIdRequest]) (*connect.Response[v1.GetParcelByFeatureIdResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcelByFeatureId is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) GetParcelIdsByFeatureId(context.Context, *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetParcelIdsByFeatureId is not implemented"))
 }
