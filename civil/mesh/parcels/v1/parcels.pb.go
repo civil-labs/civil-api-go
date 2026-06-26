@@ -1875,7 +1875,7 @@ func (x *GetParcelByFeatureIdResponse) GetParcel() *SimpleParcel {
 
 type GetParcelIdsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureId     []int64                `protobuf:"varint,1,rep,packed,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1910,9 +1910,9 @@ func (*GetParcelIdsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *GetParcelIdsByFeatureIdRequest) GetFeatureId() []int64 {
+func (x *GetParcelIdsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
-		return x.FeatureId
+		return x.FeatureIds
 	}
 	return nil
 }
@@ -2218,10 +2218,10 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\r_valuation_idB\x1d\n" +
 	"\x1b_neighborhood_definition_id\"[\n" +
 	"\x1cGetParcelByFeatureIdResponse\x12;\n" +
-	"\x06parcel\x18\x01 \x01(\v2#.civil.mesh.parcels.v1.SimpleParcelR\x06parcel\"?\n" +
-	"\x1eGetParcelIdsByFeatureIdRequest\x12\x1d\n" +
-	"\n" +
-	"feature_id\x18\x01 \x03(\x03R\tfeatureId\"\xc5\x01\n" +
+	"\x06parcel\x18\x01 \x01(\v2#.civil.mesh.parcels.v1.SimpleParcelR\x06parcel\"A\n" +
+	"\x1eGetParcelIdsByFeatureIdRequest\x12\x1f\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03R\n" +
+	"featureIds\"\xc5\x01\n" +
 	"\x1fGetParcelIdsByFeatureIdResponse\x12d\n" +
 	"\n" +
 	"parcel_ids\x18\x01 \x03(\v2E.civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntryR\tparcelIds\x1a<\n" +
