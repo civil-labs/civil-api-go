@@ -1261,9 +1261,10 @@ func (x *ComparableAttribute) GetCategoricalValue() string {
 type EquityComparableParcel struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	ParcelId         string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	AddressId        string                 `protobuf:"bytes,2,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	FormattedAddress string                 `protobuf:"bytes,3,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
-	Attributes       []*ComparableAttribute `protobuf:"bytes,4,rep,name=attributes,proto3" json:"attributes,omitempty"`
+	FeatureId        int64                  `protobuf:"varint,2,opt,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
+	AddressId        string                 `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
+	FormattedAddress string                 `protobuf:"bytes,4,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
+	Attributes       []*ComparableAttribute `protobuf:"bytes,5,rep,name=attributes,proto3" json:"attributes,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1305,6 +1306,13 @@ func (x *EquityComparableParcel) GetParcelId() string {
 	return ""
 }
 
+func (x *EquityComparableParcel) GetFeatureId() int64 {
+	if x != nil {
+		return x.FeatureId
+	}
+	return 0
+}
+
 func (x *EquityComparableParcel) GetAddressId() string {
 	if x != nil {
 		return x.AddressId
@@ -1329,11 +1337,12 @@ func (x *EquityComparableParcel) GetAttributes() []*ComparableAttribute {
 type SaleComparableParcel struct {
 	state            protoimpl.MessageState `protogen:"open.v1"`
 	ParcelId         string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	AddressId        string                 `protobuf:"bytes,2,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
-	FormattedAddress string                 `protobuf:"bytes,3,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
-	SaleTime         *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=sale_time,json=saleTime,proto3" json:"sale_time,omitempty"`
-	SalePrice        string                 `protobuf:"bytes,5,opt,name=sale_price,json=salePrice,proto3" json:"sale_price,omitempty"`
-	Attributes       []*ComparableAttribute `protobuf:"bytes,6,rep,name=attributes,proto3" json:"attributes,omitempty"`
+	FeatureId        int64                  `protobuf:"varint,2,opt,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
+	AddressId        string                 `protobuf:"bytes,3,opt,name=address_id,json=addressId,proto3" json:"address_id,omitempty"`
+	FormattedAddress string                 `protobuf:"bytes,4,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
+	SaleTime         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=sale_time,json=saleTime,proto3" json:"sale_time,omitempty"`
+	SalePrice        string                 `protobuf:"bytes,6,opt,name=sale_price,json=salePrice,proto3" json:"sale_price,omitempty"`
+	Attributes       []*ComparableAttribute `protobuf:"bytes,7,rep,name=attributes,proto3" json:"attributes,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1373,6 +1382,13 @@ func (x *SaleComparableParcel) GetParcelId() string {
 		return x.ParcelId
 	}
 	return ""
+}
+
+func (x *SaleComparableParcel) GetFeatureId() int64 {
+	if x != nil {
+		return x.FeatureId
+	}
+	return 0
 }
 
 func (x *SaleComparableParcel) GetAddressId() string {
@@ -2176,25 +2192,29 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x0fnumerical_value\x18\x02 \x01(\x01H\x00R\x0enumericalValue\x88\x01\x01\x120\n" +
 	"\x11categorical_value\x18\x03 \x01(\tH\x01R\x10categoricalValue\x88\x01\x01B\x12\n" +
 	"\x10_numerical_valueB\x14\n" +
-	"\x12_categorical_value\"\xcf\x01\n" +
+	"\x12_categorical_value\"\xee\x01\n" +
 	"\x16EquityComparableParcel\x12\x1b\n" +
 	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x1d\n" +
 	"\n" +
-	"address_id\x18\x02 \x01(\tR\taddressId\x12+\n" +
-	"\x11formatted_address\x18\x03 \x01(\tR\x10formattedAddress\x12L\n" +
+	"feature_id\x18\x02 \x01(\x03R\tfeatureId\x12\x1d\n" +
 	"\n" +
-	"attributes\x18\x04 \x03(\v2,.civil.public.parcels.v1.ComparableAttributeR\n" +
-	"attributes\"\xa5\x02\n" +
+	"address_id\x18\x03 \x01(\tR\taddressId\x12+\n" +
+	"\x11formatted_address\x18\x04 \x01(\tR\x10formattedAddress\x12L\n" +
+	"\n" +
+	"attributes\x18\x05 \x03(\v2,.civil.public.parcels.v1.ComparableAttributeR\n" +
+	"attributes\"\xc4\x02\n" +
 	"\x14SaleComparableParcel\x12\x1b\n" +
 	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x1d\n" +
 	"\n" +
-	"address_id\x18\x02 \x01(\tR\taddressId\x12+\n" +
-	"\x11formatted_address\x18\x03 \x01(\tR\x10formattedAddress\x127\n" +
-	"\tsale_time\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\bsaleTime\x12\x1d\n" +
+	"feature_id\x18\x02 \x01(\x03R\tfeatureId\x12\x1d\n" +
 	"\n" +
-	"sale_price\x18\x05 \x01(\tR\tsalePrice\x12L\n" +
+	"address_id\x18\x03 \x01(\tR\taddressId\x12+\n" +
+	"\x11formatted_address\x18\x04 \x01(\tR\x10formattedAddress\x127\n" +
+	"\tsale_time\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\bsaleTime\x12\x1d\n" +
 	"\n" +
-	"attributes\x18\x06 \x03(\v2,.civil.public.parcels.v1.ComparableAttributeR\n" +
+	"sale_price\x18\x06 \x01(\tR\tsalePrice\x12L\n" +
+	"\n" +
+	"attributes\x18\a \x03(\v2,.civil.public.parcels.v1.ComparableAttributeR\n" +
 	"attributes\"\xb4\x02\n" +
 	"\x1bGetEquityComparablesRequest\x12\x9b\x01\n" +
 	"\vwkt_polygon\x18\x01 \x01(\tBz\xbaHwru\x18\x90N2p^(?i)(POINT|LINESTRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON|GEOMETRYCOLLECTION)\\s*(Z|M|ZM)?\\s*\\(.*\\)$R\n" +
