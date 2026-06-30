@@ -1977,26 +1977,26 @@ func (x *GetParcelIdsByFeatureIdResponse) GetParcelIds() map[int64]string {
 	return nil
 }
 
-type GetEstimatedParcelsExtentInWGS84Request struct {
+type GetEstimatedParcelsExtentWGS84Request struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Request) Reset() {
-	*x = GetEstimatedParcelsExtentInWGS84Request{}
+func (x *GetEstimatedParcelsExtentWGS84Request) Reset() {
+	*x = GetEstimatedParcelsExtentWGS84Request{}
 	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Request) String() string {
+func (x *GetEstimatedParcelsExtentWGS84Request) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetEstimatedParcelsExtentInWGS84Request) ProtoMessage() {}
+func (*GetEstimatedParcelsExtentWGS84Request) ProtoMessage() {}
 
-func (x *GetEstimatedParcelsExtentInWGS84Request) ProtoReflect() protoreflect.Message {
+func (x *GetEstimatedParcelsExtentWGS84Request) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2008,12 +2008,12 @@ func (x *GetEstimatedParcelsExtentInWGS84Request) ProtoReflect() protoreflect.Me
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetEstimatedParcelsExtentInWGS84Request.ProtoReflect.Descriptor instead.
-func (*GetEstimatedParcelsExtentInWGS84Request) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEstimatedParcelsExtentWGS84Request.ProtoReflect.Descriptor instead.
+func (*GetEstimatedParcelsExtentWGS84Request) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{24}
 }
 
-type GetEstimatedParcelsExtentInWGS84Response struct {
+type GetEstimatedParcelsExtentWGS84Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MinX          float64                `protobuf:"fixed64,1,opt,name=min_x,json=minX,proto3" json:"min_x,omitempty"`
 	MinY          float64                `protobuf:"fixed64,2,opt,name=min_y,json=minY,proto3" json:"min_y,omitempty"`
@@ -2023,20 +2023,20 @@ type GetEstimatedParcelsExtentInWGS84Response struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) Reset() {
-	*x = GetEstimatedParcelsExtentInWGS84Response{}
+func (x *GetEstimatedParcelsExtentWGS84Response) Reset() {
+	*x = GetEstimatedParcelsExtentWGS84Response{}
 	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) String() string {
+func (x *GetEstimatedParcelsExtentWGS84Response) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetEstimatedParcelsExtentInWGS84Response) ProtoMessage() {}
+func (*GetEstimatedParcelsExtentWGS84Response) ProtoMessage() {}
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) ProtoReflect() protoreflect.Message {
+func (x *GetEstimatedParcelsExtentWGS84Response) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_mesh_parcels_v1_parcels_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2048,33 +2048,33 @@ func (x *GetEstimatedParcelsExtentInWGS84Response) ProtoReflect() protoreflect.M
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetEstimatedParcelsExtentInWGS84Response.ProtoReflect.Descriptor instead.
-func (*GetEstimatedParcelsExtentInWGS84Response) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEstimatedParcelsExtentWGS84Response.ProtoReflect.Descriptor instead.
+func (*GetEstimatedParcelsExtentWGS84Response) Descriptor() ([]byte, []int) {
 	return file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMinX() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMinX() float64 {
 	if x != nil {
 		return x.MinX
 	}
 	return 0
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMinY() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMinY() float64 {
 	if x != nil {
 		return x.MinY
 	}
 	return 0
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMaxX() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMaxX() float64 {
 	if x != nil {
 		return x.MaxX
 	}
 	return 0
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMaxY() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMaxY() float64 {
 	if x != nil {
 		return x.MaxY
 	}
@@ -2351,9 +2351,9 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"parcel_ids\x18\x01 \x03(\v2E.civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntryR\tparcelIds\x1a<\n" +
 	"\x0eParcelIdsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\")\n" +
-	"'GetEstimatedParcelsExtentInWGS84Request\"~\n" +
-	"(GetEstimatedParcelsExtentInWGS84Response\x12\x13\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"'\n" +
+	"%GetEstimatedParcelsExtentWGS84Request\"|\n" +
+	"&GetEstimatedParcelsExtentWGS84Response\x12\x13\n" +
 	"\x05min_x\x18\x01 \x01(\x01R\x04minX\x12\x13\n" +
 	"\x05min_y\x18\x02 \x01(\x01R\x04minY\x12\x13\n" +
 	"\x05max_x\x18\x03 \x01(\x01R\x04maxX\x12\x13\n" +
@@ -2373,7 +2373,7 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x12\x1a\n" +
 	"\x16PARCEL_ATTRIBUTE_UNITS\x10\v\x12!\n" +
 	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\f\x12(\n" +
-	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xe1\t\n" +
+	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xdb\t\n" +
 	"\x0eParcelsService\x12o\n" +
 	"\x0eGetParcelsById\x12,.civil.mesh.parcels.v1.GetParcelsByIdRequest\x1a-.civil.mesh.parcels.v1.GetParcelsByIdResponse\"\x00\x12i\n" +
 	"\fUpdateParcel\x12*.civil.mesh.parcels.v1.UpdateParcelRequest\x1a+.civil.mesh.parcels.v1.UpdateParcelResponse\"\x00\x12\x96\x01\n" +
@@ -2382,8 +2382,8 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x14GetEquityComparables\x122.civil.mesh.parcels.v1.GetEquityComparablesRequest\x1a3.civil.mesh.parcels.v1.GetEquityComparablesResponse\"\x00\x12~\n" +
 	"\x13GetSalesComparables\x121.civil.mesh.parcels.v1.GetSalesComparablesRequest\x1a2.civil.mesh.parcels.v1.GetSalesComparablesResponse\"\x00\x12\x81\x01\n" +
 	"\x14GetParcelByFeatureId\x122.civil.mesh.parcels.v1.GetParcelByFeatureIdRequest\x1a3.civil.mesh.parcels.v1.GetParcelByFeatureIdResponse\"\x00\x12\x8a\x01\n" +
-	"\x17GetParcelIdsByFeatureId\x125.civil.mesh.parcels.v1.GetParcelIdsByFeatureIdRequest\x1a6.civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse\"\x00\x12\xa5\x01\n" +
-	" GetEstimatedParcelsExtentInWGS84\x12>.civil.mesh.parcels.v1.GetEstimatedParcelsExtentInWGS84Request\x1a?.civil.mesh.parcels.v1.GetEstimatedParcelsExtentInWGS84Response\"\x00B\xe4\x01\n" +
+	"\x17GetParcelIdsByFeatureId\x125.civil.mesh.parcels.v1.GetParcelIdsByFeatureIdRequest\x1a6.civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse\"\x00\x12\x9f\x01\n" +
+	"\x1eGetEstimatedParcelsExtentWGS84\x12<.civil.mesh.parcels.v1.GetEstimatedParcelsExtentWGS84Request\x1a=.civil.mesh.parcels.v1.GetEstimatedParcelsExtentWGS84Response\"\x00B\xe4\x01\n" +
 	"\x19com.civil.mesh.parcels.v1B\fParcelsProtoP\x01ZBgithub.com/civil-labs/civil-api-go/civil/mesh/parcels/v1;parcelsv1\xa2\x02\x03CMP\xaa\x02\x15Civil.Mesh.Parcels.V1\xca\x02\x15Civil\\Mesh\\Parcels\\V1\xe2\x02!Civil\\Mesh\\Parcels\\V1\\GPBMetadata\xea\x02\x18Civil::Mesh::Parcels::V1b\x06proto3"
 
 var (
@@ -2401,33 +2401,33 @@ func file_civil_mesh_parcels_v1_parcels_proto_rawDescGZIP() []byte {
 var file_civil_mesh_parcels_v1_parcels_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_civil_mesh_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_civil_mesh_parcels_v1_parcels_proto_goTypes = []any{
-	(ParcelAttribute)(0),                             // 0: civil.mesh.parcels.v1.ParcelAttribute
-	(*ParcelAffordances)(nil),                        // 1: civil.mesh.parcels.v1.ParcelAffordances
-	(*ParcelImprovementsSummary)(nil),                // 2: civil.mesh.parcels.v1.ParcelImprovementsSummary
-	(*Parcel)(nil),                                   // 3: civil.mesh.parcels.v1.Parcel
-	(*GetParcelsByIdRequest)(nil),                    // 4: civil.mesh.parcels.v1.GetParcelsByIdRequest
-	(*GetParcelsByIdResponse)(nil),                   // 5: civil.mesh.parcels.v1.GetParcelsByIdResponse
-	(*UpdateParcelRequest)(nil),                      // 6: civil.mesh.parcels.v1.UpdateParcelRequest
-	(*UpdateParcelResponse)(nil),                     // 7: civil.mesh.parcels.v1.UpdateParcelResponse
-	(*GetNumericalParcelStatsByIdRequest)(nil),       // 8: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
-	(*GetNumericalParcelStatsByIdResponse)(nil),      // 9: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
-	(*GetCategoricalParcelStatsByIdRequest)(nil),     // 10: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
-	(*GetCategoricalParcelStatsByIdResponse)(nil),    // 11: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
-	(*ComparableCriteria)(nil),                       // 12: civil.mesh.parcels.v1.ComparableCriteria
-	(*ComparableAttribute)(nil),                      // 13: civil.mesh.parcels.v1.ComparableAttribute
-	(*EquityComparableParcel)(nil),                   // 14: civil.mesh.parcels.v1.EquityComparableParcel
-	(*SaleComparableParcel)(nil),                     // 15: civil.mesh.parcels.v1.SaleComparableParcel
-	(*GetEquityComparablesRequest)(nil),              // 16: civil.mesh.parcels.v1.GetEquityComparablesRequest
-	(*GetEquityComparablesResponse)(nil),             // 17: civil.mesh.parcels.v1.GetEquityComparablesResponse
-	(*GetSalesComparablesRequest)(nil),               // 18: civil.mesh.parcels.v1.GetSalesComparablesRequest
-	(*GetSalesComparablesResponse)(nil),              // 19: civil.mesh.parcels.v1.GetSalesComparablesResponse
-	(*SimpleParcel)(nil),                             // 20: civil.mesh.parcels.v1.SimpleParcel
-	(*GetParcelByFeatureIdRequest)(nil),              // 21: civil.mesh.parcels.v1.GetParcelByFeatureIdRequest
-	(*GetParcelByFeatureIdResponse)(nil),             // 22: civil.mesh.parcels.v1.GetParcelByFeatureIdResponse
-	(*GetParcelIdsByFeatureIdRequest)(nil),           // 23: civil.mesh.parcels.v1.GetParcelIdsByFeatureIdRequest
-	(*GetParcelIdsByFeatureIdResponse)(nil),          // 24: civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse
-	(*GetEstimatedParcelsExtentInWGS84Request)(nil),  // 25: civil.mesh.parcels.v1.GetEstimatedParcelsExtentInWGS84Request
-	(*GetEstimatedParcelsExtentInWGS84Response)(nil), // 26: civil.mesh.parcels.v1.GetEstimatedParcelsExtentInWGS84Response
+	(ParcelAttribute)(0),                           // 0: civil.mesh.parcels.v1.ParcelAttribute
+	(*ParcelAffordances)(nil),                      // 1: civil.mesh.parcels.v1.ParcelAffordances
+	(*ParcelImprovementsSummary)(nil),              // 2: civil.mesh.parcels.v1.ParcelImprovementsSummary
+	(*Parcel)(nil),                                 // 3: civil.mesh.parcels.v1.Parcel
+	(*GetParcelsByIdRequest)(nil),                  // 4: civil.mesh.parcels.v1.GetParcelsByIdRequest
+	(*GetParcelsByIdResponse)(nil),                 // 5: civil.mesh.parcels.v1.GetParcelsByIdResponse
+	(*UpdateParcelRequest)(nil),                    // 6: civil.mesh.parcels.v1.UpdateParcelRequest
+	(*UpdateParcelResponse)(nil),                   // 7: civil.mesh.parcels.v1.UpdateParcelResponse
+	(*GetNumericalParcelStatsByIdRequest)(nil),     // 8: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdRequest
+	(*GetNumericalParcelStatsByIdResponse)(nil),    // 9: civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
+	(*GetCategoricalParcelStatsByIdRequest)(nil),   // 10: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdRequest
+	(*GetCategoricalParcelStatsByIdResponse)(nil),  // 11: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse
+	(*ComparableCriteria)(nil),                     // 12: civil.mesh.parcels.v1.ComparableCriteria
+	(*ComparableAttribute)(nil),                    // 13: civil.mesh.parcels.v1.ComparableAttribute
+	(*EquityComparableParcel)(nil),                 // 14: civil.mesh.parcels.v1.EquityComparableParcel
+	(*SaleComparableParcel)(nil),                   // 15: civil.mesh.parcels.v1.SaleComparableParcel
+	(*GetEquityComparablesRequest)(nil),            // 16: civil.mesh.parcels.v1.GetEquityComparablesRequest
+	(*GetEquityComparablesResponse)(nil),           // 17: civil.mesh.parcels.v1.GetEquityComparablesResponse
+	(*GetSalesComparablesRequest)(nil),             // 18: civil.mesh.parcels.v1.GetSalesComparablesRequest
+	(*GetSalesComparablesResponse)(nil),            // 19: civil.mesh.parcels.v1.GetSalesComparablesResponse
+	(*SimpleParcel)(nil),                           // 20: civil.mesh.parcels.v1.SimpleParcel
+	(*GetParcelByFeatureIdRequest)(nil),            // 21: civil.mesh.parcels.v1.GetParcelByFeatureIdRequest
+	(*GetParcelByFeatureIdResponse)(nil),           // 22: civil.mesh.parcels.v1.GetParcelByFeatureIdResponse
+	(*GetParcelIdsByFeatureIdRequest)(nil),         // 23: civil.mesh.parcels.v1.GetParcelIdsByFeatureIdRequest
+	(*GetParcelIdsByFeatureIdResponse)(nil),        // 24: civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse
+	(*GetEstimatedParcelsExtentWGS84Request)(nil),  // 25: civil.mesh.parcels.v1.GetEstimatedParcelsExtentWGS84Request
+	(*GetEstimatedParcelsExtentWGS84Response)(nil), // 26: civil.mesh.parcels.v1.GetEstimatedParcelsExtentWGS84Response
 	nil,                           // 27: civil.mesh.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
 	nil,                           // 28: civil.mesh.parcels.v1.GetCategoricalParcelStatsByIdResponse.UniqueValuesEntry
 	nil,                           // 29: civil.mesh.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
@@ -2472,7 +2472,7 @@ var file_civil_mesh_parcels_v1_parcels_proto_depIdxs = []int32{
 	18, // 32: civil.mesh.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.mesh.parcels.v1.GetSalesComparablesRequest
 	21, // 33: civil.mesh.parcels.v1.ParcelsService.GetParcelByFeatureId:input_type -> civil.mesh.parcels.v1.GetParcelByFeatureIdRequest
 	23, // 34: civil.mesh.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.mesh.parcels.v1.GetParcelIdsByFeatureIdRequest
-	25, // 35: civil.mesh.parcels.v1.ParcelsService.GetEstimatedParcelsExtentInWGS84:input_type -> civil.mesh.parcels.v1.GetEstimatedParcelsExtentInWGS84Request
+	25, // 35: civil.mesh.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.mesh.parcels.v1.GetEstimatedParcelsExtentWGS84Request
 	5,  // 36: civil.mesh.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.mesh.parcels.v1.GetParcelsByIdResponse
 	7,  // 37: civil.mesh.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.mesh.parcels.v1.UpdateParcelResponse
 	9,  // 38: civil.mesh.parcels.v1.ParcelsService.GetNumericalParcelStatsById:output_type -> civil.mesh.parcels.v1.GetNumericalParcelStatsByIdResponse
@@ -2481,7 +2481,7 @@ var file_civil_mesh_parcels_v1_parcels_proto_depIdxs = []int32{
 	19, // 41: civil.mesh.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.mesh.parcels.v1.GetSalesComparablesResponse
 	22, // 42: civil.mesh.parcels.v1.ParcelsService.GetParcelByFeatureId:output_type -> civil.mesh.parcels.v1.GetParcelByFeatureIdResponse
 	24, // 43: civil.mesh.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.mesh.parcels.v1.GetParcelIdsByFeatureIdResponse
-	26, // 44: civil.mesh.parcels.v1.ParcelsService.GetEstimatedParcelsExtentInWGS84:output_type -> civil.mesh.parcels.v1.GetEstimatedParcelsExtentInWGS84Response
+	26, // 44: civil.mesh.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.mesh.parcels.v1.GetEstimatedParcelsExtentWGS84Response
 	36, // [36:45] is the sub-list for method output_type
 	27, // [27:36] is the sub-list for method input_type
 	27, // [27:27] is the sub-list for extension type_name

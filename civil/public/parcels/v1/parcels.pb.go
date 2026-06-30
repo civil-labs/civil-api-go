@@ -1998,26 +1998,26 @@ func (x *GetParcelIdsByFeatureIdResponse) GetParcelIds() map[int64]string {
 	return nil
 }
 
-type GetEstimatedParcelsExtentInWGS84Request struct {
+type GetEstimatedParcelsExtentWGS84Request struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Request) Reset() {
-	*x = GetEstimatedParcelsExtentInWGS84Request{}
+func (x *GetEstimatedParcelsExtentWGS84Request) Reset() {
+	*x = GetEstimatedParcelsExtentWGS84Request{}
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Request) String() string {
+func (x *GetEstimatedParcelsExtentWGS84Request) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetEstimatedParcelsExtentInWGS84Request) ProtoMessage() {}
+func (*GetEstimatedParcelsExtentWGS84Request) ProtoMessage() {}
 
-func (x *GetEstimatedParcelsExtentInWGS84Request) ProtoReflect() protoreflect.Message {
+func (x *GetEstimatedParcelsExtentWGS84Request) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2029,12 +2029,12 @@ func (x *GetEstimatedParcelsExtentInWGS84Request) ProtoReflect() protoreflect.Me
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetEstimatedParcelsExtentInWGS84Request.ProtoReflect.Descriptor instead.
-func (*GetEstimatedParcelsExtentInWGS84Request) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEstimatedParcelsExtentWGS84Request.ProtoReflect.Descriptor instead.
+func (*GetEstimatedParcelsExtentWGS84Request) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{24}
 }
 
-type GetEstimatedParcelsExtentInWGS84Response struct {
+type GetEstimatedParcelsExtentWGS84Response struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MinX          float64                `protobuf:"fixed64,1,opt,name=min_x,json=minX,proto3" json:"min_x,omitempty"`
 	MinY          float64                `protobuf:"fixed64,2,opt,name=min_y,json=minY,proto3" json:"min_y,omitempty"`
@@ -2044,20 +2044,20 @@ type GetEstimatedParcelsExtentInWGS84Response struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) Reset() {
-	*x = GetEstimatedParcelsExtentInWGS84Response{}
+func (x *GetEstimatedParcelsExtentWGS84Response) Reset() {
+	*x = GetEstimatedParcelsExtentWGS84Response{}
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) String() string {
+func (x *GetEstimatedParcelsExtentWGS84Response) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetEstimatedParcelsExtentInWGS84Response) ProtoMessage() {}
+func (*GetEstimatedParcelsExtentWGS84Response) ProtoMessage() {}
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) ProtoReflect() protoreflect.Message {
+func (x *GetEstimatedParcelsExtentWGS84Response) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -2069,33 +2069,33 @@ func (x *GetEstimatedParcelsExtentInWGS84Response) ProtoReflect() protoreflect.M
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetEstimatedParcelsExtentInWGS84Response.ProtoReflect.Descriptor instead.
-func (*GetEstimatedParcelsExtentInWGS84Response) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetEstimatedParcelsExtentWGS84Response.ProtoReflect.Descriptor instead.
+func (*GetEstimatedParcelsExtentWGS84Response) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{25}
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMinX() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMinX() float64 {
 	if x != nil {
 		return x.MinX
 	}
 	return 0
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMinY() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMinY() float64 {
 	if x != nil {
 		return x.MinY
 	}
 	return 0
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMaxX() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMaxX() float64 {
 	if x != nil {
 		return x.MaxX
 	}
 	return 0
 }
 
-func (x *GetEstimatedParcelsExtentInWGS84Response) GetMaxY() float64 {
+func (x *GetEstimatedParcelsExtentWGS84Response) GetMaxY() float64 {
 	if x != nil {
 		return x.MaxY
 	}
@@ -2401,9 +2401,9 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"parcel_ids\x18\x01 \x03(\v2G.civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntryR\tparcelIds\x1a<\n" +
 	"\x0eParcelIdsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\")\n" +
-	"'GetEstimatedParcelsExtentInWGS84Request\"\xfe\x01\n" +
-	"(GetEstimatedParcelsExtentInWGS84Response\x123\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"'\n" +
+	"%GetEstimatedParcelsExtentWGS84Request\"\xfc\x01\n" +
+	"&GetEstimatedParcelsExtentWGS84Response\x123\n" +
 	"\x05min_x\x18\x01 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Minimum Longitude / WestR\x04minX\x123\n" +
 	"\x05min_y\x18\x02 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Minimum Latitude / SouthR\x04minY\x123\n" +
 	"\x05max_x\x18\x03 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Longitude / EastR\x04maxX\x123\n" +
@@ -2423,7 +2423,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x12\x1a\n" +
 	"\x16PARCEL_ATTRIBUTE_UNITS\x10\v\x12!\n" +
 	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\f\x12(\n" +
-	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xbc\n" +
+	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xb6\n" +
 	"\n" +
 	"\x0eParcelsService\x12s\n" +
 	"\x0eGetParcelsById\x12..civil.public.parcels.v1.GetParcelsByIdRequest\x1a/.civil.public.parcels.v1.GetParcelsByIdResponse\"\x00\x12m\n" +
@@ -2433,8 +2433,8 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x14GetEquityComparables\x124.civil.public.parcels.v1.GetEquityComparablesRequest\x1a5.civil.public.parcels.v1.GetEquityComparablesResponse\"\x00\x12\x82\x01\n" +
 	"\x13GetSalesComparables\x123.civil.public.parcels.v1.GetSalesComparablesRequest\x1a4.civil.public.parcels.v1.GetSalesComparablesResponse\"\x00\x12\x85\x01\n" +
 	"\x14GetParcelByFeatureId\x124.civil.public.parcels.v1.GetParcelByFeatureIdRequest\x1a5.civil.public.parcels.v1.GetParcelByFeatureIdResponse\"\x00\x12\x8e\x01\n" +
-	"\x17GetParcelIdsByFeatureId\x127.civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest\x1a8.civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse\"\x00\x12\xa9\x01\n" +
-	" GetEstimatedParcelsExtentInWGS84\x12@.civil.public.parcels.v1.GetEstimatedParcelsExtentInWGS84Request\x1aA.civil.public.parcels.v1.GetEstimatedParcelsExtentInWGS84Response\"\x00B\x8b\x04\xbaG\x95\x02\x12\xa6\x01\n" +
+	"\x17GetParcelIdsByFeatureId\x127.civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest\x1a8.civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse\"\x00\x12\xa3\x01\n" +
+	"\x1eGetEstimatedParcelsExtentWGS84\x12>.civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request\x1a?.civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response\"\x00B\x8b\x04\xbaG\x95\x02\x12\xa6\x01\n" +
 	"\tCivil API\x12\x91\x01Public API description for the Civil platform. Auth token can be retrieved by prefixing \"auth-\" to the beginning of your jurisdiction's endpoint.2\x050.0.3\x1a\x1d\n" +
 	"\x1bhttps://leepa.civillabs.app\x1a\"\n" +
 	" https://louisville.civillabs.app*':%\n" +
@@ -2485,8 +2485,8 @@ var file_civil_public_parcels_v1_parcels_proto_goTypes = []any{
 	(*GetParcelByFeatureIdResponse)(nil),                   // 22: civil.public.parcels.v1.GetParcelByFeatureIdResponse
 	(*GetParcelIdsByFeatureIdRequest)(nil),                 // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
 	(*GetParcelIdsByFeatureIdResponse)(nil),                // 24: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
-	(*GetEstimatedParcelsExtentInWGS84Request)(nil),        // 25: civil.public.parcels.v1.GetEstimatedParcelsExtentInWGS84Request
-	(*GetEstimatedParcelsExtentInWGS84Response)(nil),       // 26: civil.public.parcels.v1.GetEstimatedParcelsExtentInWGS84Response
+	(*GetEstimatedParcelsExtentWGS84Request)(nil),          // 25: civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
+	(*GetEstimatedParcelsExtentWGS84Response)(nil),         // 26: civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
 	nil,                           // 27: civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
 	nil,                           // 28: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntry
 	nil,                           // 29: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
@@ -2531,7 +2531,7 @@ var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
 	18, // 32: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
 	21, // 33: civil.public.parcels.v1.ParcelsService.GetParcelByFeatureId:input_type -> civil.public.parcels.v1.GetParcelByFeatureIdRequest
 	23, // 34: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
-	25, // 35: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentInWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentInWGS84Request
+	25, // 35: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
 	5,  // 36: civil.public.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.public.parcels.v1.GetParcelsByIdResponse
 	7,  // 37: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
 	9,  // 38: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
@@ -2540,7 +2540,7 @@ var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
 	19, // 41: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
 	22, // 42: civil.public.parcels.v1.ParcelsService.GetParcelByFeatureId:output_type -> civil.public.parcels.v1.GetParcelByFeatureIdResponse
 	24, // 43: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
-	26, // 44: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentInWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentInWGS84Response
+	26, // 44: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
 	36, // [36:45] is the sub-list for method output_type
 	27, // [27:36] is the sub-list for method input_type
 	27, // [27:27] is the sub-list for extension type_name
