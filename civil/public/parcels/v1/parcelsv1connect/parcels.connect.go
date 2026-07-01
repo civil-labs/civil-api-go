@@ -36,9 +36,9 @@ const (
 	// ParcelsServiceGetParcelsWithImprovementSummaryByParcelIdProcedure is the fully-qualified name of
 	// the ParcelsService's GetParcelsWithImprovementSummaryByParcelId RPC.
 	ParcelsServiceGetParcelsWithImprovementSummaryByParcelIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetParcelsWithImprovementSummaryByParcelId"
-	// ParcelsServiceUpdateParcelProcedure is the fully-qualified name of the ParcelsService's
-	// UpdateParcel RPC.
-	ParcelsServiceUpdateParcelProcedure = "/civil.public.parcels.v1.ParcelsService/UpdateParcel"
+	// ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure is the fully-qualified name of
+	// the ParcelsService's GetParcelsWithImprovementSummaryByFeatureId RPC.
+	ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetParcelsWithImprovementSummaryByFeatureId"
 	// ParcelsServiceGetNumericalParcelAttributeStatsByIdProcedure is the fully-qualified name of the
 	// ParcelsService's GetNumericalParcelAttributeStatsById RPC.
 	ParcelsServiceGetNumericalParcelAttributeStatsByIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetNumericalParcelAttributeStatsById"
@@ -51,31 +51,30 @@ const (
 	// ParcelsServiceGetSalesComparablesProcedure is the fully-qualified name of the ParcelsService's
 	// GetSalesComparables RPC.
 	ParcelsServiceGetSalesComparablesProcedure = "/civil.public.parcels.v1.ParcelsService/GetSalesComparables"
-	// ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure is the fully-qualified name of
-	// the ParcelsService's GetParcelsWithImprovementSummaryByFeatureId RPC.
-	ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetParcelsWithImprovementSummaryByFeatureId"
 	// ParcelsServiceGetParcelIdsByFeatureIdProcedure is the fully-qualified name of the
 	// ParcelsService's GetParcelIdsByFeatureId RPC.
 	ParcelsServiceGetParcelIdsByFeatureIdProcedure = "/civil.public.parcels.v1.ParcelsService/GetParcelIdsByFeatureId"
 	// ParcelsServiceGetEstimatedParcelsExtentWGS84Procedure is the fully-qualified name of the
 	// ParcelsService's GetEstimatedParcelsExtentWGS84 RPC.
 	ParcelsServiceGetEstimatedParcelsExtentWGS84Procedure = "/civil.public.parcels.v1.ParcelsService/GetEstimatedParcelsExtentWGS84"
+	// ParcelsServiceUpdateParcelProcedure is the fully-qualified name of the ParcelsService's
+	// UpdateParcel RPC.
+	ParcelsServiceUpdateParcelProcedure = "/civil.public.parcels.v1.ParcelsService/UpdateParcel"
 )
 
 // ParcelsServiceClient is a client for the civil.public.parcels.v1.ParcelsService service.
 type ParcelsServiceClient interface {
-	// Retrieves all of a specified parcel's attributes as an object.
 	GetParcelsWithImprovementSummaryByParcelId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByParcelIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByParcelIdResponse], error)
-	UpdateParcel(context.Context, *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error)
+	GetParcelsWithImprovementSummaryByFeatureId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error)
 	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
 	GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error)
 	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
 	GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error)
 	GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error)
 	GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error)
-	GetParcelsWithImprovementSummaryByFeatureId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error)
 	GetParcelIdsByFeatureId(context.Context, *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error)
 	GetEstimatedParcelsExtentWGS84(context.Context, *connect.Request[v1.GetEstimatedParcelsExtentWGS84Request]) (*connect.Response[v1.GetEstimatedParcelsExtentWGS84Response], error)
+	UpdateParcel(context.Context, *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error)
 }
 
 // NewParcelsServiceClient constructs a client for the civil.public.parcels.v1.ParcelsService
@@ -95,10 +94,10 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelsWithImprovementSummaryByParcelId")),
 			connect.WithClientOptions(opts...),
 		),
-		updateParcel: connect.NewClient[v1.UpdateParcelRequest, v1.UpdateParcelResponse](
+		getParcelsWithImprovementSummaryByFeatureId: connect.NewClient[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest, v1.GetParcelsWithImprovementSummaryByFeatureIdResponse](
 			httpClient,
-			baseURL+ParcelsServiceUpdateParcelProcedure,
-			connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcel")),
+			baseURL+ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelsWithImprovementSummaryByFeatureId")),
 			connect.WithClientOptions(opts...),
 		),
 		getNumericalParcelAttributeStatsById: connect.NewClient[v1.GetNumericalParcelAttributeStatsByIdRequest, v1.GetNumericalParcelAttributeStatsByIdResponse](
@@ -125,12 +124,6 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetSalesComparables")),
 			connect.WithClientOptions(opts...),
 		),
-		getParcelsWithImprovementSummaryByFeatureId: connect.NewClient[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest, v1.GetParcelsWithImprovementSummaryByFeatureIdResponse](
-			httpClient,
-			baseURL+ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure,
-			connect.WithSchema(parcelsServiceMethods.ByName("GetParcelsWithImprovementSummaryByFeatureId")),
-			connect.WithClientOptions(opts...),
-		),
 		getParcelIdsByFeatureId: connect.NewClient[v1.GetParcelIdsByFeatureIdRequest, v1.GetParcelIdsByFeatureIdResponse](
 			httpClient,
 			baseURL+ParcelsServiceGetParcelIdsByFeatureIdProcedure,
@@ -143,20 +136,26 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetEstimatedParcelsExtentWGS84")),
 			connect.WithClientOptions(opts...),
 		),
+		updateParcel: connect.NewClient[v1.UpdateParcelRequest, v1.UpdateParcelResponse](
+			httpClient,
+			baseURL+ParcelsServiceUpdateParcelProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcel")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // parcelsServiceClient implements ParcelsServiceClient.
 type parcelsServiceClient struct {
 	getParcelsWithImprovementSummaryByParcelId  *connect.Client[v1.GetParcelsWithImprovementSummaryByParcelIdRequest, v1.GetParcelsWithImprovementSummaryByParcelIdResponse]
-	updateParcel                                *connect.Client[v1.UpdateParcelRequest, v1.UpdateParcelResponse]
+	getParcelsWithImprovementSummaryByFeatureId *connect.Client[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest, v1.GetParcelsWithImprovementSummaryByFeatureIdResponse]
 	getNumericalParcelAttributeStatsById        *connect.Client[v1.GetNumericalParcelAttributeStatsByIdRequest, v1.GetNumericalParcelAttributeStatsByIdResponse]
 	getCategoricalParcelAttributeStatsById      *connect.Client[v1.GetCategoricalParcelAttributeStatsByIdRequest, v1.GetCategoricalParcelAttributeStatsByIdResponse]
 	getEquityComparables                        *connect.Client[v1.GetEquityComparablesRequest, v1.GetEquityComparablesResponse]
 	getSalesComparables                         *connect.Client[v1.GetSalesComparablesRequest, v1.GetSalesComparablesResponse]
-	getParcelsWithImprovementSummaryByFeatureId *connect.Client[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest, v1.GetParcelsWithImprovementSummaryByFeatureIdResponse]
 	getParcelIdsByFeatureId                     *connect.Client[v1.GetParcelIdsByFeatureIdRequest, v1.GetParcelIdsByFeatureIdResponse]
 	getEstimatedParcelsExtentWGS84              *connect.Client[v1.GetEstimatedParcelsExtentWGS84Request, v1.GetEstimatedParcelsExtentWGS84Response]
+	updateParcel                                *connect.Client[v1.UpdateParcelRequest, v1.UpdateParcelResponse]
 }
 
 // GetParcelsWithImprovementSummaryByParcelId calls
@@ -165,9 +164,10 @@ func (c *parcelsServiceClient) GetParcelsWithImprovementSummaryByParcelId(ctx co
 	return c.getParcelsWithImprovementSummaryByParcelId.CallUnary(ctx, req)
 }
 
-// UpdateParcel calls civil.public.parcels.v1.ParcelsService.UpdateParcel.
-func (c *parcelsServiceClient) UpdateParcel(ctx context.Context, req *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error) {
-	return c.updateParcel.CallUnary(ctx, req)
+// GetParcelsWithImprovementSummaryByFeatureId calls
+// civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId.
+func (c *parcelsServiceClient) GetParcelsWithImprovementSummaryByFeatureId(ctx context.Context, req *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error) {
+	return c.getParcelsWithImprovementSummaryByFeatureId.CallUnary(ctx, req)
 }
 
 // GetNumericalParcelAttributeStatsById calls
@@ -192,12 +192,6 @@ func (c *parcelsServiceClient) GetSalesComparables(ctx context.Context, req *con
 	return c.getSalesComparables.CallUnary(ctx, req)
 }
 
-// GetParcelsWithImprovementSummaryByFeatureId calls
-// civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId.
-func (c *parcelsServiceClient) GetParcelsWithImprovementSummaryByFeatureId(ctx context.Context, req *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error) {
-	return c.getParcelsWithImprovementSummaryByFeatureId.CallUnary(ctx, req)
-}
-
 // GetParcelIdsByFeatureId calls civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId.
 func (c *parcelsServiceClient) GetParcelIdsByFeatureId(ctx context.Context, req *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error) {
 	return c.getParcelIdsByFeatureId.CallUnary(ctx, req)
@@ -209,20 +203,24 @@ func (c *parcelsServiceClient) GetEstimatedParcelsExtentWGS84(ctx context.Contex
 	return c.getEstimatedParcelsExtentWGS84.CallUnary(ctx, req)
 }
 
+// UpdateParcel calls civil.public.parcels.v1.ParcelsService.UpdateParcel.
+func (c *parcelsServiceClient) UpdateParcel(ctx context.Context, req *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error) {
+	return c.updateParcel.CallUnary(ctx, req)
+}
+
 // ParcelsServiceHandler is an implementation of the civil.public.parcels.v1.ParcelsService service.
 type ParcelsServiceHandler interface {
-	// Retrieves all of a specified parcel's attributes as an object.
 	GetParcelsWithImprovementSummaryByParcelId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByParcelIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByParcelIdResponse], error)
-	UpdateParcel(context.Context, *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error)
+	GetParcelsWithImprovementSummaryByFeatureId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error)
 	// Retrieves a set of summary statistics about the specified numerical attribute for a specified list of parcels. Optionally returns the values as well
 	GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error)
 	// Retrieves a set of summary statistics about the specified categorical attribute for a specified list of parcels. Optionally returns the values as well
 	GetCategoricalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetCategoricalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetCategoricalParcelAttributeStatsByIdResponse], error)
 	GetEquityComparables(context.Context, *connect.Request[v1.GetEquityComparablesRequest]) (*connect.Response[v1.GetEquityComparablesResponse], error)
 	GetSalesComparables(context.Context, *connect.Request[v1.GetSalesComparablesRequest]) (*connect.Response[v1.GetSalesComparablesResponse], error)
-	GetParcelsWithImprovementSummaryByFeatureId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error)
 	GetParcelIdsByFeatureId(context.Context, *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error)
 	GetEstimatedParcelsExtentWGS84(context.Context, *connect.Request[v1.GetEstimatedParcelsExtentWGS84Request]) (*connect.Response[v1.GetEstimatedParcelsExtentWGS84Response], error)
+	UpdateParcel(context.Context, *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error)
 }
 
 // NewParcelsServiceHandler builds an HTTP handler from the service implementation. It returns the
@@ -238,10 +236,10 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelsWithImprovementSummaryByParcelId")),
 		connect.WithHandlerOptions(opts...),
 	)
-	parcelsServiceUpdateParcelHandler := connect.NewUnaryHandler(
-		ParcelsServiceUpdateParcelProcedure,
-		svc.UpdateParcel,
-		connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcel")),
+	parcelsServiceGetParcelsWithImprovementSummaryByFeatureIdHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure,
+		svc.GetParcelsWithImprovementSummaryByFeatureId,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelsWithImprovementSummaryByFeatureId")),
 		connect.WithHandlerOptions(opts...),
 	)
 	parcelsServiceGetNumericalParcelAttributeStatsByIdHandler := connect.NewUnaryHandler(
@@ -268,12 +266,6 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetSalesComparables")),
 		connect.WithHandlerOptions(opts...),
 	)
-	parcelsServiceGetParcelsWithImprovementSummaryByFeatureIdHandler := connect.NewUnaryHandler(
-		ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure,
-		svc.GetParcelsWithImprovementSummaryByFeatureId,
-		connect.WithSchema(parcelsServiceMethods.ByName("GetParcelsWithImprovementSummaryByFeatureId")),
-		connect.WithHandlerOptions(opts...),
-	)
 	parcelsServiceGetParcelIdsByFeatureIdHandler := connect.NewUnaryHandler(
 		ParcelsServiceGetParcelIdsByFeatureIdProcedure,
 		svc.GetParcelIdsByFeatureId,
@@ -286,12 +278,18 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetEstimatedParcelsExtentWGS84")),
 		connect.WithHandlerOptions(opts...),
 	)
+	parcelsServiceUpdateParcelHandler := connect.NewUnaryHandler(
+		ParcelsServiceUpdateParcelProcedure,
+		svc.UpdateParcel,
+		connect.WithSchema(parcelsServiceMethods.ByName("UpdateParcel")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/civil.public.parcels.v1.ParcelsService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case ParcelsServiceGetParcelsWithImprovementSummaryByParcelIdProcedure:
 			parcelsServiceGetParcelsWithImprovementSummaryByParcelIdHandler.ServeHTTP(w, r)
-		case ParcelsServiceUpdateParcelProcedure:
-			parcelsServiceUpdateParcelHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure:
+			parcelsServiceGetParcelsWithImprovementSummaryByFeatureIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetNumericalParcelAttributeStatsByIdProcedure:
 			parcelsServiceGetNumericalParcelAttributeStatsByIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetCategoricalParcelAttributeStatsByIdProcedure:
@@ -300,12 +298,12 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 			parcelsServiceGetEquityComparablesHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetSalesComparablesProcedure:
 			parcelsServiceGetSalesComparablesHandler.ServeHTTP(w, r)
-		case ParcelsServiceGetParcelsWithImprovementSummaryByFeatureIdProcedure:
-			parcelsServiceGetParcelsWithImprovementSummaryByFeatureIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetParcelIdsByFeatureIdProcedure:
 			parcelsServiceGetParcelIdsByFeatureIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetEstimatedParcelsExtentWGS84Procedure:
 			parcelsServiceGetEstimatedParcelsExtentWGS84Handler.ServeHTTP(w, r)
+		case ParcelsServiceUpdateParcelProcedure:
+			parcelsServiceUpdateParcelHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -319,8 +317,8 @@ func (UnimplementedParcelsServiceHandler) GetParcelsWithImprovementSummaryByParc
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId is not implemented"))
 }
 
-func (UnimplementedParcelsServiceHandler) UpdateParcel(context.Context, *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.UpdateParcel is not implemented"))
+func (UnimplementedParcelsServiceHandler) GetParcelsWithImprovementSummaryByFeatureId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId is not implemented"))
 }
 
 func (UnimplementedParcelsServiceHandler) GetNumericalParcelAttributeStatsById(context.Context, *connect.Request[v1.GetNumericalParcelAttributeStatsByIdRequest]) (*connect.Response[v1.GetNumericalParcelAttributeStatsByIdResponse], error) {
@@ -339,14 +337,14 @@ func (UnimplementedParcelsServiceHandler) GetSalesComparables(context.Context, *
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetSalesComparables is not implemented"))
 }
 
-func (UnimplementedParcelsServiceHandler) GetParcelsWithImprovementSummaryByFeatureId(context.Context, *connect.Request[v1.GetParcelsWithImprovementSummaryByFeatureIdRequest]) (*connect.Response[v1.GetParcelsWithImprovementSummaryByFeatureIdResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId is not implemented"))
-}
-
 func (UnimplementedParcelsServiceHandler) GetParcelIdsByFeatureId(context.Context, *connect.Request[v1.GetParcelIdsByFeatureIdRequest]) (*connect.Response[v1.GetParcelIdsByFeatureIdResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId is not implemented"))
 }
 
 func (UnimplementedParcelsServiceHandler) GetEstimatedParcelsExtentWGS84(context.Context, *connect.Request[v1.GetEstimatedParcelsExtentWGS84Request]) (*connect.Response[v1.GetEstimatedParcelsExtentWGS84Response], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84 is not implemented"))
+}
+
+func (UnimplementedParcelsServiceHandler) UpdateParcel(context.Context, *connect.Request[v1.UpdateParcelRequest]) (*connect.Response[v1.UpdateParcelResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.parcels.v1.ParcelsService.UpdateParcel is not implemented"))
 }
