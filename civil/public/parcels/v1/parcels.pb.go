@@ -198,21 +198,16 @@ type ParcelImprovementsSummary struct {
 	state          protoimpl.MessageState `protogen:"open.v1"`
 	ImprovementIds []string               `protobuf:"bytes,1,rep,name=improvement_ids,json=improvementIds,proto3" json:"improvement_ids,omitempty"`
 	// Physically impossible to be negative
-	TotalAreaSqFt  float64 `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3" json:"total_area_sq_ft,omitempty"`
-	TotalBathrooms int32   `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3" json:"total_bathrooms,omitempty"`
-	TotalBedrooms  int32   `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
-	TotalUnits     int32   `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
-	// Bounded to realistic historical/future parameters
-	OldestYearBuilt                     *int32  `protobuf:"varint,6,opt,name=oldest_year_built,json=oldestYearBuilt,proto3,oneof" json:"oldest_year_built,omitempty"`
-	NewestYearBuilt                     *int32  `protobuf:"varint,7,opt,name=newest_year_built,json=newestYearBuilt,proto3,oneof" json:"newest_year_built,omitempty"`
-	WeightedAverageDepreciationModifier *string `protobuf:"bytes,8,opt,name=weighted_average_depreciation_modifier,json=weightedAverageDepreciationModifier,proto3,oneof" json:"weighted_average_depreciation_modifier,omitempty"`
-	// Worst and best based on the conditions' depreciation factors
-	WorstConditionId         *string `protobuf:"bytes,9,opt,name=worst_condition_id,json=worstConditionId,proto3,oneof" json:"worst_condition_id,omitempty"`
-	BestConditionId          *string `protobuf:"bytes,10,opt,name=best_condition_id,json=bestConditionId,proto3,oneof" json:"best_condition_id,omitempty"`
-	MarketImprovementValue   *string `protobuf:"bytes,11,opt,name=market_improvement_value,json=marketImprovementValue,proto3,oneof" json:"market_improvement_value,omitempty"`
-	AssessedImprovementValue *string `protobuf:"bytes,12,opt,name=assessed_improvement_value,json=assessedImprovementValue,proto3,oneof" json:"assessed_improvement_value,omitempty"`
-	unknownFields            protoimpl.UnknownFields
-	sizeCache                protoimpl.SizeCache
+	TotalAreaSqFt                 float64 `protobuf:"fixed64,2,opt,name=total_area_sq_ft,json=totalAreaSqFt,proto3" json:"total_area_sq_ft,omitempty"`
+	TotalBathrooms                int32   `protobuf:"varint,3,opt,name=total_bathrooms,json=totalBathrooms,proto3" json:"total_bathrooms,omitempty"`
+	TotalBedrooms                 int32   `protobuf:"varint,4,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
+	TotalUnits                    int32   `protobuf:"varint,5,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
+	PrimaryYearBuilt              *int32  `protobuf:"varint,6,opt,name=primary_year_built,json=primaryYearBuilt,proto3,oneof" json:"primary_year_built,omitempty"`
+	PrimaryConditionId            *string `protobuf:"bytes,7,opt,name=primary_condition_id,json=primaryConditionId,proto3,oneof" json:"primary_condition_id,omitempty"`
+	TotalMarketImprovementValue   *string `protobuf:"bytes,8,opt,name=total_market_improvement_value,json=totalMarketImprovementValue,proto3,oneof" json:"total_market_improvement_value,omitempty"`
+	TotalAssessedImprovementValue *string `protobuf:"bytes,9,opt,name=total_assessed_improvement_value,json=totalAssessedImprovementValue,proto3,oneof" json:"total_assessed_improvement_value,omitempty"`
+	unknownFields                 protoimpl.UnknownFields
+	sizeCache                     protoimpl.SizeCache
 }
 
 func (x *ParcelImprovementsSummary) Reset() {
@@ -280,93 +275,70 @@ func (x *ParcelImprovementsSummary) GetTotalUnits() int32 {
 	return 0
 }
 
-func (x *ParcelImprovementsSummary) GetOldestYearBuilt() int32 {
-	if x != nil && x.OldestYearBuilt != nil {
-		return *x.OldestYearBuilt
+func (x *ParcelImprovementsSummary) GetPrimaryYearBuilt() int32 {
+	if x != nil && x.PrimaryYearBuilt != nil {
+		return *x.PrimaryYearBuilt
 	}
 	return 0
 }
 
-func (x *ParcelImprovementsSummary) GetNewestYearBuilt() int32 {
-	if x != nil && x.NewestYearBuilt != nil {
-		return *x.NewestYearBuilt
-	}
-	return 0
-}
-
-func (x *ParcelImprovementsSummary) GetWeightedAverageDepreciationModifier() string {
-	if x != nil && x.WeightedAverageDepreciationModifier != nil {
-		return *x.WeightedAverageDepreciationModifier
+func (x *ParcelImprovementsSummary) GetPrimaryConditionId() string {
+	if x != nil && x.PrimaryConditionId != nil {
+		return *x.PrimaryConditionId
 	}
 	return ""
 }
 
-func (x *ParcelImprovementsSummary) GetWorstConditionId() string {
-	if x != nil && x.WorstConditionId != nil {
-		return *x.WorstConditionId
+func (x *ParcelImprovementsSummary) GetTotalMarketImprovementValue() string {
+	if x != nil && x.TotalMarketImprovementValue != nil {
+		return *x.TotalMarketImprovementValue
 	}
 	return ""
 }
 
-func (x *ParcelImprovementsSummary) GetBestConditionId() string {
-	if x != nil && x.BestConditionId != nil {
-		return *x.BestConditionId
+func (x *ParcelImprovementsSummary) GetTotalAssessedImprovementValue() string {
+	if x != nil && x.TotalAssessedImprovementValue != nil {
+		return *x.TotalAssessedImprovementValue
 	}
 	return ""
 }
 
-func (x *ParcelImprovementsSummary) GetMarketImprovementValue() string {
-	if x != nil && x.MarketImprovementValue != nil {
-		return *x.MarketImprovementValue
-	}
-	return ""
-}
-
-func (x *ParcelImprovementsSummary) GetAssessedImprovementValue() string {
-	if x != nil && x.AssessedImprovementValue != nil {
-		return *x.AssessedImprovementValue
-	}
-	return ""
-}
-
-type Parcel struct {
-	state               protoimpl.MessageState     `protogen:"open.v1"`
-	ParcelId            string                     `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	FeatureId           int64                      `protobuf:"varint,2,opt,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
-	FormattedAddress    *string                    `protobuf:"bytes,3,opt,name=formatted_address,json=formattedAddress,proto3,oneof" json:"formatted_address,omitempty"`
-	AddressId           *string                    `protobuf:"bytes,4,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
-	PrimaryOwnerName    *string                    `protobuf:"bytes,5,opt,name=primary_owner_name,json=primaryOwnerName,proto3,oneof" json:"primary_owner_name,omitempty"`
-	PrimaryOwnerAddress *string                    `protobuf:"bytes,6,opt,name=primary_owner_address,json=primaryOwnerAddress,proto3,oneof" json:"primary_owner_address,omitempty"`
-	PartyIds            []string                   `protobuf:"bytes,7,rep,name=party_ids,json=partyIds,proto3" json:"party_ids,omitempty"`
-	LandUseId           *string                    `protobuf:"bytes,8,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
-	NeighborhoodId      *string                    `protobuf:"bytes,9,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
-	LandAreaSqFt        *float64                   `protobuf:"fixed64,10,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
-	FrontageFt          *float64                   `protobuf:"fixed64,11,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
-	DepthFt             *float64                   `protobuf:"fixed64,12,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
-	ZoningIds           []string                   `protobuf:"bytes,13,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
-	MarketLandValue     *string                    `protobuf:"bytes,14,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
-	AssessedLandValue   *string                    `protobuf:"bytes,15,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
-	Affordances         *ParcelAffordances         `protobuf:"bytes,16,opt,name=affordances,proto3" json:"affordances,omitempty"`
-	ImprovementSummary  *ParcelImprovementsSummary `protobuf:"bytes,17,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
-	Properties          *string                    `protobuf:"bytes,18,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
+type ParcelDetails struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ParcelId            string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
+	FeatureId           *int64                 `protobuf:"varint,2,opt,name=feature_id,json=featureId,proto3,oneof" json:"feature_id,omitempty"`
+	FormattedAddress    *string                `protobuf:"bytes,3,opt,name=formatted_address,json=formattedAddress,proto3,oneof" json:"formatted_address,omitempty"`
+	AddressId           *string                `protobuf:"bytes,4,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
+	PrimaryOwnerName    *string                `protobuf:"bytes,5,opt,name=primary_owner_name,json=primaryOwnerName,proto3,oneof" json:"primary_owner_name,omitempty"`
+	PrimaryOwnerAddress *string                `protobuf:"bytes,6,opt,name=primary_owner_address,json=primaryOwnerAddress,proto3,oneof" json:"primary_owner_address,omitempty"`
+	PartyIds            []string               `protobuf:"bytes,7,rep,name=party_ids,json=partyIds,proto3" json:"party_ids,omitempty"`
+	LandUseId           *string                `protobuf:"bytes,8,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
+	NeighborhoodId      *string                `protobuf:"bytes,9,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
+	LandAreaSqFt        *float64               `protobuf:"fixed64,10,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
+	FrontageFt          *float64               `protobuf:"fixed64,11,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
+	DepthFt             *float64               `protobuf:"fixed64,12,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
+	ZoningIds           []string               `protobuf:"bytes,13,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
+	MarketLandValue     *string                `protobuf:"bytes,14,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
+	AssessedLandValue   *string                `protobuf:"bytes,15,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
+	Properties          *string                `protobuf:"bytes,16,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
 	unknownFields       protoimpl.UnknownFields
 	sizeCache           protoimpl.SizeCache
 }
 
-func (x *Parcel) Reset() {
-	*x = Parcel{}
+func (x *ParcelDetails) Reset() {
+	*x = ParcelDetails{}
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *Parcel) String() string {
+func (x *ParcelDetails) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Parcel) ProtoMessage() {}
+func (*ParcelDetails) ProtoMessage() {}
 
-func (x *Parcel) ProtoReflect() protoreflect.Message {
+func (x *ParcelDetails) ProtoReflect() protoreflect.Message {
 	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -378,145 +350,179 @@ func (x *Parcel) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Parcel.ProtoReflect.Descriptor instead.
-func (*Parcel) Descriptor() ([]byte, []int) {
+// Deprecated: Use ParcelDetails.ProtoReflect.Descriptor instead.
+func (*ParcelDetails) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Parcel) GetParcelId() string {
+func (x *ParcelDetails) GetParcelId() string {
 	if x != nil {
 		return x.ParcelId
 	}
 	return ""
 }
 
-func (x *Parcel) GetFeatureId() int64 {
-	if x != nil {
-		return x.FeatureId
+func (x *ParcelDetails) GetFeatureId() int64 {
+	if x != nil && x.FeatureId != nil {
+		return *x.FeatureId
 	}
 	return 0
 }
 
-func (x *Parcel) GetFormattedAddress() string {
+func (x *ParcelDetails) GetFormattedAddress() string {
 	if x != nil && x.FormattedAddress != nil {
 		return *x.FormattedAddress
 	}
 	return ""
 }
 
-func (x *Parcel) GetAddressId() string {
+func (x *ParcelDetails) GetAddressId() string {
 	if x != nil && x.AddressId != nil {
 		return *x.AddressId
 	}
 	return ""
 }
 
-func (x *Parcel) GetPrimaryOwnerName() string {
+func (x *ParcelDetails) GetPrimaryOwnerName() string {
 	if x != nil && x.PrimaryOwnerName != nil {
 		return *x.PrimaryOwnerName
 	}
 	return ""
 }
 
-func (x *Parcel) GetPrimaryOwnerAddress() string {
+func (x *ParcelDetails) GetPrimaryOwnerAddress() string {
 	if x != nil && x.PrimaryOwnerAddress != nil {
 		return *x.PrimaryOwnerAddress
 	}
 	return ""
 }
 
-func (x *Parcel) GetPartyIds() []string {
+func (x *ParcelDetails) GetPartyIds() []string {
 	if x != nil {
 		return x.PartyIds
 	}
 	return nil
 }
 
-func (x *Parcel) GetLandUseId() string {
+func (x *ParcelDetails) GetLandUseId() string {
 	if x != nil && x.LandUseId != nil {
 		return *x.LandUseId
 	}
 	return ""
 }
 
-func (x *Parcel) GetNeighborhoodId() string {
+func (x *ParcelDetails) GetNeighborhoodId() string {
 	if x != nil && x.NeighborhoodId != nil {
 		return *x.NeighborhoodId
 	}
 	return ""
 }
 
-func (x *Parcel) GetLandAreaSqFt() float64 {
+func (x *ParcelDetails) GetLandAreaSqFt() float64 {
 	if x != nil && x.LandAreaSqFt != nil {
 		return *x.LandAreaSqFt
 	}
 	return 0
 }
 
-func (x *Parcel) GetFrontageFt() float64 {
+func (x *ParcelDetails) GetFrontageFt() float64 {
 	if x != nil && x.FrontageFt != nil {
 		return *x.FrontageFt
 	}
 	return 0
 }
 
-func (x *Parcel) GetDepthFt() float64 {
+func (x *ParcelDetails) GetDepthFt() float64 {
 	if x != nil && x.DepthFt != nil {
 		return *x.DepthFt
 	}
 	return 0
 }
 
-func (x *Parcel) GetZoningIds() []string {
+func (x *ParcelDetails) GetZoningIds() []string {
 	if x != nil {
 		return x.ZoningIds
 	}
 	return nil
 }
 
-func (x *Parcel) GetMarketLandValue() string {
+func (x *ParcelDetails) GetMarketLandValue() string {
 	if x != nil && x.MarketLandValue != nil {
 		return *x.MarketLandValue
 	}
 	return ""
 }
 
-func (x *Parcel) GetAssessedLandValue() string {
+func (x *ParcelDetails) GetAssessedLandValue() string {
 	if x != nil && x.AssessedLandValue != nil {
 		return *x.AssessedLandValue
 	}
 	return ""
 }
 
-func (x *Parcel) GetAffordances() *ParcelAffordances {
-	if x != nil {
-		return x.Affordances
-	}
-	return nil
-}
-
-func (x *Parcel) GetImprovementSummary() *ParcelImprovementsSummary {
-	if x != nil {
-		return x.ImprovementSummary
-	}
-	return nil
-}
-
-func (x *Parcel) GetProperties() string {
+func (x *ParcelDetails) GetProperties() string {
 	if x != nil && x.Properties != nil {
 		return *x.Properties
 	}
 	return ""
 }
 
-type GetParcelsByIdRequest struct {
-	state     protoimpl.MessageState `protogen:"open.v1"`
-	ParcelIds []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
-	// The historical or future effective date the user wants to view.
-	// If omitted, defaults to the current time.
-	LegalAsOf *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
-	// The time to reset the database state to
-	// If omitted, defaults to the current time.
+type ParcelWithImprovementSummary struct {
+	state              protoimpl.MessageState     `protogen:"open.v1"`
+	ParcelDetails      *ParcelDetails             `protobuf:"bytes,1,opt,name=parcel_details,json=parcelDetails,proto3" json:"parcel_details,omitempty"`
+	ImprovementSummary *ParcelImprovementsSummary `protobuf:"bytes,2,opt,name=improvement_summary,json=improvementSummary,proto3" json:"improvement_summary,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *ParcelWithImprovementSummary) Reset() {
+	*x = ParcelWithImprovementSummary{}
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ParcelWithImprovementSummary) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ParcelWithImprovementSummary) ProtoMessage() {}
+
+func (x *ParcelWithImprovementSummary) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ParcelWithImprovementSummary.ProtoReflect.Descriptor instead.
+func (*ParcelWithImprovementSummary) Descriptor() ([]byte, []int) {
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *ParcelWithImprovementSummary) GetParcelDetails() *ParcelDetails {
+	if x != nil {
+		return x.ParcelDetails
+	}
+	return nil
+}
+
+func (x *ParcelWithImprovementSummary) GetImprovementSummary() *ParcelImprovementsSummary {
+	if x != nil {
+		return x.ImprovementSummary
+	}
+	return nil
+}
+
+type GetParcelsWithImprovementSummaryByParcelIdRequest struct {
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	ParcelIds                []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf                *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	SystemAsOf               *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
 	ValuationId              *string                `protobuf:"bytes,4,opt,name=valuation_id,json=valuationId,proto3,oneof" json:"valuation_id,omitempty"`
 	NeighborhoodDefinitionId *string                `protobuf:"bytes,5,opt,name=neighborhood_definition_id,json=neighborhoodDefinitionId,proto3,oneof" json:"neighborhood_definition_id,omitempty"`
@@ -524,21 +530,21 @@ type GetParcelsByIdRequest struct {
 	sizeCache                protoimpl.SizeCache
 }
 
-func (x *GetParcelsByIdRequest) Reset() {
-	*x = GetParcelsByIdRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[3]
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) Reset() {
+	*x = GetParcelsWithImprovementSummaryByParcelIdRequest{}
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetParcelsByIdRequest) String() string {
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetParcelsByIdRequest) ProtoMessage() {}
+func (*GetParcelsWithImprovementSummaryByParcelIdRequest) ProtoMessage() {}
 
-func (x *GetParcelsByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[3]
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,69 +555,68 @@ func (x *GetParcelsByIdRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetParcelsByIdRequest.ProtoReflect.Descriptor instead.
-func (*GetParcelsByIdRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{3}
+// Deprecated: Use GetParcelsWithImprovementSummaryByParcelIdRequest.ProtoReflect.Descriptor instead.
+func (*GetParcelsWithImprovementSummaryByParcelIdRequest) Descriptor() ([]byte, []int) {
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *GetParcelsByIdRequest) GetParcelIds() []string {
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
 	}
 	return nil
 }
 
-func (x *GetParcelsByIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
 	if x != nil {
 		return x.LegalAsOf
 	}
 	return nil
 }
 
-func (x *GetParcelsByIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
 	if x != nil {
 		return x.SystemAsOf
 	}
 	return nil
 }
 
-func (x *GetParcelsByIdRequest) GetValuationId() string {
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) GetValuationId() string {
 	if x != nil && x.ValuationId != nil {
 		return *x.ValuationId
 	}
 	return ""
 }
 
-func (x *GetParcelsByIdRequest) GetNeighborhoodDefinitionId() string {
+func (x *GetParcelsWithImprovementSummaryByParcelIdRequest) GetNeighborhoodDefinitionId() string {
 	if x != nil && x.NeighborhoodDefinitionId != nil {
 		return *x.NeighborhoodDefinitionId
 	}
 	return ""
 }
 
-type GetParcelsByIdResponse struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// A map of parcel records, keyed by their public ID.
-	Parcels       map[string]*Parcel `protobuf:"bytes,1,rep,name=parcels,proto3" json:"parcels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+type GetParcelsWithImprovementSummaryByParcelIdResponse struct {
+	state         protoimpl.MessageState                   `protogen:"open.v1"`
+	Parcels       map[string]*ParcelWithImprovementSummary `protobuf:"bytes,1,rep,name=parcels,proto3" json:"parcels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetParcelsByIdResponse) Reset() {
-	*x = GetParcelsByIdResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[4]
+func (x *GetParcelsWithImprovementSummaryByParcelIdResponse) Reset() {
+	*x = GetParcelsWithImprovementSummaryByParcelIdResponse{}
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetParcelsByIdResponse) String() string {
+func (x *GetParcelsWithImprovementSummaryByParcelIdResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetParcelsByIdResponse) ProtoMessage() {}
+func (*GetParcelsWithImprovementSummaryByParcelIdResponse) ProtoMessage() {}
 
-func (x *GetParcelsByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[4]
+func (x *GetParcelsWithImprovementSummaryByParcelIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -622,12 +627,132 @@ func (x *GetParcelsByIdResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetParcelsByIdResponse.ProtoReflect.Descriptor instead.
-func (*GetParcelsByIdResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{4}
+// Deprecated: Use GetParcelsWithImprovementSummaryByParcelIdResponse.ProtoReflect.Descriptor instead.
+func (*GetParcelsWithImprovementSummaryByParcelIdResponse) Descriptor() ([]byte, []int) {
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetParcelsByIdResponse) GetParcels() map[string]*Parcel {
+func (x *GetParcelsWithImprovementSummaryByParcelIdResponse) GetParcels() map[string]*ParcelWithImprovementSummary {
+	if x != nil {
+		return x.Parcels
+	}
+	return nil
+}
+
+type GetParcelsWithImprovementSummaryByFeatureIdRequest struct {
+	state                    protoimpl.MessageState `protogen:"open.v1"`
+	FeatureIds               []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf                *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
+	SystemAsOf               *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=system_as_of,json=systemAsOf,proto3,oneof" json:"system_as_of,omitempty"`
+	ValuationId              *string                `protobuf:"bytes,4,opt,name=valuation_id,json=valuationId,proto3,oneof" json:"valuation_id,omitempty"`
+	NeighborhoodDefinitionId *string                `protobuf:"bytes,5,opt,name=neighborhood_definition_id,json=neighborhoodDefinitionId,proto3,oneof" json:"neighborhood_definition_id,omitempty"`
+	unknownFields            protoimpl.UnknownFields
+	sizeCache                protoimpl.SizeCache
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) Reset() {
+	*x = GetParcelsWithImprovementSummaryByFeatureIdRequest{}
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelsWithImprovementSummaryByFeatureIdRequest) ProtoMessage() {}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelsWithImprovementSummaryByFeatureIdRequest.ProtoReflect.Descriptor instead.
+func (*GetParcelsWithImprovementSummaryByFeatureIdRequest) Descriptor() ([]byte, []int) {
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) GetFeatureIds() []int64 {
+	if x != nil {
+		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
+	}
+	return nil
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) GetSystemAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.SystemAsOf
+	}
+	return nil
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) GetValuationId() string {
+	if x != nil && x.ValuationId != nil {
+		return *x.ValuationId
+	}
+	return ""
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdRequest) GetNeighborhoodDefinitionId() string {
+	if x != nil && x.NeighborhoodDefinitionId != nil {
+		return *x.NeighborhoodDefinitionId
+	}
+	return ""
+}
+
+type GetParcelsWithImprovementSummaryByFeatureIdResponse struct {
+	state         protoimpl.MessageState                   `protogen:"open.v1"`
+	Parcels       map[string]*ParcelWithImprovementSummary `protobuf:"bytes,1,rep,name=parcels,proto3" json:"parcels,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdResponse) Reset() {
+	*x = GetParcelsWithImprovementSummaryByFeatureIdResponse{}
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetParcelsWithImprovementSummaryByFeatureIdResponse) ProtoMessage() {}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetParcelsWithImprovementSummaryByFeatureIdResponse.ProtoReflect.Descriptor instead.
+func (*GetParcelsWithImprovementSummaryByFeatureIdResponse) Descriptor() ([]byte, []int) {
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetParcelsWithImprovementSummaryByFeatureIdResponse) GetParcels() map[string]*ParcelWithImprovementSummary {
 	if x != nil {
 		return x.Parcels
 	}
@@ -649,7 +774,7 @@ type UpdateParcelRequest struct {
 
 func (x *UpdateParcelRequest) Reset() {
 	*x = UpdateParcelRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[5]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +786,7 @@ func (x *UpdateParcelRequest) String() string {
 func (*UpdateParcelRequest) ProtoMessage() {}
 
 func (x *UpdateParcelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[5]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +799,7 @@ func (x *UpdateParcelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateParcelRequest.ProtoReflect.Descriptor instead.
 func (*UpdateParcelRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{5}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *UpdateParcelRequest) GetParcelId() string {
@@ -734,7 +859,7 @@ type UpdateParcelResponse struct {
 
 func (x *UpdateParcelResponse) Reset() {
 	*x = UpdateParcelResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[6]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -746,7 +871,7 @@ func (x *UpdateParcelResponse) String() string {
 func (*UpdateParcelResponse) ProtoMessage() {}
 
 func (x *UpdateParcelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[6]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -759,7 +884,7 @@ func (x *UpdateParcelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateParcelResponse.ProtoReflect.Descriptor instead.
 func (*UpdateParcelResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{6}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{9}
 }
 
 type GetNumericalParcelAttributeStatsByIdRequest struct {
@@ -778,7 +903,7 @@ type GetNumericalParcelAttributeStatsByIdRequest struct {
 
 func (x *GetNumericalParcelAttributeStatsByIdRequest) Reset() {
 	*x = GetNumericalParcelAttributeStatsByIdRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[7]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -790,7 +915,7 @@ func (x *GetNumericalParcelAttributeStatsByIdRequest) String() string {
 func (*GetNumericalParcelAttributeStatsByIdRequest) ProtoMessage() {}
 
 func (x *GetNumericalParcelAttributeStatsByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[7]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -803,7 +928,7 @@ func (x *GetNumericalParcelAttributeStatsByIdRequest) ProtoReflect() protoreflec
 
 // Deprecated: Use GetNumericalParcelAttributeStatsByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetNumericalParcelAttributeStatsByIdRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{7}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetNumericalParcelAttributeStatsByIdRequest) GetParcelIds() []string {
@@ -859,7 +984,7 @@ type GetNumericalParcelAttributeStatsByIdResponse struct {
 
 func (x *GetNumericalParcelAttributeStatsByIdResponse) Reset() {
 	*x = GetNumericalParcelAttributeStatsByIdResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[8]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -871,7 +996,7 @@ func (x *GetNumericalParcelAttributeStatsByIdResponse) String() string {
 func (*GetNumericalParcelAttributeStatsByIdResponse) ProtoMessage() {}
 
 func (x *GetNumericalParcelAttributeStatsByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[8]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -884,7 +1009,7 @@ func (x *GetNumericalParcelAttributeStatsByIdResponse) ProtoReflect() protorefle
 
 // Deprecated: Use GetNumericalParcelAttributeStatsByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetNumericalParcelAttributeStatsByIdResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{8}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetNumericalParcelAttributeStatsByIdResponse) GetMode() float32 {
@@ -1022,7 +1147,7 @@ type GetCategoricalParcelAttributeStatsByIdRequest struct {
 
 func (x *GetCategoricalParcelAttributeStatsByIdRequest) Reset() {
 	*x = GetCategoricalParcelAttributeStatsByIdRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[9]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1034,7 +1159,7 @@ func (x *GetCategoricalParcelAttributeStatsByIdRequest) String() string {
 func (*GetCategoricalParcelAttributeStatsByIdRequest) ProtoMessage() {}
 
 func (x *GetCategoricalParcelAttributeStatsByIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[9]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1047,7 +1172,7 @@ func (x *GetCategoricalParcelAttributeStatsByIdRequest) ProtoReflect() protorefl
 
 // Deprecated: Use GetCategoricalParcelAttributeStatsByIdRequest.ProtoReflect.Descriptor instead.
 func (*GetCategoricalParcelAttributeStatsByIdRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{9}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GetCategoricalParcelAttributeStatsByIdRequest) GetParcelIds() []string {
@@ -1088,7 +1213,7 @@ type GetCategoricalParcelAttributeStatsByIdResponse struct {
 
 func (x *GetCategoricalParcelAttributeStatsByIdResponse) Reset() {
 	*x = GetCategoricalParcelAttributeStatsByIdResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[10]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1100,7 +1225,7 @@ func (x *GetCategoricalParcelAttributeStatsByIdResponse) String() string {
 func (*GetCategoricalParcelAttributeStatsByIdResponse) ProtoMessage() {}
 
 func (x *GetCategoricalParcelAttributeStatsByIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[10]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1113,7 +1238,7 @@ func (x *GetCategoricalParcelAttributeStatsByIdResponse) ProtoReflect() protoref
 
 // Deprecated: Use GetCategoricalParcelAttributeStatsByIdResponse.ProtoReflect.Descriptor instead.
 func (*GetCategoricalParcelAttributeStatsByIdResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{10}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GetCategoricalParcelAttributeStatsByIdResponse) GetMode() string {
@@ -1142,7 +1267,7 @@ type ComparableCriteria struct {
 
 func (x *ComparableCriteria) Reset() {
 	*x = ComparableCriteria{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[11]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1154,7 +1279,7 @@ func (x *ComparableCriteria) String() string {
 func (*ComparableCriteria) ProtoMessage() {}
 
 func (x *ComparableCriteria) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[11]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1167,7 +1292,7 @@ func (x *ComparableCriteria) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ComparableCriteria.ProtoReflect.Descriptor instead.
 func (*ComparableCriteria) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{11}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ComparableCriteria) GetAttribute() ParcelAttribute {
@@ -1209,7 +1334,7 @@ type ComparableAttribute struct {
 
 func (x *ComparableAttribute) Reset() {
 	*x = ComparableAttribute{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[12]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1221,7 +1346,7 @@ func (x *ComparableAttribute) String() string {
 func (*ComparableAttribute) ProtoMessage() {}
 
 func (x *ComparableAttribute) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[12]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1234,7 +1359,7 @@ func (x *ComparableAttribute) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ComparableAttribute.ProtoReflect.Descriptor instead.
 func (*ComparableAttribute) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{12}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ComparableAttribute) GetAttribute() ParcelAttribute {
@@ -1271,7 +1396,7 @@ type EquityComparableParcel struct {
 
 func (x *EquityComparableParcel) Reset() {
 	*x = EquityComparableParcel{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[13]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1283,7 +1408,7 @@ func (x *EquityComparableParcel) String() string {
 func (*EquityComparableParcel) ProtoMessage() {}
 
 func (x *EquityComparableParcel) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[13]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1296,7 +1421,7 @@ func (x *EquityComparableParcel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EquityComparableParcel.ProtoReflect.Descriptor instead.
 func (*EquityComparableParcel) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{13}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *EquityComparableParcel) GetParcelId() string {
@@ -1349,7 +1474,7 @@ type SaleComparableParcel struct {
 
 func (x *SaleComparableParcel) Reset() {
 	*x = SaleComparableParcel{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[14]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1361,7 +1486,7 @@ func (x *SaleComparableParcel) String() string {
 func (*SaleComparableParcel) ProtoMessage() {}
 
 func (x *SaleComparableParcel) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[14]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1374,7 +1499,7 @@ func (x *SaleComparableParcel) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SaleComparableParcel.ProtoReflect.Descriptor instead.
 func (*SaleComparableParcel) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{14}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *SaleComparableParcel) GetParcelId() string {
@@ -1437,7 +1562,7 @@ type GetEquityComparablesRequest struct {
 
 func (x *GetEquityComparablesRequest) Reset() {
 	*x = GetEquityComparablesRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[15]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1449,7 +1574,7 @@ func (x *GetEquityComparablesRequest) String() string {
 func (*GetEquityComparablesRequest) ProtoMessage() {}
 
 func (x *GetEquityComparablesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[15]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1462,7 +1587,7 @@ func (x *GetEquityComparablesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEquityComparablesRequest.ProtoReflect.Descriptor instead.
 func (*GetEquityComparablesRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{15}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *GetEquityComparablesRequest) GetWktPolygon() string {
@@ -1495,7 +1620,7 @@ type GetEquityComparablesResponse struct {
 
 func (x *GetEquityComparablesResponse) Reset() {
 	*x = GetEquityComparablesResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[16]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1507,7 +1632,7 @@ func (x *GetEquityComparablesResponse) String() string {
 func (*GetEquityComparablesResponse) ProtoMessage() {}
 
 func (x *GetEquityComparablesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[16]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1520,7 +1645,7 @@ func (x *GetEquityComparablesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetEquityComparablesResponse.ProtoReflect.Descriptor instead.
 func (*GetEquityComparablesResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{16}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetEquityComparablesResponse) GetParcels() map[string]*EquityComparableParcel {
@@ -1542,7 +1667,7 @@ type GetSalesComparablesRequest struct {
 
 func (x *GetSalesComparablesRequest) Reset() {
 	*x = GetSalesComparablesRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[17]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1554,7 +1679,7 @@ func (x *GetSalesComparablesRequest) String() string {
 func (*GetSalesComparablesRequest) ProtoMessage() {}
 
 func (x *GetSalesComparablesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[17]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1567,7 +1692,7 @@ func (x *GetSalesComparablesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSalesComparablesRequest.ProtoReflect.Descriptor instead.
 func (*GetSalesComparablesRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{17}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *GetSalesComparablesRequest) GetWktPolygon() string {
@@ -1607,7 +1732,7 @@ type GetSalesComparablesResponse struct {
 
 func (x *GetSalesComparablesResponse) Reset() {
 	*x = GetSalesComparablesResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[18]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1619,7 +1744,7 @@ func (x *GetSalesComparablesResponse) String() string {
 func (*GetSalesComparablesResponse) ProtoMessage() {}
 
 func (x *GetSalesComparablesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[18]
+	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1632,280 +1757,12 @@ func (x *GetSalesComparablesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSalesComparablesResponse.ProtoReflect.Descriptor instead.
 func (*GetSalesComparablesResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{18}
+	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *GetSalesComparablesResponse) GetParcels() map[string]*SaleComparableParcel {
 	if x != nil {
 		return x.Parcels
-	}
-	return nil
-}
-
-type SimpleParcel struct {
-	state               protoimpl.MessageState `protogen:"open.v1"`
-	ParcelId            string                 `protobuf:"bytes,1,opt,name=parcel_id,json=parcelId,proto3" json:"parcel_id,omitempty"`
-	FeatureId           int64                  `protobuf:"varint,2,opt,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
-	FormattedAddress    *string                `protobuf:"bytes,3,opt,name=formatted_address,json=formattedAddress,proto3,oneof" json:"formatted_address,omitempty"`
-	AddressId           *string                `protobuf:"bytes,4,opt,name=address_id,json=addressId,proto3,oneof" json:"address_id,omitempty"`
-	PrimaryOwnerName    *string                `protobuf:"bytes,5,opt,name=primary_owner_name,json=primaryOwnerName,proto3,oneof" json:"primary_owner_name,omitempty"`
-	PrimaryOwnerAddress *string                `protobuf:"bytes,6,opt,name=primary_owner_address,json=primaryOwnerAddress,proto3,oneof" json:"primary_owner_address,omitempty"`
-	PartyIds            []string               `protobuf:"bytes,7,rep,name=party_ids,json=partyIds,proto3" json:"party_ids,omitempty"`
-	LandUseId           *string                `protobuf:"bytes,8,opt,name=land_use_id,json=landUseId,proto3,oneof" json:"land_use_id,omitempty"`
-	NeighborhoodId      *string                `protobuf:"bytes,9,opt,name=neighborhood_id,json=neighborhoodId,proto3,oneof" json:"neighborhood_id,omitempty"`
-	LandAreaSqFt        *float64               `protobuf:"fixed64,10,opt,name=land_area_sq_ft,json=landAreaSqFt,proto3,oneof" json:"land_area_sq_ft,omitempty"`
-	FrontageFt          *float64               `protobuf:"fixed64,11,opt,name=frontage_ft,json=frontageFt,proto3,oneof" json:"frontage_ft,omitempty"`
-	DepthFt             *float64               `protobuf:"fixed64,12,opt,name=depth_ft,json=depthFt,proto3,oneof" json:"depth_ft,omitempty"`
-	ZoningIds           []string               `protobuf:"bytes,13,rep,name=zoning_ids,json=zoningIds,proto3" json:"zoning_ids,omitempty"`
-	MarketLandValue     *string                `protobuf:"bytes,14,opt,name=market_land_value,json=marketLandValue,proto3,oneof" json:"market_land_value,omitempty"`
-	AssessedLandValue   *string                `protobuf:"bytes,15,opt,name=assessed_land_value,json=assessedLandValue,proto3,oneof" json:"assessed_land_value,omitempty"`
-	Properties          *string                `protobuf:"bytes,17,opt,name=properties,proto3,oneof" json:"properties,omitempty"`
-	unknownFields       protoimpl.UnknownFields
-	sizeCache           protoimpl.SizeCache
-}
-
-func (x *SimpleParcel) Reset() {
-	*x = SimpleParcel{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SimpleParcel) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SimpleParcel) ProtoMessage() {}
-
-func (x *SimpleParcel) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SimpleParcel.ProtoReflect.Descriptor instead.
-func (*SimpleParcel) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *SimpleParcel) GetParcelId() string {
-	if x != nil {
-		return x.ParcelId
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetFeatureId() int64 {
-	if x != nil {
-		return x.FeatureId
-	}
-	return 0
-}
-
-func (x *SimpleParcel) GetFormattedAddress() string {
-	if x != nil && x.FormattedAddress != nil {
-		return *x.FormattedAddress
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetAddressId() string {
-	if x != nil && x.AddressId != nil {
-		return *x.AddressId
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetPrimaryOwnerName() string {
-	if x != nil && x.PrimaryOwnerName != nil {
-		return *x.PrimaryOwnerName
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetPrimaryOwnerAddress() string {
-	if x != nil && x.PrimaryOwnerAddress != nil {
-		return *x.PrimaryOwnerAddress
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetPartyIds() []string {
-	if x != nil {
-		return x.PartyIds
-	}
-	return nil
-}
-
-func (x *SimpleParcel) GetLandUseId() string {
-	if x != nil && x.LandUseId != nil {
-		return *x.LandUseId
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetNeighborhoodId() string {
-	if x != nil && x.NeighborhoodId != nil {
-		return *x.NeighborhoodId
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetLandAreaSqFt() float64 {
-	if x != nil && x.LandAreaSqFt != nil {
-		return *x.LandAreaSqFt
-	}
-	return 0
-}
-
-func (x *SimpleParcel) GetFrontageFt() float64 {
-	if x != nil && x.FrontageFt != nil {
-		return *x.FrontageFt
-	}
-	return 0
-}
-
-func (x *SimpleParcel) GetDepthFt() float64 {
-	if x != nil && x.DepthFt != nil {
-		return *x.DepthFt
-	}
-	return 0
-}
-
-func (x *SimpleParcel) GetZoningIds() []string {
-	if x != nil {
-		return x.ZoningIds
-	}
-	return nil
-}
-
-func (x *SimpleParcel) GetMarketLandValue() string {
-	if x != nil && x.MarketLandValue != nil {
-		return *x.MarketLandValue
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetAssessedLandValue() string {
-	if x != nil && x.AssessedLandValue != nil {
-		return *x.AssessedLandValue
-	}
-	return ""
-}
-
-func (x *SimpleParcel) GetProperties() string {
-	if x != nil && x.Properties != nil {
-		return *x.Properties
-	}
-	return ""
-}
-
-type GetParcelByFeatureIdRequest struct {
-	state                    protoimpl.MessageState `protogen:"open.v1"`
-	FeatureId                int64                  `protobuf:"varint,1,opt,name=feature_id,json=featureId,proto3" json:"feature_id,omitempty"`
-	ValuationId              *string                `protobuf:"bytes,2,opt,name=valuation_id,json=valuationId,proto3,oneof" json:"valuation_id,omitempty"`
-	NeighborhoodDefinitionId *string                `protobuf:"bytes,3,opt,name=neighborhood_definition_id,json=neighborhoodDefinitionId,proto3,oneof" json:"neighborhood_definition_id,omitempty"`
-	unknownFields            protoimpl.UnknownFields
-	sizeCache                protoimpl.SizeCache
-}
-
-func (x *GetParcelByFeatureIdRequest) Reset() {
-	*x = GetParcelByFeatureIdRequest{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetParcelByFeatureIdRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetParcelByFeatureIdRequest) ProtoMessage() {}
-
-func (x *GetParcelByFeatureIdRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetParcelByFeatureIdRequest.ProtoReflect.Descriptor instead.
-func (*GetParcelByFeatureIdRequest) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *GetParcelByFeatureIdRequest) GetFeatureId() int64 {
-	if x != nil {
-		return x.FeatureId
-	}
-	return 0
-}
-
-func (x *GetParcelByFeatureIdRequest) GetValuationId() string {
-	if x != nil && x.ValuationId != nil {
-		return *x.ValuationId
-	}
-	return ""
-}
-
-func (x *GetParcelByFeatureIdRequest) GetNeighborhoodDefinitionId() string {
-	if x != nil && x.NeighborhoodDefinitionId != nil {
-		return *x.NeighborhoodDefinitionId
-	}
-	return ""
-}
-
-type GetParcelByFeatureIdResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Parcel        *SimpleParcel          `protobuf:"bytes,1,opt,name=parcel,proto3" json:"parcel,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetParcelByFeatureIdResponse) Reset() {
-	*x = GetParcelByFeatureIdResponse{}
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetParcelByFeatureIdResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetParcelByFeatureIdResponse) ProtoMessage() {}
-
-func (x *GetParcelByFeatureIdResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_civil_public_parcels_v1_parcels_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetParcelByFeatureIdResponse.ProtoReflect.Descriptor instead.
-func (*GetParcelByFeatureIdResponse) Descriptor() ([]byte, []int) {
-	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *GetParcelByFeatureIdResponse) GetParcel() *SimpleParcel {
-	if x != nil {
-		return x.Parcel
 	}
 	return nil
 }
@@ -2119,60 +1976,52 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
 	"\x0e_max_height_ftB\x1e\n" +
 	"\x1c_max_dwelling_units_per_acreB\x17\n" +
-	"\x15_max_lot_coverage_pct\"\xd9\x0e\n" +
+	"\x15_max_lot_coverage_pct\"\xf8\t\n" +
 	"\x19ParcelImprovementsSummary\x12\xd6\x01\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the improvements on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\x0eimprovementIds\x127\n" +
 	"\x10total_area_sq_ft\x18\x02 \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00R\rtotalAreaSqFt\x120\n" +
 	"\x0ftotal_bathrooms\x18\x03 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\x0etotalBathrooms\x12.\n" +
 	"\x0etotal_bedrooms\x18\x04 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\rtotalBedrooms\x12(\n" +
 	"\vtotal_units\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\n" +
-	"totalUnits\x126\n" +
-	"\x11oldest_year_built\x18\x06 \x01(\x05B\x05\xbaH\x02\x1a\x00H\x00R\x0foldestYearBuilt\x88\x01\x01\x126\n" +
-	"\x11newest_year_built\x18\a \x01(\x05B\x05\xbaH\x02\x1a\x00H\x01R\x0fnewestYearBuilt\x88\x01\x01\x12\x8c\x02\n" +
-	"&weighted_average_depreciation_modifier\x18\b \x01(\tB\xb1\x01\xbaG\x85\x01\x92\x02\x81\x01The average of the depreciation modifiers of the conditions of every improvement on this parcel, as weighted by their floor areas\xbaH%r#2!^(0(\\.[0-9]{1,4})?|1(\\.0{1,4})?)$H\x02R#weightedAverageDepreciationModifier\x88\x01\x01\x12\xcd\x01\n" +
-	"\x12worst_condition_id\x18\t \x01(\tB\x99\x01\xbaG\x8d\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02`The worst condition of an improvement on this parcel, as sorted by their depreciation modifiers.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x10worstConditionId\x88\x01\x01\x12\xca\x01\n" +
-	"\x11best_condition_id\x18\n" +
-	" \x01(\tB\x98\x01\xbaG\x8c\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02_The best condition of an improvement on this parcel, as sorted by their depreciation modifiers.\xbaH\x05r\x03\xb0\x01\x01H\x04R\x0fbestConditionId\x88\x01\x01\x12\xdd\x01\n" +
-	"\x18market_improvement_value\x18\v \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x05R\x16marketImprovementValue\x88\x01\x01\x12\xe1\x01\n" +
-	"\x1aassessed_improvement_value\x18\f \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x06R\x18assessedImprovementValue\x88\x01\x01B\x14\n" +
-	"\x12_oldest_year_builtB\x14\n" +
-	"\x12_newest_year_builtB)\n" +
-	"'_weighted_average_depreciation_modifierB\x15\n" +
-	"\x13_worst_condition_idB\x14\n" +
-	"\x12_best_condition_idB\x1b\n" +
-	"\x19_market_improvement_valueB\x1d\n" +
-	"\x1b_assessed_improvement_value\"\x9d\x12\n" +
-	"\x06Parcel\x12z\n" +
-	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12\x1d\n" +
+	"totalUnits\x128\n" +
+	"\x12primary_year_built\x18\x06 \x01(\x05B\x05\xbaH\x02\x1a\x00H\x00R\x10primaryYearBuilt\x88\x01\x01\x12\xb0\x01\n" +
+	"\x14primary_condition_id\x18\a \x01(\tBy\xbaGn:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02AThe ID of the condition of the primary improvement on this parcel\xbaH\x05r\x03\xb0\x01\x01H\x01R\x12primaryConditionId\x88\x01\x01\x12\xe8\x01\n" +
+	"\x1etotal_market_improvement_value\x18\b \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x02R\x1btotalMarketImprovementValue\x88\x01\x01\x12\xec\x01\n" +
+	" total_assessed_improvement_value\x18\t \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x03R\x1dtotalAssessedImprovementValue\x88\x01\x01B\x15\n" +
+	"\x13_primary_year_builtB\x17\n" +
+	"\x15_primary_condition_idB!\n" +
+	"\x1f_total_market_improvement_valueB#\n" +
+	"!_total_assessed_improvement_value\"\x85\x11\n" +
+	"\rParcelDetails\x12z\n" +
+	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12\"\n" +
 	"\n" +
-	"feature_id\x18\x02 \x01(\x03R\tfeatureId\x12<\n" +
+	"feature_id\x18\x02 \x01(\x03H\x00R\tfeatureId\x88\x01\x01\x12<\n" +
 	"\x11formatted_address\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x00R\x10formattedAddress\x88\x01\x01\x12\x8b\x01\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x01R\x10formattedAddress\x88\x01\x01\x12\x8b\x01\n" +
 	"\n" +
-	"address_id\x18\x04 \x01(\tBg\xbaG\\:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02/The unique identifier for the parcel's address.\xbaH\x05r\x03\xb0\x01\x01H\x01R\taddressId\x88\x01\x01\x12=\n" +
+	"address_id\x18\x04 \x01(\tBg\xbaG\\:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02/The unique identifier for the parcel's address.\xbaH\x05r\x03\xb0\x01\x01H\x02R\taddressId\x88\x01\x01\x12=\n" +
 	"\x12primary_owner_name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x02R\x10primaryOwnerName\x88\x01\x01\x12C\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x03R\x10primaryOwnerName\x88\x01\x01\x12C\n" +
 	"\x15primary_owner_address\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x03R\x13primaryOwnerAddress\x88\x01\x01\x12\xcc\x01\n" +
+	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x04R\x13primaryOwnerAddress\x88\x01\x01\x12\xcc\x01\n" +
 	"\tparty_ids\x18\a \x03(\tB\xae\x01\xbaG\x99\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02BA list of unique identifiers for the parties that own this parcel.\xbaH\x0e\x92\x01\v\x10\n" +
 	"\x18\x01\"\x05r\x03\xb0\x01\x01R\bpartyIds\x12\x8d\x01\n" +
-	"\vland_use_id\x18\b \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01H\x04R\tlandUseId\x88\x01\x01\x12\x94\x02\n" +
-	"\x0fneighborhood_id\x18\t \x01(\tB\xe5\x01\xbaG\xd9\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02\xab\x01The unique identifier for the parcel's neighborhood. Will only populate if a neighborhood definition ID is provided, and the parcel has a neighborhood for that definition.\xbaH\x05r\x03\xb0\x01\x01H\x05R\x0eneighborhoodId\x88\x01\x01\x12:\n" +
+	"\vland_use_id\x18\b \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01H\x05R\tlandUseId\x88\x01\x01\x12\x94\x02\n" +
+	"\x0fneighborhood_id\x18\t \x01(\tB\xe5\x01\xbaG\xd9\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02\xab\x01The unique identifier for the parcel's neighborhood. Will only populate if a neighborhood definition ID is provided, and the parcel has a neighborhood for that definition.\xbaH\x05r\x03\xb0\x01\x01H\x06R\x0eneighborhoodId\x88\x01\x01\x12:\n" +
 	"\x0fland_area_sq_ft\x18\n" +
-	" \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x06R\flandAreaSqFt\x88\x01\x01\x124\n" +
-	"\vfrontage_ft\x18\v \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\aR\n" +
+	" \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\aR\flandAreaSqFt\x88\x01\x01\x124\n" +
+	"\vfrontage_ft\x18\v \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\bR\n" +
 	"frontageFt\x88\x01\x01\x12.\n" +
-	"\bdepth_ft\x18\f \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\bR\adepthFt\x88\x01\x01\x12\xcf\x01\n" +
+	"\bdepth_ft\x18\f \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\tR\adepthFt\x88\x01\x01\x12\xcf\x01\n" +
 	"\n" +
 	"zoning_ids\x18\r \x03(\tB\xaf\x01\xbaG\x9a\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02CA list of unique identifiers for the zoning overlays on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\tzoningIds\x12\xb6\x01\n" +
-	"\x11market_land_value\x18\x0e \x01(\tB\x84\x01\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\tR\x0fmarketLandValue\x88\x01\x01\x12\xba\x01\n" +
-	"\x13assessed_land_value\x18\x0f \x01(\tB\x84\x01\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\n" +
-	"R\x11assessedLandValue\x88\x01\x01\x12L\n" +
-	"\vaffordances\x18\x10 \x01(\v2*.civil.public.parcels.v1.ParcelAffordancesR\vaffordances\x12c\n" +
-	"\x13improvement_summary\x18\x11 \x01(\v22.civil.public.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\x12-\n" +
+	"\x11market_land_value\x18\x0e \x01(\tB\x84\x01\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\n" +
+	"R\x0fmarketLandValue\x88\x01\x01\x12\xba\x01\n" +
+	"\x13assessed_land_value\x18\x0f \x01(\tB\x84\x01\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\vR\x11assessedLandValue\x88\x01\x01\x12-\n" +
 	"\n" +
-	"properties\x18\x12 \x01(\tB\b\xbaH\x05r\x03(\x80(H\vR\n" +
-	"properties\x88\x01\x01B\x14\n" +
+	"properties\x18\x10 \x01(\tB\b\xbaH\x05r\x03(\x80(H\fR\n" +
+	"properties\x88\x01\x01B\r\n" +
+	"\v_feature_idB\x14\n" +
 	"\x12_formatted_addressB\r\n" +
 	"\v_address_idB\x15\n" +
 	"\x13_primary_owner_nameB\x18\n" +
@@ -2184,24 +2033,44 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\t_depth_ftB\x14\n" +
 	"\x12_market_land_valueB\x16\n" +
 	"\x14_assessed_land_valueB\r\n" +
-	"\v_properties\"\xae\a\n" +
-	"\x15GetParcelsByIdRequest\x12\xbb\x01\n" +
+	"\v_properties\"\xd2\x01\n" +
+	"\x1cParcelWithImprovementSummary\x12M\n" +
+	"\x0eparcel_details\x18\x01 \x01(\v2&.civil.public.parcels.v1.ParcelDetailsR\rparcelDetails\x12c\n" +
+	"\x13improvement_summary\x18\x02 \x01(\v22.civil.public.parcels.v1.ParcelImprovementsSummaryR\x12improvementSummary\"\x94\t\n" +
+	"1GetParcelsWithImprovementSummaryByParcelIdRequest\x12\xbb\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x9b\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x10\x92\x01\r\b\x01\x10d\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9e\x01\n" +
-	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB]\xbaGG\x92\x02DThe real-world date to evaluate the parcel against. Defaults to now.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01\x12\xab\x01\n" +
-	"\fsystem_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampBh\xbaGP\x92\x02MThe transaction time to evaluate the database state against. Defaults to now.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x9b\x01\xbaG\x84\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02-A list of unique identifiers for the parcels.\xbaH\x10\x92\x01\r\b\x01\x10d\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\xef\x01\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xad\x01\xbaG\x96\x01\x92\x02\x92\x01The timestamp to retrieve the parcel data for. Defaults to now. If a parcel does not have data for that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01\x12\xa4\x02\n" +
+	"\fsystem_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\xe0\x01\xbaG\xc7\x01\x92\x02\xc3\x01A previous timestamp, which the query will use to determine the previous state of the database. Defaults to now. If a parcel does not have data for that time, no data for that parcel is returned.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\n" +
 	"systemAsOf\x88\x01\x01\x12\x85\x01\n" +
 	"\fvaluation_id\x18\x04 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier of a valuation.\xbaH\x05r\x03\xb0\x01\x01H\x02R\vvaluationId\x88\x01\x01\x12\xae\x01\n" +
 	"\x1aneighborhood_definition_id\x18\x05 \x01(\tBk\xbaG`:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x023The unique identifier of a neighborhood definition.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x18neighborhoodDefinitionId\x88\x01\x01B\x0e\n" +
 	"\f_legal_as_ofB\x0f\n" +
 	"\r_system_as_ofB\x0f\n" +
 	"\r_valuation_idB\x1d\n" +
-	"\x1b_neighborhood_definition_id\"\x8f\x02\n" +
-	"\x16GetParcelsByIdResponse\x12\x97\x01\n" +
-	"\aparcels\x18\x01 \x03(\v2<.civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntryB?\xbaG<\x92\x029A dictionary of parcels, keyed by their unique parcel_id.R\aparcels\x1a[\n" +
+	"\x1b_neighborhood_definition_id\"\xdb\x02\n" +
+	"2GetParcelsWithImprovementSummaryByParcelIdResponse\x12\xb1\x01\n" +
+	"\aparcels\x18\x01 \x03(\v2X.civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntryB=\xbaG:\x92\x027A dictionary of parcels, keyed by their UUID parcel ID.R\aparcels\x1aq\n" +
 	"\fParcelsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x125\n" +
-	"\x05value\x18\x02 \x01(\v2\x1f.civil.public.parcels.v1.ParcelR\x05value:\x028\x01\"\xdf\x05\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12K\n" +
+	"\x05value\x18\x02 \x01(\v25.civil.public.parcels.v1.ParcelWithImprovementSummaryR\x05value:\x028\x01\"\xf5\a\n" +
+	"2GetParcelsWithImprovementSummaryByFeatureIdRequest\x12\x1f\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03R\n" +
+	"featureIds\x12\xef\x01\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xad\x01\xbaG\x96\x01\x92\x02\x92\x01The timestamp to retrieve the parcel data for. Defaults to now. If a parcel does not have data for that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01\x12\xa1\x02\n" +
+	"\fsystem_as_of\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampB\xdd\x01\xbaG\xc4\x01\x92\x02\xc0\x01A previous timestamp, which the query will use to retrieve a previous state of the database. Defaults to now. If a parcel does not have data for that time, no data for that parcel is returned.\xbaH\x12\xb2\x01\x0f8\x01*\v\b\xff\xff\xff\xff\xff\xff\xff\xff\xff\x01H\x01R\n" +
+	"systemAsOf\x88\x01\x01\x12\x85\x01\n" +
+	"\fvaluation_id\x18\x04 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier of a valuation.\xbaH\x05r\x03\xb0\x01\x01H\x02R\vvaluationId\x88\x01\x01\x12\xae\x01\n" +
+	"\x1aneighborhood_definition_id\x18\x05 \x01(\tBk\xbaG`:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x023The unique identifier of a neighborhood definition.\xbaH\x05r\x03\xb0\x01\x01H\x03R\x18neighborhoodDefinitionId\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_ofB\x0f\n" +
+	"\r_system_as_ofB\x0f\n" +
+	"\r_valuation_idB\x1d\n" +
+	"\x1b_neighborhood_definition_id\"\xe1\x02\n" +
+	"3GetParcelsWithImprovementSummaryByFeatureIdResponse\x12\xb6\x01\n" +
+	"\aparcels\x18\x01 \x03(\v2Y.civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntryBA\xbaG>\x92\x02;A dictionary of parcels, keyed by their integer feature ID.R\aparcels\x1aq\n" +
+	"\fParcelsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12K\n" +
+	"\x05value\x18\x02 \x01(\v25.civil.public.parcels.v1.ParcelWithImprovementSummaryR\x05value:\x028\x01\"\xdf\x05\n" +
 	"\x13UpdateParcelRequest\x12z\n" +
 	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12\x8b\x01\n" +
 	"\n" +
@@ -2342,57 +2211,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\aparcels\x18\x01 \x03(\v2A.civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntryR\aparcels\x1ai\n" +
 	"\fParcelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12C\n" +
-	"\x05value\x18\x02 \x01(\v2-.civil.public.parcels.v1.SaleComparableParcelR\x05value:\x028\x01\"\xf0\x10\n" +
-	"\fSimpleParcel\x12z\n" +
-	"\tparcel_id\x18\x01 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier for the parcel.\xbaH\x05r\x03\xb0\x01\x01R\bparcelId\x12\x1d\n" +
-	"\n" +
-	"feature_id\x18\x02 \x01(\x03R\tfeatureId\x12<\n" +
-	"\x11formatted_address\x18\x03 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x00R\x10formattedAddress\x88\x01\x01\x12\x8b\x01\n" +
-	"\n" +
-	"address_id\x18\x04 \x01(\tBg\xbaG\\:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02/The unique identifier for the parcel's address.\xbaH\x05r\x03\xb0\x01\x01H\x01R\taddressId\x88\x01\x01\x12=\n" +
-	"\x12primary_owner_name\x18\x05 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x00\x18\x80\x01H\x02R\x10primaryOwnerName\x88\x01\x01\x12C\n" +
-	"\x15primary_owner_address\x18\x06 \x01(\tB\n" +
-	"\xbaH\ar\x05\x10\x00\x18\x80\x02H\x03R\x13primaryOwnerAddress\x88\x01\x01\x12\xcc\x01\n" +
-	"\tparty_ids\x18\a \x03(\tB\xae\x01\xbaG\x99\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02BA list of unique identifiers for the parties that own this parcel.\xbaH\x0e\x92\x01\v\x10\n" +
-	"\x18\x01\"\x05r\x03\xb0\x01\x01R\bpartyIds\x12\x8d\x01\n" +
-	"\vland_use_id\x18\b \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The unique identifier for the parcel's land use.\xbaH\x05r\x03\xb0\x01\x01H\x04R\tlandUseId\x88\x01\x01\x12\x94\x02\n" +
-	"\x0fneighborhood_id\x18\t \x01(\tB\xe5\x01\xbaG\xd9\x01:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02\xab\x01The unique identifier for the parcel's neighborhood. Will only populate if a neighborhood definition ID is provided, and the parcel has a neighborhood for that definition.\xbaH\x05r\x03\xb0\x01\x01H\x05R\x0eneighborhoodId\x88\x01\x01\x12:\n" +
-	"\x0fland_area_sq_ft\x18\n" +
-	" \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\x06R\flandAreaSqFt\x88\x01\x01\x124\n" +
-	"\vfrontage_ft\x18\v \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\aR\n" +
-	"frontageFt\x88\x01\x01\x12.\n" +
-	"\bdepth_ft\x18\f \x01(\x01B\x0e\xbaH\v\x12\t)\x00\x00\x00\x00\x00\x00\x00\x00H\bR\adepthFt\x88\x01\x01\x12\xcf\x01\n" +
-	"\n" +
-	"zoning_ids\x18\r \x03(\tB\xaf\x01\xbaG\x9a\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02CA list of unique identifiers for the zoning overlays on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\tzoningIds\x12\xb6\x01\n" +
-	"\x11market_land_value\x18\x0e \x01(\tB\x84\x01\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\tR\x0fmarketLandValue\x88\x01\x01\x12\xba\x01\n" +
-	"\x13assessed_land_value\x18\x0f \x01(\tB\x84\x01\xbaG\\\x92\x02YIs only returned if a valuation_id is provided which contains a valuation for this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\n" +
-	"R\x11assessedLandValue\x88\x01\x01\x12-\n" +
-	"\n" +
-	"properties\x18\x11 \x01(\tB\b\xbaH\x05r\x03(\x80(H\vR\n" +
-	"properties\x88\x01\x01B\x14\n" +
-	"\x12_formatted_addressB\r\n" +
-	"\v_address_idB\x15\n" +
-	"\x13_primary_owner_nameB\x18\n" +
-	"\x16_primary_owner_addressB\x0e\n" +
-	"\f_land_use_idB\x12\n" +
-	"\x10_neighborhood_idB\x12\n" +
-	"\x10_land_area_sq_ftB\x0e\n" +
-	"\f_frontage_ftB\v\n" +
-	"\t_depth_ftB\x14\n" +
-	"\x12_market_land_valueB\x16\n" +
-	"\x14_assessed_land_valueB\r\n" +
-	"\v_properties\"\xa5\x03\n" +
-	"\x1bGetParcelByFeatureIdRequest\x12\x1d\n" +
-	"\n" +
-	"feature_id\x18\x01 \x01(\x03R\tfeatureId\x12\x85\x01\n" +
-	"\fvaluation_id\x18\x02 \x01(\tB]\xbaGR:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02%The unique identifier of a valuation.\xbaH\x05r\x03\xb0\x01\x01H\x00R\vvaluationId\x88\x01\x01\x12\xae\x01\n" +
-	"\x1aneighborhood_definition_id\x18\x03 \x01(\tBk\xbaG`:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x023The unique identifier of a neighborhood definition.\xbaH\x05r\x03\xb0\x01\x01H\x01R\x18neighborhoodDefinitionId\x88\x01\x01B\x0f\n" +
-	"\r_valuation_idB\x1d\n" +
-	"\x1b_neighborhood_definition_id\"]\n" +
-	"\x1cGetParcelByFeatureIdResponse\x12=\n" +
-	"\x06parcel\x18\x01 \x01(\v2%.civil.public.parcels.v1.SimpleParcelR\x06parcel\"A\n" +
+	"\x05value\x18\x02 \x01(\v2-.civil.public.parcels.v1.SaleComparableParcelR\x05value:\x028\x01\"A\n" +
 	"\x1eGetParcelIdsByFeatureIdRequest\x12\x1f\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03R\n" +
 	"featureIds\"\xc7\x01\n" +
@@ -2423,16 +2242,15 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x12\x1a\n" +
 	"\x16PARCEL_ATTRIBUTE_UNITS\x10\v\x12!\n" +
 	"\x1dPARCEL_ATTRIBUTE_CONDITION_ID\x10\f\x12(\n" +
-	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xb6\n" +
-	"\n" +
-	"\x0eParcelsService\x12s\n" +
-	"\x0eGetParcelsById\x12..civil.public.parcels.v1.GetParcelsByIdRequest\x1a/.civil.public.parcels.v1.GetParcelsByIdResponse\"\x00\x12m\n" +
+	"$PARCEL_ATTRIBUTE_IMPROVEMENT_TYPE_ID\x10\r2\xd0\v\n" +
+	"\x0eParcelsService\x12\xc7\x01\n" +
+	"*GetParcelsWithImprovementSummaryByParcelId\x12J.civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest\x1aK.civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse\"\x00\x12m\n" +
 	"\fUpdateParcel\x12,.civil.public.parcels.v1.UpdateParcelRequest\x1a-.civil.public.parcels.v1.UpdateParcelResponse\"\x00\x12\xb5\x01\n" +
 	"$GetNumericalParcelAttributeStatsById\x12D.civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest\x1aE.civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse\"\x00\x12\xbb\x01\n" +
 	"&GetCategoricalParcelAttributeStatsById\x12F.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest\x1aG.civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse\"\x00\x12\x85\x01\n" +
 	"\x14GetEquityComparables\x124.civil.public.parcels.v1.GetEquityComparablesRequest\x1a5.civil.public.parcels.v1.GetEquityComparablesResponse\"\x00\x12\x82\x01\n" +
-	"\x13GetSalesComparables\x123.civil.public.parcels.v1.GetSalesComparablesRequest\x1a4.civil.public.parcels.v1.GetSalesComparablesResponse\"\x00\x12\x85\x01\n" +
-	"\x14GetParcelByFeatureId\x124.civil.public.parcels.v1.GetParcelByFeatureIdRequest\x1a5.civil.public.parcels.v1.GetParcelByFeatureIdResponse\"\x00\x12\x8e\x01\n" +
+	"\x13GetSalesComparables\x123.civil.public.parcels.v1.GetSalesComparablesRequest\x1a4.civil.public.parcels.v1.GetSalesComparablesResponse\"\x00\x12\xca\x01\n" +
+	"+GetParcelsWithImprovementSummaryByFeatureId\x12K.civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest\x1aL.civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse\"\x00\x12\x8e\x01\n" +
 	"\x17GetParcelIdsByFeatureId\x127.civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest\x1a8.civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse\"\x00\x12\xa3\x01\n" +
 	"\x1eGetEstimatedParcelsExtentWGS84\x12>.civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request\x1a?.civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response\"\x00B\x8b\x04\xbaG\x95\x02\x12\xa6\x01\n" +
 	"\tCivil API\x12\x91\x01Public API description for the Civil platform. Auth token can be retrieved by prefixing \"auth-\" to the beginning of your jurisdiction's endpoint.2\x050.0.3\x1a\x1d\n" +
@@ -2458,94 +2276,98 @@ func file_civil_public_parcels_v1_parcels_proto_rawDescGZIP() []byte {
 }
 
 var file_civil_public_parcels_v1_parcels_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_civil_public_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
+var file_civil_public_parcels_v1_parcels_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_civil_public_parcels_v1_parcels_proto_goTypes = []any{
-	(ParcelAttribute)(0),                                   // 0: civil.public.parcels.v1.ParcelAttribute
-	(*ParcelAffordances)(nil),                              // 1: civil.public.parcels.v1.ParcelAffordances
-	(*ParcelImprovementsSummary)(nil),                      // 2: civil.public.parcels.v1.ParcelImprovementsSummary
-	(*Parcel)(nil),                                         // 3: civil.public.parcels.v1.Parcel
-	(*GetParcelsByIdRequest)(nil),                          // 4: civil.public.parcels.v1.GetParcelsByIdRequest
-	(*GetParcelsByIdResponse)(nil),                         // 5: civil.public.parcels.v1.GetParcelsByIdResponse
-	(*UpdateParcelRequest)(nil),                            // 6: civil.public.parcels.v1.UpdateParcelRequest
-	(*UpdateParcelResponse)(nil),                           // 7: civil.public.parcels.v1.UpdateParcelResponse
-	(*GetNumericalParcelAttributeStatsByIdRequest)(nil),    // 8: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
-	(*GetNumericalParcelAttributeStatsByIdResponse)(nil),   // 9: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
-	(*GetCategoricalParcelAttributeStatsByIdRequest)(nil),  // 10: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
-	(*GetCategoricalParcelAttributeStatsByIdResponse)(nil), // 11: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
-	(*ComparableCriteria)(nil),                             // 12: civil.public.parcels.v1.ComparableCriteria
-	(*ComparableAttribute)(nil),                            // 13: civil.public.parcels.v1.ComparableAttribute
-	(*EquityComparableParcel)(nil),                         // 14: civil.public.parcels.v1.EquityComparableParcel
-	(*SaleComparableParcel)(nil),                           // 15: civil.public.parcels.v1.SaleComparableParcel
-	(*GetEquityComparablesRequest)(nil),                    // 16: civil.public.parcels.v1.GetEquityComparablesRequest
-	(*GetEquityComparablesResponse)(nil),                   // 17: civil.public.parcels.v1.GetEquityComparablesResponse
-	(*GetSalesComparablesRequest)(nil),                     // 18: civil.public.parcels.v1.GetSalesComparablesRequest
-	(*GetSalesComparablesResponse)(nil),                    // 19: civil.public.parcels.v1.GetSalesComparablesResponse
-	(*SimpleParcel)(nil),                                   // 20: civil.public.parcels.v1.SimpleParcel
-	(*GetParcelByFeatureIdRequest)(nil),                    // 21: civil.public.parcels.v1.GetParcelByFeatureIdRequest
-	(*GetParcelByFeatureIdResponse)(nil),                   // 22: civil.public.parcels.v1.GetParcelByFeatureIdResponse
-	(*GetParcelIdsByFeatureIdRequest)(nil),                 // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
-	(*GetParcelIdsByFeatureIdResponse)(nil),                // 24: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
-	(*GetEstimatedParcelsExtentWGS84Request)(nil),          // 25: civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
-	(*GetEstimatedParcelsExtentWGS84Response)(nil),         // 26: civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
-	nil,                           // 27: civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
-	nil,                           // 28: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntry
-	nil,                           // 29: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
-	nil,                           // 30: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
-	nil,                           // 31: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
-	(*timestamppb.Timestamp)(nil), // 32: google.protobuf.Timestamp
-	(*interval.Interval)(nil),     // 33: google.type.Interval
+	(ParcelAttribute)(0),                                        // 0: civil.public.parcels.v1.ParcelAttribute
+	(*ParcelAffordances)(nil),                                   // 1: civil.public.parcels.v1.ParcelAffordances
+	(*ParcelImprovementsSummary)(nil),                           // 2: civil.public.parcels.v1.ParcelImprovementsSummary
+	(*ParcelDetails)(nil),                                       // 3: civil.public.parcels.v1.ParcelDetails
+	(*ParcelWithImprovementSummary)(nil),                        // 4: civil.public.parcels.v1.ParcelWithImprovementSummary
+	(*GetParcelsWithImprovementSummaryByParcelIdRequest)(nil),   // 5: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest
+	(*GetParcelsWithImprovementSummaryByParcelIdResponse)(nil),  // 6: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse
+	(*GetParcelsWithImprovementSummaryByFeatureIdRequest)(nil),  // 7: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest
+	(*GetParcelsWithImprovementSummaryByFeatureIdResponse)(nil), // 8: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse
+	(*UpdateParcelRequest)(nil),                                 // 9: civil.public.parcels.v1.UpdateParcelRequest
+	(*UpdateParcelResponse)(nil),                                // 10: civil.public.parcels.v1.UpdateParcelResponse
+	(*GetNumericalParcelAttributeStatsByIdRequest)(nil),         // 11: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
+	(*GetNumericalParcelAttributeStatsByIdResponse)(nil),        // 12: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
+	(*GetCategoricalParcelAttributeStatsByIdRequest)(nil),       // 13: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
+	(*GetCategoricalParcelAttributeStatsByIdResponse)(nil),      // 14: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
+	(*ComparableCriteria)(nil),                                  // 15: civil.public.parcels.v1.ComparableCriteria
+	(*ComparableAttribute)(nil),                                 // 16: civil.public.parcels.v1.ComparableAttribute
+	(*EquityComparableParcel)(nil),                              // 17: civil.public.parcels.v1.EquityComparableParcel
+	(*SaleComparableParcel)(nil),                                // 18: civil.public.parcels.v1.SaleComparableParcel
+	(*GetEquityComparablesRequest)(nil),                         // 19: civil.public.parcels.v1.GetEquityComparablesRequest
+	(*GetEquityComparablesResponse)(nil),                        // 20: civil.public.parcels.v1.GetEquityComparablesResponse
+	(*GetSalesComparablesRequest)(nil),                          // 21: civil.public.parcels.v1.GetSalesComparablesRequest
+	(*GetSalesComparablesResponse)(nil),                         // 22: civil.public.parcels.v1.GetSalesComparablesResponse
+	(*GetParcelIdsByFeatureIdRequest)(nil),                      // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
+	(*GetParcelIdsByFeatureIdResponse)(nil),                     // 24: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
+	(*GetEstimatedParcelsExtentWGS84Request)(nil),               // 25: civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
+	(*GetEstimatedParcelsExtentWGS84Response)(nil),              // 26: civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
+	nil,                           // 27: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry
+	nil,                           // 28: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry
+	nil,                           // 29: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntry
+	nil,                           // 30: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
+	nil,                           // 31: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
+	nil,                           // 32: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
+	(*timestamppb.Timestamp)(nil), // 33: google.protobuf.Timestamp
+	(*interval.Interval)(nil),     // 34: google.type.Interval
 }
 var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
-	1,  // 0: civil.public.parcels.v1.Parcel.affordances:type_name -> civil.public.parcels.v1.ParcelAffordances
-	2,  // 1: civil.public.parcels.v1.Parcel.improvement_summary:type_name -> civil.public.parcels.v1.ParcelImprovementsSummary
-	32, // 2: civil.public.parcels.v1.GetParcelsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
-	32, // 3: civil.public.parcels.v1.GetParcelsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
-	27, // 4: civil.public.parcels.v1.GetParcelsByIdResponse.parcels:type_name -> civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntry
-	0,  // 5: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
-	32, // 6: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
-	32, // 7: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
-	0,  // 8: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
-	32, // 9: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
-	32, // 10: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
-	28, // 11: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.unique_values:type_name -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntry
-	0,  // 12: civil.public.parcels.v1.ComparableCriteria.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
-	0,  // 13: civil.public.parcels.v1.ComparableAttribute.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
-	13, // 14: civil.public.parcels.v1.EquityComparableParcel.attributes:type_name -> civil.public.parcels.v1.ComparableAttribute
-	32, // 15: civil.public.parcels.v1.SaleComparableParcel.sale_time:type_name -> google.protobuf.Timestamp
-	13, // 16: civil.public.parcels.v1.SaleComparableParcel.attributes:type_name -> civil.public.parcels.v1.ComparableAttribute
-	12, // 17: civil.public.parcels.v1.GetEquityComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
-	29, // 18: civil.public.parcels.v1.GetEquityComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
-	12, // 19: civil.public.parcels.v1.GetSalesComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
-	33, // 20: civil.public.parcels.v1.GetSalesComparablesRequest.time_range:type_name -> google.type.Interval
-	30, // 21: civil.public.parcels.v1.GetSalesComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
-	20, // 22: civil.public.parcels.v1.GetParcelByFeatureIdResponse.parcel:type_name -> civil.public.parcels.v1.SimpleParcel
-	31, // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
-	3,  // 24: civil.public.parcels.v1.GetParcelsByIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.Parcel
-	14, // 25: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
-	15, // 26: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
-	4,  // 27: civil.public.parcels.v1.ParcelsService.GetParcelsById:input_type -> civil.public.parcels.v1.GetParcelsByIdRequest
-	6,  // 28: civil.public.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.public.parcels.v1.UpdateParcelRequest
-	8,  // 29: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
-	10, // 30: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
-	16, // 31: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
-	18, // 32: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
-	21, // 33: civil.public.parcels.v1.ParcelsService.GetParcelByFeatureId:input_type -> civil.public.parcels.v1.GetParcelByFeatureIdRequest
-	23, // 34: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
-	25, // 35: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
-	5,  // 36: civil.public.parcels.v1.ParcelsService.GetParcelsById:output_type -> civil.public.parcels.v1.GetParcelsByIdResponse
-	7,  // 37: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
-	9,  // 38: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
-	11, // 39: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
-	17, // 40: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
-	19, // 41: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
-	22, // 42: civil.public.parcels.v1.ParcelsService.GetParcelByFeatureId:output_type -> civil.public.parcels.v1.GetParcelByFeatureIdResponse
-	24, // 43: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
-	26, // 44: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
-	36, // [36:45] is the sub-list for method output_type
-	27, // [27:36] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	3,  // 0: civil.public.parcels.v1.ParcelWithImprovementSummary.parcel_details:type_name -> civil.public.parcels.v1.ParcelDetails
+	2,  // 1: civil.public.parcels.v1.ParcelWithImprovementSummary.improvement_summary:type_name -> civil.public.parcels.v1.ParcelImprovementsSummary
+	33, // 2: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	33, // 3: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	27, // 4: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.parcels:type_name -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry
+	33, // 5: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	33, // 6: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	28, // 7: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.parcels:type_name -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry
+	0,  // 8: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
+	33, // 9: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	33, // 10: civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	0,  // 11: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
+	33, // 12: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	33, // 13: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest.system_as_of:type_name -> google.protobuf.Timestamp
+	29, // 14: civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.unique_values:type_name -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse.UniqueValuesEntry
+	0,  // 15: civil.public.parcels.v1.ComparableCriteria.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
+	0,  // 16: civil.public.parcels.v1.ComparableAttribute.attribute:type_name -> civil.public.parcels.v1.ParcelAttribute
+	16, // 17: civil.public.parcels.v1.EquityComparableParcel.attributes:type_name -> civil.public.parcels.v1.ComparableAttribute
+	33, // 18: civil.public.parcels.v1.SaleComparableParcel.sale_time:type_name -> google.protobuf.Timestamp
+	16, // 19: civil.public.parcels.v1.SaleComparableParcel.attributes:type_name -> civil.public.parcels.v1.ComparableAttribute
+	15, // 20: civil.public.parcels.v1.GetEquityComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
+	30, // 21: civil.public.parcels.v1.GetEquityComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
+	15, // 22: civil.public.parcels.v1.GetSalesComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
+	34, // 23: civil.public.parcels.v1.GetSalesComparablesRequest.time_range:type_name -> google.type.Interval
+	31, // 24: civil.public.parcels.v1.GetSalesComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
+	32, // 25: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
+	4,  // 26: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
+	4,  // 27: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
+	17, // 28: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
+	18, // 29: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
+	5,  // 30: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest
+	9,  // 31: civil.public.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.public.parcels.v1.UpdateParcelRequest
+	11, // 32: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
+	13, // 33: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
+	19, // 34: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
+	21, // 35: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
+	7,  // 36: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest
+	23, // 37: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
+	25, // 38: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
+	6,  // 39: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse
+	10, // 40: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
+	12, // 41: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
+	14, // 42: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
+	20, // 43: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
+	22, // 44: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
+	8,  // 45: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse
+	24, // 46: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
+	26, // 47: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
+	39, // [39:48] is the sub-list for method output_type
+	30, // [30:39] is the sub-list for method input_type
+	30, // [30:30] is the sub-list for extension type_name
+	30, // [30:30] is the sub-list for extension extendee
+	0,  // [0:30] is the sub-list for field type_name
 }
 
 func init() { file_civil_public_parcels_v1_parcels_proto_init() }
@@ -2556,21 +2378,20 @@ func file_civil_public_parcels_v1_parcels_proto_init() {
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[0].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[1].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[2].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[3].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[5].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[7].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[9].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[11].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[4].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[6].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[8].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[10].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[12].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[19].OneofWrappers = []any{}
-	file_civil_public_parcels_v1_parcels_proto_msgTypes[20].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[14].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[15].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_civil_public_parcels_v1_parcels_proto_rawDesc), len(file_civil_public_parcels_v1_parcels_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   31,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
