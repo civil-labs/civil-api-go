@@ -171,9 +171,9 @@ const file_civil_public_valuations_v1_valuations_proto_rawDesc = "" +
 	"valuations\x1ad\n" +
 	"\x0fValuationsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12;\n" +
-	"\x05value\x18\x02 \x01(\v2%.civil.public.valuations.v1.ValuationR\x05value:\x028\x012\x8d\x01\n" +
-	"\x10ValuationService\x12y\n" +
-	"\rGetValuations\x120.civil.public.valuations.v1.GetValuationsRequest\x1a1.civil.public.valuations.v1.GetValuationsResponse\"\x03\x90\x02\x01B\x8a\x02\n" +
+	"\x05value\x18\x02 \x01(\v2%.civil.public.valuations.v1.ValuationR\x05value:\x028\x012\x8a\x01\n" +
+	"\x10ValuationService\x12v\n" +
+	"\rGetValuations\x120.civil.public.valuations.v1.GetValuationsRequest\x1a1.civil.public.valuations.v1.GetValuationsResponse\"\x00B\x8a\x02\n" +
 	"\x1ecom.civil.public.valuations.v1B\x0fValuationsProtoP\x01ZJgithub.com/civil-labs/civil-api-go/civil/public/valuations/v1;valuationsv1\xa2\x02\x03CPV\xaa\x02\x1aCivil.Public.Valuations.V1\xca\x02\x1bCivil\\Public_\\Valuations\\V1\xe2\x02'Civil\\Public_\\Valuations\\V1\\GPBMetadata\xea\x02\x1dCivil::Public::Valuations::V1b\x06proto3"
 
 var (
