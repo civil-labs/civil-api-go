@@ -204,9 +204,10 @@ type ParcelImprovementsSummary struct {
 	TotalBedrooms                 int32   `protobuf:"varint,5,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
 	TotalUnits                    int32   `protobuf:"varint,6,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
 	PrimaryYearBuilt              *int32  `protobuf:"varint,7,opt,name=primary_year_built,json=primaryYearBuilt,proto3,oneof" json:"primary_year_built,omitempty"`
-	PrimaryConditionId            *string `protobuf:"bytes,8,opt,name=primary_condition_id,json=primaryConditionId,proto3,oneof" json:"primary_condition_id,omitempty"`
-	TotalMarketImprovementValue   *string `protobuf:"bytes,9,opt,name=total_market_improvement_value,json=totalMarketImprovementValue,proto3,oneof" json:"total_market_improvement_value,omitempty"`
-	TotalAssessedImprovementValue *string `protobuf:"bytes,10,opt,name=total_assessed_improvement_value,json=totalAssessedImprovementValue,proto3,oneof" json:"total_assessed_improvement_value,omitempty"`
+	PrimaryEffectiveYearBuilt     *int32  `protobuf:"varint,8,opt,name=primary_effective_year_built,json=primaryEffectiveYearBuilt,proto3,oneof" json:"primary_effective_year_built,omitempty"`
+	PrimaryConditionId            *string `protobuf:"bytes,9,opt,name=primary_condition_id,json=primaryConditionId,proto3,oneof" json:"primary_condition_id,omitempty"`
+	TotalMarketImprovementValue   *string `protobuf:"bytes,10,opt,name=total_market_improvement_value,json=totalMarketImprovementValue,proto3,oneof" json:"total_market_improvement_value,omitempty"`
+	TotalAssessedImprovementValue *string `protobuf:"bytes,11,opt,name=total_assessed_improvement_value,json=totalAssessedImprovementValue,proto3,oneof" json:"total_assessed_improvement_value,omitempty"`
 	unknownFields                 protoimpl.UnknownFields
 	sizeCache                     protoimpl.SizeCache
 }
@@ -286,6 +287,13 @@ func (x *ParcelImprovementsSummary) GetTotalUnits() int32 {
 func (x *ParcelImprovementsSummary) GetPrimaryYearBuilt() int32 {
 	if x != nil && x.PrimaryYearBuilt != nil {
 		return *x.PrimaryYearBuilt
+	}
+	return 0
+}
+
+func (x *ParcelImprovementsSummary) GetPrimaryEffectiveYearBuilt() int32 {
+	if x != nil && x.PrimaryEffectiveYearBuilt != nil {
+		return *x.PrimaryEffectiveYearBuilt
 	}
 	return 0
 }
@@ -1984,7 +1992,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
 	"\x0e_max_height_ftB\x1e\n" +
 	"\x1c_max_dwelling_units_per_acreB\x17\n" +
-	"\x15_max_lot_coverage_pct\"\x99\v\n" +
+	"\x15_max_lot_coverage_pct\"\x87\f\n" +
 	"\x19ParcelImprovementsSummary\x12\xd6\x01\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tB\xac\x01\xbaG\x97\x01:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02@A list of unique identifiers for the improvements on the parcel.\xbaH\x0e\x92\x01\v\x102\x18\x01\"\x05r\x03\xb0\x01\x01R\x0eimprovementIds\x12\x9e\x01\n" +
 	"\x16primary_improvement_id\x18\x02 \x01(\tBh\xbaG]:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x020The ID of the primary improvement on this parcel\xbaH\x05r\x03\xb0\x01\x01R\x14primaryImprovementId\x127\n" +
@@ -1993,12 +2001,14 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x0etotal_bedrooms\x18\x05 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\rtotalBedrooms\x12(\n" +
 	"\vtotal_units\x18\x06 \x01(\x05B\a\xbaH\x04\x1a\x02(\x00R\n" +
 	"totalUnits\x128\n" +
-	"\x12primary_year_built\x18\a \x01(\x05B\x05\xbaH\x02\x1a\x00H\x00R\x10primaryYearBuilt\x88\x01\x01\x12\xb0\x01\n" +
-	"\x14primary_condition_id\x18\b \x01(\tBy\xbaGn:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02AThe ID of the condition of the primary improvement on this parcel\xbaH\x05r\x03\xb0\x01\x01H\x01R\x12primaryConditionId\x88\x01\x01\x12\xe8\x01\n" +
-	"\x1etotal_market_improvement_value\x18\t \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x02R\x1btotalMarketImprovementValue\x88\x01\x01\x12\xec\x01\n" +
-	" total_assessed_improvement_value\x18\n" +
-	" \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x03R\x1dtotalAssessedImprovementValue\x88\x01\x01B\x15\n" +
-	"\x13_primary_year_builtB\x17\n" +
+	"\x12primary_year_built\x18\a \x01(\x05B\x05\xbaH\x02\x1a\x00H\x00R\x10primaryYearBuilt\x88\x01\x01\x12K\n" +
+	"\x1cprimary_effective_year_built\x18\b \x01(\x05B\x05\xbaH\x02\x1a\x00H\x01R\x19primaryEffectiveYearBuilt\x88\x01\x01\x12\xb0\x01\n" +
+	"\x14primary_condition_id\x18\t \x01(\tBy\xbaGn:(\x12&'d25f625b-4e82-4761-82ca-10dafc5dcf77'\x92\x02AThe ID of the condition of the primary improvement on this parcel\xbaH\x05r\x03\xb0\x01\x01H\x02R\x12primaryConditionId\x88\x01\x01\x12\xe8\x01\n" +
+	"\x1etotal_market_improvement_value\x18\n" +
+	" \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x03R\x1btotalMarketImprovementValue\x88\x01\x01\x12\xec\x01\n" +
+	" total_assessed_improvement_value\x18\v \x01(\tB\x9d\x01\xbaGu\x92\x02rIs only returned if a valuation_id is provided which contains a valuation for improvements attached to this parcel\xbaH\"r 2\x1e^-?[0-9]{1,15}(\\.[0-9]{1,4})?$H\x04R\x1dtotalAssessedImprovementValue\x88\x01\x01B\x15\n" +
+	"\x13_primary_year_builtB\x1f\n" +
+	"\x1d_primary_effective_year_builtB\x17\n" +
 	"\x15_primary_condition_idB!\n" +
 	"\x1f_total_market_improvement_valueB#\n" +
 	"!_total_assessed_improvement_value\"\x85\x11\n" +

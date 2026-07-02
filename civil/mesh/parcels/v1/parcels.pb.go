@@ -199,9 +199,10 @@ type ParcelImprovementsSummary struct {
 	TotalBedrooms                 int32   `protobuf:"varint,5,opt,name=total_bedrooms,json=totalBedrooms,proto3" json:"total_bedrooms,omitempty"`
 	TotalUnits                    int32   `protobuf:"varint,6,opt,name=total_units,json=totalUnits,proto3" json:"total_units,omitempty"`
 	PrimaryYearBuilt              *int32  `protobuf:"varint,7,opt,name=primary_year_built,json=primaryYearBuilt,proto3,oneof" json:"primary_year_built,omitempty"`
-	PrimaryConditionId            *string `protobuf:"bytes,8,opt,name=primary_condition_id,json=primaryConditionId,proto3,oneof" json:"primary_condition_id,omitempty"`
-	TotalMarketImprovementValue   *string `protobuf:"bytes,9,opt,name=total_market_improvement_value,json=totalMarketImprovementValue,proto3,oneof" json:"total_market_improvement_value,omitempty"`
-	TotalAssessedImprovementValue *string `protobuf:"bytes,10,opt,name=total_assessed_improvement_value,json=totalAssessedImprovementValue,proto3,oneof" json:"total_assessed_improvement_value,omitempty"`
+	PrimaryEffectiveYearBuilt     *int32  `protobuf:"varint,8,opt,name=primary_effective_year_built,json=primaryEffectiveYearBuilt,proto3,oneof" json:"primary_effective_year_built,omitempty"`
+	PrimaryConditionId            *string `protobuf:"bytes,9,opt,name=primary_condition_id,json=primaryConditionId,proto3,oneof" json:"primary_condition_id,omitempty"`
+	TotalMarketImprovementValue   *string `protobuf:"bytes,10,opt,name=total_market_improvement_value,json=totalMarketImprovementValue,proto3,oneof" json:"total_market_improvement_value,omitempty"`
+	TotalAssessedImprovementValue *string `protobuf:"bytes,11,opt,name=total_assessed_improvement_value,json=totalAssessedImprovementValue,proto3,oneof" json:"total_assessed_improvement_value,omitempty"`
 	unknownFields                 protoimpl.UnknownFields
 	sizeCache                     protoimpl.SizeCache
 }
@@ -281,6 +282,13 @@ func (x *ParcelImprovementsSummary) GetTotalUnits() int32 {
 func (x *ParcelImprovementsSummary) GetPrimaryYearBuilt() int32 {
 	if x != nil && x.PrimaryYearBuilt != nil {
 		return *x.PrimaryYearBuilt
+	}
+	return 0
+}
+
+func (x *ParcelImprovementsSummary) GetPrimaryEffectiveYearBuilt() int32 {
+	if x != nil && x.PrimaryEffectiveYearBuilt != nil {
+		return *x.PrimaryEffectiveYearBuilt
 	}
 	return 0
 }
@@ -2120,7 +2128,7 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13_min_lot_size_sq_ftB\x10\n" +
 	"\x0e_max_height_ftB\x1e\n" +
 	"\x1c_max_dwelling_units_per_acreB\x17\n" +
-	"\x15_max_lot_coverage_pct\"\x8e\x05\n" +
+	"\x15_max_lot_coverage_pct\"\xf5\x05\n" +
 	"\x19ParcelImprovementsSummary\x12'\n" +
 	"\x0fimprovement_ids\x18\x01 \x03(\tR\x0eimprovementIds\x124\n" +
 	"\x16primary_improvement_id\x18\x02 \x01(\tR\x14primaryImprovementId\x12'\n" +
@@ -2129,12 +2137,14 @@ const file_civil_mesh_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x0etotal_bedrooms\x18\x05 \x01(\x05R\rtotalBedrooms\x12\x1f\n" +
 	"\vtotal_units\x18\x06 \x01(\x05R\n" +
 	"totalUnits\x121\n" +
-	"\x12primary_year_built\x18\a \x01(\x05H\x00R\x10primaryYearBuilt\x88\x01\x01\x125\n" +
-	"\x14primary_condition_id\x18\b \x01(\tH\x01R\x12primaryConditionId\x88\x01\x01\x12H\n" +
-	"\x1etotal_market_improvement_value\x18\t \x01(\tH\x02R\x1btotalMarketImprovementValue\x88\x01\x01\x12L\n" +
-	" total_assessed_improvement_value\x18\n" +
-	" \x01(\tH\x03R\x1dtotalAssessedImprovementValue\x88\x01\x01B\x15\n" +
-	"\x13_primary_year_builtB\x17\n" +
+	"\x12primary_year_built\x18\a \x01(\x05H\x00R\x10primaryYearBuilt\x88\x01\x01\x12D\n" +
+	"\x1cprimary_effective_year_built\x18\b \x01(\x05H\x01R\x19primaryEffectiveYearBuilt\x88\x01\x01\x125\n" +
+	"\x14primary_condition_id\x18\t \x01(\tH\x02R\x12primaryConditionId\x88\x01\x01\x12H\n" +
+	"\x1etotal_market_improvement_value\x18\n" +
+	" \x01(\tH\x03R\x1btotalMarketImprovementValue\x88\x01\x01\x12L\n" +
+	" total_assessed_improvement_value\x18\v \x01(\tH\x04R\x1dtotalAssessedImprovementValue\x88\x01\x01B\x15\n" +
+	"\x13_primary_year_builtB\x1f\n" +
+	"\x1d_primary_effective_year_builtB\x17\n" +
 	"\x15_primary_condition_idB!\n" +
 	"\x1f_total_market_improvement_valueB#\n" +
 	"!_total_assessed_improvement_value\"\x95\a\n" +
