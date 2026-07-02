@@ -1460,6 +1460,7 @@ type SaleComparableParcel struct {
 	SaleTime         *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=sale_time,json=saleTime,proto3" json:"sale_time,omitempty"`
 	SalePrice        string                 `protobuf:"bytes,6,opt,name=sale_price,json=salePrice,proto3" json:"sale_price,omitempty"`
 	Attributes       []*ComparableAttribute `protobuf:"bytes,7,rep,name=attributes,proto3" json:"attributes,omitempty"`
+	AttributeTime    *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=attribute_time,json=attributeTime,proto3" json:"attribute_time,omitempty"`
 	unknownFields    protoimpl.UnknownFields
 	sizeCache        protoimpl.SizeCache
 }
@@ -1539,6 +1540,13 @@ func (x *SaleComparableParcel) GetSalePrice() string {
 func (x *SaleComparableParcel) GetAttributes() []*ComparableAttribute {
 	if x != nil {
 		return x.Attributes
+	}
+	return nil
+}
+
+func (x *SaleComparableParcel) GetAttributeTime() *timestamppb.Timestamp {
+	if x != nil {
+		return x.AttributeTime
 	}
 	return nil
 }
@@ -1648,13 +1656,14 @@ func (x *GetEquityComparablesResponse) GetParcels() map[string]*EquityComparable
 }
 
 type GetSalesComparablesRequest struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	WktPolygon        string                 `protobuf:"bytes,1,opt,name=wkt_polygon,json=wktPolygon,proto3" json:"wkt_polygon,omitempty"`
-	Criteria          []*ComparableCriteria  `protobuf:"bytes,2,rep,name=criteria,proto3" json:"criteria,omitempty"`
-	SelectedParcelIds []string               `protobuf:"bytes,3,rep,name=selected_parcel_ids,json=selectedParcelIds,proto3" json:"selected_parcel_ids,omitempty"`
-	TimeRange         *interval.Interval     `protobuf:"bytes,4,opt,name=time_range,json=timeRange,proto3" json:"time_range,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
+	state                 protoimpl.MessageState `protogen:"open.v1"`
+	WktPolygon            string                 `protobuf:"bytes,1,opt,name=wkt_polygon,json=wktPolygon,proto3" json:"wkt_polygon,omitempty"`
+	Criteria              []*ComparableCriteria  `protobuf:"bytes,2,rep,name=criteria,proto3" json:"criteria,omitempty"`
+	SelectedParcelIds     []string               `protobuf:"bytes,3,rep,name=selected_parcel_ids,json=selectedParcelIds,proto3" json:"selected_parcel_ids,omitempty"`
+	TimeRange             *interval.Interval     `protobuf:"bytes,4,opt,name=time_range,json=timeRange,proto3" json:"time_range,omitempty"`
+	ReturnOnlyFrozenSales *bool                  `protobuf:"varint,5,opt,name=return_only_frozen_sales,json=returnOnlyFrozenSales,proto3,oneof" json:"return_only_frozen_sales,omitempty"`
+	unknownFields         protoimpl.UnknownFields
+	sizeCache             protoimpl.SizeCache
 }
 
 func (x *GetSalesComparablesRequest) Reset() {
@@ -1713,6 +1722,13 @@ func (x *GetSalesComparablesRequest) GetTimeRange() *interval.Interval {
 		return x.TimeRange
 	}
 	return nil
+}
+
+func (x *GetSalesComparablesRequest) GetReturnOnlyFrozenSales() bool {
+	if x != nil && x.ReturnOnlyFrozenSales != nil {
+		return *x.ReturnOnlyFrozenSales
+	}
+	return false
 }
 
 type GetSalesComparablesResponse struct {
@@ -2163,7 +2179,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x11formatted_address\x18\x04 \x01(\tR\x10formattedAddress\x12L\n" +
 	"\n" +
 	"attributes\x18\x05 \x03(\v2,.civil.public.parcels.v1.ComparableAttributeR\n" +
-	"attributes\"\xc4\x02\n" +
+	"attributes\"\x87\x03\n" +
 	"\x14SaleComparableParcel\x12\x1b\n" +
 	"\tparcel_id\x18\x01 \x01(\tR\bparcelId\x12\x1d\n" +
 	"\n" +
@@ -2176,7 +2192,8 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"sale_price\x18\x06 \x01(\tR\tsalePrice\x12L\n" +
 	"\n" +
 	"attributes\x18\a \x03(\v2,.civil.public.parcels.v1.ComparableAttributeR\n" +
-	"attributes\"\xb4\x02\n" +
+	"attributes\x12A\n" +
+	"\x0eattribute_time\x18\b \x01(\v2\x1a.google.protobuf.TimestampR\rattributeTime\"\xb4\x02\n" +
 	"\x1bGetEquityComparablesRequest\x12\x9b\x01\n" +
 	"\vwkt_polygon\x18\x01 \x01(\tBz\xbaHwru\x18\x90N2p^(?i)(POINT|LINESTRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON|GEOMETRYCOLLECTION)\\s*(Z|M|ZM)?\\s*\\(.*\\)$R\n" +
 	"wktPolygon\x12G\n" +
@@ -2186,7 +2203,7 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\aparcels\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntryR\aparcels\x1ak\n" +
 	"\fParcelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12E\n" +
-	"\x05value\x18\x02 \x01(\v2/.civil.public.parcels.v1.EquityComparableParcelR\x05value:\x028\x01\"\xfc\x03\n" +
+	"\x05value\x18\x02 \x01(\v2/.civil.public.parcels.v1.EquityComparableParcelR\x05value:\x028\x01\"\xfd\x05\n" +
 	"\x1aGetSalesComparablesRequest\x12\x9b\x01\n" +
 	"\vwkt_polygon\x18\x01 \x01(\tBz\xbaHwru\x18\x90N2p^(?i)(POINT|LINESTRING|POLYGON|MULTIPOINT|MULTILINESTRING|MULTIPOLYGON|GEOMETRYCOLLECTION)\\s*(Z|M|ZM)?\\s*\\(.*\\)$R\n" +
 	"wktPolygon\x12G\n" +
@@ -2194,7 +2211,9 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x13selected_parcel_ids\x18\x03 \x03(\tR\x11selectedParcelIds\x12\xc6\x01\n" +
 	"\n" +
 	"time_range\x18\x04 \x01(\v2\x15.google.type.IntervalB\x8f\x01\xbaH\x8b\x01\xba\x01\x87\x01\n" +
-	"\x10valid_time_range\x12\"start_time must be before end_time\x1aO!has(this.start_time) || !has(this.end_time) || this.start_time < this.end_timeR\ttimeRange\"\xe5\x01\n" +
+	"\x10valid_time_range\x12\"start_time must be before end_time\x1aO!has(this.start_time) || !has(this.end_time) || this.start_time < this.end_timeR\ttimeRange\x12\xe1\x01\n" +
+	"\x18return_only_frozen_sales\x18\x05 \x01(\bB\xa2\x01\xbaG\x9e\x01\x92\x02\x9a\x01Boolean value that dictates whether to only return sales comps in which the parcel has frozen characteristics stored for the sale date. Defaults to false.H\x00R\x15returnOnlyFrozenSales\x88\x01\x01B\x1b\n" +
+	"\x19_return_only_frozen_sales\"\xe5\x01\n" +
 	"\x1bGetSalesComparablesResponse\x12[\n" +
 	"\aparcels\x18\x01 \x03(\v2A.civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntryR\aparcels\x1ai\n" +
 	"\fParcelsEntry\x12\x10\n" +
@@ -2321,39 +2340,40 @@ var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
 	16, // 15: civil.public.parcels.v1.EquityComparableParcel.attributes:type_name -> civil.public.parcels.v1.ComparableAttribute
 	33, // 16: civil.public.parcels.v1.SaleComparableParcel.sale_time:type_name -> google.protobuf.Timestamp
 	16, // 17: civil.public.parcels.v1.SaleComparableParcel.attributes:type_name -> civil.public.parcels.v1.ComparableAttribute
-	15, // 18: civil.public.parcels.v1.GetEquityComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
-	30, // 19: civil.public.parcels.v1.GetEquityComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
-	15, // 20: civil.public.parcels.v1.GetSalesComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
-	34, // 21: civil.public.parcels.v1.GetSalesComparablesRequest.time_range:type_name -> google.type.Interval
-	31, // 22: civil.public.parcels.v1.GetSalesComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
-	32, // 23: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
-	4,  // 24: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
-	4,  // 25: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
-	17, // 26: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
-	18, // 27: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
-	5,  // 28: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest
-	7,  // 29: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest
-	11, // 30: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
-	13, // 31: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
-	19, // 32: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
-	21, // 33: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
-	23, // 34: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
-	25, // 35: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
-	9,  // 36: civil.public.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.public.parcels.v1.UpdateParcelRequest
-	6,  // 37: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse
-	8,  // 38: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse
-	12, // 39: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
-	14, // 40: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
-	20, // 41: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
-	22, // 42: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
-	24, // 43: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
-	26, // 44: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
-	10, // 45: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
-	37, // [37:46] is the sub-list for method output_type
-	28, // [28:37] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	33, // 18: civil.public.parcels.v1.SaleComparableParcel.attribute_time:type_name -> google.protobuf.Timestamp
+	15, // 19: civil.public.parcels.v1.GetEquityComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
+	30, // 20: civil.public.parcels.v1.GetEquityComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry
+	15, // 21: civil.public.parcels.v1.GetSalesComparablesRequest.criteria:type_name -> civil.public.parcels.v1.ComparableCriteria
+	34, // 22: civil.public.parcels.v1.GetSalesComparablesRequest.time_range:type_name -> google.type.Interval
+	31, // 23: civil.public.parcels.v1.GetSalesComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
+	32, // 24: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
+	4,  // 25: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
+	4,  // 26: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
+	17, // 27: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
+	18, // 28: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
+	5,  // 29: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest
+	7,  // 30: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest
+	11, // 31: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
+	13, // 32: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
+	19, // 33: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
+	21, // 34: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
+	23, // 35: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
+	25, // 36: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
+	9,  // 37: civil.public.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.public.parcels.v1.UpdateParcelRequest
+	6,  // 38: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse
+	8,  // 39: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse
+	12, // 40: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
+	14, // 41: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
+	20, // 42: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
+	22, // 43: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
+	24, // 44: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
+	26, // 45: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
+	10, // 46: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
+	38, // [38:47] is the sub-list for method output_type
+	29, // [29:38] is the sub-list for method input_type
+	29, // [29:29] is the sub-list for extension type_name
+	29, // [29:29] is the sub-list for extension extendee
+	0,  // [0:29] is the sub-list for field type_name
 }
 
 func init() { file_civil_public_parcels_v1_parcels_proto_init() }
@@ -2371,6 +2391,7 @@ func file_civil_public_parcels_v1_parcels_proto_init() {
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[12].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[14].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[15].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[20].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
