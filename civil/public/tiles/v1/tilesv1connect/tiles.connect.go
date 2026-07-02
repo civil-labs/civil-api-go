@@ -33,10 +33,6 @@ const (
 // reflection-formatted method names, remove the leading slash and convert the remaining slash to a
 // period.
 const (
-	// TileServiceGetTileJsonProcedure is the fully-qualified name of the TileService's GetTileJson RPC.
-	TileServiceGetTileJsonProcedure = "/civil.public.tiles.v1.TileService/GetTileJson"
-	// TileServiceGetTileProcedure is the fully-qualified name of the TileService's GetTile RPC.
-	TileServiceGetTileProcedure = "/civil.public.tiles.v1.TileService/GetTile"
 	// TileServiceGetParcelTilesProcedure is the fully-qualified name of the TileService's
 	// GetParcelTiles RPC.
 	TileServiceGetParcelTilesProcedure = "/civil.public.tiles.v1.TileService/GetParcelTiles"
@@ -44,11 +40,6 @@ const (
 
 // TileServiceClient is a client for the civil.public.tiles.v1.TileService service.
 type TileServiceClient interface {
-	// GetTileJson retrieves the discovery metadata for a tile source.
-	// Clients use this to configure map layers.
-	GetTileJson(context.Context, *connect.Request[v1.GetTileJsonRequest]) (*connect.Response[v1.GetTileJsonResponse], error)
-	// GetTile retrieves a vector tile (MVT/PBF) for a given coordinate.
-	GetTile(context.Context, *connect.Request[v1.GetTileRequest]) (*connect.Response[v1.GetTileResponse], error)
 	GetParcelTiles(context.Context, *connect.Request[v1.GetParcelTilesRequest]) (*connect.Response[v1.GetParcelTilesResponse], error)
 }
 
@@ -63,18 +54,6 @@ func NewTileServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 	baseURL = strings.TrimRight(baseURL, "/")
 	tileServiceMethods := v1.File_civil_public_tiles_v1_tiles_proto.Services().ByName("TileService").Methods()
 	return &tileServiceClient{
-		getTileJson: connect.NewClient[v1.GetTileJsonRequest, v1.GetTileJsonResponse](
-			httpClient,
-			baseURL+TileServiceGetTileJsonProcedure,
-			connect.WithSchema(tileServiceMethods.ByName("GetTileJson")),
-			connect.WithClientOptions(opts...),
-		),
-		getTile: connect.NewClient[v1.GetTileRequest, v1.GetTileResponse](
-			httpClient,
-			baseURL+TileServiceGetTileProcedure,
-			connect.WithSchema(tileServiceMethods.ByName("GetTile")),
-			connect.WithClientOptions(opts...),
-		),
 		getParcelTiles: connect.NewClient[v1.GetParcelTilesRequest, v1.GetParcelTilesResponse](
 			httpClient,
 			baseURL+TileServiceGetParcelTilesProcedure,
@@ -86,19 +65,7 @@ func NewTileServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 
 // tileServiceClient implements TileServiceClient.
 type tileServiceClient struct {
-	getTileJson    *connect.Client[v1.GetTileJsonRequest, v1.GetTileJsonResponse]
-	getTile        *connect.Client[v1.GetTileRequest, v1.GetTileResponse]
 	getParcelTiles *connect.Client[v1.GetParcelTilesRequest, v1.GetParcelTilesResponse]
-}
-
-// GetTileJson calls civil.public.tiles.v1.TileService.GetTileJson.
-func (c *tileServiceClient) GetTileJson(ctx context.Context, req *connect.Request[v1.GetTileJsonRequest]) (*connect.Response[v1.GetTileJsonResponse], error) {
-	return c.getTileJson.CallUnary(ctx, req)
-}
-
-// GetTile calls civil.public.tiles.v1.TileService.GetTile.
-func (c *tileServiceClient) GetTile(ctx context.Context, req *connect.Request[v1.GetTileRequest]) (*connect.Response[v1.GetTileResponse], error) {
-	return c.getTile.CallUnary(ctx, req)
 }
 
 // GetParcelTiles calls civil.public.tiles.v1.TileService.GetParcelTiles.
@@ -108,11 +75,6 @@ func (c *tileServiceClient) GetParcelTiles(ctx context.Context, req *connect.Req
 
 // TileServiceHandler is an implementation of the civil.public.tiles.v1.TileService service.
 type TileServiceHandler interface {
-	// GetTileJson retrieves the discovery metadata for a tile source.
-	// Clients use this to configure map layers.
-	GetTileJson(context.Context, *connect.Request[v1.GetTileJsonRequest]) (*connect.Response[v1.GetTileJsonResponse], error)
-	// GetTile retrieves a vector tile (MVT/PBF) for a given coordinate.
-	GetTile(context.Context, *connect.Request[v1.GetTileRequest]) (*connect.Response[v1.GetTileResponse], error)
 	GetParcelTiles(context.Context, *connect.Request[v1.GetParcelTilesRequest]) (*connect.Response[v1.GetParcelTilesResponse], error)
 }
 
@@ -123,18 +85,6 @@ type TileServiceHandler interface {
 // and JSON codecs. They also support gzip compression.
 func NewTileServiceHandler(svc TileServiceHandler, opts ...connect.HandlerOption) (string, http.Handler) {
 	tileServiceMethods := v1.File_civil_public_tiles_v1_tiles_proto.Services().ByName("TileService").Methods()
-	tileServiceGetTileJsonHandler := connect.NewUnaryHandler(
-		TileServiceGetTileJsonProcedure,
-		svc.GetTileJson,
-		connect.WithSchema(tileServiceMethods.ByName("GetTileJson")),
-		connect.WithHandlerOptions(opts...),
-	)
-	tileServiceGetTileHandler := connect.NewUnaryHandler(
-		TileServiceGetTileProcedure,
-		svc.GetTile,
-		connect.WithSchema(tileServiceMethods.ByName("GetTile")),
-		connect.WithHandlerOptions(opts...),
-	)
 	tileServiceGetParcelTilesHandler := connect.NewUnaryHandler(
 		TileServiceGetParcelTilesProcedure,
 		svc.GetParcelTiles,
@@ -143,10 +93,6 @@ func NewTileServiceHandler(svc TileServiceHandler, opts ...connect.HandlerOption
 	)
 	return "/civil.public.tiles.v1.TileService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
-		case TileServiceGetTileJsonProcedure:
-			tileServiceGetTileJsonHandler.ServeHTTP(w, r)
-		case TileServiceGetTileProcedure:
-			tileServiceGetTileHandler.ServeHTTP(w, r)
 		case TileServiceGetParcelTilesProcedure:
 			tileServiceGetParcelTilesHandler.ServeHTTP(w, r)
 		default:
@@ -157,14 +103,6 @@ func NewTileServiceHandler(svc TileServiceHandler, opts ...connect.HandlerOption
 
 // UnimplementedTileServiceHandler returns CodeUnimplemented from all methods.
 type UnimplementedTileServiceHandler struct{}
-
-func (UnimplementedTileServiceHandler) GetTileJson(context.Context, *connect.Request[v1.GetTileJsonRequest]) (*connect.Response[v1.GetTileJsonResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.tiles.v1.TileService.GetTileJson is not implemented"))
-}
-
-func (UnimplementedTileServiceHandler) GetTile(context.Context, *connect.Request[v1.GetTileRequest]) (*connect.Response[v1.GetTileResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.tiles.v1.TileService.GetTile is not implemented"))
-}
 
 func (UnimplementedTileServiceHandler) GetParcelTiles(context.Context, *connect.Request[v1.GetParcelTilesRequest]) (*connect.Response[v1.GetParcelTilesResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.public.tiles.v1.TileService.GetParcelTiles is not implemented"))
