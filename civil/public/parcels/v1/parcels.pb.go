@@ -3123,7 +3123,7 @@ func (x *GetPrimaryImprovementTypeIdByParcelIdResponse) GetValues() map[string]s
 // Feature IDs
 type GetLandAreaSqftByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3158,7 +3158,7 @@ func (*GetLandAreaSqftByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{52}
 }
 
-func (x *GetLandAreaSqftByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetLandAreaSqftByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3167,7 +3167,7 @@ func (x *GetLandAreaSqftByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetLandAreaSqftByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]float64     `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	Values        map[int64]float64      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3202,7 +3202,7 @@ func (*GetLandAreaSqftByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{53}
 }
 
-func (x *GetLandAreaSqftByFeatureIdResponse) GetValues() map[string]float64 {
+func (x *GetLandAreaSqftByFeatureIdResponse) GetValues() map[int64]float64 {
 	if x != nil {
 		return x.Values
 	}
@@ -3211,7 +3211,7 @@ func (x *GetLandAreaSqftByFeatureIdResponse) GetValues() map[string]float64 {
 
 type GetFrontageFtByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3246,7 +3246,7 @@ func (*GetFrontageFtByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{54}
 }
 
-func (x *GetFrontageFtByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetFrontageFtByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3255,7 +3255,7 @@ func (x *GetFrontageFtByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetFrontageFtByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]float64     `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	Values        map[int64]float64      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3290,7 +3290,7 @@ func (*GetFrontageFtByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{55}
 }
 
-func (x *GetFrontageFtByFeatureIdResponse) GetValues() map[string]float64 {
+func (x *GetFrontageFtByFeatureIdResponse) GetValues() map[int64]float64 {
 	if x != nil {
 		return x.Values
 	}
@@ -3299,7 +3299,7 @@ func (x *GetFrontageFtByFeatureIdResponse) GetValues() map[string]float64 {
 
 type GetDepthFtByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3334,7 +3334,7 @@ func (*GetDepthFtByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{56}
 }
 
-func (x *GetDepthFtByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetDepthFtByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3343,7 +3343,7 @@ func (x *GetDepthFtByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetDepthFtByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]float64     `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	Values        map[int64]float64      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3378,7 +3378,7 @@ func (*GetDepthFtByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{57}
 }
 
-func (x *GetDepthFtByFeatureIdResponse) GetValues() map[string]float64 {
+func (x *GetDepthFtByFeatureIdResponse) GetValues() map[int64]float64 {
 	if x != nil {
 		return x.Values
 	}
@@ -3387,7 +3387,7 @@ func (x *GetDepthFtByFeatureIdResponse) GetValues() map[string]float64 {
 
 type GetLandUseIdSqftByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3422,7 +3422,7 @@ func (*GetLandUseIdSqftByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{58}
 }
 
-func (x *GetLandUseIdSqftByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetLandUseIdSqftByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3431,7 +3431,7 @@ func (x *GetLandUseIdSqftByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetLandUseIdSqftByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]string      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Values        map[int64]string       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3466,7 +3466,7 @@ func (*GetLandUseIdSqftByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{59}
 }
 
-func (x *GetLandUseIdSqftByFeatureIdResponse) GetValues() map[string]string {
+func (x *GetLandUseIdSqftByFeatureIdResponse) GetValues() map[int64]string {
 	if x != nil {
 		return x.Values
 	}
@@ -3475,7 +3475,7 @@ func (x *GetLandUseIdSqftByFeatureIdResponse) GetValues() map[string]string {
 
 type GetZoningIdByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3510,7 +3510,7 @@ func (*GetZoningIdByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{60}
 }
 
-func (x *GetZoningIdByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetZoningIdByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3519,7 +3519,7 @@ func (x *GetZoningIdByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetZoningIdByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]string      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Values        map[int64]string       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3554,7 +3554,7 @@ func (*GetZoningIdByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{61}
 }
 
-func (x *GetZoningIdByFeatureIdResponse) GetValues() map[string]string {
+func (x *GetZoningIdByFeatureIdResponse) GetValues() map[int64]string {
 	if x != nil {
 		return x.Values
 	}
@@ -3563,7 +3563,7 @@ func (x *GetZoningIdByFeatureIdResponse) GetValues() map[string]string {
 
 type GetImprovementAreaSqftByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3598,7 +3598,7 @@ func (*GetImprovementAreaSqftByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{62}
 }
 
-func (x *GetImprovementAreaSqftByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetImprovementAreaSqftByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3607,7 +3607,7 @@ func (x *GetImprovementAreaSqftByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetImprovementAreaSqftByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]float64     `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	Values        map[int64]float64      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3642,7 +3642,7 @@ func (*GetImprovementAreaSqftByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{63}
 }
 
-func (x *GetImprovementAreaSqftByFeatureIdResponse) GetValues() map[string]float64 {
+func (x *GetImprovementAreaSqftByFeatureIdResponse) GetValues() map[int64]float64 {
 	if x != nil {
 		return x.Values
 	}
@@ -3651,7 +3651,7 @@ func (x *GetImprovementAreaSqftByFeatureIdResponse) GetValues() map[string]float
 
 type GetBedroomsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3686,7 +3686,7 @@ func (*GetBedroomsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{64}
 }
 
-func (x *GetBedroomsByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetBedroomsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3695,7 +3695,7 @@ func (x *GetBedroomsByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetBedroomsByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]int32       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Values        map[int64]int32        `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3730,7 +3730,7 @@ func (*GetBedroomsByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{65}
 }
 
-func (x *GetBedroomsByFeatureIdResponse) GetValues() map[string]int32 {
+func (x *GetBedroomsByFeatureIdResponse) GetValues() map[int64]int32 {
 	if x != nil {
 		return x.Values
 	}
@@ -3739,7 +3739,7 @@ func (x *GetBedroomsByFeatureIdResponse) GetValues() map[string]int32 {
 
 type GetBathroomsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3774,7 +3774,7 @@ func (*GetBathroomsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{66}
 }
 
-func (x *GetBathroomsByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetBathroomsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3783,7 +3783,7 @@ func (x *GetBathroomsByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetBathroomsByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]int32       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Values        map[int64]int32        `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3818,7 +3818,7 @@ func (*GetBathroomsByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{67}
 }
 
-func (x *GetBathroomsByFeatureIdResponse) GetValues() map[string]int32 {
+func (x *GetBathroomsByFeatureIdResponse) GetValues() map[int64]int32 {
 	if x != nil {
 		return x.Values
 	}
@@ -3827,7 +3827,7 @@ func (x *GetBathroomsByFeatureIdResponse) GetValues() map[string]int32 {
 
 type GetUnitsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3862,7 +3862,7 @@ func (*GetUnitsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{68}
 }
 
-func (x *GetUnitsByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetUnitsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3871,7 +3871,7 @@ func (x *GetUnitsByFeatureIdRequest) GetFeatureIds() []string {
 
 type GetUnitsByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]int32       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Values        map[int64]int32        `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3906,7 +3906,7 @@ func (*GetUnitsByFeatureIdResponse) Descriptor() ([]byte, []int) {
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{69}
 }
 
-func (x *GetUnitsByFeatureIdResponse) GetValues() map[string]int32 {
+func (x *GetUnitsByFeatureIdResponse) GetValues() map[int64]int32 {
 	if x != nil {
 		return x.Values
 	}
@@ -3915,7 +3915,7 @@ func (x *GetUnitsByFeatureIdResponse) GetValues() map[string]int32 {
 
 type GetPrimaryImprovementYearBuiltByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3950,7 +3950,7 @@ func (*GetPrimaryImprovementYearBuiltByFeatureIdRequest) Descriptor() ([]byte, [
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{70}
 }
 
-func (x *GetPrimaryImprovementYearBuiltByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetPrimaryImprovementYearBuiltByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -3959,7 +3959,7 @@ func (x *GetPrimaryImprovementYearBuiltByFeatureIdRequest) GetFeatureIds() []str
 
 type GetPrimaryImprovementYearBuiltByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]int32       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Values        map[int64]int32        `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3994,7 +3994,7 @@ func (*GetPrimaryImprovementYearBuiltByFeatureIdResponse) Descriptor() ([]byte, 
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{71}
 }
 
-func (x *GetPrimaryImprovementYearBuiltByFeatureIdResponse) GetValues() map[string]int32 {
+func (x *GetPrimaryImprovementYearBuiltByFeatureIdResponse) GetValues() map[int64]int32 {
 	if x != nil {
 		return x.Values
 	}
@@ -4003,7 +4003,7 @@ func (x *GetPrimaryImprovementYearBuiltByFeatureIdResponse) GetValues() map[stri
 
 type GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4038,7 +4038,7 @@ func (*GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) Descriptor() (
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{72}
 }
 
-func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -4047,7 +4047,7 @@ func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) GetFeatureId
 
 type GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]int32       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	Values        map[int64]int32        `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4082,7 +4082,7 @@ func (*GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse) Descriptor() 
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{73}
 }
 
-func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse) GetValues() map[string]int32 {
+func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse) GetValues() map[int64]int32 {
 	if x != nil {
 		return x.Values
 	}
@@ -4091,7 +4091,7 @@ func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse) GetValues()
 
 type GetPrimaryImprovementConditionIdByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4126,7 +4126,7 @@ func (*GetPrimaryImprovementConditionIdByFeatureIdRequest) Descriptor() ([]byte,
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{74}
 }
 
-func (x *GetPrimaryImprovementConditionIdByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetPrimaryImprovementConditionIdByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -4135,7 +4135,7 @@ func (x *GetPrimaryImprovementConditionIdByFeatureIdRequest) GetFeatureIds() []s
 
 type GetPrimaryImprovementConditionIdByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]string      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Values        map[int64]string       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4170,7 +4170,7 @@ func (*GetPrimaryImprovementConditionIdByFeatureIdResponse) Descriptor() ([]byte
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{75}
 }
 
-func (x *GetPrimaryImprovementConditionIdByFeatureIdResponse) GetValues() map[string]string {
+func (x *GetPrimaryImprovementConditionIdByFeatureIdResponse) GetValues() map[int64]string {
 	if x != nil {
 		return x.Values
 	}
@@ -4179,7 +4179,7 @@ func (x *GetPrimaryImprovementConditionIdByFeatureIdResponse) GetValues() map[st
 
 type GetPrimaryImprovementTypeIdByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FeatureIds    []string               `protobuf:"bytes,1,rep,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4214,7 +4214,7 @@ func (*GetPrimaryImprovementTypeIdByFeatureIdRequest) Descriptor() ([]byte, []in
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{76}
 }
 
-func (x *GetPrimaryImprovementTypeIdByFeatureIdRequest) GetFeatureIds() []string {
+func (x *GetPrimaryImprovementTypeIdByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
 	}
@@ -4223,7 +4223,7 @@ func (x *GetPrimaryImprovementTypeIdByFeatureIdRequest) GetFeatureIds() []string
 
 type GetPrimaryImprovementTypeIdByFeatureIdResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        map[string]string      `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Values        map[int64]string       `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4258,7 +4258,7 @@ func (*GetPrimaryImprovementTypeIdByFeatureIdResponse) Descriptor() ([]byte, []i
 	return file_civil_public_parcels_v1_parcels_proto_rawDescGZIP(), []int{77}
 }
 
-func (x *GetPrimaryImprovementTypeIdByFeatureIdResponse) GetValues() map[string]string {
+func (x *GetPrimaryImprovementTypeIdByFeatureIdResponse) GetValues() map[int64]string {
 	if x != nil {
 		return x.Values
 	}
@@ -4533,214 +4533,227 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x05min_x\x18\x01 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Minimum Longitude / WestR\x04minX\x123\n" +
 	"\x05min_y\x18\x02 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Minimum Latitude / SouthR\x04minY\x123\n" +
 	"\x05max_x\x18\x03 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Longitude / EastR\x04maxX\x123\n" +
-	"\x05max_y\x18\x04 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Latitude / NorthR\x04maxY\"A\n" +
-	" GetLandAreaSqftByParcelIdRequest\x12\x1d\n" +
+	"\x05max_y\x18\x04 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Latitude / NorthR\x04maxY\"\xda\x01\n" +
+	" GetLandAreaSqftByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xbe\x01\n" +
-	"!GetLandAreaSqftByParcelIdResponse\x12^\n" +
-	"\x06values\x18\x01 \x03(\v2F.civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xf1\x01\n" +
+	"!GetLandAreaSqftByParcelIdResponse\x12\x90\x01\n" +
+	"\x06values\x18\x01 \x03(\v2F.civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.ValuesEntryB0\xbaG-\x92\x02*Map of values, keyed by the UUID parcel_idR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"?\n" +
-	"\x1eGetFrontageFtByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xd8\x01\n" +
+	"\x1eGetFrontageFtByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xba\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xba\x01\n" +
 	"\x1fGetFrontageFtByParcelIdResponse\x12\\\n" +
 	"\x06values\x18\x01 \x03(\v2D.civil.public.parcels.v1.GetFrontageFtByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"<\n" +
-	"\x1bGetDepthFtByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xd5\x01\n" +
+	"\x1bGetDepthFtByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xb4\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb4\x01\n" +
 	"\x1cGetDepthFtByParcelIdResponse\x12Y\n" +
 	"\x06values\x18\x01 \x03(\v2A.civil.public.parcels.v1.GetDepthFtByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"B\n" +
-	"!GetLandUseIdSqftByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xdb\x01\n" +
+	"!GetLandUseIdSqftByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xc0\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xc0\x01\n" +
 	"\"GetLandUseIdSqftByParcelIdResponse\x12_\n" +
 	"\x06values\x18\x01 \x03(\v2G.civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"=\n" +
-	"\x1cGetZoningIdByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd6\x01\n" +
+	"\x1cGetZoningIdByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xb6\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb6\x01\n" +
 	"\x1dGetZoningIdByParcelIdResponse\x12Z\n" +
 	"\x06values\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetZoningIdByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"H\n" +
-	"'GetImprovementAreaSqftByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe1\x01\n" +
+	"'GetImprovementAreaSqftByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xcc\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xcc\x01\n" +
 	"(GetImprovementAreaSqftByParcelIdResponse\x12e\n" +
 	"\x06values\x18\x01 \x03(\v2M.civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"=\n" +
-	"\x1cGetBedroomsByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xd6\x01\n" +
+	"\x1cGetBedroomsByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xb6\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb6\x01\n" +
 	"\x1dGetBedroomsByParcelIdResponse\x12Z\n" +
 	"\x06values\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetBedroomsByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\">\n" +
-	"\x1dGetBathroomsByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xd7\x01\n" +
+	"\x1dGetBathroomsByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xb8\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb8\x01\n" +
 	"\x1eGetBathroomsByParcelIdResponse\x12[\n" +
 	"\x06values\x18\x01 \x03(\v2C.civil.public.parcels.v1.GetBathroomsByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\":\n" +
-	"\x19GetUnitsByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xd3\x01\n" +
+	"\x19GetUnitsByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xb0\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb0\x01\n" +
 	"\x1aGetUnitsByParcelIdResponse\x12W\n" +
 	"\x06values\x18\x01 \x03(\v2?.civil.public.parcels.v1.GetUnitsByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"P\n" +
-	"/GetPrimaryImprovementYearBuiltByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xe9\x01\n" +
+	"/GetPrimaryImprovementYearBuiltByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xdc\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xdc\x01\n" +
 	"0GetPrimaryImprovementYearBuiltByParcelIdResponse\x12m\n" +
 	"\x06values\x18\x01 \x03(\v2U.civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"Y\n" +
-	"8GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf2\x01\n" +
+	"8GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xee\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xee\x01\n" +
 	"9GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse\x12v\n" +
 	"\x06values\x18\x01 \x03(\v2^.civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"R\n" +
-	"1GetPrimaryImprovementConditionIdByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xeb\x01\n" +
+	"1GetPrimaryImprovementConditionIdByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xe0\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xe0\x01\n" +
 	"2GetPrimaryImprovementConditionIdByParcelIdResponse\x12o\n" +
 	"\x06values\x18\x01 \x03(\v2W.civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"M\n" +
-	",GetPrimaryImprovementTypeIdByParcelIdRequest\x12\x1d\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe6\x01\n" +
+	",GetPrimaryImprovementTypeIdByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tR\tparcelIds\"\xd6\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xd6\x01\n" +
 	"-GetPrimaryImprovementTypeIdByParcelIdResponse\x12j\n" +
 	"\x06values\x18\x01 \x03(\v2R.civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"D\n" +
-	"!GetLandAreaSqftByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb7\x01\n" +
+	"!GetLandAreaSqftByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xc0\x01\n" +
 	"\"GetLandAreaSqftByFeatureIdResponse\x12_\n" +
 	"\x06values\x18\x01 \x03(\v2G.civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"B\n" +
-	"\x1fGetFrontageFtByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb5\x01\n" +
+	"\x1fGetFrontageFtByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xbc\x01\n" +
 	" GetFrontageFtByFeatureIdResponse\x12]\n" +
 	"\x06values\x18\x01 \x03(\v2E.civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"?\n" +
-	"\x1cGetDepthFtByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb2\x01\n" +
+	"\x1cGetDepthFtByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xb6\x01\n" +
 	"\x1dGetDepthFtByFeatureIdResponse\x12Z\n" +
 	"\x06values\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetDepthFtByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"E\n" +
-	"\"GetLandUseIdSqftByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb8\x01\n" +
+	"\"GetLandUseIdSqftByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xc2\x01\n" +
 	"#GetLandUseIdSqftByFeatureIdResponse\x12`\n" +
 	"\x06values\x18\x01 \x03(\v2H.civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"@\n" +
-	"\x1dGetZoningIdByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb3\x01\n" +
+	"\x1dGetZoningIdByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xb8\x01\n" +
 	"\x1eGetZoningIdByFeatureIdResponse\x12[\n" +
 	"\x06values\x18\x01 \x03(\v2C.civil.public.parcels.v1.GetZoningIdByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"K\n" +
-	"(GetImprovementAreaSqftByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbe\x01\n" +
+	"(GetImprovementAreaSqftByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xce\x01\n" +
 	")GetImprovementAreaSqftByFeatureIdResponse\x12f\n" +
 	"\x06values\x18\x01 \x03(\v2N.civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"@\n" +
-	"\x1dGetBedroomsByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb3\x01\n" +
+	"\x1dGetBedroomsByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xb8\x01\n" +
 	"\x1eGetBedroomsByFeatureIdResponse\x12[\n" +
 	"\x06values\x18\x01 \x03(\v2C.civil.public.parcels.v1.GetBedroomsByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"A\n" +
-	"\x1eGetBathroomsByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xb4\x01\n" +
+	"\x1eGetBathroomsByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xba\x01\n" +
 	"\x1fGetBathroomsByFeatureIdResponse\x12\\\n" +
 	"\x06values\x18\x01 \x03(\v2D.civil.public.parcels.v1.GetBathroomsByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"=\n" +
-	"\x1aGetUnitsByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xb0\x01\n" +
+	"\x1aGetUnitsByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xb2\x01\n" +
 	"\x1bGetUnitsByFeatureIdResponse\x12X\n" +
 	"\x06values\x18\x01 \x03(\v2@.civil.public.parcels.v1.GetUnitsByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"S\n" +
-	"0GetPrimaryImprovementYearBuiltByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc6\x01\n" +
+	"0GetPrimaryImprovementYearBuiltByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xde\x01\n" +
 	"1GetPrimaryImprovementYearBuiltByFeatureIdResponse\x12n\n" +
 	"\x06values\x18\x01 \x03(\v2V.civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\\\n" +
-	"9GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xcf\x01\n" +
+	"9GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xf0\x01\n" +
 	":GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse\x12w\n" +
 	"\x06values\x18\x01 \x03(\v2_.civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"U\n" +
-	"2GetPrimaryImprovementConditionIdByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc8\x01\n" +
+	"2GetPrimaryImprovementConditionIdByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xe2\x01\n" +
 	"3GetPrimaryImprovementConditionIdByFeatureIdResponse\x12p\n" +
 	"\x06values\x18\x01 \x03(\v2X.civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"P\n" +
-	"-GetPrimaryImprovementTypeIdByFeatureIdRequest\x12\x1f\n" +
-	"\vfeature_ids\x18\x01 \x03(\tR\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xc3\x01\n" +
+	"-GetPrimaryImprovementTypeIdByFeatureIdRequest\x12\x91\x01\n" +
+	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
+	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
 	"featureIds\"\xd8\x01\n" +
 	".GetPrimaryImprovementTypeIdByFeatureIdResponse\x12k\n" +
 	"\x06values\x18\x01 \x03(\v2S.civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01*\xc1\x04\n" +
 	"\x0fParcelAttribute\x12 \n" +
 	"\x1cPARCEL_ATTRIBUTE_UNSPECIFIED\x10\x00\x12$\n" +
