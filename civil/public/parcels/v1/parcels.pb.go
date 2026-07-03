@@ -1979,6 +1979,7 @@ func (x *GetEstimatedParcelsExtentWGS84Response) GetMaxY() float64 {
 type GetLandAreaSqftByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2016,6 +2017,13 @@ func (*GetLandAreaSqftByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetLandAreaSqftByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetLandAreaSqftByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2067,6 +2075,7 @@ func (x *GetLandAreaSqftByParcelIdResponse) GetValues() map[string]float64 {
 type GetFrontageFtByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2104,6 +2113,13 @@ func (*GetFrontageFtByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetFrontageFtByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetFrontageFtByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2155,6 +2171,7 @@ func (x *GetFrontageFtByParcelIdResponse) GetValues() map[string]float64 {
 type GetDepthFtByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2192,6 +2209,13 @@ func (*GetDepthFtByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetDepthFtByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetDepthFtByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2243,6 +2267,7 @@ func (x *GetDepthFtByParcelIdResponse) GetValues() map[string]float64 {
 type GetLandUseIdSqftByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2280,6 +2305,13 @@ func (*GetLandUseIdSqftByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetLandUseIdSqftByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetLandUseIdSqftByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2331,6 +2363,7 @@ func (x *GetLandUseIdSqftByParcelIdResponse) GetValues() map[string]string {
 type GetZoningIdByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2368,6 +2401,13 @@ func (*GetZoningIdByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetZoningIdByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetZoningIdByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2419,6 +2459,7 @@ func (x *GetZoningIdByParcelIdResponse) GetValues() map[string]string {
 type GetImprovementAreaSqftByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2456,6 +2497,13 @@ func (*GetImprovementAreaSqftByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetImprovementAreaSqftByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetImprovementAreaSqftByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2507,6 +2555,7 @@ func (x *GetImprovementAreaSqftByParcelIdResponse) GetValues() map[string]float6
 type GetBedroomsByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2544,6 +2593,13 @@ func (*GetBedroomsByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetBedroomsByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetBedroomsByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2595,6 +2651,7 @@ func (x *GetBedroomsByParcelIdResponse) GetValues() map[string]int32 {
 type GetBathroomsByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2632,6 +2689,13 @@ func (*GetBathroomsByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetBathroomsByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetBathroomsByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2683,6 +2747,7 @@ func (x *GetBathroomsByParcelIdResponse) GetValues() map[string]int32 {
 type GetUnitsByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2720,6 +2785,13 @@ func (*GetUnitsByParcelIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetUnitsByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetUnitsByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2771,6 +2843,7 @@ func (x *GetUnitsByParcelIdResponse) GetValues() map[string]int32 {
 type GetPrimaryImprovementYearBuiltByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2808,6 +2881,13 @@ func (*GetPrimaryImprovementYearBuiltByParcelIdRequest) Descriptor() ([]byte, []
 func (x *GetPrimaryImprovementYearBuiltByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementYearBuiltByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2859,6 +2939,7 @@ func (x *GetPrimaryImprovementYearBuiltByParcelIdResponse) GetValues() map[strin
 type GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2896,6 +2977,13 @@ func (*GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest) Descriptor() ([
 func (x *GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -2947,6 +3035,7 @@ func (x *GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse) GetValues() 
 type GetPrimaryImprovementConditionIdByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2984,6 +3073,13 @@ func (*GetPrimaryImprovementConditionIdByParcelIdRequest) Descriptor() ([]byte, 
 func (x *GetPrimaryImprovementConditionIdByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementConditionIdByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3035,6 +3131,7 @@ func (x *GetPrimaryImprovementConditionIdByParcelIdResponse) GetValues() map[str
 type GetPrimaryImprovementTypeIdByParcelIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ParcelIds     []string               `protobuf:"bytes,1,rep,name=parcel_ids,json=parcelIds,proto3" json:"parcel_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3072,6 +3169,13 @@ func (*GetPrimaryImprovementTypeIdByParcelIdRequest) Descriptor() ([]byte, []int
 func (x *GetPrimaryImprovementTypeIdByParcelIdRequest) GetParcelIds() []string {
 	if x != nil {
 		return x.ParcelIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementTypeIdByParcelIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3124,6 +3228,7 @@ func (x *GetPrimaryImprovementTypeIdByParcelIdResponse) GetValues() map[string]s
 type GetLandAreaSqftByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3161,6 +3266,13 @@ func (*GetLandAreaSqftByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetLandAreaSqftByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetLandAreaSqftByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3212,6 +3324,7 @@ func (x *GetLandAreaSqftByFeatureIdResponse) GetValues() map[int64]float64 {
 type GetFrontageFtByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3249,6 +3362,13 @@ func (*GetFrontageFtByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetFrontageFtByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetFrontageFtByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3300,6 +3420,7 @@ func (x *GetFrontageFtByFeatureIdResponse) GetValues() map[int64]float64 {
 type GetDepthFtByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3337,6 +3458,13 @@ func (*GetDepthFtByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetDepthFtByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetDepthFtByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3388,6 +3516,7 @@ func (x *GetDepthFtByFeatureIdResponse) GetValues() map[int64]float64 {
 type GetLandUseIdSqftByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3425,6 +3554,13 @@ func (*GetLandUseIdSqftByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetLandUseIdSqftByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetLandUseIdSqftByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3476,6 +3612,7 @@ func (x *GetLandUseIdSqftByFeatureIdResponse) GetValues() map[int64]string {
 type GetZoningIdByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3513,6 +3650,13 @@ func (*GetZoningIdByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetZoningIdByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetZoningIdByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3564,6 +3708,7 @@ func (x *GetZoningIdByFeatureIdResponse) GetValues() map[int64]string {
 type GetImprovementAreaSqftByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3601,6 +3746,13 @@ func (*GetImprovementAreaSqftByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetImprovementAreaSqftByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetImprovementAreaSqftByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3652,6 +3804,7 @@ func (x *GetImprovementAreaSqftByFeatureIdResponse) GetValues() map[int64]float6
 type GetBedroomsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3689,6 +3842,13 @@ func (*GetBedroomsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetBedroomsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetBedroomsByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3740,6 +3900,7 @@ func (x *GetBedroomsByFeatureIdResponse) GetValues() map[int64]int32 {
 type GetBathroomsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3777,6 +3938,13 @@ func (*GetBathroomsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetBathroomsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetBathroomsByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3828,6 +3996,7 @@ func (x *GetBathroomsByFeatureIdResponse) GetValues() map[int64]int32 {
 type GetUnitsByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3865,6 +4034,13 @@ func (*GetUnitsByFeatureIdRequest) Descriptor() ([]byte, []int) {
 func (x *GetUnitsByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetUnitsByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -3916,6 +4092,7 @@ func (x *GetUnitsByFeatureIdResponse) GetValues() map[int64]int32 {
 type GetPrimaryImprovementYearBuiltByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -3953,6 +4130,13 @@ func (*GetPrimaryImprovementYearBuiltByFeatureIdRequest) Descriptor() ([]byte, [
 func (x *GetPrimaryImprovementYearBuiltByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementYearBuiltByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -4004,6 +4188,7 @@ func (x *GetPrimaryImprovementYearBuiltByFeatureIdResponse) GetValues() map[int6
 type GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4041,6 +4226,13 @@ func (*GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) Descriptor() (
 func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -4092,6 +4284,7 @@ func (x *GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse) GetValues()
 type GetPrimaryImprovementConditionIdByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4129,6 +4322,13 @@ func (*GetPrimaryImprovementConditionIdByFeatureIdRequest) Descriptor() ([]byte,
 func (x *GetPrimaryImprovementConditionIdByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementConditionIdByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -4180,6 +4380,7 @@ func (x *GetPrimaryImprovementConditionIdByFeatureIdResponse) GetValues() map[in
 type GetPrimaryImprovementTypeIdByFeatureIdRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FeatureIds    []int64                `protobuf:"varint,1,rep,packed,name=feature_ids,json=featureIds,proto3" json:"feature_ids,omitempty"`
+	LegalAsOf     *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=legal_as_of,json=legalAsOf,proto3,oneof" json:"legal_as_of,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -4217,6 +4418,13 @@ func (*GetPrimaryImprovementTypeIdByFeatureIdRequest) Descriptor() ([]byte, []in
 func (x *GetPrimaryImprovementTypeIdByFeatureIdRequest) GetFeatureIds() []int64 {
 	if x != nil {
 		return x.FeatureIds
+	}
+	return nil
+}
+
+func (x *GetPrimaryImprovementTypeIdByFeatureIdRequest) GetLegalAsOf() *timestamppb.Timestamp {
+	if x != nil {
+		return x.LegalAsOf
 	}
 	return nil
 }
@@ -4533,223 +4741,275 @@ const file_civil_public_parcels_v1_parcels_proto_rawDesc = "" +
 	"\x05min_x\x18\x01 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Minimum Longitude / WestR\x04minX\x123\n" +
 	"\x05min_y\x18\x02 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Minimum Latitude / SouthR\x04minY\x123\n" +
 	"\x05max_x\x18\x03 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Longitude / EastR\x04maxX\x123\n" +
-	"\x05max_y\x18\x04 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Latitude / NorthR\x04maxY\"\xda\x01\n" +
+	"\x05max_y\x18\x04 \x01(\x01B\x1e\xbaG\x1b\x92\x02\x18Maximum Latitude / NorthR\x04maxY\"\x88\x04\n" +
 	" GetLandAreaSqftByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xf1\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xf1\x01\n" +
 	"!GetLandAreaSqftByParcelIdResponse\x12\x90\x01\n" +
 	"\x06values\x18\x01 \x03(\v2F.civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.ValuesEntryB0\xbaG-\x92\x02*Map of values, keyed by the UUID parcel_idR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xd8\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\x86\x04\n" +
 	"\x1eGetFrontageFtByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xba\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xba\x01\n" +
 	"\x1fGetFrontageFtByParcelIdResponse\x12\\\n" +
 	"\x06values\x18\x01 \x03(\v2D.civil.public.parcels.v1.GetFrontageFtByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xd5\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\x83\x04\n" +
 	"\x1bGetDepthFtByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb4\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb4\x01\n" +
 	"\x1cGetDepthFtByParcelIdResponse\x12Y\n" +
 	"\x06values\x18\x01 \x03(\v2A.civil.public.parcels.v1.GetDepthFtByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xdb\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\x89\x04\n" +
 	"!GetLandUseIdSqftByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xc0\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xc0\x01\n" +
 	"\"GetLandUseIdSqftByParcelIdResponse\x12_\n" +
 	"\x06values\x18\x01 \x03(\v2G.civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd6\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x84\x04\n" +
 	"\x1cGetZoningIdByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb6\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb6\x01\n" +
 	"\x1dGetZoningIdByParcelIdResponse\x12Z\n" +
 	"\x06values\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetZoningIdByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe1\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x8f\x04\n" +
 	"'GetImprovementAreaSqftByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xcc\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xcc\x01\n" +
 	"(GetImprovementAreaSqftByParcelIdResponse\x12e\n" +
 	"\x06values\x18\x01 \x03(\v2M.civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xd6\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\x84\x04\n" +
 	"\x1cGetBedroomsByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb6\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb6\x01\n" +
 	"\x1dGetBedroomsByParcelIdResponse\x12Z\n" +
 	"\x06values\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetBedroomsByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xd7\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x85\x04\n" +
 	"\x1dGetBathroomsByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb8\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb8\x01\n" +
 	"\x1eGetBathroomsByParcelIdResponse\x12[\n" +
 	"\x06values\x18\x01 \x03(\v2C.civil.public.parcels.v1.GetBathroomsByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xd3\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x81\x04\n" +
 	"\x19GetUnitsByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xb0\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb0\x01\n" +
 	"\x1aGetUnitsByParcelIdResponse\x12W\n" +
 	"\x06values\x18\x01 \x03(\v2?.civil.public.parcels.v1.GetUnitsByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xe9\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x97\x04\n" +
 	"/GetPrimaryImprovementYearBuiltByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xdc\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xdc\x01\n" +
 	"0GetPrimaryImprovementYearBuiltByParcelIdResponse\x12m\n" +
 	"\x06values\x18\x01 \x03(\v2U.civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf2\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xa0\x04\n" +
 	"8GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xee\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xee\x01\n" +
 	"9GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse\x12v\n" +
 	"\x06values\x18\x01 \x03(\v2^.civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xeb\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\x99\x04\n" +
 	"1GetPrimaryImprovementConditionIdByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xe0\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xe0\x01\n" +
 	"2GetPrimaryImprovementConditionIdByParcelIdResponse\x12o\n" +
 	"\x06values\x18\x01 \x03(\v2W.civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe6\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x94\x04\n" +
 	",GetPrimaryImprovementTypeIdByParcelIdRequest\x12\xb5\x01\n" +
 	"\n" +
-	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\"\xd6\x01\n" +
+	"parcel_ids\x18\x01 \x03(\tB\x95\x01\xbaG~:R\x12P['d25f625b-4e82-4761-82ca-10dafc5dcf77', 'a11c834a-9f12-4852-9bca-32dabc5def88']\x92\x02'A list of UUID identifiers for parcels.\xbaH\x11\x92\x01\x0e\b\x01\x10\xe8\a\x18\x01\"\x05r\x03\xb0\x01\x01R\tparcelIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xd6\x01\n" +
 	"-GetPrimaryImprovementTypeIdByParcelIdResponse\x12j\n" +
 	"\x06values\x18\x01 \x03(\v2R.civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb7\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe5\x03\n" +
 	"!GetLandAreaSqftByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xc0\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xc0\x01\n" +
 	"\"GetLandAreaSqftByFeatureIdResponse\x12_\n" +
 	"\x06values\x18\x01 \x03(\v2G.civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb5\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xe3\x03\n" +
 	"\x1fGetFrontageFtByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xbc\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xbc\x01\n" +
 	" GetFrontageFtByFeatureIdResponse\x12]\n" +
 	"\x06values\x18\x01 \x03(\v2E.civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb2\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xe0\x03\n" +
 	"\x1cGetDepthFtByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xb6\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb6\x01\n" +
 	"\x1dGetDepthFtByFeatureIdResponse\x12Z\n" +
 	"\x06values\x18\x01 \x03(\v2B.civil.public.parcels.v1.GetDepthFtByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb8\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xe6\x03\n" +
 	"\"GetLandUseIdSqftByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xc2\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xc2\x01\n" +
 	"#GetLandUseIdSqftByFeatureIdResponse\x12`\n" +
 	"\x06values\x18\x01 \x03(\v2H.civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb3\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe1\x03\n" +
 	"\x1dGetZoningIdByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xb8\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb8\x01\n" +
 	"\x1eGetZoningIdByFeatureIdResponse\x12[\n" +
 	"\x06values\x18\x01 \x03(\v2C.civil.public.parcels.v1.GetZoningIdByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xbe\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xec\x03\n" +
 	"(GetImprovementAreaSqftByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xce\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xce\x01\n" +
 	")GetImprovementAreaSqftByFeatureIdResponse\x12f\n" +
 	"\x06values\x18\x01 \x03(\v2N.civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xb3\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xe1\x03\n" +
 	"\x1dGetBedroomsByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xb8\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb8\x01\n" +
 	"\x1eGetBedroomsByFeatureIdResponse\x12[\n" +
 	"\x06values\x18\x01 \x03(\v2C.civil.public.parcels.v1.GetBedroomsByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xb4\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xe2\x03\n" +
 	"\x1eGetBathroomsByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xba\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xba\x01\n" +
 	"\x1fGetBathroomsByFeatureIdResponse\x12\\\n" +
 	"\x06values\x18\x01 \x03(\v2D.civil.public.parcels.v1.GetBathroomsByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xb0\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xde\x03\n" +
 	"\x1aGetUnitsByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xb2\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xb2\x01\n" +
 	"\x1bGetUnitsByFeatureIdResponse\x12X\n" +
 	"\x06values\x18\x01 \x03(\v2@.civil.public.parcels.v1.GetUnitsByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc6\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf4\x03\n" +
 	"0GetPrimaryImprovementYearBuiltByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xde\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xde\x01\n" +
 	"1GetPrimaryImprovementYearBuiltByFeatureIdResponse\x12n\n" +
 	"\x06values\x18\x01 \x03(\v2V.civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xcf\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xfd\x03\n" +
 	"9GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xf0\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xf0\x01\n" +
 	":GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse\x12w\n" +
 	"\x06values\x18\x01 \x03(\v2_.civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xc8\x01\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value:\x028\x01\"\xf6\x03\n" +
 	"2GetPrimaryImprovementConditionIdByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xe2\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xe2\x01\n" +
 	"3GetPrimaryImprovementConditionIdByFeatureIdResponse\x12p\n" +
 	"\x06values\x18\x01 \x03(\v2X.civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\x03R\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xc3\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xf1\x03\n" +
 	"-GetPrimaryImprovementTypeIdByFeatureIdRequest\x12\x91\x01\n" +
 	"\vfeature_ids\x18\x01 \x03(\x03Bp\xbaG`:*\x12(['7382152353198509', '2261752343789113']\x92\x021A list of 53-bit integer IDs for parcel geometry.\xbaH\n" +
 	"\x92\x01\a\b\x01\x10\xe8\a\x18\x01R\n" +
-	"featureIds\"\xd8\x01\n" +
+	"featureIds\x12\x9b\x02\n" +
+	"\vlegal_as_of\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampB\xd9\x01\xbaG\xc2\x01\x92\x02\xbe\x01The timestamp to retrieve the parcels' values for this attribute for. Defaults to now. If a parcel does not have a value for that attribute at that time, no data for that parcel is returned.\xbaH\x10\xb2\x01\r*\v\b\x80\x92\xb8Ø\xfe\xff\xff\xff\x01H\x00R\tlegalAsOf\x88\x01\x01B\x0e\n" +
+	"\f_legal_as_of\"\xd8\x01\n" +
 	".GetPrimaryImprovementTypeIdByFeatureIdResponse\x12k\n" +
 	"\x06values\x18\x01 \x03(\v2S.civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse.ValuesEntryR\x06values\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
@@ -4972,111 +5232,137 @@ var file_civil_public_parcels_v1_parcels_proto_depIdxs = []int32{
 	112, // 22: civil.public.parcels.v1.GetSalesComparablesRequest.time_range:type_name -> google.type.Interval
 	83,  // 23: civil.public.parcels.v1.GetSalesComparablesResponse.parcels:type_name -> civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry
 	84,  // 24: civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.parcel_ids:type_name -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse.ParcelIdsEntry
-	85,  // 25: civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.ValuesEntry
-	86,  // 26: civil.public.parcels.v1.GetFrontageFtByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetFrontageFtByParcelIdResponse.ValuesEntry
-	87,  // 27: civil.public.parcels.v1.GetDepthFtByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetDepthFtByParcelIdResponse.ValuesEntry
-	88,  // 28: civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse.ValuesEntry
-	89,  // 29: civil.public.parcels.v1.GetZoningIdByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetZoningIdByParcelIdResponse.ValuesEntry
-	90,  // 30: civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse.ValuesEntry
-	91,  // 31: civil.public.parcels.v1.GetBedroomsByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetBedroomsByParcelIdResponse.ValuesEntry
-	92,  // 32: civil.public.parcels.v1.GetBathroomsByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetBathroomsByParcelIdResponse.ValuesEntry
-	93,  // 33: civil.public.parcels.v1.GetUnitsByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetUnitsByParcelIdResponse.ValuesEntry
-	94,  // 34: civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse.ValuesEntry
-	95,  // 35: civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse.ValuesEntry
-	96,  // 36: civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse.ValuesEntry
-	97,  // 37: civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse.ValuesEntry
-	98,  // 38: civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse.ValuesEntry
-	99,  // 39: civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse.ValuesEntry
-	100, // 40: civil.public.parcels.v1.GetDepthFtByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetDepthFtByFeatureIdResponse.ValuesEntry
-	101, // 41: civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse.ValuesEntry
-	102, // 42: civil.public.parcels.v1.GetZoningIdByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetZoningIdByFeatureIdResponse.ValuesEntry
-	103, // 43: civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse.ValuesEntry
-	104, // 44: civil.public.parcels.v1.GetBedroomsByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetBedroomsByFeatureIdResponse.ValuesEntry
-	105, // 45: civil.public.parcels.v1.GetBathroomsByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetBathroomsByFeatureIdResponse.ValuesEntry
-	106, // 46: civil.public.parcels.v1.GetUnitsByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetUnitsByFeatureIdResponse.ValuesEntry
-	107, // 47: civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse.ValuesEntry
-	108, // 48: civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse.ValuesEntry
-	109, // 49: civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse.ValuesEntry
-	110, // 50: civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse.ValuesEntry
-	4,   // 51: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
-	4,   // 52: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
-	17,  // 53: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
-	18,  // 54: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
-	5,   // 55: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest
-	7,   // 56: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest
-	11,  // 57: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
-	13,  // 58: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
-	19,  // 59: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
-	21,  // 60: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
-	23,  // 61: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
-	25,  // 62: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
-	27,  // 63: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByParcelId:input_type -> civil.public.parcels.v1.GetLandAreaSqftByParcelIdRequest
-	29,  // 64: civil.public.parcels.v1.ParcelsService.GetFrontageFtByParcelId:input_type -> civil.public.parcels.v1.GetFrontageFtByParcelIdRequest
-	31,  // 65: civil.public.parcels.v1.ParcelsService.GetDepthFtByParcelId:input_type -> civil.public.parcels.v1.GetDepthFtByParcelIdRequest
-	33,  // 66: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByParcelId:input_type -> civil.public.parcels.v1.GetLandUseIdSqftByParcelIdRequest
-	35,  // 67: civil.public.parcels.v1.ParcelsService.GetZoningIdByParcelId:input_type -> civil.public.parcels.v1.GetZoningIdByParcelIdRequest
-	37,  // 68: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByParcelId:input_type -> civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdRequest
-	39,  // 69: civil.public.parcels.v1.ParcelsService.GetBedroomsByParcelId:input_type -> civil.public.parcels.v1.GetBedroomsByParcelIdRequest
-	41,  // 70: civil.public.parcels.v1.ParcelsService.GetBathroomsByParcelId:input_type -> civil.public.parcels.v1.GetBathroomsByParcelIdRequest
-	43,  // 71: civil.public.parcels.v1.ParcelsService.GetUnitsByParcelId:input_type -> civil.public.parcels.v1.GetUnitsByParcelIdRequest
-	45,  // 72: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdRequest
-	47,  // 73: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest
-	49,  // 74: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdRequest
-	51,  // 75: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdRequest
-	53,  // 76: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByFeatureId:input_type -> civil.public.parcels.v1.GetLandAreaSqftByFeatureIdRequest
-	55,  // 77: civil.public.parcels.v1.ParcelsService.GetFrontageFtByFeatureId:input_type -> civil.public.parcels.v1.GetFrontageFtByFeatureIdRequest
-	57,  // 78: civil.public.parcels.v1.ParcelsService.GetDepthFtByFeatureId:input_type -> civil.public.parcels.v1.GetDepthFtByFeatureIdRequest
-	59,  // 79: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByFeatureId:input_type -> civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdRequest
-	61,  // 80: civil.public.parcels.v1.ParcelsService.GetZoningIdByFeatureId:input_type -> civil.public.parcels.v1.GetZoningIdByFeatureIdRequest
-	63,  // 81: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByFeatureId:input_type -> civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdRequest
-	65,  // 82: civil.public.parcels.v1.ParcelsService.GetBedroomsByFeatureId:input_type -> civil.public.parcels.v1.GetBedroomsByFeatureIdRequest
-	67,  // 83: civil.public.parcels.v1.ParcelsService.GetBathroomsByFeatureId:input_type -> civil.public.parcels.v1.GetBathroomsByFeatureIdRequest
-	69,  // 84: civil.public.parcels.v1.ParcelsService.GetUnitsByFeatureId:input_type -> civil.public.parcels.v1.GetUnitsByFeatureIdRequest
-	71,  // 85: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdRequest
-	73,  // 86: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest
-	75,  // 87: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdRequest
-	77,  // 88: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdRequest
-	9,   // 89: civil.public.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.public.parcels.v1.UpdateParcelRequest
-	6,   // 90: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse
-	8,   // 91: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse
-	12,  // 92: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
-	14,  // 93: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
-	20,  // 94: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
-	22,  // 95: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
-	24,  // 96: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
-	26,  // 97: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
-	28,  // 98: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByParcelId:output_type -> civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse
-	30,  // 99: civil.public.parcels.v1.ParcelsService.GetFrontageFtByParcelId:output_type -> civil.public.parcels.v1.GetFrontageFtByParcelIdResponse
-	32,  // 100: civil.public.parcels.v1.ParcelsService.GetDepthFtByParcelId:output_type -> civil.public.parcels.v1.GetDepthFtByParcelIdResponse
-	34,  // 101: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByParcelId:output_type -> civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse
-	36,  // 102: civil.public.parcels.v1.ParcelsService.GetZoningIdByParcelId:output_type -> civil.public.parcels.v1.GetZoningIdByParcelIdResponse
-	38,  // 103: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByParcelId:output_type -> civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse
-	40,  // 104: civil.public.parcels.v1.ParcelsService.GetBedroomsByParcelId:output_type -> civil.public.parcels.v1.GetBedroomsByParcelIdResponse
-	42,  // 105: civil.public.parcels.v1.ParcelsService.GetBathroomsByParcelId:output_type -> civil.public.parcels.v1.GetBathroomsByParcelIdResponse
-	44,  // 106: civil.public.parcels.v1.ParcelsService.GetUnitsByParcelId:output_type -> civil.public.parcels.v1.GetUnitsByParcelIdResponse
-	46,  // 107: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse
-	48,  // 108: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse
-	50,  // 109: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse
-	52,  // 110: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse
-	54,  // 111: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByFeatureId:output_type -> civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse
-	56,  // 112: civil.public.parcels.v1.ParcelsService.GetFrontageFtByFeatureId:output_type -> civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse
-	58,  // 113: civil.public.parcels.v1.ParcelsService.GetDepthFtByFeatureId:output_type -> civil.public.parcels.v1.GetDepthFtByFeatureIdResponse
-	60,  // 114: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByFeatureId:output_type -> civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse
-	62,  // 115: civil.public.parcels.v1.ParcelsService.GetZoningIdByFeatureId:output_type -> civil.public.parcels.v1.GetZoningIdByFeatureIdResponse
-	64,  // 116: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByFeatureId:output_type -> civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse
-	66,  // 117: civil.public.parcels.v1.ParcelsService.GetBedroomsByFeatureId:output_type -> civil.public.parcels.v1.GetBedroomsByFeatureIdResponse
-	68,  // 118: civil.public.parcels.v1.ParcelsService.GetBathroomsByFeatureId:output_type -> civil.public.parcels.v1.GetBathroomsByFeatureIdResponse
-	70,  // 119: civil.public.parcels.v1.ParcelsService.GetUnitsByFeatureId:output_type -> civil.public.parcels.v1.GetUnitsByFeatureIdResponse
-	72,  // 120: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse
-	74,  // 121: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse
-	76,  // 122: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse
-	78,  // 123: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse
-	10,  // 124: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
-	90,  // [90:125] is the sub-list for method output_type
-	55,  // [55:90] is the sub-list for method input_type
-	55,  // [55:55] is the sub-list for extension type_name
-	55,  // [55:55] is the sub-list for extension extendee
-	0,   // [0:55] is the sub-list for field type_name
+	111, // 25: civil.public.parcels.v1.GetLandAreaSqftByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	85,  // 26: civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse.ValuesEntry
+	111, // 27: civil.public.parcels.v1.GetFrontageFtByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	86,  // 28: civil.public.parcels.v1.GetFrontageFtByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetFrontageFtByParcelIdResponse.ValuesEntry
+	111, // 29: civil.public.parcels.v1.GetDepthFtByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	87,  // 30: civil.public.parcels.v1.GetDepthFtByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetDepthFtByParcelIdResponse.ValuesEntry
+	111, // 31: civil.public.parcels.v1.GetLandUseIdSqftByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	88,  // 32: civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse.ValuesEntry
+	111, // 33: civil.public.parcels.v1.GetZoningIdByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	89,  // 34: civil.public.parcels.v1.GetZoningIdByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetZoningIdByParcelIdResponse.ValuesEntry
+	111, // 35: civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	90,  // 36: civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse.ValuesEntry
+	111, // 37: civil.public.parcels.v1.GetBedroomsByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	91,  // 38: civil.public.parcels.v1.GetBedroomsByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetBedroomsByParcelIdResponse.ValuesEntry
+	111, // 39: civil.public.parcels.v1.GetBathroomsByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	92,  // 40: civil.public.parcels.v1.GetBathroomsByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetBathroomsByParcelIdResponse.ValuesEntry
+	111, // 41: civil.public.parcels.v1.GetUnitsByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	93,  // 42: civil.public.parcels.v1.GetUnitsByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetUnitsByParcelIdResponse.ValuesEntry
+	111, // 43: civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	94,  // 44: civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse.ValuesEntry
+	111, // 45: civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	95,  // 46: civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse.ValuesEntry
+	111, // 47: civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	96,  // 48: civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse.ValuesEntry
+	111, // 49: civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	97,  // 50: civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse.ValuesEntry
+	111, // 51: civil.public.parcels.v1.GetLandAreaSqftByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	98,  // 52: civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse.ValuesEntry
+	111, // 53: civil.public.parcels.v1.GetFrontageFtByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	99,  // 54: civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse.ValuesEntry
+	111, // 55: civil.public.parcels.v1.GetDepthFtByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	100, // 56: civil.public.parcels.v1.GetDepthFtByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetDepthFtByFeatureIdResponse.ValuesEntry
+	111, // 57: civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	101, // 58: civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse.ValuesEntry
+	111, // 59: civil.public.parcels.v1.GetZoningIdByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	102, // 60: civil.public.parcels.v1.GetZoningIdByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetZoningIdByFeatureIdResponse.ValuesEntry
+	111, // 61: civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	103, // 62: civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse.ValuesEntry
+	111, // 63: civil.public.parcels.v1.GetBedroomsByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	104, // 64: civil.public.parcels.v1.GetBedroomsByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetBedroomsByFeatureIdResponse.ValuesEntry
+	111, // 65: civil.public.parcels.v1.GetBathroomsByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	105, // 66: civil.public.parcels.v1.GetBathroomsByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetBathroomsByFeatureIdResponse.ValuesEntry
+	111, // 67: civil.public.parcels.v1.GetUnitsByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	106, // 68: civil.public.parcels.v1.GetUnitsByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetUnitsByFeatureIdResponse.ValuesEntry
+	111, // 69: civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	107, // 70: civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse.ValuesEntry
+	111, // 71: civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	108, // 72: civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse.ValuesEntry
+	111, // 73: civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	109, // 74: civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse.ValuesEntry
+	111, // 75: civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdRequest.legal_as_of:type_name -> google.protobuf.Timestamp
+	110, // 76: civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse.values:type_name -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse.ValuesEntry
+	4,   // 77: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
+	4,   // 78: civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.ParcelWithImprovementSummary
+	17,  // 79: civil.public.parcels.v1.GetEquityComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.EquityComparableParcel
+	18,  // 80: civil.public.parcels.v1.GetSalesComparablesResponse.ParcelsEntry.value:type_name -> civil.public.parcels.v1.SaleComparableParcel
+	5,   // 81: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdRequest
+	7,   // 82: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:input_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdRequest
+	11,  // 83: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdRequest
+	13,  // 84: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:input_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdRequest
+	19,  // 85: civil.public.parcels.v1.ParcelsService.GetEquityComparables:input_type -> civil.public.parcels.v1.GetEquityComparablesRequest
+	21,  // 86: civil.public.parcels.v1.ParcelsService.GetSalesComparables:input_type -> civil.public.parcels.v1.GetSalesComparablesRequest
+	23,  // 87: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:input_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdRequest
+	25,  // 88: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:input_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Request
+	27,  // 89: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByParcelId:input_type -> civil.public.parcels.v1.GetLandAreaSqftByParcelIdRequest
+	29,  // 90: civil.public.parcels.v1.ParcelsService.GetFrontageFtByParcelId:input_type -> civil.public.parcels.v1.GetFrontageFtByParcelIdRequest
+	31,  // 91: civil.public.parcels.v1.ParcelsService.GetDepthFtByParcelId:input_type -> civil.public.parcels.v1.GetDepthFtByParcelIdRequest
+	33,  // 92: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByParcelId:input_type -> civil.public.parcels.v1.GetLandUseIdSqftByParcelIdRequest
+	35,  // 93: civil.public.parcels.v1.ParcelsService.GetZoningIdByParcelId:input_type -> civil.public.parcels.v1.GetZoningIdByParcelIdRequest
+	37,  // 94: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByParcelId:input_type -> civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdRequest
+	39,  // 95: civil.public.parcels.v1.ParcelsService.GetBedroomsByParcelId:input_type -> civil.public.parcels.v1.GetBedroomsByParcelIdRequest
+	41,  // 96: civil.public.parcels.v1.ParcelsService.GetBathroomsByParcelId:input_type -> civil.public.parcels.v1.GetBathroomsByParcelIdRequest
+	43,  // 97: civil.public.parcels.v1.ParcelsService.GetUnitsByParcelId:input_type -> civil.public.parcels.v1.GetUnitsByParcelIdRequest
+	45,  // 98: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdRequest
+	47,  // 99: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdRequest
+	49,  // 100: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdRequest
+	51,  // 101: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByParcelId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdRequest
+	53,  // 102: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByFeatureId:input_type -> civil.public.parcels.v1.GetLandAreaSqftByFeatureIdRequest
+	55,  // 103: civil.public.parcels.v1.ParcelsService.GetFrontageFtByFeatureId:input_type -> civil.public.parcels.v1.GetFrontageFtByFeatureIdRequest
+	57,  // 104: civil.public.parcels.v1.ParcelsService.GetDepthFtByFeatureId:input_type -> civil.public.parcels.v1.GetDepthFtByFeatureIdRequest
+	59,  // 105: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByFeatureId:input_type -> civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdRequest
+	61,  // 106: civil.public.parcels.v1.ParcelsService.GetZoningIdByFeatureId:input_type -> civil.public.parcels.v1.GetZoningIdByFeatureIdRequest
+	63,  // 107: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByFeatureId:input_type -> civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdRequest
+	65,  // 108: civil.public.parcels.v1.ParcelsService.GetBedroomsByFeatureId:input_type -> civil.public.parcels.v1.GetBedroomsByFeatureIdRequest
+	67,  // 109: civil.public.parcels.v1.ParcelsService.GetBathroomsByFeatureId:input_type -> civil.public.parcels.v1.GetBathroomsByFeatureIdRequest
+	69,  // 110: civil.public.parcels.v1.ParcelsService.GetUnitsByFeatureId:input_type -> civil.public.parcels.v1.GetUnitsByFeatureIdRequest
+	71,  // 111: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdRequest
+	73,  // 112: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdRequest
+	75,  // 113: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdRequest
+	77,  // 114: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByFeatureId:input_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdRequest
+	9,   // 115: civil.public.parcels.v1.ParcelsService.UpdateParcel:input_type -> civil.public.parcels.v1.UpdateParcelRequest
+	6,   // 116: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByParcelId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByParcelIdResponse
+	8,   // 117: civil.public.parcels.v1.ParcelsService.GetParcelsWithImprovementSummaryByFeatureId:output_type -> civil.public.parcels.v1.GetParcelsWithImprovementSummaryByFeatureIdResponse
+	12,  // 118: civil.public.parcels.v1.ParcelsService.GetNumericalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetNumericalParcelAttributeStatsByIdResponse
+	14,  // 119: civil.public.parcels.v1.ParcelsService.GetCategoricalParcelAttributeStatsById:output_type -> civil.public.parcels.v1.GetCategoricalParcelAttributeStatsByIdResponse
+	20,  // 120: civil.public.parcels.v1.ParcelsService.GetEquityComparables:output_type -> civil.public.parcels.v1.GetEquityComparablesResponse
+	22,  // 121: civil.public.parcels.v1.ParcelsService.GetSalesComparables:output_type -> civil.public.parcels.v1.GetSalesComparablesResponse
+	24,  // 122: civil.public.parcels.v1.ParcelsService.GetParcelIdsByFeatureId:output_type -> civil.public.parcels.v1.GetParcelIdsByFeatureIdResponse
+	26,  // 123: civil.public.parcels.v1.ParcelsService.GetEstimatedParcelsExtentWGS84:output_type -> civil.public.parcels.v1.GetEstimatedParcelsExtentWGS84Response
+	28,  // 124: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByParcelId:output_type -> civil.public.parcels.v1.GetLandAreaSqftByParcelIdResponse
+	30,  // 125: civil.public.parcels.v1.ParcelsService.GetFrontageFtByParcelId:output_type -> civil.public.parcels.v1.GetFrontageFtByParcelIdResponse
+	32,  // 126: civil.public.parcels.v1.ParcelsService.GetDepthFtByParcelId:output_type -> civil.public.parcels.v1.GetDepthFtByParcelIdResponse
+	34,  // 127: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByParcelId:output_type -> civil.public.parcels.v1.GetLandUseIdSqftByParcelIdResponse
+	36,  // 128: civil.public.parcels.v1.ParcelsService.GetZoningIdByParcelId:output_type -> civil.public.parcels.v1.GetZoningIdByParcelIdResponse
+	38,  // 129: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByParcelId:output_type -> civil.public.parcels.v1.GetImprovementAreaSqftByParcelIdResponse
+	40,  // 130: civil.public.parcels.v1.ParcelsService.GetBedroomsByParcelId:output_type -> civil.public.parcels.v1.GetBedroomsByParcelIdResponse
+	42,  // 131: civil.public.parcels.v1.ParcelsService.GetBathroomsByParcelId:output_type -> civil.public.parcels.v1.GetBathroomsByParcelIdResponse
+	44,  // 132: civil.public.parcels.v1.ParcelsService.GetUnitsByParcelId:output_type -> civil.public.parcels.v1.GetUnitsByParcelIdResponse
+	46,  // 133: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByParcelIdResponse
+	48,  // 134: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByParcelIdResponse
+	50,  // 135: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByParcelIdResponse
+	52,  // 136: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByParcelId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByParcelIdResponse
+	54,  // 137: civil.public.parcels.v1.ParcelsService.GetLandAreaSqftByFeatureId:output_type -> civil.public.parcels.v1.GetLandAreaSqftByFeatureIdResponse
+	56,  // 138: civil.public.parcels.v1.ParcelsService.GetFrontageFtByFeatureId:output_type -> civil.public.parcels.v1.GetFrontageFtByFeatureIdResponse
+	58,  // 139: civil.public.parcels.v1.ParcelsService.GetDepthFtByFeatureId:output_type -> civil.public.parcels.v1.GetDepthFtByFeatureIdResponse
+	60,  // 140: civil.public.parcels.v1.ParcelsService.GetLandUseIdSqftByFeatureId:output_type -> civil.public.parcels.v1.GetLandUseIdSqftByFeatureIdResponse
+	62,  // 141: civil.public.parcels.v1.ParcelsService.GetZoningIdByFeatureId:output_type -> civil.public.parcels.v1.GetZoningIdByFeatureIdResponse
+	64,  // 142: civil.public.parcels.v1.ParcelsService.GetImprovementAreaSqftByFeatureId:output_type -> civil.public.parcels.v1.GetImprovementAreaSqftByFeatureIdResponse
+	66,  // 143: civil.public.parcels.v1.ParcelsService.GetBedroomsByFeatureId:output_type -> civil.public.parcels.v1.GetBedroomsByFeatureIdResponse
+	68,  // 144: civil.public.parcels.v1.ParcelsService.GetBathroomsByFeatureId:output_type -> civil.public.parcels.v1.GetBathroomsByFeatureIdResponse
+	70,  // 145: civil.public.parcels.v1.ParcelsService.GetUnitsByFeatureId:output_type -> civil.public.parcels.v1.GetUnitsByFeatureIdResponse
+	72,  // 146: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementYearBuiltByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementYearBuiltByFeatureIdResponse
+	74,  // 147: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementEffectiveYearBuiltByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementEffectiveYearBuiltByFeatureIdResponse
+	76,  // 148: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementConditionIdByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementConditionIdByFeatureIdResponse
+	78,  // 149: civil.public.parcels.v1.ParcelsService.GetPrimaryImprovementTypeIdByFeatureId:output_type -> civil.public.parcels.v1.GetPrimaryImprovementTypeIdByFeatureIdResponse
+	10,  // 150: civil.public.parcels.v1.ParcelsService.UpdateParcel:output_type -> civil.public.parcels.v1.UpdateParcelResponse
+	116, // [116:151] is the sub-list for method output_type
+	81,  // [81:116] is the sub-list for method input_type
+	81,  // [81:81] is the sub-list for extension type_name
+	81,  // [81:81] is the sub-list for extension extendee
+	0,   // [0:81] is the sub-list for field type_name
 }
 
 func init() { file_civil_public_parcels_v1_parcels_proto_init() }
@@ -5095,6 +5381,32 @@ func file_civil_public_parcels_v1_parcels_proto_init() {
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[14].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[15].OneofWrappers = []any{}
 	file_civil_public_parcels_v1_parcels_proto_msgTypes[20].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[26].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[28].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[30].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[32].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[34].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[36].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[38].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[40].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[42].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[44].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[46].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[48].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[50].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[52].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[54].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[56].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[58].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[60].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[62].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[64].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[66].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[68].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[70].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[72].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[74].OneofWrappers = []any{}
+	file_civil_public_parcels_v1_parcels_proto_msgTypes[76].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
