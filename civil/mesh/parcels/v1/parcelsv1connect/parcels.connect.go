@@ -66,9 +66,9 @@ const (
 	// ParcelsServiceGetDepthFtByParcelIdProcedure is the fully-qualified name of the ParcelsService's
 	// GetDepthFtByParcelId RPC.
 	ParcelsServiceGetDepthFtByParcelIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetDepthFtByParcelId"
-	// ParcelsServiceGetLandUseIdSqftByParcelIdProcedure is the fully-qualified name of the
-	// ParcelsService's GetLandUseIdSqftByParcelId RPC.
-	ParcelsServiceGetLandUseIdSqftByParcelIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetLandUseIdSqftByParcelId"
+	// ParcelsServiceGetLandUseIdByParcelIdProcedure is the fully-qualified name of the ParcelsService's
+	// GetLandUseIdByParcelId RPC.
+	ParcelsServiceGetLandUseIdByParcelIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetLandUseIdByParcelId"
 	// ParcelsServiceGetZoningIdByParcelIdProcedure is the fully-qualified name of the ParcelsService's
 	// GetZoningIdByParcelId RPC.
 	ParcelsServiceGetZoningIdByParcelIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetZoningIdByParcelId"
@@ -105,9 +105,9 @@ const (
 	// ParcelsServiceGetDepthFtByFeatureIdProcedure is the fully-qualified name of the ParcelsService's
 	// GetDepthFtByFeatureId RPC.
 	ParcelsServiceGetDepthFtByFeatureIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetDepthFtByFeatureId"
-	// ParcelsServiceGetLandUseIdSqftByFeatureIdProcedure is the fully-qualified name of the
-	// ParcelsService's GetLandUseIdSqftByFeatureId RPC.
-	ParcelsServiceGetLandUseIdSqftByFeatureIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetLandUseIdSqftByFeatureId"
+	// ParcelsServiceGetLandUseIdByFeatureIdProcedure is the fully-qualified name of the
+	// ParcelsService's GetLandUseIdByFeatureId RPC.
+	ParcelsServiceGetLandUseIdByFeatureIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetLandUseIdByFeatureId"
 	// ParcelsServiceGetZoningIdByFeatureIdProcedure is the fully-qualified name of the ParcelsService's
 	// GetZoningIdByFeatureId RPC.
 	ParcelsServiceGetZoningIdByFeatureIdProcedure = "/civil.mesh.parcels.v1.ParcelsService/GetZoningIdByFeatureId"
@@ -156,7 +156,7 @@ type ParcelsServiceClient interface {
 	GetLandAreaSqftByParcelId(context.Context, *connect.Request[v1.GetLandAreaSqftByParcelIdRequest]) (*connect.Response[v1.GetLandAreaSqftByParcelIdResponse], error)
 	GetFrontageFtByParcelId(context.Context, *connect.Request[v1.GetFrontageFtByParcelIdRequest]) (*connect.Response[v1.GetFrontageFtByParcelIdResponse], error)
 	GetDepthFtByParcelId(context.Context, *connect.Request[v1.GetDepthFtByParcelIdRequest]) (*connect.Response[v1.GetDepthFtByParcelIdResponse], error)
-	GetLandUseIdSqftByParcelId(context.Context, *connect.Request[v1.GetLandUseIdSqftByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByParcelIdResponse], error)
+	GetLandUseIdByParcelId(context.Context, *connect.Request[v1.GetLandUseIdByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdByParcelIdResponse], error)
 	GetZoningIdByParcelId(context.Context, *connect.Request[v1.GetZoningIdByParcelIdRequest]) (*connect.Response[v1.GetZoningIdByParcelIdResponse], error)
 	GetImprovementAreaSqftByParcelId(context.Context, *connect.Request[v1.GetImprovementAreaSqftByParcelIdRequest]) (*connect.Response[v1.GetImprovementAreaSqftByParcelIdResponse], error)
 	GetBedroomsByParcelId(context.Context, *connect.Request[v1.GetBedroomsByParcelIdRequest]) (*connect.Response[v1.GetBedroomsByParcelIdResponse], error)
@@ -169,7 +169,7 @@ type ParcelsServiceClient interface {
 	GetLandAreaSqftByFeatureId(context.Context, *connect.Request[v1.GetLandAreaSqftByFeatureIdRequest]) (*connect.Response[v1.GetLandAreaSqftByFeatureIdResponse], error)
 	GetFrontageFtByFeatureId(context.Context, *connect.Request[v1.GetFrontageFtByFeatureIdRequest]) (*connect.Response[v1.GetFrontageFtByFeatureIdResponse], error)
 	GetDepthFtByFeatureId(context.Context, *connect.Request[v1.GetDepthFtByFeatureIdRequest]) (*connect.Response[v1.GetDepthFtByFeatureIdResponse], error)
-	GetLandUseIdSqftByFeatureId(context.Context, *connect.Request[v1.GetLandUseIdSqftByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByFeatureIdResponse], error)
+	GetLandUseIdByFeatureId(context.Context, *connect.Request[v1.GetLandUseIdByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdByFeatureIdResponse], error)
 	GetZoningIdByFeatureId(context.Context, *connect.Request[v1.GetZoningIdByFeatureIdRequest]) (*connect.Response[v1.GetZoningIdByFeatureIdResponse], error)
 	GetImprovementAreaSqftByFeatureId(context.Context, *connect.Request[v1.GetImprovementAreaSqftByFeatureIdRequest]) (*connect.Response[v1.GetImprovementAreaSqftByFeatureIdResponse], error)
 	GetBedroomsByFeatureId(context.Context, *connect.Request[v1.GetBedroomsByFeatureIdRequest]) (*connect.Response[v1.GetBedroomsByFeatureIdResponse], error)
@@ -259,10 +259,10 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetDepthFtByParcelId")),
 			connect.WithClientOptions(opts...),
 		),
-		getLandUseIdSqftByParcelId: connect.NewClient[v1.GetLandUseIdSqftByParcelIdRequest, v1.GetLandUseIdSqftByParcelIdResponse](
+		getLandUseIdByParcelId: connect.NewClient[v1.GetLandUseIdByParcelIdRequest, v1.GetLandUseIdByParcelIdResponse](
 			httpClient,
-			baseURL+ParcelsServiceGetLandUseIdSqftByParcelIdProcedure,
-			connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdSqftByParcelId")),
+			baseURL+ParcelsServiceGetLandUseIdByParcelIdProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdByParcelId")),
 			connect.WithClientOptions(opts...),
 		),
 		getZoningIdByParcelId: connect.NewClient[v1.GetZoningIdByParcelIdRequest, v1.GetZoningIdByParcelIdResponse](
@@ -337,10 +337,10 @@ func NewParcelsServiceClient(httpClient connect.HTTPClient, baseURL string, opts
 			connect.WithSchema(parcelsServiceMethods.ByName("GetDepthFtByFeatureId")),
 			connect.WithClientOptions(opts...),
 		),
-		getLandUseIdSqftByFeatureId: connect.NewClient[v1.GetLandUseIdSqftByFeatureIdRequest, v1.GetLandUseIdSqftByFeatureIdResponse](
+		getLandUseIdByFeatureId: connect.NewClient[v1.GetLandUseIdByFeatureIdRequest, v1.GetLandUseIdByFeatureIdResponse](
 			httpClient,
-			baseURL+ParcelsServiceGetLandUseIdSqftByFeatureIdProcedure,
-			connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdSqftByFeatureId")),
+			baseURL+ParcelsServiceGetLandUseIdByFeatureIdProcedure,
+			connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdByFeatureId")),
 			connect.WithClientOptions(opts...),
 		),
 		getZoningIdByFeatureId: connect.NewClient[v1.GetZoningIdByFeatureIdRequest, v1.GetZoningIdByFeatureIdResponse](
@@ -419,7 +419,7 @@ type parcelsServiceClient struct {
 	getLandAreaSqftByParcelId                          *connect.Client[v1.GetLandAreaSqftByParcelIdRequest, v1.GetLandAreaSqftByParcelIdResponse]
 	getFrontageFtByParcelId                            *connect.Client[v1.GetFrontageFtByParcelIdRequest, v1.GetFrontageFtByParcelIdResponse]
 	getDepthFtByParcelId                               *connect.Client[v1.GetDepthFtByParcelIdRequest, v1.GetDepthFtByParcelIdResponse]
-	getLandUseIdSqftByParcelId                         *connect.Client[v1.GetLandUseIdSqftByParcelIdRequest, v1.GetLandUseIdSqftByParcelIdResponse]
+	getLandUseIdByParcelId                             *connect.Client[v1.GetLandUseIdByParcelIdRequest, v1.GetLandUseIdByParcelIdResponse]
 	getZoningIdByParcelId                              *connect.Client[v1.GetZoningIdByParcelIdRequest, v1.GetZoningIdByParcelIdResponse]
 	getImprovementAreaSqftByParcelId                   *connect.Client[v1.GetImprovementAreaSqftByParcelIdRequest, v1.GetImprovementAreaSqftByParcelIdResponse]
 	getBedroomsByParcelId                              *connect.Client[v1.GetBedroomsByParcelIdRequest, v1.GetBedroomsByParcelIdResponse]
@@ -432,7 +432,7 @@ type parcelsServiceClient struct {
 	getLandAreaSqftByFeatureId                         *connect.Client[v1.GetLandAreaSqftByFeatureIdRequest, v1.GetLandAreaSqftByFeatureIdResponse]
 	getFrontageFtByFeatureId                           *connect.Client[v1.GetFrontageFtByFeatureIdRequest, v1.GetFrontageFtByFeatureIdResponse]
 	getDepthFtByFeatureId                              *connect.Client[v1.GetDepthFtByFeatureIdRequest, v1.GetDepthFtByFeatureIdResponse]
-	getLandUseIdSqftByFeatureId                        *connect.Client[v1.GetLandUseIdSqftByFeatureIdRequest, v1.GetLandUseIdSqftByFeatureIdResponse]
+	getLandUseIdByFeatureId                            *connect.Client[v1.GetLandUseIdByFeatureIdRequest, v1.GetLandUseIdByFeatureIdResponse]
 	getZoningIdByFeatureId                             *connect.Client[v1.GetZoningIdByFeatureIdRequest, v1.GetZoningIdByFeatureIdResponse]
 	getImprovementAreaSqftByFeatureId                  *connect.Client[v1.GetImprovementAreaSqftByFeatureIdRequest, v1.GetImprovementAreaSqftByFeatureIdResponse]
 	getBedroomsByFeatureId                             *connect.Client[v1.GetBedroomsByFeatureIdRequest, v1.GetBedroomsByFeatureIdResponse]
@@ -505,9 +505,9 @@ func (c *parcelsServiceClient) GetDepthFtByParcelId(ctx context.Context, req *co
 	return c.getDepthFtByParcelId.CallUnary(ctx, req)
 }
 
-// GetLandUseIdSqftByParcelId calls civil.mesh.parcels.v1.ParcelsService.GetLandUseIdSqftByParcelId.
-func (c *parcelsServiceClient) GetLandUseIdSqftByParcelId(ctx context.Context, req *connect.Request[v1.GetLandUseIdSqftByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByParcelIdResponse], error) {
-	return c.getLandUseIdSqftByParcelId.CallUnary(ctx, req)
+// GetLandUseIdByParcelId calls civil.mesh.parcels.v1.ParcelsService.GetLandUseIdByParcelId.
+func (c *parcelsServiceClient) GetLandUseIdByParcelId(ctx context.Context, req *connect.Request[v1.GetLandUseIdByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdByParcelIdResponse], error) {
+	return c.getLandUseIdByParcelId.CallUnary(ctx, req)
 }
 
 // GetZoningIdByParcelId calls civil.mesh.parcels.v1.ParcelsService.GetZoningIdByParcelId.
@@ -575,10 +575,9 @@ func (c *parcelsServiceClient) GetDepthFtByFeatureId(ctx context.Context, req *c
 	return c.getDepthFtByFeatureId.CallUnary(ctx, req)
 }
 
-// GetLandUseIdSqftByFeatureId calls
-// civil.mesh.parcels.v1.ParcelsService.GetLandUseIdSqftByFeatureId.
-func (c *parcelsServiceClient) GetLandUseIdSqftByFeatureId(ctx context.Context, req *connect.Request[v1.GetLandUseIdSqftByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByFeatureIdResponse], error) {
-	return c.getLandUseIdSqftByFeatureId.CallUnary(ctx, req)
+// GetLandUseIdByFeatureId calls civil.mesh.parcels.v1.ParcelsService.GetLandUseIdByFeatureId.
+func (c *parcelsServiceClient) GetLandUseIdByFeatureId(ctx context.Context, req *connect.Request[v1.GetLandUseIdByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdByFeatureIdResponse], error) {
+	return c.getLandUseIdByFeatureId.CallUnary(ctx, req)
 }
 
 // GetZoningIdByFeatureId calls civil.mesh.parcels.v1.ParcelsService.GetZoningIdByFeatureId.
@@ -652,7 +651,7 @@ type ParcelsServiceHandler interface {
 	GetLandAreaSqftByParcelId(context.Context, *connect.Request[v1.GetLandAreaSqftByParcelIdRequest]) (*connect.Response[v1.GetLandAreaSqftByParcelIdResponse], error)
 	GetFrontageFtByParcelId(context.Context, *connect.Request[v1.GetFrontageFtByParcelIdRequest]) (*connect.Response[v1.GetFrontageFtByParcelIdResponse], error)
 	GetDepthFtByParcelId(context.Context, *connect.Request[v1.GetDepthFtByParcelIdRequest]) (*connect.Response[v1.GetDepthFtByParcelIdResponse], error)
-	GetLandUseIdSqftByParcelId(context.Context, *connect.Request[v1.GetLandUseIdSqftByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByParcelIdResponse], error)
+	GetLandUseIdByParcelId(context.Context, *connect.Request[v1.GetLandUseIdByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdByParcelIdResponse], error)
 	GetZoningIdByParcelId(context.Context, *connect.Request[v1.GetZoningIdByParcelIdRequest]) (*connect.Response[v1.GetZoningIdByParcelIdResponse], error)
 	GetImprovementAreaSqftByParcelId(context.Context, *connect.Request[v1.GetImprovementAreaSqftByParcelIdRequest]) (*connect.Response[v1.GetImprovementAreaSqftByParcelIdResponse], error)
 	GetBedroomsByParcelId(context.Context, *connect.Request[v1.GetBedroomsByParcelIdRequest]) (*connect.Response[v1.GetBedroomsByParcelIdResponse], error)
@@ -665,7 +664,7 @@ type ParcelsServiceHandler interface {
 	GetLandAreaSqftByFeatureId(context.Context, *connect.Request[v1.GetLandAreaSqftByFeatureIdRequest]) (*connect.Response[v1.GetLandAreaSqftByFeatureIdResponse], error)
 	GetFrontageFtByFeatureId(context.Context, *connect.Request[v1.GetFrontageFtByFeatureIdRequest]) (*connect.Response[v1.GetFrontageFtByFeatureIdResponse], error)
 	GetDepthFtByFeatureId(context.Context, *connect.Request[v1.GetDepthFtByFeatureIdRequest]) (*connect.Response[v1.GetDepthFtByFeatureIdResponse], error)
-	GetLandUseIdSqftByFeatureId(context.Context, *connect.Request[v1.GetLandUseIdSqftByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByFeatureIdResponse], error)
+	GetLandUseIdByFeatureId(context.Context, *connect.Request[v1.GetLandUseIdByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdByFeatureIdResponse], error)
 	GetZoningIdByFeatureId(context.Context, *connect.Request[v1.GetZoningIdByFeatureIdRequest]) (*connect.Response[v1.GetZoningIdByFeatureIdResponse], error)
 	GetImprovementAreaSqftByFeatureId(context.Context, *connect.Request[v1.GetImprovementAreaSqftByFeatureIdRequest]) (*connect.Response[v1.GetImprovementAreaSqftByFeatureIdResponse], error)
 	GetBedroomsByFeatureId(context.Context, *connect.Request[v1.GetBedroomsByFeatureIdRequest]) (*connect.Response[v1.GetBedroomsByFeatureIdResponse], error)
@@ -751,10 +750,10 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetDepthFtByParcelId")),
 		connect.WithHandlerOptions(opts...),
 	)
-	parcelsServiceGetLandUseIdSqftByParcelIdHandler := connect.NewUnaryHandler(
-		ParcelsServiceGetLandUseIdSqftByParcelIdProcedure,
-		svc.GetLandUseIdSqftByParcelId,
-		connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdSqftByParcelId")),
+	parcelsServiceGetLandUseIdByParcelIdHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetLandUseIdByParcelIdProcedure,
+		svc.GetLandUseIdByParcelId,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdByParcelId")),
 		connect.WithHandlerOptions(opts...),
 	)
 	parcelsServiceGetZoningIdByParcelIdHandler := connect.NewUnaryHandler(
@@ -829,10 +828,10 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 		connect.WithSchema(parcelsServiceMethods.ByName("GetDepthFtByFeatureId")),
 		connect.WithHandlerOptions(opts...),
 	)
-	parcelsServiceGetLandUseIdSqftByFeatureIdHandler := connect.NewUnaryHandler(
-		ParcelsServiceGetLandUseIdSqftByFeatureIdProcedure,
-		svc.GetLandUseIdSqftByFeatureId,
-		connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdSqftByFeatureId")),
+	parcelsServiceGetLandUseIdByFeatureIdHandler := connect.NewUnaryHandler(
+		ParcelsServiceGetLandUseIdByFeatureIdProcedure,
+		svc.GetLandUseIdByFeatureId,
+		connect.WithSchema(parcelsServiceMethods.ByName("GetLandUseIdByFeatureId")),
 		connect.WithHandlerOptions(opts...),
 	)
 	parcelsServiceGetZoningIdByFeatureIdHandler := connect.NewUnaryHandler(
@@ -919,8 +918,8 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 			parcelsServiceGetFrontageFtByParcelIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetDepthFtByParcelIdProcedure:
 			parcelsServiceGetDepthFtByParcelIdHandler.ServeHTTP(w, r)
-		case ParcelsServiceGetLandUseIdSqftByParcelIdProcedure:
-			parcelsServiceGetLandUseIdSqftByParcelIdHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetLandUseIdByParcelIdProcedure:
+			parcelsServiceGetLandUseIdByParcelIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetZoningIdByParcelIdProcedure:
 			parcelsServiceGetZoningIdByParcelIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetImprovementAreaSqftByParcelIdProcedure:
@@ -945,8 +944,8 @@ func NewParcelsServiceHandler(svc ParcelsServiceHandler, opts ...connect.Handler
 			parcelsServiceGetFrontageFtByFeatureIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetDepthFtByFeatureIdProcedure:
 			parcelsServiceGetDepthFtByFeatureIdHandler.ServeHTTP(w, r)
-		case ParcelsServiceGetLandUseIdSqftByFeatureIdProcedure:
-			parcelsServiceGetLandUseIdSqftByFeatureIdHandler.ServeHTTP(w, r)
+		case ParcelsServiceGetLandUseIdByFeatureIdProcedure:
+			parcelsServiceGetLandUseIdByFeatureIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetZoningIdByFeatureIdProcedure:
 			parcelsServiceGetZoningIdByFeatureIdHandler.ServeHTTP(w, r)
 		case ParcelsServiceGetImprovementAreaSqftByFeatureIdProcedure:
@@ -1020,8 +1019,8 @@ func (UnimplementedParcelsServiceHandler) GetDepthFtByParcelId(context.Context, 
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetDepthFtByParcelId is not implemented"))
 }
 
-func (UnimplementedParcelsServiceHandler) GetLandUseIdSqftByParcelId(context.Context, *connect.Request[v1.GetLandUseIdSqftByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByParcelIdResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetLandUseIdSqftByParcelId is not implemented"))
+func (UnimplementedParcelsServiceHandler) GetLandUseIdByParcelId(context.Context, *connect.Request[v1.GetLandUseIdByParcelIdRequest]) (*connect.Response[v1.GetLandUseIdByParcelIdResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetLandUseIdByParcelId is not implemented"))
 }
 
 func (UnimplementedParcelsServiceHandler) GetZoningIdByParcelId(context.Context, *connect.Request[v1.GetZoningIdByParcelIdRequest]) (*connect.Response[v1.GetZoningIdByParcelIdResponse], error) {
@@ -1072,8 +1071,8 @@ func (UnimplementedParcelsServiceHandler) GetDepthFtByFeatureId(context.Context,
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetDepthFtByFeatureId is not implemented"))
 }
 
-func (UnimplementedParcelsServiceHandler) GetLandUseIdSqftByFeatureId(context.Context, *connect.Request[v1.GetLandUseIdSqftByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdSqftByFeatureIdResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetLandUseIdSqftByFeatureId is not implemented"))
+func (UnimplementedParcelsServiceHandler) GetLandUseIdByFeatureId(context.Context, *connect.Request[v1.GetLandUseIdByFeatureIdRequest]) (*connect.Response[v1.GetLandUseIdByFeatureIdResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("civil.mesh.parcels.v1.ParcelsService.GetLandUseIdByFeatureId is not implemented"))
 }
 
 func (UnimplementedParcelsServiceHandler) GetZoningIdByFeatureId(context.Context, *connect.Request[v1.GetZoningIdByFeatureIdRequest]) (*connect.Response[v1.GetZoningIdByFeatureIdResponse], error) {
